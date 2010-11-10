@@ -1,0 +1,89 @@
+Release Notes
+
+* Version 1.9-RC1-20101103
+
+ * reportTCResult
+
+ * setTestCaseExecutionResult
+
+ * createBuild
+
+ * createTestCase
+
+ * createTestPlan
+
+ * createTestProject
+
+ * createTestSuite
+
+ * uploadRequirementSpecificationAttachment
+
+ * uploadRequirementAttachment
+
+ * uploadTestProjectAttachment
+
+ * uploadTestSuiteAttachment
+
+ * uploadTestCaseAttachment
+
+ * uploadAttachment
+
+ * assignRequirements
+
+ * addTestCaseToTestPlan
+
+ * getProjects
+
+ * getTestProjectByName
+
+ * getTestPlanByName
+
+ * getProjectTestPlans
+
+ * getTestPlanPlatforms
+
+ * getTotalsForTestPlan
+
+ * getBuildsForTestPlan
+
+ * getLatestBuildForTestPlan
+
+ * getLastExecutionResult
+
+ * getTestSuitesForTestPlan
+
+ * getTestSuitesForTestSuite
+
+ * getTestCasesForTestSuite
+
+ * getTestCasesForTestPlan
+
+ * getTestCaseIDByName
+
+ * getTestCaseCustomFieldDesignValue
+
+ * getFirstLevelTestSuitesForTestProject
+
+ * getTestCaseAttachments
+
+ * getTestCase
+
+ * getFullPath
+
+ * getTestSuiteByID
+
+ * deleteExecution
+
+ * doesUserExist
+
+ * checkDevKey
+
+ * about
+
+ * setTestMode
+
+ * ping
+
+ * sayHello
+
+ * repeat

@@ -1,0 +1,276 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.eti.kinoshita</groupId>
+	<artifactId>testlink4j</artifactId>
+	<version>1.9-RC1-20101103-SNAPSHOT</version>
+	<name>testlink4j</name>
+	<description>Java API to interface TestLink PHP xml-rpc API.</description>
+
+	<parent>
+	    <groupId>org.sonatype.oss</groupId>
+	    <artifactId>oss-parent</artifactId>
+	    <version>5</version>
+  	</parent>
+  	
+  	<inceptionYear>2010-2010 the testlink4j team</inceptionYear>
+  	
+  	<issueManagement>
+		<system>SourceForge.net</system>
+		<url>http://sourceforge.net/tracker/?group_id=366628</url>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<email>brunodepaulak@yahoo.com.br</email>
+			<id>kinow</id>
+			<name>Bruno P. Kinoshita</name>
+			<timezone>-3 GMT</timezone>
+			<url>http://www.kinoshita.eti.br</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<email>cesar.fa@gmail.com</email>
+			<name>César Fernandes de Almeida</name>
+			<timezone>-3 GMT</timezone>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<url>http://sourceforge.net/projects/testlink4j2/</url>
+	
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<scm>
+		<connection>scm:svn:https://testlink4j2.svn.sourceforge.net/svnroot/testlink4j2/trunk</connection>
+		<developerConnection>scm:svn:https://testlink4j2.svn.sourceforge.net/svnroot/testlink4j2/trunk</developerConnection>
+		<url>https://testlink4j2.svn.sourceforge.net/svnroot/testlink4j2/trunk</url>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}/test-output</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.6</version>			
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<instrumentation>
+			            <!-- excludes>
+			              <exclude>br/eti/kinoshita/tap4j/ext/*.class</exclude>
+			            </excludes-->
+					</instrumentation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.4</version>
+				
+				<dependencies>
+					<dependency>
+			            <groupId>mysql</groupId>
+			            <artifactId>mysql-connector-java</artifactId>
+			            <version>5.1.13</version>
+			            <type>jar</type>
+			            <scope>compile</scope>
+			        </dependency>
+		        </dependencies>
+				
+				<configuration>
+		          <driver>com.mysql.jdbc.Driver</driver>
+		          <url>jdbc:mysql://localhost:3306/testlink19rc120101103</url>
+		          <username>root</username>
+		          <password></password>
+		          <!-- You can comment out username/password configurations and
+		               have maven to look them up in your settings.xml using ${settingsKey}
+		          -->
+		          <settingsKey>sensibleKey</settingsKey>
+		          <!--all executions are ignored if -Dmaven.test.skip=true-->
+		          <skip>${maven.test.skip}</skip>
+				</configuration>
+				
+				<executions>
+				  <execution>
+		            <id>drop-db-before-test-if-any</id>
+		            <phase>process-test-resources</phase>
+		            <goals>
+		              <goal>execute</goal>
+		            </goals>
+		            <configuration>
+		              <!-- need another database to drop the targeted one -->
+		              <url>jdbc:mysql://localhost:3306/test</url>
+		              <autocommit>true</autocommit>
+		              <sqlCommand>drop database if exists testlink19rc120101103</sqlCommand>
+		              <!-- ignore error when database is not avaiable -->
+		              <onError>continue</onError>
+		            </configuration>
+		          </execution>
+				  <execution>
+		            <id>create-db</id>
+		            <phase>process-test-resources</phase>
+		            <goals>
+		              <goal>execute</goal>
+		            </goals>
+		            <configuration>
+		              <url>jdbc:mysql://localhost:3306/test</url>
+		              <!-- no transaction -->
+		              <autocommit>true</autocommit>
+		              <sqlCommand>create database testlink19rc120101103; </sqlCommand>
+		            </configuration>
+		          </execution>
+			      <execution>
+                    <id>grant-privileges</id>
+                    <phase>process-test-resources</phase>
+                    <goals>
+                      <goal>execute</goal>
+                    </goals>
+                    <configuration>
+                      <url>jdbc:mysql://localhost:3306/test</url>
+                      <!-- no transaction -->
+                      <autocommit>true</autocommit>
+                      <sqlCommand>grant all privileges on testlink19rc120101103.* to 'testlink'@'localhost' identified by 'testlink'; </sqlCommand>
+                    </configuration>
+                  </execution>  
+                  <execution>
+                    <id>create-schema-with-test-data</id>
+                    <phase>process-test-resources</phase>
+                    <goals>
+                      <goal>execute</goal>
+                    </goals>
+                    <configuration>
+                      <autocommit>true</autocommit>
+		              <srcFiles>
+		                <srcFile>${basedir}/src/documents/sql/testlink19rc120101103.sql</srcFile>
+		              </srcFiles>
+                    </configuration>
+                  </execution>
+				</executions>
+				
+			</plugin>
+		</plugins>
+	</build>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<sourcepath>src/test/java;src/main/java</sourcepath>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<configuration>
+					<targetJdk>1.5</targetJdk>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+	
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlrpc</groupId>
+			<artifactId>xmlrpc-client</artifactId>
+			<version>3.1.3</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.11</version>
+			<type>jar</type>
+			<classifier>jdk15</classifier>
+		</dependency>
+	</dependencies>
+	
+	<profiles>
+  	<profile>
+  		<id>release-sign-artifacts</id>
+	    <activation>
+	      <property>
+	        <name>performRelease</name>
+	        <value>true</value>
+	      </property>
+	    </activation>
+	    <build>
+	      <plugins>
+	        <plugin>
+	          <groupId>org.apache.maven.plugins</groupId>
+	          <artifactId>maven-gpg-plugin</artifactId>
+	          <version>1.1</version>
+	          <executions>
+	            <execution>
+	              <id>sign-artifacts</id>
+	              <phase>verify</phase>
+	              <goals>
+	                <goal>sign</goal>
+	              </goals>
+	            </execution>
+	          </executions>
+	        </plugin>
+	      </plugins>
+	    </build>
+  	</profile>
+  </profiles>
+
+</project>

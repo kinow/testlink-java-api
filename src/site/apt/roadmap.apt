@@ -1,0 +1,13 @@
+Roadmap
+
+ testlink4j is an API that is always accompanying TestLink XML-RPC API. It means 
+ that when TestLink releases a new version we are already working on a testlink4j 
+ new version that is 100% compatible with TestLink's new version. It also means 
+ that if you want to use testlink4j with TestLink 1.9, you have to use testlink4j 
+ version 1.9, if you want to use testlink4j with TestLink 1.9-RC1 then you have 
+ to use testlink4j-1.9-RC1 and so it goes. 
+
+* version 1.9-RC2?
+ 
+ * Keep 100% compatibility with TestLink XML-RPC API
+ 
