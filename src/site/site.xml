@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="testlink4j">
   <bannerLeft>
-    <name>testlink4j</name>
-    <src>images/testlink4j-project.png</src>
-    <href>http://sourceforge.net/projects/testlink4j/</href>
+    <name>TestLink Java API</name>
+    <src>images/testlink-java-api-project.png</src>
+    <href>http://sourceforge.net/projects/testlinkjavaapi/</href>
   </bannerLeft>
   <body>
   
@@ -20,7 +20,7 @@
       <item name="Download" href="downloads.html"/>
       <item name="Release Notes" href="release_notes.html"/>
       <item name="Roadmap" href="roadmap.html"/>
-      <item name="FAQ" href="faq.html"/>
+      <!-- item name="FAQ" href="faq.html"/ -->
       <item name="Related projects" href="related_projects.html"/>
     </menu>
     
