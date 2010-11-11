@@ -3,10 +3,10 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
-	<artifactId>testlink4j</artifactId>
+	<artifactId>testlink-java-api</artifactId>
 	<version>1.9-RC1-20101103-SNAPSHOT</version>
-	<name>testlink4j</name>
-	<description>Java API to interface TestLink PHP xml-rpc API.</description>
+	<name>TestLink Java API</name>
+	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
 	<parent>
 	    <groupId>org.sonatype.oss</groupId>
@@ -18,7 +18,7 @@
   	
   	<issueManagement>
 		<system>SourceForge.net</system>
-		<url>http://sourceforge.net/tracker/?group_id=366628</url>
+		<url>http://sourceforge.net/tracker/?group_id=372361</url>
 	</issueManagement>
 
 	<developers>
@@ -42,7 +42,7 @@
 		</developer>
 	</developers>
 	
-	<url>http://sourceforge.net/projects/testlink4j2/</url>
+	<url>http://sourceforge.net/projects/testlinkjavaapi</url>
 	
 	<licenses>
 		<license>
@@ -53,9 +53,9 @@
 	</licenses>
 	
 	<scm>
-		<connection>scm:svn:https://testlink4j2.svn.sourceforge.net/svnroot/testlink4j2/trunk</connection>
-		<developerConnection>scm:svn:https://testlink4j2.svn.sourceforge.net/svnroot/testlink4j2/trunk</developerConnection>
-		<url>https://testlink4j2.svn.sourceforge.net/svnroot/testlink4j2/trunk</url>
+		<connection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</connection>
+		<developerConnection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</developerConnection>
+		<url>https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</url>
 	</scm>
 
 	<build>
