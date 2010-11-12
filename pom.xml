@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
 	<artifactId>testlink-java-api</artifactId>
-	<version>1.9-RC1-20101103-SNAPSHOT</version>
+	<version>1.9-QA-20101107-SNAPSHOT</version>
 	<name>TestLink Java API</name>
 	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
@@ -55,7 +55,7 @@
 	<scm>
 		<connection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</connection>
 		<developerConnection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</developerConnection>
-		<url>https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</url>
+		<url>http://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</url>
 	</scm>
 
 	<build>
@@ -120,7 +120,7 @@
 				
 				<configuration>
 		          <driver>com.mysql.jdbc.Driver</driver>
-		          <url>jdbc:mysql://localhost:3306/testlink19rc120101103</url>
+		          <url>jdbc:mysql://localhost:3306/testlink_1_9_qa_20101107</url>
 		          <username>root</username>
 		          <password></password>
 		          <!-- You can comment out username/password configurations and
@@ -142,7 +142,7 @@
 		              <!-- need another database to drop the targeted one -->
 		              <url>jdbc:mysql://localhost:3306/test</url>
 		              <autocommit>true</autocommit>
-		              <sqlCommand>drop database if exists testlink19rc120101103</sqlCommand>
+		              <sqlCommand>drop database if exists testlink_1_9_qa_20101107</sqlCommand>
 		              <!-- ignore error when database is not avaiable -->
 		              <onError>continue</onError>
 		            </configuration>
@@ -157,7 +157,7 @@
 		              <url>jdbc:mysql://localhost:3306/test</url>
 		              <!-- no transaction -->
 		              <autocommit>true</autocommit>
-		              <sqlCommand>create database testlink19rc120101103; </sqlCommand>
+		              <sqlCommand>create database testlink_1_9_qa_20101107; </sqlCommand>
 		            </configuration>
 		          </execution>
 			      <execution>
@@ -170,7 +170,7 @@
                       <url>jdbc:mysql://localhost:3306/test</url>
                       <!-- no transaction -->
                       <autocommit>true</autocommit>
-                      <sqlCommand>grant all privileges on testlink19rc120101103.* to 'testlink'@'localhost' identified by 'testlink'; </sqlCommand>
+                      <sqlCommand>grant all privileges on testlink_1_9_qa_20101107.* to 'testlink'@'localhost' identified by 'testlink'; </sqlCommand>
                     </configuration>
                   </execution>  
                   <execution>
@@ -182,7 +182,7 @@
                     <configuration>
                       <autocommit>true</autocommit>
 		              <srcFiles>
-		                <srcFile>${basedir}/src/documents/sql/testlink19rc120101103.sql</srcFile>
+		                <srcFile>${basedir}/src/documents/sql/testlink_1_9_qa_20101107.sql</srcFile>
 		              </srcFiles>
                     </configuration>
                   </execution>
