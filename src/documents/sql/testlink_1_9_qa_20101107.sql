@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.1.41, for Win32 (ia32)
 --
--- Host: localhost    Database: testlink19rc120101103
+-- Host: localhost    Database: testlink_1_9_qa_20101107
 -- ------------------------------------------------------
 -- Server version	5.1.41
 
@@ -26,7 +26,7 @@ CREATE TABLE `assignment_status` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(100) NOT NULL DEFAULT 'unknown',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `assignment_types` (
   `fk_table` varchar(30) DEFAULT '',
   `description` varchar(100) NOT NULL DEFAULT 'unknown',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `attachments` (
   `content` longblob,
   `compression_type` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `builds` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`testplan_id`,`name`),
   KEY `testplan_id` (`testplan_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Available builds';
+) ENGINE=innodb AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Available builds';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `cfield_design_values` (
   `value` varchar(4000) NOT NULL DEFAULT '',
   PRIMARY KEY (`field_id`,`node_id`),
   KEY `idx_cfield_design_values` (`node_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `cfield_execution_values` (
   `tcversion_id` int(10) NOT NULL DEFAULT '0',
   `value` varchar(4000) NOT NULL DEFAULT '',
   PRIMARY KEY (`field_id`,`execution_id`,`testplan_id`,`tcversion_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `cfield_node_types` (
   `node_type_id` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`field_id`,`node_type_id`),
   KEY `idx_custom_fields_assign` (`node_type_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `cfield_testplan_design_values` (
   `value` varchar(4000) NOT NULL DEFAULT '',
   PRIMARY KEY (`field_id`,`link_id`),
   KEY `idx_cfield_tplan_design_val` (`link_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -250,7 +250,7 @@ CREATE TABLE `cfield_testprojects` (
   `required_on_design` tinyint(1) NOT NULL DEFAULT '0',
   `required_on_execution` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`field_id`,`testproject_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +288,7 @@ CREATE TABLE `custom_fields` (
   `enable_on_testplan_design` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_custom_fields_name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +312,7 @@ CREATE TABLE `db_version` (
   `version` varchar(50) NOT NULL DEFAULT 'unknown',
   `upgrade_ts` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `notes` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,7 +345,7 @@ CREATE TABLE `events` (
   PRIMARY KEY (`id`),
   KEY `transaction_id` (`transaction_id`),
   KEY `fired_at` (`fired_at`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,7 @@ CREATE TABLE `execution_bugs` (
   `execution_id` int(10) unsigned NOT NULL DEFAULT '0',
   `bug_id` varchar(16) NOT NULL DEFAULT '0',
   PRIMARY KEY (`execution_id`,`bug_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,7 +403,7 @@ CREATE TABLE `executions` (
   PRIMARY KEY (`id`),
   KEY `testplan_id_tcversion_id` (`testplan_id`,`tcversion_id`),
   KEY `execution_type` (`execution_type`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,7 +434,7 @@ CREATE TABLE `inventory` (
   `modification_ts` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `inventory_idx1` (`testproject_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -461,7 +461,7 @@ CREATE TABLE `keywords` (
   PRIMARY KEY (`id`),
   KEY `testproject_id` (`testproject_id`),
   KEY `keyword` (`keyword`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -492,7 +492,7 @@ CREATE TABLE `milestones` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_testplan_id` (`name`,`testplan_id`),
   KEY `testplan_id` (`testplan_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -515,7 +515,7 @@ CREATE TABLE `node_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(100) NOT NULL DEFAULT 'testproject',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -543,7 +543,7 @@ CREATE TABLE `nodes_hierarchy` (
   `node_order` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pid_m_nodeorder` (`parent_id`,`node_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -569,7 +569,7 @@ CREATE TABLE `object_keywords` (
   `fk_table` varchar(30) DEFAULT '',
   `keyword_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -595,7 +595,7 @@ CREATE TABLE `platforms` (
   `notes` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_platforms` (`testproject_id`,`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -619,7 +619,7 @@ CREATE TABLE `req_coverage` (
   `req_id` int(10) NOT NULL,
   `testcase_id` int(10) NOT NULL,
   KEY `req_testcase` (`req_id`,`testcase_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='relation test case ** requirements';
+) ENGINE=innodb DEFAULT CHARSET=utf8 COMMENT='relation test case ** requirements';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -646,7 +646,7 @@ CREATE TABLE `req_relations` (
   `author_id` int(10) unsigned DEFAULT NULL,
   `creation_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -679,7 +679,7 @@ CREATE TABLE `req_specs` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `req_spec_uk1` (`doc_id`,`testproject_id`),
   KEY `testproject_id` (`testproject_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Dev. Documents (e.g. System Requirements Specification)';
+) ENGINE=innodb DEFAULT CHARSET=utf8 COMMENT='Dev. Documents (e.g. System Requirements Specification)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -713,7 +713,7 @@ CREATE TABLE `req_versions` (
   `modifier_id` int(10) unsigned DEFAULT NULL,
   `modification_ts` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`,`version`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -739,7 +739,7 @@ CREATE TABLE `requirements` (
   `req_doc_id` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `requirements_req_doc_id` (`srs_id`,`req_doc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -764,7 +764,7 @@ CREATE TABLE `rights` (
   `description` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `rights_descr` (`description`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -792,7 +792,7 @@ CREATE TABLE `risk_assignments` (
   `importance` char(1) NOT NULL DEFAULT 'M',
   PRIMARY KEY (`id`),
   UNIQUE KEY `risk_assignments_tplan_node_id` (`testplan_id`,`node_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -815,7 +815,7 @@ CREATE TABLE `role_rights` (
   `role_id` int(10) NOT NULL DEFAULT '0',
   `right_id` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`role_id`,`right_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -841,7 +841,7 @@ CREATE TABLE `roles` (
   `notes` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `role_rights_roles_descr` (`description`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -869,7 +869,7 @@ CREATE TABLE `tcsteps` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `execution_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 -> manual, 2 -> automated',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -905,7 +905,7 @@ CREATE TABLE `tcversions` (
   `is_open` tinyint(1) NOT NULL DEFAULT '1',
   `execution_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 -> manual, 2 -> automated',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -929,7 +929,7 @@ CREATE TABLE `testcase_keywords` (
   `testcase_id` int(10) unsigned NOT NULL DEFAULT '0',
   `keyword_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`testcase_id`,`keyword_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -954,7 +954,7 @@ CREATE TABLE `testplan_platforms` (
   `platform_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_testplan_platforms` (`testplan_id`,`platform_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Connects a testplan with platforms';
+) ENGINE=innodb AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Connects a testplan with platforms';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -985,7 +985,7 @@ CREATE TABLE `testplan_tcversions` (
   `creation_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `testplan_tcversions_tplan_tcversion` (`testplan_id`,`tcversion_id`,`platform_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1014,7 +1014,7 @@ CREATE TABLE `testplans` (
   `is_public` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `testplans_testproject_id_active` (`testproject_id`,`active`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1049,7 +1049,7 @@ CREATE TABLE `testprojects` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `testprojects_prefix` (`prefix`),
   KEY `testprojects_id_active` (`id`,`active`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1073,7 +1073,7 @@ CREATE TABLE `testsuites` (
   `id` int(10) unsigned NOT NULL,
   `details` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1101,7 +1101,7 @@ CREATE TABLE `transactions` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `session_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=innodb AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1133,7 +1133,7 @@ CREATE TABLE `user_assignments` (
   `status` int(10) unsigned DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `user_assignments_feature_id` (`feature_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1158,7 +1158,7 @@ CREATE TABLE `user_group` (
   `description` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_group` (`title`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1181,7 +1181,7 @@ CREATE TABLE `user_group_assign` (
   `usergroup_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   UNIQUE KEY `idx_user_group_assign` (`usergroup_id`,`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1205,7 +1205,7 @@ CREATE TABLE `user_testplan_roles` (
   `testplan_id` int(10) NOT NULL DEFAULT '0',
   `role_id` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`,`testplan_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1229,7 +1229,7 @@ CREATE TABLE `user_testproject_roles` (
   `testproject_id` int(10) NOT NULL DEFAULT '0',
   `role_id` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`,`testproject_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=innodb DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1262,7 +1262,7 @@ CREATE TABLE `users` (
   `script_key` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_login` (`login`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='User information';
+) ENGINE=innodb AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='User information';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
