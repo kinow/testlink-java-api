@@ -6,7 +6,7 @@ Download
 
 * Maven artifact
 
-  If you are using Maven then you can add a dependency to testlink4j. 
+  If you are using Maven then you can add a dependency to TestLink Java API. 
 
 +---+
 <dependency>
