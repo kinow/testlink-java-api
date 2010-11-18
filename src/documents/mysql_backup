@@ -1,2 +1,2 @@
-mysqldump --add-drop-table -u root testlink19rc120101103 > testlink19rc120101103.sql
-mysql -u root testlink19rc120101103 < testlink19rc120101103.sql
+mysqldump --add-drop-table -u root testlink19rc120101111 > testlink19rc120101111.sql
+mysql -u root testlink19rc120101111 < testlink19rc120101111.sql
