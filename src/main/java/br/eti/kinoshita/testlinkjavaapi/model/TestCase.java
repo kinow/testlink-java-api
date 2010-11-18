@@ -24,10 +24,9 @@
 package br.eti.kinoshita.testlinkjavaapi.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.util.TestImportance;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
@@ -53,13 +52,15 @@ implements Serializable
 	private String actionOnDuplicatedName;
 	private Integer versionId;
 	private Integer parentId;
+	private List<CustomField> customFields;
 	
 	/**
 	 * 
 	 */
 	public TestCase() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.steps = new ArrayList<TestCaseStep>();
+		this.customFields = new ArrayList<CustomField>();
 	}
 	/**
 	 * @param id
@@ -78,6 +79,7 @@ implements Serializable
 	 * @param actionOnDuplicatedName
 	 * @param versionId
 	 * @param parentId
+	 * @param customFields
 	 */
 	public TestCase(Integer id, String name, Integer testSuiteId,
 			Integer testProjectId, String authorLogin, String summary,
@@ -85,7 +87,7 @@ implements Serializable
 			TestImportance testImportance, ExecutionType executionType,
 			Integer order, Integer internalId, Boolean checkDuplicatedName,
 			String actionOnDuplicatedName, Integer versionId, 
-			Integer parentId) {
+			Integer parentId, List<CustomField> customFields) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -103,6 +105,7 @@ implements Serializable
 		this.actionOnDuplicatedName = actionOnDuplicatedName;
 		this.versionId = versionId;
 		this.parentId = parentId;
+		this.customFields = customFields;
 	}
 	/**
 	 * @return the parentId
@@ -296,11 +299,27 @@ implements Serializable
 	public void setActionOnDuplicatedName(String actionOnDuplicatedName) {
 		this.actionOnDuplicatedName = actionOnDuplicatedName;
 	}
+	
+	/**
+	 * @return the customFields
+	 */
+	public List<CustomField> getCustomFields()
+	{
+		return customFields;
+	}
+	/**
+	 * @param customFields the customFields to set
+	 */
+	public void setCustomFields( List<CustomField> customFields )
+	{
+		this.customFields = customFields;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "TestCase [id=" + id + ", name=" + name + ", testSuiteId="
 				+ testSuiteId + ", testProjectId=" + testProjectId
 				+ ", authorLogin=" + authorLogin + ", summary=" + summary
@@ -308,7 +327,9 @@ implements Serializable
 				+ ", testImportance=" + testImportance + ", executionType="
 				+ executionType + ", order=" + order + ", internalId="
 				+ internalId + ", checkDuplicatedName=" + checkDuplicatedName
-				+ ", actionOnDuplicatedName=" + actionOnDuplicatedName + "]";
+				+ ", actionOnDuplicatedName=" + actionOnDuplicatedName
+				+ ", versionId=" + versionId + ", parentId=" + parentId
+				+ ", customFields=" + customFields + "]";
 	}
 	
 }

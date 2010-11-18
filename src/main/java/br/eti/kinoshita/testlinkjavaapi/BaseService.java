@@ -33,7 +33,7 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**

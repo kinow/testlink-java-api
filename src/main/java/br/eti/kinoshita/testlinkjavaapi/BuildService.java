@@ -10,9 +10,9 @@ import java.util.Map;
 import org.apache.xmlrpc.XmlRpcException;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkMethods;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkParams;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkResponseParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**

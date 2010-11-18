@@ -6,7 +6,9 @@ Roadmap
  It also means that if you want to use TestLink Java API with TestLink 1.9, you have 
  to use TestLink Java API version 1.9.
 
-* version 1.9-RC2?
+* version 2.0
  
  * Keep 100% compatibility with TestLink XML-RPC API
+ * Increase overall test coverage above 75%
+ * Remove warnings during Javadoc generation
  

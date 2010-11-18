@@ -30,12 +30,12 @@ import java.util.Map;
 import org.apache.xmlrpc.XmlRpcException;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkTables;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkMethods;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkParams;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkResponseParams;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkTables;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**

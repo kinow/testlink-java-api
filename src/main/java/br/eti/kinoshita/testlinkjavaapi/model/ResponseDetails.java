@@ -21,22 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.eti.kinoshita.testlinkjavaapi.util;
+package br.eti.kinoshita.testlinkjavaapi.model;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 
  */
-public enum TestLinkTables
+public enum ResponseDetails
 {
 
-	nodesHierarchy("nodes_hierarchy"), 
-	requirements("requirements"), 
-	reqSpecs("req_specs");
+	FULL("full"), 
+	SIMPLE("simple"), 
+	VALUE("value");
 	
 	private String value;
 	
-	TestLinkTables( String value )
+	ResponseDetails( String value )
 	{
 		this.value = value;
 	}

@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
-import br.eti.kinoshita.testlinkjavaapi.util.ResponseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.eti.kinoshita.testlinkjavaapi.util;
+package br.eti.kinoshita.testlinkjavaapi.model;
 
 
 /**

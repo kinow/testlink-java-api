@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.eti.kinoshita.testlinkjavaapi.util;
+package br.eti.kinoshita.testlinkjavaapi.model;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br

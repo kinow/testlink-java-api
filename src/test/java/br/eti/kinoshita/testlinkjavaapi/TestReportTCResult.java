@@ -27,7 +27,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionStatus;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br

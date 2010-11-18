@@ -5,8 +5,6 @@ package br.eti.kinoshita.testlinkjavaapi.model;
 
 import java.io.Serializable;
 
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionStatus;
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionType;
 
 /**
  * @author Bruno P. Kinoshita

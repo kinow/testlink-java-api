@@ -35,10 +35,14 @@ import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
@@ -407,11 +411,40 @@ public class Util
 					Integer executionTypeValue = getInteger(map, TestLinkResponseParams.executionType.toString());
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
 					testCase.setExecutionType( execution );
+					
+					CustomField[] customFields = (CustomField[])getArray(map, TestLinkResponseParams.customFields.toString());
+					if ( customFields != null )
+					{
+						for (int i = 0; i < customFields.length; i++)
+						{
+							CustomField customField = customFields[i];
+							testCase.getCustomFields().add( customField );
+						}
+					}
 				}
 				
 			}			
 		}
 		return testCase;
+	}
+
+	/**
+	 * @param map
+	 * @param string
+	 * @return
+	 */
+	public static Object[] getArray( Map<String, Object> map, String key )
+	{
+		Object[] array = null;
+		if ( map != null && map.size() > 0 )
+		{
+			Object o = map.get(key);
+			if ( o != null )
+			{
+				array = (Object[])o;
+			}
+		}
+		return array;
 	}
 
 	/**

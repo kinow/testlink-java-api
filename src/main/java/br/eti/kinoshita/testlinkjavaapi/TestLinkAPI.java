@@ -31,17 +31,17 @@ import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
+import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionStatus;
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.util.ResponseDetails;
-import br.eti.kinoshita.testlinkjavaapi.util.TestImportance;
 
 /**
  * TestLink API class. 

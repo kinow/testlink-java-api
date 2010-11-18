@@ -14,16 +14,16 @@ import org.apache.xmlrpc.XmlRpcException;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionStatus;
-import br.eti.kinoshita.testlinkjavaapi.util.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.util.ResponseDetails;
-import br.eti.kinoshita.testlinkjavaapi.util.TestImportance;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkMethods;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkParams;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkResponseParams;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkTables;
+import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
+import br.eti.kinoshita.testlinkjavaapi.model.TestLinkTables;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
@@ -101,6 +101,7 @@ extends BaseService
 			checkDuplicatedName, 
 			actionOnDuplicatedName, 
 			null,
+			null, 
 			null);
 		
 		try
