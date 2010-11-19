@@ -403,6 +403,7 @@ public class Util
 					testCase = new TestCase();
 					testCase.setId( id );
 					testCase.setVersionId( getInteger(map, TestLinkResponseParams.testCaseVersionId.toString()) );
+					testCase.setVersion( getInteger(map, TestLinkResponseParams.version.toString() ) );
 					testCase.setPreconditions( getString(map, TestLinkResponseParams.preconditions.toString()));
 					testCase.setSummary( getString(map, TestLinkResponseParams.summary.toString()) );
 					testCase.setParentId( getInteger(map, TestLinkResponseParams.parentId.toString() ) );

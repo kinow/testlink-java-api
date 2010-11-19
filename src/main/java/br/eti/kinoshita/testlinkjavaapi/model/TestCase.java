@@ -51,6 +51,7 @@ implements Serializable
 	private Boolean checkDuplicatedName;
 	private String actionOnDuplicatedName;
 	private Integer versionId;
+	private Integer version;
 	private Integer parentId;
 	private List<CustomField> customFields;
 	private ExecutionStatus executionStatus;
@@ -79,15 +80,17 @@ implements Serializable
 	 * @param checkDuplicatedName
 	 * @param actionOnDuplicatedName
 	 * @param versionId
+	 * @param version
 	 * @param parentId
 	 * @param customFields
+	 * @param executionStatus
 	 */
 	public TestCase(Integer id, String name, Integer testSuiteId,
 			Integer testProjectId, String authorLogin, String summary,
 			List<TestCaseStep> steps, String preconditions,
 			TestImportance testImportance, ExecutionType executionType,
 			Integer order, Integer internalId, Boolean checkDuplicatedName,
-			String actionOnDuplicatedName, Integer versionId, 
+			String actionOnDuplicatedName, Integer versionId, Integer version,
 			Integer parentId, List<CustomField> customFields, 
 			ExecutionStatus executionStatus) {
 		super();
@@ -106,6 +109,7 @@ implements Serializable
 		this.checkDuplicatedName = checkDuplicatedName;
 		this.actionOnDuplicatedName = actionOnDuplicatedName;
 		this.versionId = versionId;
+		this.version = version;
 		this.parentId = parentId;
 		this.customFields = customFields;
 		this.executionStatus = executionStatus;
@@ -133,6 +137,20 @@ implements Serializable
 	 */
 	public void setVersionId(Integer versionId) {
 		this.versionId = versionId;
+	}
+	/**
+	 * @return the version
+	 */
+	public Integer getVersion()
+	{
+		return version;
+	}
+	/**
+	 * @param version the version to set
+	 */
+	public void setVersion( Integer version )
+	{
+		this.version = version;
 	}
 	/**
 	 * @return the id
@@ -345,9 +363,9 @@ implements Serializable
 				+ executionType + ", order=" + order + ", internalId="
 				+ internalId + ", checkDuplicatedName=" + checkDuplicatedName
 				+ ", actionOnDuplicatedName=" + actionOnDuplicatedName
-				+ ", versionId=" + versionId + ", parentId=" + parentId
-				+ ", customFields=" + customFields + ", executionStatus="
-				+ executionStatus + "]";
+				+ ", versionId=" + versionId + ", version=" + version
+				+ ", parentId=" + parentId + ", customFields=" + customFields
+				+ ", executionStatus=" + executionStatus + "]";
 	}
 	
 }
