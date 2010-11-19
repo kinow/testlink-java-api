@@ -326,7 +326,7 @@ public class Util
 	 * @param testCaseStep
 	 * @return
 	 */
-	private static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) 
+	public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) 
 	{
 		Map<String, Object> executionData = new HashMap<String, Object>();
 		executionData.put(TestLinkParams.stepNumber.toString(), testCaseStep.getNumber());
@@ -412,15 +412,16 @@ public class Util
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
 					testCase.setExecutionType( execution );
 					
-					CustomField[] customFields = (CustomField[])getArray(map, TestLinkResponseParams.customFields.toString());
-					if ( customFields != null )
-					{
-						for (int i = 0; i < customFields.length; i++)
-						{
-							CustomField customField = customFields[i];
-							testCase.getCustomFields().add( customField );
-						}
-					}
+					// TODO: check if TL 2.0 allows it
+//					CustomField[] customFields = (CustomField[])getArray(map, TestLinkResponseParams.customFields.toString());
+//					if ( customFields != null )
+//					{
+//						for (int i = 0; i < customFields.length; i++)
+//						{
+//							CustomField customField = customFields[i];
+//							testCase.getCustomFields().add( customField );
+//						}
+//					}
 				}
 				
 			}			
