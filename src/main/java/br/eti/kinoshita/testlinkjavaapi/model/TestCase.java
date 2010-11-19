@@ -53,6 +53,7 @@ implements Serializable
 	private Integer versionId;
 	private Integer parentId;
 	private List<CustomField> customFields;
+	private ExecutionStatus executionStatus;
 	
 	/**
 	 * 
@@ -87,7 +88,8 @@ implements Serializable
 			TestImportance testImportance, ExecutionType executionType,
 			Integer order, Integer internalId, Boolean checkDuplicatedName,
 			String actionOnDuplicatedName, Integer versionId, 
-			Integer parentId, List<CustomField> customFields) {
+			Integer parentId, List<CustomField> customFields, 
+			ExecutionStatus executionStatus) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -106,6 +108,7 @@ implements Serializable
 		this.versionId = versionId;
 		this.parentId = parentId;
 		this.customFields = customFields;
+		this.executionStatus = executionStatus;
 	}
 	/**
 	 * @return the parentId
@@ -314,6 +317,20 @@ implements Serializable
 	{
 		this.customFields = customFields;
 	}
+	/**
+	 * @return the executionStatus
+	 */
+	public ExecutionStatus getExecutionStatus()
+	{
+		return executionStatus;
+	}
+	/**
+	 * @param executionStatus the executionStatus to set
+	 */
+	public void setExecutionStatus( ExecutionStatus executionStatus )
+	{
+		this.executionStatus = executionStatus;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -329,7 +346,8 @@ implements Serializable
 				+ internalId + ", checkDuplicatedName=" + checkDuplicatedName
 				+ ", actionOnDuplicatedName=" + actionOnDuplicatedName
 				+ ", versionId=" + versionId + ", parentId=" + parentId
-				+ ", customFields=" + customFields + "]";
+				+ ", customFields=" + customFields + ", executionStatus="
+				+ executionStatus + "]";
 	}
 	
 }
