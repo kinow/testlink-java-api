@@ -24,8 +24,18 @@
 package br.eti.kinoshita.testlinkjavaapi.model;
 
 /**
+ * 
+ * <p>This enum contains a list of the parameters passed to TestLink.</p>
+ * 
+ * <p>
+ * <ul>
+ * <li>20101129 - BUGID: 3122360 - kinow - 
+ * 		Wrong execution type parameter name</li>
+ * </ul>
+ * </p>
+ * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since 1.9.0-1
  */
 public enum TestLinkParams
 {
@@ -58,7 +68,7 @@ public enum TestLinkParams
 	stepNumber("step_number"), 
 	actions("actions"), 
 	expectedResults("expected_results"), 
-	executionType("execution_type"), 
+	executionType("executiontype"), 
 	testSuiteName("testsuitename"), 
 	parentId("parentid"), 
 	details("details"), 

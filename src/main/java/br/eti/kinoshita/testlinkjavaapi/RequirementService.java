@@ -40,7 +40,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since 1.9.0-1
  */
 class RequirementService 
 extends BaseService

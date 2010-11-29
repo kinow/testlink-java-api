@@ -5,8 +5,18 @@ import java.io.Serializable;
 
 
 /**
- * @author Bruno P. Kinoshita
- *
+ * <p>TestLink Build object. Represents a Build in TestLink system. A build is, 
+ * basically, an instance of a Test Plan.</p>
+ * 
+ * <p>
+ * <ul>
+ * <li>20101129 - BUGID: 3122320 - kinow - 
+ * 		Modify Build methods to follow standard naming</li>
+ * </ul> 
+ * </p>
+ * 
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 1.9.0-1
  */
 public class Build 
 implements Serializable
@@ -29,13 +39,13 @@ implements Serializable
 	 * @param buildName
 	 * @param buildNotes
 	 */
-	public Build(Integer id, Integer testPlanId, String buildName,
-			String buildNotes) {
+	public Build(Integer id, Integer testPlanId, String name,
+			String notes) {
 		super();
 		this.id = id;
 		this.testPlanId = testPlanId;
-		this.buildName = buildName;
-		this.buildNotes = buildNotes;
+		this.buildName = name;
+		this.buildNotes = notes;
 	}
 	/**
 	 * @return the id
@@ -62,27 +72,27 @@ implements Serializable
 		this.testPlanId = testPlanId;
 	}
 	/**
-	 * @return the buildName
+	 * @return the name
 	 */
-	public String getBuildName() {
+	public String getName() {
 		return buildName;
 	}
 	/**
-	 * @param buildName the buildName to set
+	 * @param name the buildName to set
 	 */
-	public void setBuildName(String buildName) {
-		this.buildName = buildName;
+	public void setName(String name) {
+		this.buildName = name;
 	}
 	/**
 	 * @return the buildNotes
 	 */
-	public String getBuildNotes() {
+	public String getNotes() {
 		return buildNotes;
 	}
 	/**
 	 * @param buildNotes the buildNotes to set
 	 */
-	public void setBuildNotes(String buildNotes) {
+	public void setNotes(String buildNotes) {
 		this.buildNotes = buildNotes;
 	}
 	/* (non-Javadoc)
@@ -91,7 +101,7 @@ implements Serializable
 	@Override
 	public String toString() {
 		return "Build [id=" + id + ", testPlanId=" + testPlanId
-				+ ", buildName=" + buildName + ", buildNotes=" + buildNotes
+				+ ", name=" + buildName + ", notes=" + buildNotes
 				+ "]";
 	}
 	

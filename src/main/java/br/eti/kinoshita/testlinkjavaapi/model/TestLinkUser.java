@@ -5,7 +5,7 @@ package br.eti.kinoshita.testlinkjavaapi.model;
 
 /**
  * @author Bruno P. Kinoshita
- *
+ * @since 1.9.0-1
  */
 public enum TestLinkUser 
 {

@@ -16,8 +16,8 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
- * @author Bruno P. Kinoshita
- *
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 1.9.0-1
  */
 class BuildService 
 extends BaseService 

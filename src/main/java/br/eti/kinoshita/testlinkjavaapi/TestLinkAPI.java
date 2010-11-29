@@ -47,7 +47,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
  * TestLink API class. 
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 1.0
+ * @since 1.9.0-1
  */
 public class TestLinkAPI
 {

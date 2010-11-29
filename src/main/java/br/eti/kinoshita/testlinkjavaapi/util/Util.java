@@ -48,8 +48,20 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
 
 /**
+ * 
+ * <p>Utility class with methods to handle the response or prepare 
+ * the request to the PHP XML-RPC API. This class is able to convert 
+ * from a Map to an Object and vice-versa.</p>
+ * 
+ * <p>
+ * <ul>
+ * <li>20101129 - BUGID: 3122394 - kinow - 
+ * 			Invalid type when passing ExecutionType as param</li>
+ * </ul>
+ * </p>
+ * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since 1.9.0-1
  */
 public class Util
 {
@@ -79,24 +91,6 @@ public class Util
 		executionData.put(TestLinkParams.public_.toString(), project.isPublic());
 
 		return executionData;
-	}
-	
-	/**
-	 * Puts a boolean value into a map if the value is not null.
-	 * 
-	 * @param map Map.
-	 * @param key Key.
-	 * @param boolValue Boolean value.
-	 */
-	public static void putIfNotNullAndTrue(
-			Map<String, Object> map,
-			String key, 
-			Boolean boolValue) 
-	{
-		if ( boolValue != null && boolValue == true )
-		{
-			map.put( key, 0 );
-		}
 	}
 
 	/**
@@ -312,8 +306,8 @@ public class Util
 		executionData.put(TestLinkParams.steps.toString(), steps);
 		
 		executionData.put(TestLinkParams.preconditions.toString(), testCase.getPreconditions());
-		executionData.put(TestLinkParams.importance.toString(), testCase.getTestImportance());
-		executionData.put(TestLinkParams.execution.toString(), testCase.getExecutionType());
+		executionData.put(TestLinkParams.importance.toString(), Util.getStringValueOrNull(testCase.getTestImportance()));
+		executionData.put(TestLinkParams.execution.toString(), Util.getStringValueOrNull( testCase.getExecutionType()));
 		executionData.put(TestLinkParams.order.toString(), testCase.getOrder());
 		executionData.put(TestLinkParams.internalId.toString(), testCase.getInternalId());
 		executionData.put(TestLinkParams.checkDuplicatedName.toString(), testCase.getCheckDuplicatedName());
@@ -331,8 +325,9 @@ public class Util
 		Map<String, Object> executionData = new HashMap<String, Object>();
 		executionData.put(TestLinkParams.stepNumber.toString(), testCaseStep.getNumber());
 		executionData.put(TestLinkParams.actions.toString(), testCaseStep.getActions());
-		executionData.put(TestLinkParams.expectedResults.toString(), testCaseStep.getActions());
-		executionData.put(TestLinkParams.executionType.toString(), testCaseStep.getActions());
+		executionData.put(TestLinkParams.expectedResults.toString(), testCaseStep.getExpectedResults());
+		
+		executionData.put(TestLinkParams.executionType.toString(), testCaseStep.getExecutionType());
 		return executionData;
 	}
 
@@ -457,8 +452,8 @@ public class Util
 	{
 		Map<String, Object> executionData = new HashMap<String, Object>();
 		executionData.put(TestLinkParams.testPlanId.toString(), build.getTestPlanId());
-		executionData.put(TestLinkParams.buildName.toString(), build.getBuildName());
-		executionData.put(TestLinkParams.buildNotes.toString(), build.getBuildNotes());
+		executionData.put(TestLinkParams.buildName.toString(), build.getName());
+		executionData.put(TestLinkParams.buildNotes.toString(), build.getNotes());
 		return executionData;
 	}
 
@@ -697,10 +692,10 @@ public class Util
 					build = new Build();
 					build.setId( id );
 					
-					build.setBuildName( getString(map, TestLinkResponseParams.name.toString()) );
-					build.setBuildNotes( getString(map, TestLinkResponseParams.notes.toString()) );
+					build.setName( getString(map, TestLinkResponseParams.name.toString()) );
+					build.setNotes( getString(map, TestLinkResponseParams.notes.toString()) );
 					build.setTestPlanId( getInteger(map, TestLinkResponseParams.testPlanId.toString()) );
-					build.setBuildName( getString(map, TestLinkResponseParams.name.toString()) );
+					build.setName( getString(map, TestLinkResponseParams.name.toString()) );
 					// TBD: add is open, release date, closed on date and active to Build entity
 				}
 				
@@ -741,6 +736,34 @@ public class Util
 	
 		}
 		return customField;
+	}
+	
+	/**
+	 * Puts a boolean value into a map if the value is not null.
+	 * 
+	 * @param map Map.
+	 * @param key Key.
+	 * @param boolValue Boolean value.
+	 */
+	public static final void putIfNotNullAndTrue(
+			Map<String, Object> map,
+			String key, 
+			Boolean boolValue) 
+	{
+		if ( boolValue != null && boolValue == true )
+		{
+			map.put( key, 0 );
+		}
+	}
+	
+	public static final String getStringValueOrNull( Object o )
+	{
+		String value = null;
+		if ( o != null )
+		{
+			value = o.toString();
+		}
+		return value;
 	}
 	
 }

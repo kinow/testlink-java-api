@@ -27,8 +27,8 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestLinkTables;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
- * @author Bruno P. Kinoshita
- *
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 1.9.0-1
  */
 class TestCaseService 
 extends BaseService
@@ -250,8 +250,8 @@ extends BaseService
 			executionData.put(TestLinkParams.keywords.toString(), keywords); 
 			executionData.put(TestLinkParams.executed.toString(), executed);
 			executionData.put(TestLinkParams.assignedTo.toString(), assignedTo);
-			executionData.put(TestLinkParams.executeStatus.toString(), executeStatus);
-			executionData.put(TestLinkParams.executionType.toString(), executionType);
+			executionData.put(TestLinkParams.executeStatus.toString(), Util.getStringValueOrNull( executeStatus ));
+			executionData.put(TestLinkParams.executionType.toString(), Util.getStringValueOrNull( executionType ) );
 			executionData.put(TestLinkParams.getStepInfo.toString(), getStepInfo);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestPlan.toString(), executionData);
@@ -588,10 +588,7 @@ extends BaseService
 			executionData.put( TestLinkParams.version.toString(), versionNumber );
 			executionData.put( TestLinkParams.testProjectId.toString(), testProjectId );
 			executionData.put( TestLinkParams.customFieldName.toString(), customFieldName );
-			if ( details != null )
-			{
-				executionData.put( TestLinkParams.details.toString(), details.toString());
-			}
+			executionData.put( TestLinkParams.details.toString(), Util.getStringValueOrNull( details ) );
 			
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCaseCustomFieldDesignValue.toString(), executionData);

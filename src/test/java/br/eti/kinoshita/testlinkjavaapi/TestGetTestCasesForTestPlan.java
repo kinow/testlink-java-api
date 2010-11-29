@@ -26,7 +26,7 @@ package br.eti.kinoshita.testlinkjavaapi;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 
 /**
@@ -76,6 +76,36 @@ extends BaseTest
 		assertNotNull( testCases );
 		
 		assertTrue( testCases.length > 0  );
+	}
+	
+	@Test(dataProvider="testPlanData")
+	public void testGetAutomatedTestCasesForTestPlan(Integer testPlanId)
+	{
+		TestCase[] testCases = null;
+		
+		try 
+		{
+			testCases = this.api.getTestCasesForTestPlan(
+				testPlanId, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				ExecutionType.AUTOMATED, 
+				null
+			);
+		} 
+		catch (TestLinkAPIException e) 
+		{
+			fail(e.getMessage(), e);
+		}
+		
+		assertNotNull( testCases );
+		
+		assertTrue( testCases.length == 1 );
 	}
 
 }

@@ -30,7 +30,7 @@ import java.util.List;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since 1.9.0-1
  */
 public class TestCase 
 implements Serializable
