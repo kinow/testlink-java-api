@@ -16,6 +16,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
@@ -27,6 +28,16 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestLinkTables;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
+ * 
+ * <p>Class responsible for Test Case services.</p>
+ * 
+ * <p>
+ * <ul>
+ * <li>20101130 - BUGID: 3123764 - kinow - 
+ * 		reportTCresult not returning execution data</li>
+ * </ul>
+ * </p>
+ * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -511,9 +522,11 @@ extends BaseService
 	 * @param platformName
 	 * @param customFields
 	 * @param overwrite
+	 * @return Response object of reportTCResult method
 	 * @throws TestLinkAPIException
 	 */
-	protected void reportTCResult(
+	@SuppressWarnings("unchecked")
+	protected ReportTCResultResponse reportTCResult(
 		Integer testCaseId, 
 		Integer testCaseExternalId,
 		Integer testPlanId, 
@@ -530,6 +543,9 @@ extends BaseService
 	) 
 	throws TestLinkAPIException
 	{
+		
+		ReportTCResultResponse reportTCResultResponse = null;
+		
 		try
 		{
 			Map<String, Object> executionData = new HashMap<String, Object>();
@@ -546,15 +562,25 @@ extends BaseService
 			executionData.put(TestLinkParams.platformName.toString(), platformName);
 			executionData.put(TestLinkParams.customFields.toString(), customFields);
 			executionData.put(TestLinkParams.overwrite.toString(), overwrite);
-			this.executeXmlRpcCall(
+			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.reportTCResult.toString(), executionData);
 			// the error verification routine is called inside super.executeXml...
+			if ( response instanceof Object[] )
+			{
+				Object[] responseArray = (Object[])response;
+				Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
+				
+				reportTCResultResponse = Util.getReportTCResultResponse( responseMap );
+			}
 		} 
 		catch ( XmlRpcException xmlrpcex )
 		{
 			throw new TestLinkAPIException(
 					"Error reporting TC result: " + xmlrpcex.getMessage(), xmlrpcex);
 		}
+		
+		return reportTCResultResponse;
+		
 	}
 
 	/**
