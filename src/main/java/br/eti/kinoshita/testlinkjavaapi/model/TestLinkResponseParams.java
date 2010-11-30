@@ -24,6 +24,14 @@
 package br.eti.kinoshita.testlinkjavaapi.model;
 
 /**
+ * 
+ * <p>
+ * <ul>
+ * <li>20101130 - BUGID: 3123764 - kinow - 
+ * 		reportTCresult not returning execution data</li>
+ * </ul>
+ * </p>
+ * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -76,7 +84,12 @@ public enum TestLinkResponseParams
 	type("type"), 
 	validRegexp("valid_regexp"), 
 	value("value"), 
-	customFields("custom_fields")
+	customFields("custom_fields"),
+	operation("operation"), 
+	overwrite("overwrite"), 
+	message("message"), 
+	bugIDStatus("bugidstatus"), 
+	customFieldStatus("customfieldstatus")
 	;
 	
 	private String textValue;

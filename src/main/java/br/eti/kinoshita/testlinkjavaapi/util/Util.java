@@ -38,6 +38,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Execution;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
+import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
@@ -57,7 +58,8 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
  * <ul>
  * <li>20101129 - BUGID: 3122394 - kinow - 
  * 			Invalid type when passing ExecutionType as param</li>
- * </ul>
+ * <li>20101130 - BUGID: 3123764 - kinow - 
+ * 		reportTCresult not returning execution data</li>
  * </p>
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
@@ -702,6 +704,39 @@ public class Util
 			}			
 		}
 		return build;
+	}
+	
+	/**
+	 * @param responseMap
+	 * @return
+	 */
+	public static final ReportTCResultResponse getReportTCResultResponse(
+			Map<String, Object> map )
+	{
+		ReportTCResultResponse reportTCResultResponse = null;
+		if ( map != null && map.size() > 0 )
+		{
+			Object o = map.get( TestLinkResponseParams.id.toString());
+			if ( o != null )
+			{
+				Integer id = Integer.parseInt( o.toString() );
+				
+				if ( id > 0 )
+				{
+					reportTCResultResponse = new ReportTCResultResponse();
+					reportTCResultResponse.setExecutionId( id );
+					
+					reportTCResultResponse.setOperation( getString(map, TestLinkResponseParams.operation.toString()) );
+					reportTCResultResponse.setOverwrite( getBoolean(map, TestLinkResponseParams.overwrite.toString()) );
+					reportTCResultResponse.setStatus( getBoolean(map, TestLinkResponseParams.status.toString()) );
+					reportTCResultResponse.setMessage( getString(map, TestLinkResponseParams.message.toString()) );
+					reportTCResultResponse.setBugIDStatus( getBoolean(map, TestLinkResponseParams.bugIDStatus.toString()) );
+					reportTCResultResponse.setCustomFieldStatus( getBoolean(map, TestLinkResponseParams.customFieldStatus.toString()) );
+				}
+				
+			}			
+		}
+		return reportTCResultResponse;
 	}
 
 	/**

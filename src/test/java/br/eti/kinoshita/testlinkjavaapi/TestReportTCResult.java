@@ -26,10 +26,17 @@ package br.eti.kinoshita.testlinkjavaapi;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
+import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 
 /**
+ * <p>
+ * <ul>
+ * <li>20101130 - BUGID: 3123764 - kinow - 
+ * 		reportTCresult not returning execution data</li>
+ * </ul>
+ * </p>
+ * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 
  */
@@ -65,8 +72,9 @@ extends BaseTest
 		String platformName
 	)
 	{
+		ReportTCResultResponse response = null;
 		try {
-			this.api.reportTCResult(
+			response = this.api.reportTCResult(
 					testCaseId, 
 					null, 
 					testPlanId, 
@@ -85,6 +93,10 @@ extends BaseTest
 		{
 			fail(e.getMessage(), e);
 		}
+		
+		assertNotNull ( response );
+		
+		assertTrue( response.getExecutionId() > 0 );
 	}
 	
 	@Test(dataProvider="buildData")
@@ -98,8 +110,9 @@ extends BaseTest
 		String platformName
 	)
 	{
+		ReportTCResultResponse response = null;
 		try {
-			this.api.setTestCaseExecutionResult(
+			response = this.api.setTestCaseExecutionResult(
 					testCaseId, 
 					null, 
 					testPlanId, 
@@ -118,6 +131,10 @@ extends BaseTest
 		{
 			fail(e.getMessage(), e);
 		}
+		
+		assertNotNull ( response );
+		
+		assertTrue( response.getExecutionId() > 0 );
 	}
 
 }
