@@ -34,6 +34,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Execution;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
+import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
@@ -44,7 +45,14 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
 
 /**
- * TestLink API class. 
+ * <p>TestLink API class.</p>
+ * 
+ * <p>
+ * <ul>
+ * <li>20101130 - BUGID: 3123764 - kinow - 
+ * 		reportTCresult not returning execution data</li>
+ * </ul>
+ * </p>
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
@@ -876,7 +884,7 @@ public class TestLinkAPI
 	 * @param overwrite
 	 * @throws TestLinkAPIException
 	 */
-	public void reportTCResult(
+	public ReportTCResultResponse reportTCResult(
 		Integer testCaseId, 
 		Integer testCaseExternalId, 
 		Integer testPlanId, 
@@ -893,7 +901,7 @@ public class TestLinkAPI
 	) 
 	throws TestLinkAPIException
 	{
-		this.testCaseService.reportTCResult(
+		return this.testCaseService.reportTCResult(
 				testCaseId, 
 				testCaseExternalId, 
 				testPlanId, 
@@ -928,7 +936,7 @@ public class TestLinkAPI
 	 * @param overwrite
 	 * @throws TestLinkAPIException
 	 */
-	public void setTestCaseExecutionResult(
+	public ReportTCResultResponse setTestCaseExecutionResult(
 		Integer testCaseId, 
 		Integer testCaseExternalId, 
 		Integer testPlanId, 
@@ -945,7 +953,7 @@ public class TestLinkAPI
 	) 
 	throws TestLinkAPIException
 	{
-		this.testCaseService.reportTCResult(
+		return this.testCaseService.reportTCResult(
 				testCaseId, 
 				testCaseExternalId, 
 				testPlanId, 
