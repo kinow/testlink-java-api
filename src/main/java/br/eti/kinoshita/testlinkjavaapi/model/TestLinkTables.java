@@ -32,7 +32,8 @@ public enum TestLinkTables
 
 	nodesHierarchy("nodes_hierarchy"), 
 	requirements("requirements"), 
-	reqSpecs("req_specs");
+	reqSpecs("req_specs"),
+	executions("executions");
 	
 	private String value;
 	

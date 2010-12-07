@@ -567,6 +567,25 @@ public class Util
 	}
 
 	/**
+	 * @param attachment
+	 * @return
+	 */
+	public static final Map<String, Object> getExecutionAttachmentMap(
+			Attachment attachment )
+	{
+		Map<String, Object> executionData = new HashMap<String, Object>();
+		executionData.put(TestLinkParams.executionId.toString(), attachment.getFkId());
+		executionData.put(TestLinkParams.fkTable.toString(), attachment.getFkTable());
+		executionData.put(TestLinkParams.title.toString(), attachment.getTitle());
+		executionData.put(TestLinkParams.description.toString(), attachment.getDescription());
+		executionData.put(TestLinkParams.fileName.toString(), attachment.getFileName());
+		executionData.put(TestLinkParams.fileType.toString(), attachment.getFileType());
+		executionData.put(TestLinkParams.content.toString(), attachment.getContent());
+		return executionData;
+	}
+	
+	
+	/**
 	 * @param map
 	 * @return
 	 */
