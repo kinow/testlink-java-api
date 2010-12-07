@@ -1,0 +1,22 @@
+Download
+
+  TestLink Java API interfaces TestLink XML-RPC API. 
+  In order to use TestLink Java API in your project simply put its jar in your project 
+  build path and start coding. 
+
+* Maven artifact
+
+  If you are using Maven then you can add a dependency to TestLink Java API. 
+
++---+
+<dependency>
+  <groupid>br.eti.kinoshita</groupid>
+  <artifactid>testlink-java-api</artifactid>
+  <version>1.9.0-2</version>
+</dependency>
++---+
+
+* TestLink Java API jar
+
+  Download TestLink Java API's jar directly from {{{http://sourceforge.net/projects/testlinkjavaapi/files/}SourceForge}} and add it to your project 
+  build path.
