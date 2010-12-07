@@ -854,6 +854,24 @@ public class TestLinkAPI
 		return this.testCaseService.getTestCaseAttachments(testCaseId,testCaseExternalId);
 	}
 	
+	
+	
+	public Attachment uploadExecutionAttachment(
+		Integer executionId, 
+		String title, 
+		String description, 
+		String fileName, 
+		String fileType, 
+		String content
+	) 
+	throws TestLinkAPIException
+	{
+		return this.testCaseService.uploadExecutionAttachment(
+				executionId, title, description, 
+			fileName, fileType, content
+		);
+	}
+	
 	/**
 	 * Deletes an execution. 
 	 * 

@@ -60,6 +60,7 @@ public enum TestLinkMethods
 	uploadRequirementAttachment("tl.uploadRequirementAttachment"), 
 	uploadRequirementSpecificationAttachment("tl.uploadRequirementSpecificationAttachment"), 
 	getTestCaseAttachments("tl.getTestCaseAttachments"), 
+	uploadExecutionAttachment("tl.uploadExecutionAttachment"),
 	deleteExecution("tl.deleteExecution"), 
 	getFullPath("tl.getFullPath"), 
 	assignRequirements("tl.assignRequirements"),

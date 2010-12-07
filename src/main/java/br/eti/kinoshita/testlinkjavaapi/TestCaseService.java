@@ -485,6 +485,54 @@ extends BaseService
 		return attachments;
 	}
 
+	
+	protected Attachment uploadExecutionAttachment(
+			Integer executionId, 
+			String title, 
+			String description, 
+			String fileName, 
+			String fileType, 
+			String content
+	) 
+	throws TestLinkAPIException
+	{
+		Attachment attachment = null;
+		
+		Integer id = 0;
+		
+		attachment = new Attachment(
+			id, 
+			executionId, 
+			TestLinkTables.executions.toString(), 
+			title, 
+			description, 
+			fileName, 
+			null, 
+			fileType, 
+			content
+		);
+		
+		
+		try
+		{
+			Map<String, Object> executionData = Util.getExecutionAttachmentMap(attachment);
+			
+			Object response = this.executeXmlRpcCall(
+					TestLinkMethods.uploadExecutionAttachment.toString(), executionData);
+			Map<String, Object> responseMap = (Map<String, Object>)response;
+			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
+			attachment.setId(id);
+		} 
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException(
+					"Error uploading attachment for execution: " + xmlrpcex.getMessage(), xmlrpcex);
+		}		
+		
+		return attachment;
+	}
+	
+	
 	/**
 	 * @param executionId
 	 * @return
