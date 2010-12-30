@@ -30,7 +30,7 @@ import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 
 /**
- * @author César Fernandes de Almeida
+ * @author Cesar Fernandes de Almeida
  * @since 
  */
 public class TestUploadExecutionAttachment 
