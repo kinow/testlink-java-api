@@ -16,6 +16,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
@@ -269,19 +270,26 @@ extends BaseService
 			
 			Map<String, Object> responseMap = (Map<String, Object>)response;
 			Set<Entry<String, Object>> entrySet = responseMap.entrySet();
-			
 			testCases = new TestCase[ entrySet.size() ];
-
 			int index = 0;
 			for (Entry<String, Object> entry : entrySet) 
 			{
 				String key = entry.getKey();
-				Map<String, Object> testCaseMap = (Map<String, Object>) entry.getValue();
+				Map<String, Object> testCaseMap = null;
+				
+				if(entry.getValue() instanceof Object[])
+				{
+					Object[] responseArray = (Object[])entry.getValue();
+					testCaseMap = (Map<String, Object>) responseArray[0];
+				}
+				else if(entry.getValue() instanceof  Map<?, ?>)
+				{
+					testCaseMap = (Map<String, Object>) entry.getValue();
+				}
 				testCaseMap.put(TestLinkResponseParams.id.toString(), key);
 				testCases[index] = Util.getTestCase( testCaseMap );
 				index += 1;
 			}
-
 		} 
 		catch ( XmlRpcException xmlrpcex )
 		{
