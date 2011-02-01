@@ -575,7 +575,7 @@ public class Util
 	{
 		Map<String, Object> executionData = new HashMap<String, Object>();
 		executionData.put(TestLinkParams.executionId.toString(), attachment.getFkId());
-		executionData.put(TestLinkParams.fkTable.toString(), attachment.getFkTable());
+//		executionData.put(TestLinkParams.fkTable.toString(), attachment.getFkTable());
 		executionData.put(TestLinkParams.title.toString(), attachment.getTitle());
 		executionData.put(TestLinkParams.description.toString(), attachment.getDescription());
 		executionData.put(TestLinkParams.fileName.toString(), attachment.getFileName());
