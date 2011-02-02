@@ -33,7 +33,7 @@
 		</developer>
 		<developer>
 			<email>cesar.fa@gmail.com</email>
-			<name>César Fernandes de Almeida</name>
+			<name>Cesar Fernandes de Almeida</name>
 			<timezone>-3 GMT</timezone>
 			<roles>
 				<role>developer</role>
@@ -58,7 +58,7 @@
 	</scm>
 	
 	<properties>
-		<databasename>testlink190</databasename>
+		<databasename>testlink191</databasename>
 	</properties>
 
 	<build>
@@ -123,7 +123,7 @@
 				
 				<configuration>
 		          <driver>com.mysql.jdbc.Driver</driver>
-		          <url>jdbc:mysql://localhost:3306/testlink190</url>
+		          <url>jdbc:mysql://localhost:3306/${databasename}</url>
 		          <username>root</username>
 		          <password />
 		          <!-- You can comment out username/password configurations and
