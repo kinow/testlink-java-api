@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
 	<artifactId>testlink-java-api</artifactId>
-	<version>1.9.0-5-SNAPSHOT</version>
+	<version>1.9.1-1-SNAPSHOT</version>
 	<name>TestLink Java API</name>
 	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
@@ -13,7 +13,7 @@
 	    <version>5</version>
   	</parent>
   	
-  	<inceptionYear>2010-2010 the testlink-java-api team</inceptionYear>
+  	<inceptionYear>2010-2011 the testlink-java-api team</inceptionYear>
   	
   	<issueManagement>
 		<system>SourceForge.net</system>
@@ -25,7 +25,7 @@
 			<email>brunodepaulak@yahoo.com.br</email>
 			<id>kinow</id>
 			<name>Bruno P. Kinoshita</name>
-			<timezone>-3 GMT</timezone>
+			<timezone>-3</timezone>
 			<url>http://www.kinoshita.eti.br</url>
 			<roles>
 				<role>developer</role>
@@ -34,7 +34,7 @@
 		<developer>
 			<email>cesar.fa@gmail.com</email>
 			<name>Cesar Fernandes de Almeida</name>
-			<timezone>-3 GMT</timezone>
+			<timezone>-3</timezone>
 			<roles>
 				<role>developer</role>
 			</roles>
@@ -58,7 +58,7 @@
 	</scm>
 	
 	<properties>
-		<databasename>testlink191</databasename>
+		<databasename>testlinkapi191</databasename>
 	</properties>
 
 	<build>
