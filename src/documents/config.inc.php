@@ -18,10 +18,16 @@
  *
  * @package 	TestLink
  * @copyright 	2005-2009, TestLink community
- * @version    	CVS: $Id: config.inc.php,v 1.334 2010/11/09 11:11:28 asimon83 Exp $
+ * @version    	CVS: $Id: config.inc.php,v 1.333.2.8 2011/01/09 09:24:56 franciscom Exp $
  * @link 		http://www.teamst.org/index.php
  *
  * @internal Revisions:
+ * 20110109 - franciscom - added $tlCfg->req_cfg->duplicated_name_algorithm
+ *								 $tlCfg->req_cfg->duplicated_docid_algorithm
+ *
+ *	20110103 - franciscom - BUGID 4131: PHPMAILER - upgrade config options to use SSL or TLS - allows use gmail
+ *	20101212 - franciscom - req_cfg->log_message_len
+ *  20101118 - asimon - BUGID 4031: added $tlCfg->req_cfg->copy_req_scope_to_tc_summary
  *  20101109 - asimon - added $tlCfg->custom_fields->show_custom_fields_without_value
  *	20101030 - franciscom - bullet image config removed
  *  20101028 - Julian - BUGID 3950 - added $tlCfg->gui->dynamic_quick_tcase_search_input_size
@@ -317,13 +323,32 @@ $g_return_path_email  = '[return_path_email_not_configured]';
  **/
 $g_mail_priority = 5;
 
-# Taken from mantis for phpmailer config
-define ("SMTP_SEND",2);
-$g_phpMailer_method = SMTP_SEND;
+/**
+ * Taken from mantis for phpmailer config
+ * select the method to mail by:
+ * PHPMAILER_METHOD_MAIL - mail()
+ * PHPMAILER_METHOD_SENDMAIL - sendmail
+ * PHPMAILER_METHOD_SMTP - SMTP
+ */
+$g_phpMailer_method = PHPMAILER_METHOD_SMTP;
 
 /** Configure only if SMTP server requires authentication */
 $g_smtp_username    = '';  # user
 $g_smtp_password    = '';  # password
+
+/**
+ * This control the connection mode to SMTP server. 
+ * Can be '', 'ssl','tls'
+ * @global string $g_smtp_connection_mode
+ */
+$g_smtp_connection_mode = '';
+
+/**
+ * The smtp port to use.  The typical SMTP ports are 25 and 587.  The port to use
+ * will depend on the SMTP server configuration and hence others may be used.
+ * @global int $g_smtp_port
+ */
+$g_smtp_port = 25;                        
 
 
 // ----------------------------------------------------------------------------
@@ -368,6 +393,10 @@ $tlCfg->validation_cfg->user_login_valid_regex='/^[\w \- .]+$/';
  * $regex = "/^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,4}$/";
  * </code>
  **/
+// 
+// This expression does not allow Top Level Domian (last part of domain name) longer than 4
+// If you need to change this
+// Configure this on custom_config.inc.php
 $tlCfg->validation_cfg->user_email_valid_regex_js =  "/^(\w+)([-+.][\w]+)*@(\w[-\w]*\.){1,5}([A-Za-z]){2,4}$/";
 $tlCfg->validation_cfg->user_email_valid_regex_php = "/^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,4}$/U";
 
@@ -726,11 +755,9 @@ $tlCfg->exec_cfg->expand_collapse->testsuite_details = LAST_USER_CHOICE;
 
 // ----------------------------------------------------------------------------
 /* [Test Specification] */
-// $g_spec_cfg = new stdClass();
 
 // 'horizontal' ->  step and results on the same row
 // 'vertical'   ->  steps on one row, results in the row bellow
-// $g_spec_cfg->steps_results_layout = 'vertical';
 $tlCfg->spec_cfg->steps_results_layout = 'horizontal';
 
 
@@ -930,6 +957,9 @@ $g_attachments->order_by = " ORDER BY date_added DESC ";
 // false: you want req_doc_id UNIQUE INSIDE a SRS
 // $tlCfg->req_cfg->reqdoc_id->is_system_wide = FALSE;
 
+// 20101212 - truncate log message to this amount of chars for reqCompareVersions
+$tlCfg->req_cfg->log_message_len = 200;
+
 /**
  * Test Case generation from Requirements - use_req_spec_as_testsuite_name
  *	FALSE => test cases are created and assigned to a test suite
@@ -941,6 +971,25 @@ $tlCfg->req_cfg->default_testsuite_name = "Auto-created Test cases";
 $tlCfg->req_cfg->testsuite_details = "Test Cases in the Test Suite are generated from Requirements. " .
 		                            "A refinement of test scenario is highly recommended.";
 $tlCfg->req_cfg->testcase_summary_prefix = "<b>The Test Case was generated from the assigned requirement.</b><br />";
+
+
+// If the following value is enabled, then the summary prefix string will include the
+// title and version number of the assigned requirement.
+$tlCfg->req_cfg->use_testcase_summary_prefix_with_title_and_version = ENABLED;
+
+// If above option is enabled, the following string will be used as a template for the tc summary prefix.
+// It has to include four variables in the form of "%s". The first and second one will be used internally by the system.
+// The third one will then be replaced by the title of the originating Requirement,
+// the fourth one by its version number.
+// Attention: If there aren't exactly three variables in it, the operation will fail.
+$tlCfg->req_cfg->testcase_summary_prefix_with_title_and_version = "<b>The Test Case was generated from the assigned" .
+    " requirement <a href=\"javascript:openLinkedReqVersionWindow(%s,%s)\">\"%s\" (version %s)</a>.</b><br />";
+
+/**
+ * ENABLED: When generating Test Cases from Requirements, copy the scope of the Requirement
+ * to the summary of the newly created Test Case.
+ */
+$tlCfg->req_cfg->copy_req_scope_to_tc_summary = DISABLED;
 
 
 // To avoid perfomance problems on search Requirements feature,
@@ -1087,6 +1136,16 @@ $tlCfg->req_cfg->external_req_management = DISABLED;
 $tlCfg->req_cfg->allow_insertion_of_last_doc_id = DISABLED;
 
 
+// used ONLY to configure the mask (text) .
+// algorithm type is fixed HARDCODED
+//
+$tlCfg->req_cfg->duplicated_name_algorithm = new stdClass();
+$tlCfg->req_cfg->duplicated_name_algorithm->text = " (%s)";
+
+$tlCfg->req_cfg->duplicated_docid_algorithm = new stdClass();
+$tlCfg->req_cfg->duplicated_docid_algorithm->text = " (%s)";
+
+
 // ----------------------------------------------------------------------------
 /* [TREE FILTER CONFIGURATION] */
 
@@ -1209,7 +1268,6 @@ $tlCfg->import_max_row = '10000'; // in chars
 // - created from the login page.
 // - created using user management features
 $tlCfg->default_roleid = TL_ROLES_GUEST;
-
 
 // only show custom fields if their value isn't empty
 $tlCfg->custom_fields->show_custom_fields_without_value = true;
