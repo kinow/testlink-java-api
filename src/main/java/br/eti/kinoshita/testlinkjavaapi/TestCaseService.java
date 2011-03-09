@@ -494,6 +494,7 @@ extends BaseService
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	protected Attachment uploadExecutionAttachment(
 			Integer executionId, 
 			String title, 
