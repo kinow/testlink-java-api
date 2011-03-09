@@ -16,7 +16,6 @@ import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
@@ -267,6 +266,11 @@ extends BaseService
 			executionData.put(TestLinkParams.getStepInfo.toString(), getStepInfo);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestPlan.toString(), executionData);
+			
+			if ( response instanceof String )
+			{
+				throw new TestLinkAPIException( "The test plan you requested does not contain Test Cases." );
+			}
 			
 			Map<String, Object> responseMap = (Map<String, Object>)response;
 			Set<Entry<String, Object>> entrySet = responseMap.entrySet();

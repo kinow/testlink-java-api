@@ -38,12 +38,23 @@ extends BaseTest
 {
 	
 	@DataProvider(name="testPlanData")
-	public Object[][] createData()
+	public Object[][] createTestPlanData()
 	{
 		return new Object[][] 
         {
 			{
 				10
+			}
+        };
+	}
+	
+	@DataProvider(name="testPlanWithoutTestCaseData")
+	public Object[][] createTestPlanWithoutTestCaseData()
+	{
+		return new Object[][] 
+        {
+			{
+				16
 			}
         };
 	}
@@ -76,6 +87,27 @@ extends BaseTest
 		assertNotNull( testCases );
 		
 		assertTrue( testCases.length > 0  );
+	}
+	
+	@Test(dataProvider="testPlanWithoutTestCaseData", 
+			expectedExceptions=TestLinkAPIException.class)
+	public void testGetTestCasesForTestPlanWithoutTestCases(Integer testPlanId) 
+	throws TestLinkAPIException
+	{
+		this.api.getTestCasesForTestPlan(
+			testPlanId, 
+			null, 
+			null, 
+			null, 
+			null, 
+			null, 
+			null, 
+			null, 
+			null, 
+			null
+		);
+		
+		fail( "Not supposed to get here." );
 	}
 	
 	@Test(dataProvider="testPlanData")
