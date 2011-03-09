@@ -12,7 +12,7 @@ Download
 <dependency>
   <groupid>br.eti.kinoshita</groupid>
   <artifactid>testlink-java-api</artifactid>
-  <version>1.9.0-2</version>
+  <version>1.9.1-0</version>
 </dependency>
 +---+
 
