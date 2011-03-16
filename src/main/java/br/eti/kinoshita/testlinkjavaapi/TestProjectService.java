@@ -132,7 +132,7 @@ extends BaseService
 		catch ( XmlRpcException xmlrpcex )
 		{
 			throw new TestLinkAPIException(
-					"Error creating test project: " + xmlrpcex.getMessage(), xmlrpcex);
+					"Error retrieving test project: " + xmlrpcex.getMessage(), xmlrpcex);
 		}
 		
 		return testProject;

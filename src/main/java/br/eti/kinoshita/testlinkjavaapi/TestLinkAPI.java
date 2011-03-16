@@ -82,15 +82,17 @@ public class TestLinkAPI
 	/**
 	 * <p>Constructor with parameters.</p>
 	 * 
-	 * <p>Instantiates TestLink services.</p>
+	 * <p>Instantiates TestLink services. It also checks the devKey and 
+	 * throws a TestLinkAPIException if it is invalid.</p>
 	 * 
 	 * @param url The URL to set.
 	 * @param devKey The Developer Key to set.
 	 * @throws MalformedURLException 
+	 * @throws TestLinkAPIException 
 	 * @since 1.0
 	 */
 	public TestLinkAPI(String url, String devKey) 
-	throws MalformedURLException
+	throws MalformedURLException, TestLinkAPIException
 	{
 		this.url = url;
 		this.devKey = devKey;
@@ -103,6 +105,8 @@ public class TestLinkAPI
 		this.buildService = new BuildService(url, devKey);
 		this.requirementService = new RequirementService(url, devKey);
 		this.reqSpecService = new ReqSpecService(url, devKey);
+		
+		this.miscService.checkDevKey(devKey);
 	}
 	
 	/* ------- Utility methods ------- */

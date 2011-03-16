@@ -122,7 +122,12 @@ extends Assert
 		try
 		{
 			api = new TestLinkAPI(url, devKey);
-		} catch (MalformedURLException e)
+		} 
+		catch (MalformedURLException e)
+		{
+			fail(e.getMessage(), e);
+		} 
+		catch (TestLinkAPIException e)
 		{
 			fail(e.getMessage(), e);
 		}
