@@ -29,11 +29,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.util.CustomXmlRpcCommonsTransportFactory;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
@@ -44,10 +47,23 @@ abstract class BaseService
 {
 	
 	private static final Integer FALSE_IN_PHP = 0;
+	
+	/**
+	 * TestLink URL.
+	 */
 	private String url;
+	
+	/**
+	 * TestLink DevKey.
+	 */
 	private String devKey;
 	
+	/**
+	 * XML-RPC client.
+	 */
 	private XmlRpcClient xmlRpcClient;
+	
+	public static final Logger LOG = Logger.getLogger(BaseService.class);
 
 	/**
 	 * 
@@ -60,12 +76,14 @@ abstract class BaseService
 	{
 		this.url = url;
 		this.devKey = devKey;
-		
 		this.xmlRpcClient = new XmlRpcClient();
 		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
 		config.setServerURL( new URL( this.url) );
 		config.setEnabledForExtensions( true );
 		this.xmlRpcClient.setConfig(config);
+		XmlRpcCommonsTransportFactory transportFactory = 
+			new CustomXmlRpcCommonsTransportFactory(this.xmlRpcClient);
+		this.xmlRpcClient.setTransportFactory(transportFactory);
 	}
 
 	/**
@@ -101,10 +119,12 @@ abstract class BaseService
 	}
 
 	/**
+	 * Executes the XML-RPC call to the method in the server, passing the 
+	 * execution data map.
 	 * 
-	 * @param methodName
-	 * @param executionData
-	 * @return
+	 * @param methodName name of the method.
+	 * @param executionData execution data map. 
+	 * @return Server response.
 	 * @throws XmlRpcException
 	 */
 	public Object executeXmlRpcCall( 
@@ -113,6 +133,7 @@ abstract class BaseService
 	throws XmlRpcException, TestLinkAPIException
 	{
 		List<Object> params = new ArrayList<Object>();
+		
 		if ( executionData != null )
 		{
 			if ( executionData.get(TestLinkParams.devKey.toString()) == null )
@@ -121,6 +142,7 @@ abstract class BaseService
 			}
 			params.add( executionData );
 		}
+		
 		Object o = this.xmlRpcClient.execute( methodName, params );
 		
 		this.checkResponseError( o );

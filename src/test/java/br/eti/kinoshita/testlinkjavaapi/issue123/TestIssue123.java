@@ -21,49 +21,58 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.eti.kinoshita.testlinkjavaapi.issue3216884;
-
-import java.net.MalformedURLException;
+package br.eti.kinoshita.testlinkjavaapi.issue123;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.model.Build;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.1-1
  */
-public class TestDevKeyIssue3216884 
+public class TestIssue123 
 extends BaseTest
 {
 
-	@Test()
-	public void testCheckValidKey()
+	@Test
+	public void testRetrieveTestCaseForBuild()
 	{
+		
 		try
 		{
-			this.api.checkDevKey(api.getDevKey());
+			TestPlan plan = this.api.getTestPlanByName("Sample plan", "Sample project");
+			
+			Build build = this.api.getLatestBuildForTestPlan(plan.getId());
+			
+			System.out.println("Build: ["+build.getName()+"].");
+			
+			TestCase[] tcs = this.api.getTestCasesForTestPlan(
+					plan.getId(), 
+					null, 
+					null, 
+					null, 
+					null,  
+					null, 
+					null, 
+					null, 
+					null, 
+					null);
+			
+			for( TestCase tc : tcs )
+			{
+				//Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null);
+				System.out.println("TC ["+tc+"];");
+			}
 		} 
-		catch (TestLinkAPIException e)
+		catch ( TestLinkAPIException e )
 		{
-			Assert.fail( "Error checking the devKey ["+devKey+"]: " + e.getMessage(), e );
-		}
-	}
-	
-	@Test(expectedExceptions={TestLinkAPIException.class})
-	public void testCheckInvalidKey() 
-	throws TestLinkAPIException
-	{
-		try
-		{
-			this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
-		} 
-		catch (MalformedURLException e)
-		{
-			Assert.fail("Invalid TestLink URL ["+this.api.getUrl()+"]: " + e.getMessage(), e);
+			Assert.fail(""+e.getMessage(), e);
 		}
 	}
 	
