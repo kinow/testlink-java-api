@@ -1,0 +1,47 @@
+Logging Strategy
+
+ This document describes the strategy chosen for logging in TestLink Java 
+ API. The API utilizes {{{http://www.teamst.org}Log4j}} as its 
+ Log API and its basic configuration in the project is as follows: 
+ 
++---+
+log4j...
++---+
+
+ This configuration can be changed during runtime. You can do as follows to 
+ change the level from INFO to DEBUG, for example.
+ 
++---+
+Java code
++---+
+
+* Log Levels
+
+** INFO level
+
+ Interesting messages are written in this category. These events include 
+ the creation of the API, the TestLink URL. 
+ 
+** WARN level
+
+ The API contains a main try/catch (Throwable) block. It is not supposed to 
+ be used, however in case of any unchecked Exception the API logs it as a 
+ WARN message.
+ 
+** DEBUG level
+
+ The request and response objects are logged in this level. It is useful 
+ specially when you want to check if your request parameters are correct or 
+ if you want to see what is the server response like.
+
+* Output handlers
+
+ TestLink Java API uses only the console output handler. But you can configure 
+ Log4j to output to a File with Log Rotation enabled using the following 
+ example.
+
+* Final notes
+
+ Observe there is no messages being logged as FATAL, as the API use is 
+ discrete and not continuous, thus it is hard to find a kind of message to 
+ be put in this level.
