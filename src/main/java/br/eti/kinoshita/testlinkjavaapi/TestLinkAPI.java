@@ -133,7 +133,7 @@ public class TestLinkAPI
 	@Override
 	public String toString()
 	{
-		return "TestLinkAPI [url=" + url + ", devKey=" + devKey + "]";
+		return "TestLinkAPI [url=" + url + ", devKey=********]";
 	}
 	
 	/* ------- TL API methods ------- */
