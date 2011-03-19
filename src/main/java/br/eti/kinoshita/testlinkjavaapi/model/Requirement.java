@@ -13,6 +13,8 @@ public class Requirement
 implements Serializable
 {
 
+	private static final long serialVersionUID = -972032974806459521L;
+	
 	private Integer id;
 	private Integer reqSpecId;
 	private String reqDocId;

@@ -31,6 +31,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
+
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
@@ -405,11 +407,18 @@ public class Util
 					testCase.setSummary( getString(map, TestLinkResponseParams.summary.toString()) );
 					testCase.setParentId( getInteger(map, TestLinkResponseParams.parentId.toString() ) );
 					testCase.setOrder( getInteger(map, TestLinkResponseParams.order.toString() ) );
-					testCase.setName( getString(map, TestLinkResponseParams.name.toString()));
-					Integer executionTypeValue = getInteger(map, TestLinkResponseParams.executionType.toString());
+					testCase.setName( getString(map, TestLinkResponseParams.name.toString()) );
+ 					Integer executionTypeValue = getInteger( map, TestLinkResponseParams.executionType.toString() );
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
 					testCase.setExecutionType( execution );
-					
+					ExecutionStatus executionStatus = ExecutionStatus.NOT_RUN;
+					String executionStatusText = getString(map, TestLinkResponseParams.execStatus.toString() );
+					if ( StringUtils.isNotBlank(executionStatusText) )
+					{
+						executionStatus = ExecutionStatus.getExecutionStatus(executionStatusText.charAt(0));
+					} 
+					testCase.setExecutionStatus(executionStatus);
+					testCase.setTestProjectId(getInteger(map, TestLinkParams.testProjectId.toString()));
 					// TODO: check if TL 2.0 allows it
 //					CustomField[] customFields = (CustomField[])getArray(map, TestLinkResponseParams.customFields.toString());
 //					if ( customFields != null )

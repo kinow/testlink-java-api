@@ -22,6 +22,8 @@ public class Build
 implements Serializable
 {
 
+	private static final long serialVersionUID = 139468407361322252L;
+	
 	private Integer id;
 	private Integer testPlanId;
 	private String buildName;

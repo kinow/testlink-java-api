@@ -33,6 +33,8 @@ public class Attachment
 implements Serializable
 {
 
+	private static final long serialVersionUID = 4313427460619111314L;
+	
 	private Integer id;
 	private Integer fkId;
 	private String fkTable;

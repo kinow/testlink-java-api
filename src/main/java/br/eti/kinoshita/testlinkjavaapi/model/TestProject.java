@@ -33,6 +33,8 @@ public class TestProject
 implements Serializable
 {
 	
+	private static final long serialVersionUID = 3803980396536967693L;
+	
 	private Integer id;
 	private String name;
 	private String prefix;

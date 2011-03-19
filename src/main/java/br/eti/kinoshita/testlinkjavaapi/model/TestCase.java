@@ -36,6 +36,8 @@ public class TestCase
 implements Serializable
 {
 	
+	private static final long serialVersionUID = -1135629593821300695L;
+	
 	private Integer id;
 	private String name;
 	private Integer testSuiteId;

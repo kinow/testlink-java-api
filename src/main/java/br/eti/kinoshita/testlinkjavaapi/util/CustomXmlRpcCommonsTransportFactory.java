@@ -25,13 +25,16 @@ package br.eti.kinoshita.testlinkjavaapi.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcCommonsTransport;
 import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 import org.apache.xmlrpc.client.XmlRpcTransport;
+
+import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
 
 /**
  * See author's page for further information.
@@ -43,7 +46,7 @@ public class CustomXmlRpcCommonsTransportFactory extends
 		XmlRpcCommonsTransportFactory
 {
 
-	private final Logger logger = Logger.getLogger(getClass());
+	private final Logger logger = Logger.getLogger(TestLinkAPI.class.getPackage().getName());
 
 	public CustomXmlRpcCommonsTransportFactory(XmlRpcClient pClient)
 	{
@@ -72,7 +75,7 @@ public class CustomXmlRpcCommonsTransportFactory extends
 				throws XmlRpcException
 		{
 			super.writeRequest(pWriter);
-			if (logger.isDebugEnabled())
+			if (logger.isLoggable(Level.FINE))
 			{
 				CustomLoggingUtils.logRequest(logger, method.getRequestEntity());
 			}
@@ -86,7 +89,7 @@ public class CustomXmlRpcCommonsTransportFactory extends
 		protected InputStream getInputStream() throws XmlRpcException
 		{
 			InputStream istream = super.getInputStream();
-			if (logger.isDebugEnabled())
+			if (logger.isLoggable(Level.FINE))
 			{
 				return new ByteArrayInputStream(CustomLoggingUtils.logResponse(
 						logger, istream).getBytes());

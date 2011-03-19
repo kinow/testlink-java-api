@@ -33,6 +33,8 @@ public class TestPlan
 implements Serializable
 {
 	
+	private static final long serialVersionUID = 3030116951146834578L;
+	
 	private Integer id;
 	private String name;
 	private String projectName;

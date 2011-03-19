@@ -289,6 +289,15 @@ extends BaseService
 				else if(entry.getValue() instanceof  Map<?, ?>)
 				{
 					testCaseMap = (Map<String, Object>) entry.getValue();
+					if ( testCaseMap.size() > 0 )
+					{
+						Set<String> keys = testCaseMap.keySet();
+						Object o = testCaseMap.get(keys.iterator().next());
+						if ( o instanceof Map<?, ?>)
+						{
+							testCaseMap = (Map<String, Object>)o;
+						}
+					}
 				}
 				testCaseMap.put(TestLinkResponseParams.id.toString(), key);
 				testCases[index] = Util.getTestCase( testCaseMap );

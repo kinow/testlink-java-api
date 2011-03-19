@@ -30,6 +30,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -39,77 +41,93 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 
 /**
  * See author's page for further information.
  * 
- * @author Sujit Pal - http://sujitpal.blogspot.com/2010/05/debugging-xml-with-apache-xmlrpc.html
+ * @author Sujit Pal -
+ *         http://sujitpal.blogspot.com/2010/05/debugging-xml-with-apache
+ *         -xmlrpc.html
  * @since 1.9.1-1
  */
-public class CustomLoggingUtils {
+public class CustomLoggingUtils
+{
 
-	  public static void logRequest(Logger logger, 
-	      RequestEntity requestEntity) throws XmlRpcException {
-	    ByteArrayOutputStream bos = null;
-	    try {
-	      logger.debug("---- Request ----");
-	      bos = new ByteArrayOutputStream();
-	      requestEntity.writeRequest(bos);
-	      logger.debug(toPrettyXml(logger, bos.toString()));
-	    } catch (IOException e) {
-	      throw new XmlRpcException(e.getMessage(), e);
-	    } finally {
-	      IOUtils.closeQuietly(bos);
-	    }
-	  }
-
-	  public static void logRequest(Logger logger, String content) {
-	    logger.debug("---- Request ----");
-	    logger.debug(toPrettyXml(logger, content));
-	  }
-
-	  public static String logResponse(Logger logger, InputStream istream) 
-	      throws XmlRpcException {
-	    BufferedReader reader = null;
-	    try {
-	      reader = new BufferedReader(new InputStreamReader(istream));
-	      String line = null;
-	      StringBuilder respBuf = new StringBuilder();
-	      while ((line = reader.readLine()) != null) {
-	        respBuf.append(line);
-	      }
-	      String response = respBuf.toString();
-	      logger.debug("---- Response ----");
-	      logger.debug(toPrettyXml(logger, respBuf.toString()));
-	      return response;
-	    } catch (IOException e) {
-	      throw new XmlRpcException(e.getMessage(), e);
-	    } finally {
-	      IOUtils.closeQuietly(reader);
-	    }
-	  }
-
-	  public static void logResponse(Logger logger, String content) {
-	    logger.debug("---- Response ----");
-	    logger.debug(toPrettyXml(logger, content));
-	  }
-
-	  private static String toPrettyXml(Logger logger, String xml) {
-	    try {
-	      Transformer transformer = 
-	        TransformerFactory.newInstance().newTransformer();
-	      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	      transformer.setOutputProperty(
-	        "{http://xml.apache.org/xslt}indent-amount", "2");
-	      StreamResult result = new StreamResult(new StringWriter());
-	      StreamSource source = new StreamSource(new StringReader(xml));
-	      transformer.transform(source, result);
-	      return result.getWriter().toString();
-	    } catch (Exception e) {
-	      logger.warn("Can't parse XML");
-	      return xml;
-	    }
-	  }
+	public static void logRequest( Logger logger, RequestEntity requestEntity )
+			throws XmlRpcException
+	{
+		ByteArrayOutputStream bos = null;
+		try
+		{
+			logger.log(Level.FINE, "---- Request ----");
+			bos = new ByteArrayOutputStream();
+			requestEntity.writeRequest(bos);
+			logger.log(Level.FINE, toPrettyXml(logger, bos.toString()));
+		} catch (IOException e)
+		{
+			throw new XmlRpcException(e.getMessage(), e);
+		} finally
+		{
+			IOUtils.closeQuietly(bos);
+		}
 	}
+
+	public static void logRequest( Logger logger, String content )
+	{
+		logger.log(Level.FINE, "---- Request ----");
+		logger.log(Level.FINE, toPrettyXml(logger, content));
+	}
+
+	public static String logResponse( Logger logger, InputStream istream )
+			throws XmlRpcException
+	{
+		BufferedReader reader = null;
+		try
+		{
+			reader = new BufferedReader(new InputStreamReader(istream));
+			String line = null;
+			StringBuilder respBuf = new StringBuilder();
+			while ((line = reader.readLine()) != null)
+			{
+				respBuf.append(line);
+			}
+			String response = respBuf.toString();
+			logger.log(Level.FINE, "---- Response ----");
+			logger.log(Level.FINE, toPrettyXml(logger, respBuf.toString()));
+			return response;
+		} catch (IOException e)
+		{
+			throw new XmlRpcException(e.getMessage(), e);
+		} finally
+		{
+			IOUtils.closeQuietly(reader);
+		}
+	}
+
+	public static void logResponse( Logger logger, String content )
+	{
+		logger.log(Level.FINE, "---- Response ----");
+		logger.log(Level.FINE, toPrettyXml(logger, content));
+	}
+
+	private static String toPrettyXml( Logger logger, String xml )
+	{
+		try
+		{
+			Transformer transformer = TransformerFactory.newInstance()
+					.newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty(
+					"{http://xml.apache.org/xslt}indent-amount", "2");
+			StreamResult result = new StreamResult(new StringWriter());
+			StreamSource source = new StreamSource(new StringReader(xml));
+			transformer.transform(source, result);
+			return result.getWriter().toString();
+		} catch (Exception e)
+		{
+			logger.log(Level.WARNING, "Can't parse XML");
+			return xml;
+		}
+	}
+}

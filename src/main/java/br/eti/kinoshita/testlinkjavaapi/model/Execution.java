@@ -14,6 +14,8 @@ public class Execution
 implements Serializable
 {
 
+	private static final long serialVersionUID = -2562733532991985483L;
+	
 	private Integer id;
 	private Integer buildId;
 	private Integer testerId;

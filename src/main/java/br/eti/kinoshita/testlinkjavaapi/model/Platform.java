@@ -10,8 +10,11 @@ import java.io.Serializable;
  * @since 1.9.0-1
  */
 public class Platform 
-implements Serializable {
+implements Serializable 
+{
 
+	private static final long serialVersionUID = -7743797010900708283L;
+	
 	private Integer id;
 	private String name;
 	private String notes;

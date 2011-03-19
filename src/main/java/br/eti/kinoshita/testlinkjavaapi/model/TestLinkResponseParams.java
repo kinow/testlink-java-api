@@ -53,7 +53,7 @@ public enum TestLinkResponseParams
 	featureId("feature_id"), 
 	details("details"), 
 	parentId("parent_id"), 
-	order("noder_order"), 
+	order("node_order"), 
 	version("version"), 
 	preconditions("preconditions"), 
 	testCaseVersionId("tcversion_id"), 
@@ -89,7 +89,8 @@ public enum TestLinkResponseParams
 	overwrite("overwrite"), 
 	message("message"), 
 	bugIDStatus("bugidstatus"), 
-	customFieldStatus("customfieldstatus")
+	customFieldStatus("customfieldstatus"), 
+	execStatus("exec_status")
 	;
 	
 	private String textValue;

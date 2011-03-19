@@ -33,6 +33,8 @@ public class TestSuite
 implements Serializable
 {
 
+	private static final long serialVersionUID = 1808991369379189571L;
+	
 	private Integer id;
 	private Integer testProjectId;
 	private String name;
@@ -41,6 +43,7 @@ implements Serializable
 	private Integer order;
 	private Boolean checkDuplicatedName;
 	private String actionOnDuplicatedName;
+	
 	/**
 	 * 
 	 */

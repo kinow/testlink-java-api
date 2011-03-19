@@ -27,6 +27,8 @@ import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.xmlrpc.XmlRpcException;
+
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
@@ -1107,5 +1109,23 @@ public class TestLinkAPI
 		this.requirementService.assignRequirements(
 				testCaseId, testProjectId, requirements);
 	}	
+	
+	/**
+	 * Executes a XML-RPC call. Use this method to talk with TestLink in a 
+	 * lower level.
+	 * 
+	 * @param methodName Name of the method.
+	 * @param executionData Execution data map.
+	 * @return Object returned from the server.
+	 * @throws XmlRpcException
+	 * @throws TestLinkAPIException
+	 */
+	public Object executeXmlRpcCall(
+			String methodName, 
+			Map<String, Object> executionData ) 
+	throws XmlRpcException, TestLinkAPIException
+	{
+		return miscService.executeXmlRpcCall(methodName, executionData);
+	}
 	
 }

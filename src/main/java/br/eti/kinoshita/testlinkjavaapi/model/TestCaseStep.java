@@ -14,6 +14,8 @@ public class TestCaseStep
 implements Serializable
 {
 
+	private static final long serialVersionUID = -1835456164473694033L;
+	
 	private Integer testCaseVersionId;
 	private Integer number;
 	private String actions;

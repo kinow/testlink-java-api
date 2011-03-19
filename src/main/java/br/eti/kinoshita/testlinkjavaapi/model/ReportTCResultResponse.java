@@ -41,6 +41,8 @@ public class ReportTCResultResponse
 implements Serializable
 {
 
+	private static final long serialVersionUID = -5742000858317187375L;
+	
 	private String operation;
 	private Boolean overwrite;
 	private Boolean status;

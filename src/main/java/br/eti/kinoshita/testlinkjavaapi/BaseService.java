@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -63,8 +62,6 @@ abstract class BaseService
 	 */
 	private XmlRpcClient xmlRpcClient;
 	
-	public static final Logger LOG = Logger.getLogger(BaseService.class);
-
 	/**
 	 * 
 	 * @param url

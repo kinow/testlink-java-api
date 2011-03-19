@@ -33,6 +33,8 @@ public class CustomField
 implements Serializable
 {
 
+	private static final long serialVersionUID = 3076387765566349008L;
+	
 	private Integer id;
 	private String name;
 	private String label;

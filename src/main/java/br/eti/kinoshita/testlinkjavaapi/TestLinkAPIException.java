@@ -30,6 +30,7 @@ package br.eti.kinoshita.testlinkjavaapi;
 public class TestLinkAPIException extends Exception
 {
 
+	private static final long serialVersionUID = -3555548586135752606L;
 	/**
 	 * Error Code.
 	 */
