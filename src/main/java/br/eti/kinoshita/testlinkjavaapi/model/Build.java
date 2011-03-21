@@ -33,13 +33,12 @@ implements Serializable
 	 */
 	public Build() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id
 	 * @param testPlanId
-	 * @param buildName
-	 * @param buildNotes
+	 * @param name
+	 * @param notes
 	 */
 	public Build(Integer id, Integer testPlanId, String name,
 			String notes) {

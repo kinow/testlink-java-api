@@ -34,8 +34,6 @@ import org.apache.xmlrpc.client.XmlRpcCommonsTransport;
 import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 import org.apache.xmlrpc.client.XmlRpcTransport;
 
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
-
 /**
  * See author's page for further information.
  * 
@@ -46,7 +44,7 @@ public class CustomXmlRpcCommonsTransportFactory extends
 		XmlRpcCommonsTransportFactory
 {
 
-	private final Logger logger = Logger.getLogger(TestLinkAPI.class.getPackage().getName());
+	private final Logger logger = Logger.getLogger(CustomXmlRpcCommonsTransportFactory.class.getPackage().getName());
 
 	public CustomXmlRpcCommonsTransportFactory(XmlRpcClient pClient)
 	{

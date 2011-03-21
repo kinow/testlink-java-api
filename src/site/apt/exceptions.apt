@@ -1,0 +1,5 @@
+Exception Handling
+
+ The API encapsulates checked Exceptions within 
+ br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException, which is an unchecked 
+ exception (i.e.: it extends RuntimeException).

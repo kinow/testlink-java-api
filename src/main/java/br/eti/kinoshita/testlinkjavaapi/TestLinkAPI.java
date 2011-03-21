@@ -146,6 +146,7 @@ public class TestLinkAPI
 	 * Checks developer key.
 	 * 
 	 * @param devKey Developer Key.
+	 * @return <code>true</code> if devKey is valid, <code>false</code> otherwise.
 	 * @throws TestLinkAPIException
 	 * @since 1.0
 	 */
@@ -158,7 +159,7 @@ public class TestLinkAPI
 	/**
 	 * Checks if the given user exists.
 	 * @param user
-	 * @return
+	 * @return <code>true</code> if the user exists, <code>false</code> otherwise.
 	 * @throws TestLinkAPIException
 	 */
 	public Boolean doesUserExist(String user) 
@@ -170,7 +171,7 @@ public class TestLinkAPI
 	/**
 	 * ping method is an alias for sayHello.
 	 * 
-	 * @return
+	 * @return Hello message.
 	 * @throws TestLinkAPIException
 	 */
 	public String ping() 
@@ -182,7 +183,7 @@ public class TestLinkAPI
 	/**
 	 * Says hello to the user.
 	 * 
-	 * @return
+	 * @return Hello message.
 	 * @throws TestLinkAPIException
 	 */
 	public String sayHello() 
@@ -194,7 +195,7 @@ public class TestLinkAPI
 	/**
 	 * Displays information about TL.
 	 * 
-	 * @return
+	 * @return About text.
 	 * @throws TestLinkAPIException
 	 */
 	public String about()  
@@ -206,7 +207,7 @@ public class TestLinkAPI
 	/**
 	 * 
 	 * @param testMode
-	 * @return
+	 * @return Test mode.
 	 * @throws TestLinkAPIException
 	 */
 	public Boolean setTestMode(Boolean testMode) 
@@ -218,7 +219,7 @@ public class TestLinkAPI
 	/**
 	 * 
 	 * @param str
-	 * @return
+	 * @return String repeated.
 	 * @throws TestLinkAPIException
 	 */
 	public String repeat(String str)
@@ -236,7 +237,7 @@ public class TestLinkAPI
 	 * @param fileName
 	 * @param fileType
 	 * @param content
-	 * @return
+	 * @return Attachment.
 	 * @throws TestLinkAPIException
 	 */
 	public Attachment uploadAttachment(
@@ -480,7 +481,7 @@ public class TestLinkAPI
 	 * @param testPlanId
 	 * @param buildName
 	 * @param buildNotes
-	 * @return
+	 * @return Created Build.
 	 * @throws TestLinkAPIException
 	 */
 	public Build createBuild( Integer testPlanId, String buildName, String buildNotes )
@@ -583,7 +584,7 @@ public class TestLinkAPI
 	/**
 	 * 
 	 * @param testPlanId
-	 * @return
+	 * @return Array of Test Suites of Test Plan.
 	 * @throws TestLinkAPIException
 	 */
 	public TestSuite[] getTestSuitesForTestPlan(Integer testPlanId)
@@ -683,7 +684,7 @@ public class TestLinkAPI
 	 * @param platformId
 	 * @param order
 	 * @param urgency
-	 * @return
+	 * @return Feature ID.
 	 * @throws TestLinkAPIException
 	 */
 	public Integer addTestCaseToTestPlan(
@@ -713,7 +714,7 @@ public class TestLinkAPI
 	 * @param testSuiteId
 	 * @param deep
 	 * @param details
-	 * @return
+	 * @return Array of Test Cases of the Test Suite.
 	 * @throws TestLinkAPIException
 	 */
 	public TestCase[] getTestCasesForTestSuite(
@@ -732,7 +733,7 @@ public class TestLinkAPI
 	 * @param testCaseId
 	 * @param testCaseExternalId
 	 * @param version
-	 * @return
+	 * @return Test Case.
 	 * @throws TestLinkAPIException
 	 */
 	public TestCase getTestCase(
@@ -758,7 +759,7 @@ public class TestLinkAPI
 	 * @param executeStatus
 	 * @param executionType
 	 * @param getStepInfo
-	 * @return
+	 * @return Array of Test Cases of the Test Plan.
 	 * @throws TestLinkAPIException
 	 */
 	public TestCase[] getTestCasesForTestPlan(
@@ -791,12 +792,11 @@ public class TestLinkAPI
 	
 	/**
 	 * Get a test case ID by a test case Name
-	 * @param devKey
 	 * @param testCaseName
 	 * @param testSuiteName
 	 * @param testProjectName
 	 * @param testCasePathName
-	 * @return
+	 * @return Test Case ID.
 	 * @throws TestLinkAPIException
 	 */
 	public Integer getTestCaseIDByName(
@@ -1001,7 +1001,7 @@ public class TestLinkAPI
 	 * @param versionNumber
 	 * @param testProjectId
 	 * @param customFieldName
-	 * @return
+	 * @return Custom Field.
 	 * @throws TestLinkAPIException
 	 */
 	public CustomField getTestCaseCustomFieldDesignValue(

@@ -91,7 +91,7 @@ extends BaseService
 		
 		try
 		{
-			Map<String, Object> executionData = Util.getRequirementSpecificatoinAttachmentMap(attachment);
+			Map<String, Object> executionData = Util.getRequirementSpecificationAttachmentMap(attachment);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.uploadRequirementSpecificationAttachment.toString(), executionData);
 			Map<String, Object> responseMap = (Map<String, Object>)response;

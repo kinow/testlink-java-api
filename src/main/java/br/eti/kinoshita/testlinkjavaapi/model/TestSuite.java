@@ -50,7 +50,6 @@ implements Serializable
 	public TestSuite()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id

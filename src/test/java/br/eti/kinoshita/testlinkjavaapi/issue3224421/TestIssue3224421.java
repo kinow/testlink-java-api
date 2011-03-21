@@ -30,6 +30,7 @@ import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 
@@ -50,7 +51,7 @@ extends BaseTest
 			
 			Build build = this.api.getLatestBuildForTestPlan(plan.getId());
 			
-			System.out.println("Build: ["+build.getName()+"].");
+			Assert.assertNotNull( build );
 			
 			TestCase[] tcs = this.api.getTestCasesForTestPlan(
 					plan.getId(), 
@@ -58,7 +59,7 @@ extends BaseTest
 					null, 
 					null, 
 					null,  
-					null, 
+					Boolean.TRUE, 
 					null, 
 					null, 
 					null, 
@@ -67,8 +68,11 @@ extends BaseTest
 			for( TestCase tc : tcs )
 			{
 				Assert.assertNotNull(tc.getExecutionStatus());
-				Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null);
-				Assert.assertNotNull(execution);
+				if ( tc.getExecutionStatus() != ExecutionStatus.NOT_RUN )
+				{
+					Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null);
+					Assert.assertNotNull(execution);
+				}
 			}
 		} 
 		catch ( TestLinkAPIException e )

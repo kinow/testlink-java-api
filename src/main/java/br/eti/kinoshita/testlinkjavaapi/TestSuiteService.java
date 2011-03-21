@@ -57,7 +57,6 @@ extends BaseService
 			throws MalformedURLException
 	{
 		super(url, devKey);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

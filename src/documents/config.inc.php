@@ -16,9 +16,9 @@
  * replace values of TestLink configuration variables.
  * It saves your changes for the next upgrade in one extra file.
  *
+ * @internal	filename:config.inc.php
  * @package 	TestLink
- * @copyright 	2005-2009, TestLink community
- * @version    	CVS: $Id: config.inc.php,v 1.333.2.8 2011/01/09 09:24:56 franciscom Exp $
+ * @copyright 	2005-2011, TestLink community
  * @link 		http://www.teamst.org/index.php
  *
  * @internal Revisions:
@@ -292,7 +292,8 @@ $g_removeEventsOlderThan = 30;
  * 'SEAPINE'   : edit configuration in TL_ABS_PATH/cfg/seapine.cfg.php
  * 'GFORGE'    : edit configuration in TL_ABS_PATH/cfg/gforge.cfg.php
  * 'FOGBUGZ'   : edit configuration in TL_ABS_PATH/cfg/fogbugz.cfg.php
- * 'YOUTRACK' : edit configuration in TL_ABS_PATH/cfg/youtrack.cfg.php
+ * 'YOUTRACK'  : edit configuration in TL_ABS_PATH/cfg/youtrack.cfg.php
+ * 'POLARION'  : edit configuration in TL_ABS_PATH/cfg/polarion.cfg.php
  * ]
  */
 $g_interface_bugs = 'NO';
@@ -1028,7 +1029,7 @@ $tlCfg->req_cfg->expected_coverage_management = ENABLED;
 // This logic is implemented using following config parameter
 $tlCfg->req_cfg->coverageStatusAlgorithm['checkOrder']=array('atLeastOne','all');
 $tlCfg->req_cfg->coverageStatusAlgorithm['checkType']['atLeastOne']=array('failed','blocked');
-$tlCfg->req_cfg->coverageStatusAlgorithm['checkType']['all']=array('not_run','passed');
+$tlCfg->req_cfg->coverageStatusAlgorithm['checkType']['all']=array('passed');
 
 // Configure here what status has to get requirement when check of type 'all' fails like
 // in following situation (BUGID 2171)

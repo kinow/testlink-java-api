@@ -94,9 +94,6 @@ extends Assert
 
 	/**
 	 * Set up method that creates the instance of the TestLink API.
-	 * 
-	 * @param url TestLink URL.
-	 * @param devKey TestLink Developer Key.
 	 */
 	@BeforeClass
 	protected void setUp()

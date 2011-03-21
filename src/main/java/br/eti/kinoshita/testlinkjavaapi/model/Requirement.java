@@ -23,7 +23,6 @@ implements Serializable
 	 */
 	public Requirement() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id

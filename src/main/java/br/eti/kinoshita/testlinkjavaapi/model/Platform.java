@@ -24,7 +24,6 @@ implements Serializable
 	 */
 	public Platform() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id

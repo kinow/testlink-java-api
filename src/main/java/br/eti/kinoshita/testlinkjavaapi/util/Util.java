@@ -74,7 +74,7 @@ public class Util
 	
 	/**
 	 * @param project
-	 * @return
+	 * @return Map of Test Project
 	 */
 	public static final Map<String, Object> getTestProjectMap(TestProject project)
 	{
@@ -141,7 +141,7 @@ public class Util
 	/**
 	 * @param map
 	 * @param key
-	 * @return
+	 * @return Boolean value.
 	 */
 	public static Boolean getBoolean( Map<String, Object> map, String key )
 	{
@@ -163,7 +163,7 @@ public class Util
 	/**
 	 * @param map
 	 * @param key
-	 * @return
+	 * @return String value.
 	 */
 	public static final String getString( Map<String, Object> map, String key )
 	{
@@ -183,7 +183,7 @@ public class Util
 	/**
 	 * @param map
 	 * @param key
-	 * @return
+	 * @return Integer value.
 	 */
 	public static final Integer getInteger( Map<String, Object> map, String key )
 	{
@@ -207,7 +207,7 @@ public class Util
 
 	/**
 	 * @param plan
-	 * @return
+	 * @return Map of Test Plan.
 	 */
 	public static final Map<String, Object> getTestPlanMap( TestPlan plan )
 	{
@@ -222,7 +222,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Test Plan.
 	 */
 	public static final TestPlan getTestPlan( Map<String, Object> map )
 	{
@@ -254,7 +254,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Platform.
 	 */
 	public static final Platform getPlatform(Map<String, Object> map) 
 	{
@@ -282,7 +282,7 @@ public class Util
 
 	/**
 	 * @param testCase
-	 * @return
+	 * @return Map of Test Case.
 	 */
 	public static final Map<String, Object> getTestCaseMap(TestCase testCase) 
 	{
@@ -322,7 +322,7 @@ public class Util
 
 	/**
 	 * @param testCaseStep
-	 * @return
+	 * @return Map of Test Case Step.
 	 */
 	public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) 
 	{
@@ -337,7 +337,7 @@ public class Util
 
 	/**
 	 * @param testSuite
-	 * @return
+	 * @return Map of Test Suite Map.
 	 */
 	public static final Map<String, Object> getTestSuiteMap( TestSuite testSuite )
 	{
@@ -354,7 +354,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Test Suite.
 	 */
 	public static final TestSuite getTestSuite(Map<String, Object> map)
 	{
@@ -384,7 +384,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Test Case.
 	 */
 	public static final TestCase getTestCase(Map<String, Object> map) 
 	{
@@ -438,8 +438,8 @@ public class Util
 
 	/**
 	 * @param map
-	 * @param string
-	 * @return
+	 * @param key
+	 * @return Array of objects.
 	 */
 	public static Object[] getArray( Map<String, Object> map, String key )
 	{
@@ -457,7 +457,7 @@ public class Util
 
 	/**
 	 * @param build
-	 * @return
+	 * @return Map of Build.
 	 */
 	public static final Map<String, Object> getBuildMap(Build build) 
 	{
@@ -470,7 +470,7 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Attachment.
 	 */
 	public static final Map<String, Object> getAttachmentMap( Attachment attachment )
 	{
@@ -487,7 +487,7 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Test Case Attachment.
 	 */
 	public static final Map<String, Object> getTestCaseAttachmentMap(
 			Attachment attachment )
@@ -505,7 +505,7 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Test Suite Attachment.
 	 */
 	public static final Map<String, Object> getTestSuiteAttachmentMap(
 			Attachment attachment )
@@ -523,7 +523,7 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Test Project Attachment.
 	 */
 	public static final Map<String, Object> getTestProjectAttachmentMap(
 			Attachment attachment )
@@ -541,7 +541,7 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Requirement Attachment.
 	 */
 	public static final Map<String, Object> getRequirementAttachmentMap(
 			Attachment attachment )
@@ -559,9 +559,9 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Requirement Specification Attachment.
 	 */
-	public static final Map<String, Object> getRequirementSpecificatoinAttachmentMap(
+	public static final Map<String, Object> getRequirementSpecificationAttachmentMap(
 			Attachment attachment )
 	{
 		Map<String, Object> executionData = new HashMap<String, Object>();
@@ -577,14 +577,14 @@ public class Util
 
 	/**
 	 * @param attachment
-	 * @return
+	 * @return Map of Execution Attachment
 	 */
 	public static final Map<String, Object> getExecutionAttachmentMap(
 			Attachment attachment )
 	{
 		Map<String, Object> executionData = new HashMap<String, Object>();
 		executionData.put(TestLinkParams.executionId.toString(), attachment.getFkId());
-//		executionData.put(TestLinkParams.fkTable.toString(), attachment.getFkTable());
+		executionData.put(TestLinkParams.fkTable.toString(), attachment.getFkTable());
 		executionData.put(TestLinkParams.title.toString(), attachment.getTitle());
 		executionData.put(TestLinkParams.description.toString(), attachment.getDescription());
 		executionData.put(TestLinkParams.fileName.toString(), attachment.getFileName());
@@ -596,7 +596,7 @@ public class Util
 	
 	/**
 	 * @param map
-	 * @return
+	 * @return Attachment.
 	 */
 	public static final Attachment getAttachment( Map<String, Object> map )
 	{
@@ -632,7 +632,7 @@ public class Util
 
 	/**
 	 * @param requirements
-	 * @return
+	 * @return List with Maps of Requirements Grouped By ReSpec.
 	 */
 	public static final List<Map<String, Object>> getRequirementsGroupedByReqSpecMap( 
 		List<Requirement> requirements )
@@ -667,7 +667,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Execution.
 	 */
 	public static final Execution getExecution(Map<String, Object> map) 
 	{
@@ -705,7 +705,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Build.
 	 */
 	public static final Build getBuild( Map<String, Object> map )
 	{
@@ -735,8 +735,8 @@ public class Util
 	}
 	
 	/**
-	 * @param responseMap
-	 * @return
+	 * @param map
+	 * @return ReportTCResultResponse object.
 	 */
 	public static final ReportTCResultResponse getReportTCResultResponse(
 			Map<String, Object> map )
@@ -769,7 +769,7 @@ public class Util
 
 	/**
 	 * @param map
-	 * @return
+	 * @return Custom Field.
 	 */
 	public static final CustomField getCustomField( Map<String, Object> map )
 	{

@@ -34,19 +34,22 @@ org.apache.commons.httpclient.level=SEVERE
 br.eti.kinoshita.testlinkjavaapi.level=ALL 
 +---+
  
- The default properties are loaded from the Java JRE. In order to change it 
- you need either specify the location of logging.properties using 
- -Djava.util.logging.config.file=myfile when you run your program 
- or programmatic, as the following code snippet shows.
+ The default properties are loaded from the Java JRE. The API however logs only 
+ WARNING messages in case of internal errors and debug information to the FINE 
+ level. In order to change it you need either specify the location of 
+ logging.properties using -Djava.util.logging.config.file=myfile when you run 
+ your program or programmatic, as the following code snippet shows.
  
 +---+
 try
 {
 	LogManager.getLogManager().readConfiguration(getClass().getClassLoader().getResourceAsStream("logging.properties"));
-} catch (SecurityException e)
+} 
+catch (SecurityException e)
 {
 	e.printStackTrace();
-} catch (IOException e)
+} 
+catch (IOException e)
 {
 	e.printStackTrace();
 }
@@ -54,11 +57,10 @@ try
  
 * Log Levels
 
-** WARN level
+** WARNING level
 
- The API contains a main try/catch (Throwable) block. It is not supposed to 
- be used, however in case of any unchecked Exception the API logs it as a 
- WARN message.
+ The API logs to the WARNING level only when the server responds with an 
+ unparsable XML message.
  
 ** FINE level
 
@@ -79,8 +81,19 @@ logger.setLevel(Level.FINE);
 * Output handlers
 
  TestLink Java API uses only the console output handler. But you can configure 
- java.util.logging API to output to a File with Log Rotation enabled using the following 
- example.
+ java.util.logging API to output to a File with Log Rotation enabled using 
+ the following example.
+
++---+
+.handlers = java.util.logging.FileHandler 
+.level=FINE 
+ 
+java.util.logging.FileHandler.level = FINE 
+java.util.logging.FileHandler.pattern = /logs/testlinkjavaapi.%g.log 
+java.util.logging.FileHandler.limit = 2000000 
+java.util.logging.FileHandler.count = 5 
+java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
++---+
 
 * Final notes
 

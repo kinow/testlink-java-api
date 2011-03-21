@@ -59,7 +59,6 @@ implements Serializable
 	public CustomField()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id

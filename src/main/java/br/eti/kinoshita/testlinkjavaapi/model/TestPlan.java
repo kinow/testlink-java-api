@@ -47,7 +47,6 @@ implements Serializable
 	public TestPlan()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id

@@ -52,7 +52,6 @@ implements Serializable
 	public Attachment()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param id
