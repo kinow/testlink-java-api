@@ -35,7 +35,6 @@
     <menu name="Tutorial">
       <item name="Develop TestLink Java API" href="extending.html"/>
       <item name="Sample" href="sample.html"/>
-      <item name="Using the XML-RPC client" href="xml_rpc_client.html"/>
     </menu>
 
     <menu ref="reports" />
