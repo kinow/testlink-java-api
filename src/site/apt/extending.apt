@@ -1,4 +1,30 @@
 Extending TestLink Java API
 
- TBD
+* Install MySQL.
+
+ The API needs MySQL to run tests. It also needs an user root without password 
+ (you can also update the scripts). It will create a database and populate it 
+ with a TestLink dump. Take care when running Maven goal test, as it can 
+ overwrite an existing database. Check the database property in pom.xml.
+ 
+* Implement new methods or correct existing ones.
+
+ Check what methods in the XML-RPC API are missing in the Java API, or are 
+ wrongly implemented. Then choose the right service (TestCaseService, 
+ TestProjectService and so on) and write your new method, following one of the 
+ existing ones. 
+ 
+* Write unit tests.
+
+ There are more than fifty test cases in the project, with code and branch 
+ coverage of over 60%. Here we always recommend that you write a good test 
+ with good coverage. And if you have the karma, write more tests to cover other 
+ parts of the system.
+ 
+* Final step, send it to testlink-java-api team.
+ 
+ Send us your patch, or if you forked the SVN repo in git, just let us know 
+ what are the repos and we will take a look on it. Once your code is accepted 
+ you will be automatically added to the contributors list in the pom.xml. If 
+ you are willing continue to help with the project you will be very welcome too.
  
