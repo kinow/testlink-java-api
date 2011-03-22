@@ -23,19 +23,14 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
-import br.eti.kinoshita.testlinkjavaapi.util.CustomXmlRpcCommonsTransportFactory;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
@@ -48,70 +43,22 @@ abstract class BaseService
 	private static final Integer FALSE_IN_PHP = 0;
 	
 	/**
-	 * TestLink URL.
-	 */
-	private String url;
-	
-	/**
-	 * TestLink DevKey.
-	 */
-	private String devKey;
-	
-	/**
 	 * XML-RPC client.
 	 */
 	private XmlRpcClient xmlRpcClient;
 	
 	/**
-	 * 
-	 * @param url
-	 * @param devKey
-	 * @throws MalformedURLException
+	 * TestLink User devkey.
 	 */
-	public BaseService( String url, String devKey ) 
-	throws MalformedURLException
-	{
-		this.url = url;
-		this.devKey = devKey;
-		this.xmlRpcClient = new XmlRpcClient();
-		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-		config.setServerURL( new URL( this.url) );
-		config.setEnabledForExtensions( true );
-		this.xmlRpcClient.setConfig(config);
-		XmlRpcCommonsTransportFactory transportFactory = 
-			new CustomXmlRpcCommonsTransportFactory(this.xmlRpcClient);
-		this.xmlRpcClient.setTransportFactory(transportFactory);
-	}
-
-	/**
-	 * @return the url
-	 */
-	public String getUrl()
-	{
-		return url;
-	}
-
-	/**
-	 * @param url the url to set
-	 */
-	public void setUrl( String url )
-	{
-		this.url = url;
-	}
+	private String devKey;
 	
 	/**
-	 * @return the devKey
+	 * @param xmlRpcClient XML-RPC Client.
+	 * @param devKey TestLink user DevKey.
 	 */
-	public String getDevKey()
+	public BaseService( XmlRpcClient xmlRpcClient, String devKey ) 
 	{
-		return devKey;
-	}
-
-	/**
-	 * @param devKey the devKey to set
-	 */
-	public void setDevKey( String devKey )
-	{
+		this.xmlRpcClient = xmlRpcClient;
 		this.devKey = devKey;
 	}
 

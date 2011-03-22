@@ -24,12 +24,11 @@
 package br.eti.kinoshita.testlinkjavaapi;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
 
 /**
  * TestLink tests base class. Extends TestNG Assert class for conveninence.
@@ -118,7 +117,7 @@ extends Assert
 		
 		try
 		{
-			api = new TestLinkAPI(url, devKey);
+			api = new TestLinkAPI(new URL(url), devKey);
 		} 
 		catch (MalformedURLException e)
 		{

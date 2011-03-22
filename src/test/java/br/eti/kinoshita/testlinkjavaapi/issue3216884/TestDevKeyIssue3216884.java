@@ -23,8 +23,6 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.issue3216884;
 
-import java.net.MalformedURLException;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -45,7 +43,7 @@ extends BaseTest
 	{
 		try
 		{
-			this.api.checkDevKey(api.getDevKey());
+			Assert.assertTrue( this.api.checkDevKey(api.getDevKey()) );
 		} 
 		catch (TestLinkAPIException e)
 		{
@@ -55,16 +53,8 @@ extends BaseTest
 	
 	@Test(expectedExceptions={TestLinkAPIException.class})
 	public void testCheckInvalidKey() 
-	throws TestLinkAPIException
 	{
-		try
-		{
-			this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
-		} 
-		catch (MalformedURLException e)
-		{
-			Assert.fail("Invalid TestLink URL ["+this.api.getUrl()+"]: " + e.getMessage(), e);
-		}
+		this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
 	}
 	
 }

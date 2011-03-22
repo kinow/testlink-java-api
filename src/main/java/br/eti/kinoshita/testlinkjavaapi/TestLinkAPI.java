@@ -23,11 +23,14 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
-import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.xmlrpc.XmlRpcException;
+import org.apache.xmlrpc.client.XmlRpcClient;
+import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
@@ -45,6 +48,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
+import br.eti.kinoshita.testlinkjavaapi.util.CustomXmlRpcCommonsTransportFactory;
 
 /**
  * <p>TestLink API class.</p>
@@ -65,7 +69,7 @@ public class TestLinkAPI
 	/**
 	 * TestLink URL.
 	 */
-	private String url;
+	private URL url;
 	
 	/**
 	 * TestLink Developer Key.
@@ -82,6 +86,11 @@ public class TestLinkAPI
 	private final ReqSpecService reqSpecService;
 	
 	/**
+	 * XML-RPC client.
+	 */
+	private XmlRpcClient xmlRpcClient;
+	
+	/**
 	 * <p>Constructor with parameters.</p>
 	 * 
 	 * <p>Instantiates TestLink services. It also checks the devKey and 
@@ -89,26 +98,42 @@ public class TestLinkAPI
 	 * 
 	 * @param url The URL to set.
 	 * @param devKey The Developer Key to set.
-	 * @throws MalformedURLException 
 	 * @throws TestLinkAPIException 
 	 * @since 1.0
 	 */
-	public TestLinkAPI(String url, String devKey) 
-	throws MalformedURLException, TestLinkAPIException
+	public TestLinkAPI(URL url, String devKey) 
+	throws TestLinkAPIException
 	{
 		this.url = url;
 		this.devKey = devKey;
 		
-		this.testProjectService = new TestProjectService( url, devKey );
-		this.testPlanService = new TestPlanService(url, devKey);
-		this.miscService = new MiscService(url, devKey);
-		this.testCaseService = new TestCaseService(url, devKey);
-		this.testSuiteService = new TestSuiteService(url, devKey);
-		this.buildService = new BuildService(url, devKey);
-		this.requirementService = new RequirementService(url, devKey);
-		this.reqSpecService = new ReqSpecService(url, devKey);
+		this.xmlRpcClient = new XmlRpcClient();
+		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+		config.setServerURL( url );
+		config.setEnabledForExtensions( true );
+		this.xmlRpcClient.setConfig(config);
+		XmlRpcCommonsTransportFactory transportFactory = 
+			new CustomXmlRpcCommonsTransportFactory(this.xmlRpcClient);
+		this.xmlRpcClient.setTransportFactory(transportFactory);
+		
+		this.testProjectService = new TestProjectService( xmlRpcClient, devKey );
+		this.testPlanService = new TestPlanService( xmlRpcClient, devKey );
+		this.miscService = new MiscService( xmlRpcClient, devKey );
+		this.testCaseService = new TestCaseService( xmlRpcClient, devKey );
+		this.testSuiteService = new TestSuiteService( xmlRpcClient, devKey );
+		this.buildService = new BuildService( xmlRpcClient, devKey );
+		this.requirementService = new RequirementService( xmlRpcClient, devKey );
+		this.reqSpecService = new ReqSpecService( xmlRpcClient, devKey );
 		
 		this.miscService.checkDevKey(devKey);
+	}
+	
+	/**
+	 * @return XML-RPC Client.
+	 */
+	public XmlRpcClient getXmlRpcClient()
+	{
+		return this.xmlRpcClient;
 	}
 	
 	/* ------- Utility methods ------- */
@@ -116,7 +141,7 @@ public class TestLinkAPI
 	/**
 	 * @return the url
 	 */
-	public String getUrl()
+	public URL getUrl()
 	{
 		return url;
 	}

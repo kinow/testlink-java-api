@@ -1,5 +1,14 @@
 Release Notes
 
+* Version 1.9.2-1
+
+ * Simplified the Services. Before it was creating one XML-RPC API for each  
+ service. Now it creates only one for the API. 
+ 
+ * Instead of creating an API with two Strings (one for the URL and other for 
+ the devKey) now you create the API with a java.net.URL and a String. It removed 
+ the need to catch the MalformedURLException during construction of the API.
+
 * Version 1.9.2-0
 
  * Compatibility version for TestLink 1.9.2

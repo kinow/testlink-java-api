@@ -3,7 +3,6 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
-import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.xmlrpc.XmlRpcException;
+import org.apache.xmlrpc.client.XmlRpcClient;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
@@ -46,14 +46,12 @@ extends BaseService
 {
 
 	/**
-	 * @param url
-	 * @param devKey
-	 * @throws MalformedURLException
+	 * @param xmlRpcClient XML RPC Client.
+	 * @param devKey TestLink User DevKey.
 	 */
-	public TestCaseService(String url, String devKey)
-	throws MalformedURLException 
+	public TestCaseService( XmlRpcClient xmlRpcClient, String devKey ) 
 	{
-		super(url, devKey);
+		super( xmlRpcClient, devKey );
 	}
 
 	/**
