@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
 	<artifactId>testlink-java-api</artifactId>
-	<version>1.9.2-2-SNAPSHOT</version>
+	<version>1.9.2-2</version>
 	<name>TestLink Java API</name>
 	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
@@ -53,9 +53,9 @@
 	</licenses>
 	
 	<scm>
-		<connection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</connection>
-		<developerConnection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</developerConnection>
-		<url>https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</url>
+		<connection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/tags/testlink-java-api-1.9.2-2</connection>
+		<developerConnection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/tags/testlink-java-api-1.9.2-2</developerConnection>
+		<url>https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/tags/testlink-java-api-1.9.2-2</url>
 	</scm>
 	
 	<properties>
