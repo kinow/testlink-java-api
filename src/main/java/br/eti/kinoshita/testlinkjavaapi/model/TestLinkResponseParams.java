@@ -90,7 +90,8 @@ public enum TestLinkResponseParams
 	message("message"), 
 	bugIDStatus("bugidstatus"), 
 	customFieldStatus("customfieldstatus"), 
-	execStatus("exec_status")
+	execStatus("exec_status"), 
+	executionOrder("execution_order")
 	;
 	
 	private String textValue;

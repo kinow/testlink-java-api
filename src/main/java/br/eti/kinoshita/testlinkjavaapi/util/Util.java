@@ -407,6 +407,7 @@ public class Util
 					testCase.setSummary( getString(map, TestLinkResponseParams.summary.toString()) );
 					testCase.setParentId( getInteger(map, TestLinkResponseParams.parentId.toString() ) );
 					testCase.setOrder( getInteger(map, TestLinkResponseParams.order.toString() ) );
+					testCase.setExecutionOrder( getInteger(map, TestLinkResponseParams.executionOrder.toString()));
 					testCase.setName( getString(map, TestLinkResponseParams.name.toString()) );
  					Integer executionTypeValue = getInteger( map, TestLinkResponseParams.executionType.toString() );
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );

@@ -48,6 +48,7 @@ implements Serializable
 	private String preconditions;
 	private TestImportance testImportance;
 	private ExecutionType executionType;
+	private Integer executionOrder;
 	private Integer order;
 	private Integer internalId;
 	private Boolean checkDuplicatedName;
@@ -77,6 +78,7 @@ implements Serializable
 	 * @param preconditions
 	 * @param testImportance
 	 * @param executionType
+	 * @param executionOrder
 	 * @param order
 	 * @param internalId
 	 * @param checkDuplicatedName
@@ -90,7 +92,8 @@ implements Serializable
 	public TestCase(Integer id, String name, Integer testSuiteId,
 			Integer testProjectId, String authorLogin, String summary,
 			List<TestCaseStep> steps, String preconditions,
-			TestImportance testImportance, ExecutionType executionType,
+			TestImportance testImportance, ExecutionType executionType, 
+			Integer executionOrder, 
 			Integer order, Integer internalId, Boolean checkDuplicatedName,
 			String actionOnDuplicatedName, Integer versionId, Integer version,
 			Integer parentId, List<CustomField> customFields, 
@@ -106,6 +109,7 @@ implements Serializable
 		this.preconditions = preconditions;
 		this.testImportance = testImportance;
 		this.executionType = executionType;
+		this.executionOrder = executionOrder;
 		this.order = order;
 		this.internalId = internalId;
 		this.checkDuplicatedName = checkDuplicatedName;
@@ -261,6 +265,18 @@ implements Serializable
 	 */
 	public void setTestImportance(TestImportance testImportance) {
 		this.testImportance = testImportance;
+	}
+	/**
+	 * @return the executionOrder
+	 */
+	public Integer getExecutionOrder() {
+		return executionOrder;
+	}
+	/**
+	 * @param executionOrder the executionOrder to set
+	 */
+	public void setExecutionOrder(Integer executionOrder) {
+		this.executionOrder = executionOrder;
 	}
 	/**
 	 * @return the executionType

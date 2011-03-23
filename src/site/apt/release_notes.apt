@@ -1,5 +1,9 @@
 Release Notes
 
+* Version 1.9.2-2
+
+ * Added support to Execution Order in Test Cases
+
 * Version 1.9.2-1
 
  * Simplified the Services. Before it was creating one XML-RPC API for each  
