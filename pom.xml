@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
 	<artifactId>testlink-java-api</artifactId>
@@ -8,14 +9,14 @@
 	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
 	<parent>
-	    <groupId>org.sonatype.oss</groupId>
-	    <artifactId>oss-parent</artifactId>
-	    <version>5</version>
-  	</parent>
-  	
-  	<inceptionYear>2010-2011 the testlink-java-api team</inceptionYear>
-  	
-  	<issueManagement>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>5</version>
+	</parent>
+
+	<inceptionYear>2010-2011 the testlink-java-api team</inceptionYear>
+
+	<issueManagement>
 		<system>SourceForge.net</system>
 		<url>http://sourceforge.net/tracker/?group_id=372361</url>
 	</issueManagement>
@@ -41,9 +42,9 @@
 			</roles>
 		</developer>
 	</developers>
-	
+
 	<url>http://sourceforge.net/projects/testlinkjavaapi</url>
-	
+
 	<licenses>
 		<license>
 			<name>MIT</name>
@@ -51,13 +52,13 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	
+
 	<scm>
 		<connection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</connection>
 		<developerConnection>scm:svn:https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</developerConnection>
 		<url>https://testlinkjavaapi.svn.sourceforge.net/svnroot/testlinkjavaapi/trunk</url>
 	</scm>
-	
+
 	<properties>
 		<databasename>testlink_192</databasename>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -86,15 +87,16 @@
 						<version>4.4</version>
 					</docletArtifact>
 					<additionalparam>
-						-inferrel -inferdep -quiet -hide java.* -collpackages java.util.* -qualify
+						-inferrel -inferdep -quiet -hide java.*
+						-collpackages java.util.* -qualify
 						-postfixpackage -nodefontsize 9
 						-nodefontpackagesize 7
-						-edgefontname "Trebuchet MS" 
-						-nodefontabstractname "Trebuchet MS" 
-						-nodefontclassabstractname "Trebuchet MS" 
-						-nodefontclassname "Trebuchet MS" 
-						-nodefontname "Trebuchet MS" 
-						-nodefontpackagename "Trebuchet MS" 
+						-edgefontname "Trebuchet MS"
+						-nodefontabstractname "Trebuchet MS"
+						-nodefontclassabstractname "Trebuchet MS"
+						-nodefontclassname "Trebuchet MS"
+						-nodefontname "Trebuchet MS"
+						-nodefontpackagename "Trebuchet MS"
 						-nodefonttagname "Trebuchet MS" 
 					</additionalparam>
 				</configuration>
@@ -116,10 +118,10 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-          			<excludes>
-            			<exclude>**/TestUploadExecutionAttachment.java</exclude>
-          			</excludes>
-        		</configuration>			
+					<excludes>
+						<exclude>**/TestUploadExecutionAttachment.java</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -127,9 +129,8 @@
 				<version>2.4</version>
 				<configuration>
 					<instrumentation>
-			            <!-- excludes>
-			              <exclude>br/eti/kinoshita/tap4j/ext/*.class</exclude>
-			            </excludes-->
+						<!-- excludes> <exclude>br/eti/kinoshita/tap4j/ext/*.class</exclude> 
+							</excludes -->
 					</instrumentation>
 				</configuration>
 			</plugin>
@@ -137,91 +138,91 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sql-maven-plugin</artifactId>
 				<version>1.4</version>
-				
+
 				<dependencies>
 					<dependency>
-			            <groupId>mysql</groupId>
-			            <artifactId>mysql-connector-java</artifactId>
-			            <version>5.1.13</version>
-			            <type>jar</type>
-			            <scope>compile</scope>
-			        </dependency>
-		        </dependencies>
-				
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.13</version>
+						<type>jar</type>
+						<scope>compile</scope>
+					</dependency>
+				</dependencies>
+
 				<configuration>
-		          <driver>com.mysql.jdbc.Driver</driver>
-		          <url>jdbc:mysql://localhost:3306/${databasename}</url>
-		          <username>root</username>
-		          <password />
-		          <!-- You can comment out username/password configurations and
-		               have maven to look them up in your settings.xml using ${settingsKey}
-		          -->
-		          <settingsKey>sensibleKey</settingsKey>
-		          <!--all executions are ignored if -Dmaven.test.skip=true-->
-		          <skip>${maven.test.skip}</skip>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://localhost:3306/${databasename}</url>
+					<username>root</username>
+					<password />
+					<!-- You can comment out username/password configurations and have maven 
+						to look them up in your settings.xml using ${settingsKey} -->
+					<settingsKey>sensibleKey</settingsKey>
+					<!--all executions are ignored if -Dmaven.test.skip=true -->
+					<skip>${maven.test.skip}</skip>
 				</configuration>
-				
+
 				<executions>
-				  <execution>
-		            <id>drop-db-before-test-if-any</id>
-		            <phase>process-test-resources</phase>
-		            <goals>
-		              <goal>execute</goal>
-		            </goals>
-		            <configuration>
-		              <!-- need another database to drop the targeted one -->
-		              <url>jdbc:mysql://localhost:3306/test</url>
-		              <autocommit>true</autocommit>
-		              <sqlCommand>drop database if exists ${databasename};</sqlCommand>
-		              <!-- ignore error when database is not avaiable -->
-		              <onError>continue</onError>
-		            </configuration>
-		          </execution>
-				  <execution>
-		            <id>create-db</id>
-		            <phase>process-test-resources</phase>
-		            <goals>
-		              <goal>execute</goal>
-		            </goals>
-		            <configuration>
-		              <url>jdbc:mysql://localhost:3306/test</url>
-		              <!-- no transaction -->
-		              <autocommit>true</autocommit>
-		              <sqlCommand>create database ${databasename};</sqlCommand>
-		            </configuration>
-		          </execution>
-			      <execution>
-                    <id>grant-privileges</id>
-                    <phase>process-test-resources</phase>
-                    <goals>
-                      <goal>execute</goal>
-                    </goals>
-                    <configuration>
-                      <url>jdbc:mysql://localhost:3306/test</url>
-                      <!-- no transaction -->
-                      <autocommit>true</autocommit>
-                      <sqlCommand>grant all privileges on ${databasename}.* to 'testlink'@'localhost' identified by 'testlink'; </sqlCommand>
-                    </configuration>
-                  </execution>  
-                  <execution>
-                    <id>create-schema-with-test-data</id>
-                    <phase>process-test-resources</phase>
-                    <goals>
-                      <goal>execute</goal>
-                    </goals>
-                    <configuration>
-                      <autocommit>true</autocommit>
-		              <srcFiles>
-		                <srcFile>${basedir}/src/documents/sql/${databasename}.sql</srcFile>
-		              </srcFiles>
-                    </configuration>
-                  </execution>
+					<execution>
+						<id>drop-db-before-test-if-any</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<!-- need another database to drop the targeted one -->
+							<url>jdbc:mysql://localhost:3306/test</url>
+							<autocommit>true</autocommit>
+							<sqlCommand>drop database if exists ${databasename};</sqlCommand>
+							<!-- ignore error when database is not avaiable -->
+							<onError>continue</onError>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-db</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>jdbc:mysql://localhost:3306/test</url>
+							<!-- no transaction -->
+							<autocommit>true</autocommit>
+							<sqlCommand>create database ${databasename};</sqlCommand>
+						</configuration>
+					</execution>
+					<execution>
+						<id>grant-privileges</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>jdbc:mysql://localhost:3306/test</url>
+							<!-- no transaction -->
+							<autocommit>true</autocommit>
+							<sqlCommand>grant all privileges on ${databasename}.* to
+								'testlink'@'localhost' identified by 'testlink'; </sqlCommand>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-schema-with-test-data</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<autocommit>true</autocommit>
+							<srcFiles>
+								<srcFile>${basedir}/src/documents/sql/${databasename}.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
 				</executions>
-				
+
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<reporting>
 		<plugins>
 			<plugin>
@@ -236,15 +237,16 @@
 						<version>4.4</version>
 					</docletArtifact>
 					<additionalparam>
-						-inferrel -inferdep -quiet -hide java.* -collpackages java.util.* -qualify
+						-inferrel -inferdep -quiet -hide java.*
+						-collpackages java.util.* -qualify
 						-postfixpackage -nodefontsize 9
 						-nodefontpackagesize 7
-						-edgefontname "Trebuchet MS" 
-						-nodefontabstractname "Trebuchet MS" 
-						-nodefontclassabstractname "Trebuchet MS" 
-						-nodefontclassname "Trebuchet MS" 
-						-nodefontname "Trebuchet MS" 
-						-nodefontpackagename "Trebuchet MS" 
+						-edgefontname "Trebuchet MS"
+						-nodefontabstractname "Trebuchet MS"
+						-nodefontclassabstractname "Trebuchet MS"
+						-nodefontclassname "Trebuchet MS"
+						-nodefontname "Trebuchet MS"
+						-nodefontpackagename "Trebuchet MS"
 						-nodefonttagname "Trebuchet MS" 
 					</additionalparam>
 				</configuration>
@@ -266,7 +268,7 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -305,35 +307,42 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<profiles>
-  	<profile>
-  		<id>release-sign-artifacts</id>
-	    <activation>
-	      <property>
-	        <name>performRelease</name>
-	        <value>true</value>
-	      </property>
-	    </activation>
-	    <build>
-	      <plugins>
-	        <plugin>
-	          <groupId>org.apache.maven.plugins</groupId>
-	          <artifactId>maven-gpg-plugin</artifactId>
-	          <version>1.1</version>
-	          <executions>
-	            <execution>
-	              <id>sign-artifacts</id>
-	              <phase>verify</phase>
-	              <goals>
-	                <goal>sign</goal>
-	              </goals>
-	            </execution>
-	          </executions>
-	        </plugin>
-	      </plugins>
-	    </build>
-  	</profile>
-  </profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<site>
+			<id>testlinkjavaapi.sf.net</id>
+			<url>scp://shell.sourceforge.net/home/project-web/testlinkjavaapi/htdocs/</url>
+		</site>
+	</distributionManagement>
 
 </project>
