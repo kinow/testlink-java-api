@@ -34,7 +34,9 @@
     
     <menu name="Tutorial">
       <item name="Develop TestLink Java API" href="extending.html"/>
-      <item name="Sample" href="sample.html"/>
+      <item name="Creating a new instance of the API object" href="sample1.html"/>
+      <item name="Creating a new test project" href="sample2.html"/>
+      <item name="Uploading an attachment to a test case execution" href="sample3.html"/>
     </menu>
 
     <menu ref="reports" />

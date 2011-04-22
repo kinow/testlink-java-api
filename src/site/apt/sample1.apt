@@ -1,0 +1,31 @@
+Creating a new instance of the API object
+
++-----+
+	String url = "http://che/testlink-1.9.2/lib/api/xmlrpc.php";
+	String devKey = "key";
+    TestLinkAPI api = null;
+    
+    URL testlinkURL = null;
+    
+    try
+    {
+    	testlinkURL = new URL(url);
+    }
+    catch ( MalformedURLException mue )
+    {
+    	mue.printStackTrace( System.err );
+    	System.exit(-1);
+    }
+
+    try
+    {
+    	api = new TestLinkAPI(testlinkURL, devKey);
+    }
+    catch( TestLinkAPIException te)
+    {
+    	te.printStackTrace( System.err );
+    	System.exit(-1);
+    }
+    
+    System.out.println(api.ping());
++-----+
