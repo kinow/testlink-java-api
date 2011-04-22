@@ -27,7 +27,6 @@
     </menu>
     
     <menu name="API Architecture">
-      <item name="Logging Strategy" href="logging_strategy.html"/>
       <item name="Internal Structure" href="structure.html"/>
       <item name="Exception Handling" href="exceptions.html"/>
     </menu>

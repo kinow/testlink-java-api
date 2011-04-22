@@ -4,11 +4,11 @@ Uploading an attachment to a test case execution
  attachment content Base64 encoded.
 
 +-----+
-
+	
 	File attachmentFile = new File("c:\\tmp\\selenium_temp.jpg");
-        
-    String fileContent = null;
-    
+	
+	String fileContent = null;
+	
 	try
 	{
 		byte[] byteArray = FileUtils.readFileToByteArray(attachmentFile);
@@ -18,15 +18,15 @@ Uploading an attachment to a test case execution
 		e.printStackTrace( System.err );
 		System.exit(-1);
 	}
-    
-   Attachment attachment =  api.uploadExecutionAttachment(
-    		1, //executionId 
-    		"Setting customer plan", //title 
-    		"In this screen the attendant is defining the customer plan", //description  
-    		"screenshot_customer_plan_"+System.currentTimeMillis()+".jpg", //fileName 
-    		"image/jpeg", //fileType
-    		fileContent); //content
-    
-   System.out.println("Attachment uploaded");
 	
+	Attachment attachment =  api.uploadExecutionAttachment(
+		1, //executionId 
+		"Setting customer plan", //title 
+		"In this screen the attendant is defining the customer plan", //description  
+		"screenshot_customer_plan_"+System.currentTimeMillis()+".jpg", //fileName 
+		"image/jpeg", //fileType
+		fileContent); //content
+	
+	System.out.println("Attachment uploaded");
+
 +-----+

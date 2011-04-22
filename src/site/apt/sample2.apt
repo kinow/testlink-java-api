@@ -1,7 +1,7 @@
 Creating a new Test Project
 
 +-----+
-
+	
 	TestProject project = null;
 	
 	try
@@ -25,5 +25,5 @@ Creating a new Test Project
 	System.out.println( "Test project created! " );
 	
 	System.out.println( "Test Project ID: [ " + project.getId() + " ]." );
-	
+
 +-----+
