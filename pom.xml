@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
@@ -92,11 +93,14 @@
 						-nodefontpackagesize 7
 						-edgefontname "Trebuchet MS"
 						-nodefontabstractname "Trebuchet MS"
-						-nodefontclassabstractname "Trebuchet MS"
+						-nodefontclassabstractname
+						"Trebuchet MS"
 						-nodefontclassname "Trebuchet MS"
-						-nodefontname "Trebuchet MS"
+						-nodefontname
+						"Trebuchet MS"
 						-nodefontpackagename "Trebuchet MS"
-						-nodefonttagname "Trebuchet MS" 
+						-nodefonttagname
+						"Trebuchet MS" 
 					</additionalparam>
 				</configuration>
 			</plugin>
@@ -242,11 +246,14 @@
 						-nodefontpackagesize 7
 						-edgefontname "Trebuchet MS"
 						-nodefontabstractname "Trebuchet MS"
-						-nodefontclassabstractname "Trebuchet MS"
+						-nodefontclassabstractname
+						"Trebuchet MS"
 						-nodefontclassname "Trebuchet MS"
-						-nodefontname "Trebuchet MS"
+						-nodefontname
+						"Trebuchet MS"
 						-nodefontpackagename "Trebuchet MS"
-						-nodefonttagname "Trebuchet MS" 
+						-nodefonttagname
+						"Trebuchet MS" 
 					</additionalparam>
 				</configuration>
 			</plugin>
@@ -349,13 +356,18 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>release-site</id>
+			<activation>
+			</activation>
+			<distributionManagement>
+				<site>
+					<id>testlinkjavaapi.sf.net</id>
+					<url>scp://shell.sourceforge.net/home/project-web/testlinkjavaapi/htdocs/</url>
+				</site>
+			</distributionManagement>
+		</profile>
 	</profiles>
 
-	<distributionManagement>
-		<site>
-			<id>testlinkjavaapi.sf.net</id>
-			<url>scp://shell.sourceforge.net/home/project-web/testlinkjavaapi/htdocs/</url>
-		</site>
-	</distributionManagement>
 
 </project>
