@@ -156,7 +156,7 @@
 					<driver>com.mysql.jdbc.Driver</driver>
 					<url>jdbc:mysql://localhost:3306/${databasename}</url>
 					<username>root</username>
-					<password />
+					<password/>
 					<!-- You can comment out username/password configurations and have maven 
 						to look them up in your settings.xml using ${settingsKey} -->
 					<settingsKey>sensibleKey</settingsKey>
