@@ -129,46 +129,6 @@ public class TestLinkAPI
 	}
 	
 	/**
-	 * <p>Constructor with parameters.</p>
-	 * 
-	 * <p>Instantiates TestLink services. It also checks the devKey and 
-	 * throws a TestLinkAPIException if it is invalid.</p>
-	 * 
-	 * @param url The URL to set.
-	 * @param devKey The Developer Key to set.
-	 * @throws TestLinkAPIException 
-	 * @since 1.0
-	 */
-	public TestLinkAPI(URL url, String devKey,String Puser,String Ppassword) 
-	throws TestLinkAPIException
-	{
-		this.url = url;
-		this.devKey = devKey;
-		
-		this.xmlRpcClient = new XmlRpcClient();
-		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-		config.setServerURL( url );
-		config.setBasicUserName(Puser);
-		config.setBasicPassword(Ppassword);
-		config.setEnabledForExtensions( true );
-		this.xmlRpcClient.setConfig(config);
-		XmlRpcCommonsTransportFactory transportFactory = 
-			new CustomXmlRpcCommonsTransportFactory(this.xmlRpcClient);
-		this.xmlRpcClient.setTransportFactory(transportFactory);
-		
-		this.testProjectService = new TestProjectService( xmlRpcClient, devKey );
-		this.testPlanService = new TestPlanService( xmlRpcClient, devKey );
-		this.miscService = new MiscService( xmlRpcClient, devKey );
-		this.testCaseService = new TestCaseService( xmlRpcClient, devKey );
-		this.testSuiteService = new TestSuiteService( xmlRpcClient, devKey );
-		this.buildService = new BuildService( xmlRpcClient, devKey );
-		this.requirementService = new RequirementService( xmlRpcClient, devKey );
-		this.reqSpecService = new ReqSpecService( xmlRpcClient, devKey );
-		
-		this.miscService.checkDevKey(devKey);
-	}
-	
-	/**
 	 * @return XML-RPC Client.
 	 */
 	public XmlRpcClient getXmlRpcClient()
