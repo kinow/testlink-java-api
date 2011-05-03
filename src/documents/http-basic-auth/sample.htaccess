@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "By Invitation Only"
+AuthUserFile c:/tmp/passwd
+Require user testlink
