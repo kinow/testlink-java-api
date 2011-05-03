@@ -30,7 +30,6 @@ import java.util.Map;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
@@ -48,7 +47,6 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
-import br.eti.kinoshita.testlinkjavaapi.util.CustomXmlRpcCommonsTransportFactory;
 
 /**
  * <p>TestLink API class.</p>
@@ -101,7 +99,7 @@ public class TestLinkAPI
 	 * @throws TestLinkAPIException 
 	 * @since 1.0
 	 */
-	public TestLinkAPI(URL url, String devKey) 
+	public TestLinkAPI( URL url, String devKey ) 
 	throws TestLinkAPIException
 	{
 		this.url = url;
@@ -112,9 +110,6 @@ public class TestLinkAPI
 		config.setServerURL( url );
 		config.setEnabledForExtensions( true );
 		this.xmlRpcClient.setConfig(config);
-		XmlRpcCommonsTransportFactory transportFactory = 
-			new CustomXmlRpcCommonsTransportFactory(this.xmlRpcClient);
-		this.xmlRpcClient.setTransportFactory(transportFactory);
 		
 		this.testProjectService = new TestProjectService( xmlRpcClient, devKey );
 		this.testPlanService = new TestPlanService( xmlRpcClient, devKey );
