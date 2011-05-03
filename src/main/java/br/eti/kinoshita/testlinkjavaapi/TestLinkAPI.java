@@ -26,7 +26,14 @@ package br.eti.kinoshita.testlinkjavaapi;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
+import org.apache.commons.configuration.CompositeConfiguration;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.ConversionException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.configuration.SystemConfiguration;
+import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -83,10 +90,25 @@ public class TestLinkAPI
 	private final RequirementService requirementService;
 	private final ReqSpecService reqSpecService;
 	
+	private static final Logger LOG = Logger.getLogger("testlinkjavaapi");
+	
 	/**
 	 * XML-RPC client.
 	 */
 	private XmlRpcClient xmlRpcClient;
+	
+	// Constants for properties
+	private static final String XMLRPC_BASIC_ENCODING 			= "xmlrpc.basicEncoding";
+	private static final String XMLRPC_BASIC_PASSWORD 			= "xmlrpc.basicPassword";
+	private static final String XMLRPC_BASIC_USERNAME 			= "xmlrpc.basicUsername";
+	private static final String XMLRPC_CONNECTION_TIMEOUT 		= "xmlrpc.connectionTimeout";
+	private static final String XMLRPC_CONTENT_LENGTH_OPTIONAL 	= "xmlrpc.contentLengthOptional";
+	private static final String XMLRPC_ENABLED_FOR_EXCEPTIONS 	= "xmlrpc.enabledForExceptions";
+	private static final String XMLRPC_ENCODING 				= "xmlrpc.encoding";
+	private static final String XMLRPC_GZIP_COMPRESSION 		= "xmlrpc.gzipCompression";
+	private static final String XMLRPC_GZIP_REQUESTING 			= "xmlrpc.gzipRequesting";
+	private static final String XMLRPC_REPLY_TIMEOUT 			= "xmlrpc.replyTimeout";
+	private static final String XMLRPC_USER_AGENT 				= "xmlrpc.userAgent";
 	
 	/**
 	 * <p>Constructor with parameters.</p>
@@ -99,16 +121,20 @@ public class TestLinkAPI
 	 * @throws TestLinkAPIException 
 	 * @since 1.0
 	 */
-	public TestLinkAPI( URL url, String devKey ) 
+	public TestLinkAPI( 
+			URL url, 
+			String devKey )
 	throws TestLinkAPIException
 	{
 		this.url = url;
 		this.devKey = devKey;
 		
 		this.xmlRpcClient = new XmlRpcClient();
-		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-		config.setServerURL( url );
-		config.setEnabledForExtensions( true );
+		
+		// application configuration
+		final CompositeConfiguration appConfig = this.createApplicationConfiguration();
+		// XML-RPC client specific configuration, using the application configuration
+		final XmlRpcClientConfigImpl config = this.createXmlRpcClientConfiguration( url, appConfig );
 		this.xmlRpcClient.setConfig(config);
 		
 		this.testProjectService = new TestProjectService( xmlRpcClient, devKey );
@@ -123,6 +149,146 @@ public class TestLinkAPI
 		this.miscService.checkDevKey(devKey);
 	}
 	
+	/**
+	 * Creates application composite configuration.
+	 * 
+	 * @return Application composite configuration.
+	 */
+	private CompositeConfiguration createApplicationConfiguration()
+	{
+		CompositeConfiguration appConfig = new CompositeConfiguration();
+		appConfig.addConfiguration(new SystemConfiguration());
+		try
+		{
+			appConfig.addConfiguration(new PropertiesConfiguration("testlinkjavaapi.properties"));
+		}
+		catch ( ConfigurationException ce )
+		{
+			this.debug( ce);
+		}
+		return appConfig;
+	}
+	
+	/**
+	 * Creates XML-RPC client configuration.
+	 * 
+	 * By default enabled for extensions is always true. 
+	 * 
+	 * @param url Application URL.
+	 * @param appConfig Application composite configuration.
+	 * @return XML-RPC client configuration.
+	 */
+	private XmlRpcClientConfigImpl createXmlRpcClientConfiguration( URL url, CompositeConfiguration appConfig )
+	{
+		final XmlRpcClientConfigImpl xmlRpcClientConfig = new XmlRpcClientConfigImpl();
+		
+		xmlRpcClientConfig.setServerURL( url );
+		xmlRpcClientConfig.setEnabledForExtensions( true );
+		
+		xmlRpcClientConfig.setBasicEncoding( appConfig.getString(XMLRPC_BASIC_ENCODING) );
+		xmlRpcClientConfig.setBasicPassword( appConfig.getString(XMLRPC_BASIC_PASSWORD) );
+		xmlRpcClientConfig.setBasicUserName( appConfig.getString(XMLRPC_BASIC_USERNAME) );
+		
+		try
+		{
+			xmlRpcClientConfig.setConnectionTimeout( appConfig.getInt(XMLRPC_CONNECTION_TIMEOUT) );
+		}
+		catch ( ConversionException ce )
+		{
+			this.debug( ce );
+		}
+		catch ( NoSuchElementException nsee )
+		{
+			this.debug( nsee );
+		}
+		
+		try
+		{
+			xmlRpcClientConfig.setContentLengthOptional( appConfig.getBoolean(XMLRPC_CONTENT_LENGTH_OPTIONAL) );
+		}
+		catch ( ConversionException ce )
+		{
+			this.debug( ce );
+		}
+		catch ( NoSuchElementException nsee )
+		{
+			this.debug( nsee );
+		}
+		
+		try
+		{
+			xmlRpcClientConfig.setEnabledForExceptions( appConfig.getBoolean(XMLRPC_ENABLED_FOR_EXCEPTIONS) );
+		}
+		catch ( ConversionException ce )
+		{
+			this.debug( ce );
+		}
+		catch ( NoSuchElementException nsee )
+		{
+			this.debug( nsee );
+		}
+		
+		xmlRpcClientConfig.setEncoding( appConfig.getString(XMLRPC_ENCODING) );
+		
+		try
+		{
+			xmlRpcClientConfig.setGzipCompressing( appConfig.getBoolean(XMLRPC_GZIP_COMPRESSION) );
+		}
+		catch ( ConversionException ce )
+		{
+			this.debug( ce );
+		}
+		catch ( NoSuchElementException nsee )
+		{
+			this.debug( nsee );
+		}
+		
+		try
+		{
+			xmlRpcClientConfig.setGzipRequesting( appConfig.getBoolean(XMLRPC_GZIP_REQUESTING) );
+		}
+		catch ( ConversionException ce )
+		{
+			this.debug( ce);
+		}
+		catch ( NoSuchElementException nsee )
+		{
+			this.debug( nsee );
+		}
+		
+		try
+		{
+			xmlRpcClientConfig.setReplyTimeout( appConfig.getInt(XMLRPC_REPLY_TIMEOUT) );
+		}
+		catch ( ConversionException ce )
+		{
+			this.debug( ce );
+		}
+		catch ( NoSuchElementException nsee )
+		{
+			this.debug( nsee );
+		}
+		
+		xmlRpcClientConfig.setUserAgent( appConfig.getString(XMLRPC_USER_AGENT) );
+		
+		return xmlRpcClientConfig;
+	}
+
+	/**
+	 * Logs a throwable object in debug level. Before outputting the message 
+	 * it checks if debug is enabled or not. If it is not enabled the message 
+	 * is not displayed and the String object is not created/concatenated, etc.
+	 * 
+	 * @param throwable Throwable object.
+	 */
+	private void debug( Throwable throwable )
+	{
+		if ( LOG.isDebugEnabled() )
+		{
+			LOG.debug(throwable.getMessage(), throwable );
+		}
+	}
+
 	/**
 	 * @return XML-RPC Client.
 	 */
