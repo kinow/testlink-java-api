@@ -33,10 +33,11 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.ConversionException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.SystemConfiguration;
-import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
@@ -90,7 +91,7 @@ public class TestLinkAPI
 	private final RequirementService requirementService;
 	private final ReqSpecService reqSpecService;
 	
-	private static final Logger LOG = Logger.getLogger("testlinkjavaapi");
+	private static final Logger LOG = LoggerFactory.getLogger(TestLinkAPI.class);
 	
 	/**
 	 * XML-RPC client.
