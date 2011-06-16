@@ -19,6 +19,7 @@
 
     <menu name="Reference">
       <item name="Introduction" href="index.html"/>
+      <item name="Implemented methods" href="implemented_methods.html"/>
       <item name="Download" href="downloads.html"/>
       <item name="Release Notes" href="release_notes.html"/>
       <item name="Roadmap" href="roadmap.html"/>
