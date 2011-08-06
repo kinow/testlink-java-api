@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.eti.kinoshita</groupId>
 	<artifactId>testlink-java-api</artifactId>
-	<version>1.9.2-7-SNAPSHOT</version>
+	<version>1.9.3.0-SNAPSHOT</version>
 	<name>TestLink Java API</name>
 	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
@@ -59,7 +59,7 @@
 	</scm>
 
 	<properties>
-		<databasename>testlink_192</databasename>
+		<databasename>testlink_dummy</databasename>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -152,7 +152,7 @@
 					<driver>com.mysql.jdbc.Driver</driver>
 					<url>jdbc:mysql://localhost:3306/${databasename}</url>
 					<username>root</username>
-					<password />
+					<password>admin</password>
 					<!-- You can comment out username/password configurations and have maven 
 						to look them up in your settings.xml using ${settingsKey} -->
 					<settingsKey>sensibleKey</settingsKey>
@@ -169,7 +169,7 @@
 						</goals>
 						<configuration>
 							<!-- need another database to drop the targeted one -->
-							<url>jdbc:mysql://localhost:3306/test</url>
+							<url>jdbc:mysql://localhost:3306/mysql</url>
 							<autocommit>true</autocommit>
 							<sqlCommand>drop database if exists ${databasename};</sqlCommand>
 							<!-- ignore error when database is not avaiable -->
@@ -183,7 +183,7 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<url>jdbc:mysql://localhost:3306/test</url>
+							<url>jdbc:mysql://localhost:3306/mysql</url>
 							<!-- no transaction -->
 							<autocommit>true</autocommit>
 							<sqlCommand>create database ${databasename};</sqlCommand>
@@ -196,7 +196,7 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<url>jdbc:mysql://localhost:3306/test</url>
+							<url>jdbc:mysql://localhost:3306/mysql</url>
 							<!-- no transaction -->
 							<autocommit>true</autocommit>
 							<sqlCommand>grant all privileges on ${databasename}.* to
