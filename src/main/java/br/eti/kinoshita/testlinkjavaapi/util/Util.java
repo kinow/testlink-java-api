@@ -420,6 +420,7 @@ public class Util
 					} 
 					testCase.setExecutionStatus(executionStatus);
 					testCase.setTestProjectId(getInteger(map, TestLinkParams.testProjectId.toString()));
+					testCase.setTestSuiteId(getInteger(map, "testsuite_id")); // TBD: inconsistent parameter name
 					// TODO: check if TL 2.0 allows it
 //					CustomField[] customFields = (CustomField[])getArray(map, TestLinkResponseParams.customFields.toString());
 //					if ( customFields != null )

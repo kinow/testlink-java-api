@@ -43,7 +43,7 @@ public enum ExecutionStatus
 			return FAILED;
 		case 'b':
 		case 'B':
-			return FAILED;
+			return BLOCKED;
 		}
 		return null;
 	}
