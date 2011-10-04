@@ -43,7 +43,7 @@
   <member><name>id</name><value><string>7</string></value></member>
   <member><name>step_number</name><value><string>2</string></value></member>
   <member><name>actions</name><value><string>&lt;p&gt;Enter city code&lt;/p&gt;</string></value></member>
-  <member><name>expected_results</name><value><string></string></value></member>
+  <member><name>expected_results</name><value><string>&lt;p&gt;Yo!&lt;/p&gt;</string></value></member>
   <member><name>active</name><value><string>1</string></value></member>
   <member><name>execution_type</name><value><string>2</string></value></member>
 </struct></value>

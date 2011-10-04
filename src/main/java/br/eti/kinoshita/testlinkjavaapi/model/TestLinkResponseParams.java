@@ -81,6 +81,7 @@ public enum TestLinkResponseParams
 	showOnDesign("show_on_design"), 
 	showOnExecution("show_on_execution"), 
 	showOnTestPlanDesign("show_on_testplan_design"), 
+	steps("steps"), 
 	type("type"), 
 	validRegexp("valid_regexp"), 
 	value("value"), 
@@ -91,7 +92,10 @@ public enum TestLinkResponseParams
 	bugIDStatus("bugidstatus"), 
 	customFieldStatus("customfieldstatus"), 
 	execStatus("exec_status"), 
-	executionOrder("execution_order")
+	executionOrder("execution_order"), 
+	actions("actions"), 
+	stepNumber("step_number"), 
+	expectedResults("expected_results")
 	;
 	
 	private String textValue;

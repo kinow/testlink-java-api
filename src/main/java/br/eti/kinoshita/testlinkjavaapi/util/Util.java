@@ -321,6 +321,38 @@ public class Util
 	}
 
 	/**
+	 * @param Test Case Step map
+	 * @return Test Case
+	 */
+	public static TestCaseStep getTestCaseStep( Map<String, Object> map )
+	{
+		TestCaseStep step = null;
+		if ( map != null && map.size() > 0 )
+		{
+			Object o = map.get( TestLinkResponseParams.id.toString());
+			if ( o != null )
+			{
+				Integer id = Integer.parseInt( o.toString() );
+				
+				if ( id > 0 )
+				{
+					step = new TestCaseStep();
+					step.setId( id );
+					step.setActions( getString(map, TestLinkResponseParams.actions.toString()));
+					step.setActive( getBoolean(map, TestLinkResponseParams.active.toString()) );
+					Integer executionTypeValue = getInteger( map, TestLinkResponseParams.executionType.toString() );
+					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
+					step.setExecutionType( execution );
+					step.setExpectedResults( getString(map, TestLinkResponseParams.expectedResults.toString()) );
+					step.setNumber( getInteger(map, TestLinkResponseParams.stepNumber.toString()));
+				}
+				
+			}			
+		}
+		return step;
+	}
+	
+	/**
 	 * @param testCaseStep
 	 * @return Map of Test Case Step.
 	 */
@@ -386,6 +418,7 @@ public class Util
 	 * @param map
 	 * @return Test Case.
 	 */
+	@SuppressWarnings("unchecked")
 	public static final TestCase getTestCase(Map<String, Object> map) 
 	{
 		TestCase testCase = null;
@@ -431,6 +464,16 @@ public class Util
 //							testCase.getCustomFields().add( customField );
 //						}
 //					}
+					Object[] stepsArray = (Object[]) getArray(map, TestLinkResponseParams.steps.toString());
+					if ( stepsArray != null && stepsArray.length > 0 ) 
+					{
+						for( Object stepObject : stepsArray )
+						{
+							Map<String, Object> stepMap = (Map<String, Object>)stepObject;
+							TestCaseStep step = Util.getTestCaseStep(stepMap);
+							testCase.getSteps().add( step );
+						}
+					}
 				}
 				
 			}			

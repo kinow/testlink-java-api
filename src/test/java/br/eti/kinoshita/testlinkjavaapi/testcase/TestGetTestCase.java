@@ -75,6 +75,10 @@ extends BaseTest
 		
 		Assert.assertTrue( testCase.getId() > 0 );
 		
+		Assert.assertNotNull( testCase.getSteps() );
+		
+		Assert.assertEquals( testCase.getSteps().size(), 6 );
+		
 	}
 	
 }
