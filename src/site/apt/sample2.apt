@@ -1,0 +1,29 @@
+Creating a new Test Project
+
++-----+
+	
+	TestProject project = null;
+	
+	try
+	{
+		project = api.createTestProject(
+				"Minecraft", //testProjectName
+				"MC", //testProjectPrefix
+				"Testing Minecraft game", //notes
+				true, //enableRequirements
+				true, //enableTestPriority
+				true, //enableAutomation
+				false, //enableInventory
+				true, //isActive
+				true); //isPublic
+	} catch (TestLinkAPIException e)
+	{
+		e.printStackTrace( System.err );
+		System.exit(-1);
+	}
+	
+	System.out.println( "Test project created! " );
+	
+	System.out.println( "Test Project ID: [ " + project.getId() + " ]." );
+
++-----+

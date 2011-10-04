@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <string> Testlink API Version: 1.0 initially written by Asiel Brumfield
+ with contributions by TestLink development Team</string>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

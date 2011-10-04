@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>id</name><value><string>5</string></value></member>
+  <member><name>testproject_id</name><value><string>1</string></value></member>
+  <member><name>notes</name><value><string></string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>is_open</name><value><string>1</string></value></member>
+  <member><name>is_public</name><value><string>1</string></value></member>
+  <member><name>name</name><value><string>My plan</string></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

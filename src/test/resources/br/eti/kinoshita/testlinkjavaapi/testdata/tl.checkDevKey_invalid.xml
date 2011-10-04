@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>code</name><value><int>2000</int></value></member>
+  <member><name>message</name><value><string>(checkDevKey) - Can not authenticate client: invalid developer key</string></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

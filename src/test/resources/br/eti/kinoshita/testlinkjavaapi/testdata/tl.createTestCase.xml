@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>operation</name><value><string>createTestCase</string></value></member>
+  <member><name>status</name><value><boolean>1</boolean></value></member>
+  <member><name>id</name><value><string>21</string></value></member>
+  <member><name>additionalInfo</name><value><struct>
+  <member><name>id</name><value><string>21</string></value></member>
+  <member><name>external_id</name><value><string>1</string></value></member>
+  <member><name>status_ok</name><value><int>1</int></value></member>
+  <member><name>msg</name><value><string>ok</string></value></member>
+  <member><name>new_name</name><value><string></string></value></member>
+  <member><name>version_number</name><value><int>1</int></value></member>
+  <member><name>has_duplicate</name><value><boolean>0</boolean></value></member>
+  <member><name>tcversion_id</name><value><string>22</string></value></member>
+</struct></value></member>
+  <member><name>message</name><value><string>Success!</string></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

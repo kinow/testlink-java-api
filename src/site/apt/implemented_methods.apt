@@ -1,0 +1,51 @@
+List of methods from TestLink XML-RPC API implemented in TestLink Java API
+
+ * reportTCResult
+
+ * setTestCaseExecutionResult
+
+ * createBuild
+
+ * createTestCase
+
+ * createTestPlan
+
+ * createTestProject
+
+ * createTestSuite
+
+ * uploadRequirementSpecificationAttachment
+
+ * uploadRequirementAttachment
+
+ * uploadTestProjectAttachment
+
+ * uploadTestSuiteAttachment
+
+ * uploadTestCaseAttachment
+
+ * uploadAttachment
+
+ * assignRequirements
+
+ * addTestCaseToTestPlan
+
+ * getProjects
+
+ * getTestProjectByName
+
+ * getTestPlanByName
+
+ * getProjectTestPlans
+
+ * getTestPlanPlatforms
+
+ * getTotalsForTestPlan
+
+ * getBuildsForTestPlan
+
+ * getLatestBuildForTestPlan
+
+ * getLastExecutionResult
+
+ * getTestSuitesForTestPlan

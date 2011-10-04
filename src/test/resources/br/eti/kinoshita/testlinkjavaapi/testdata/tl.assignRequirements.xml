@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>operation</name><value><string>assignRequirements</string></value></member>
+  <member><name>status</name><value><boolean>1</boolean></value></member>
+  <member><name>id</name><value><int>-1</int></value></member>
+  <member><name>additionalInfo</name><value><string></string></value></member>
+  <member><name>message</name><value><string>Success!</string></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <string>Hello!</string>
+      </value>
+    </param>
+  </params>
+</methodResponse>

@@ -1,0 +1,22 @@
+In the beginning we were using FTP to update the site. 
+
+Now we are using a maven plug-in that compresses the site folder, uploads it 
+to the web server and updates the site much faster. 
+
+    Create a shell on shell.sourceforge.net with your username and project group
+
+    ssh -t <username>,<project name>@shell.sf.net create
+
+    Use shell.sourceforge.net (instead of web.sourceforge.net) in you site URL
+
+      ...
+      <distributionManagement>
+        ...
+        <site>
+          <id>your_project.sf.net</id>
+          <url>scp://shell.sourceforge.net/home/groups/y/yo/your_project/htdocs</url>
+        </site>
+      </distributionManagement>
+
+    Run mvn site:deploy
+    Verify that you have a working web site by opening a browser to http://your_project.sf.net

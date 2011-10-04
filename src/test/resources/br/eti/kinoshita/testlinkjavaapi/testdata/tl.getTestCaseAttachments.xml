@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>60</name><value><struct>
+  <member><name>id</name><value><string>60</string></value></member>
+  <member><name>name</name><value><string>o.txt</string></value></member>
+  <member><name>file_type</name><value><string>text/plain</string></value></member>
+  <member><name>title</name><value><string>My attachment</string></value></member>
+  <member><name>date_added</name><value><string>2011-10-01 18:11:41</string></value></member>
+  <member><name>content</name><value><string>eW8h</string></value></member>
+</struct></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

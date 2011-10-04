@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>id</name><value><string>1</string></value></member>
+  <member><name>notes</name><value><string>&lt;p&gt;Super duper project for TDC 2011.&lt;/p&gt;</string></value></member>
+  <member><name>color</name><value><string></string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>option_reqs</name><value><string>0</string></value></member>
+  <member><name>option_priority</name><value><string>0</string></value></member>
+  <member><name>option_automation</name><value><string>0</string></value></member>
+  <member><name>options</name><value><string>O:8:&quot;stdClass&quot;:4:{s:19:&quot;requirementsEnabled&quot;;i:1;s:19:&quot;testPriorityEnabled&quot;;i:1;s:17:&quot;automationEnabled&quot;;i:1;s:16:&quot;inventoryEnabled&quot;;i:1;}</string></value></member>
+  <member><name>prefix</name><value><string>tp</string></value></member>
+  <member><name>tc_counter</name><value><string>2</string></value></member>
+  <member><name>is_public</name><value><string>1</string></value></member>
+  <member><name>name</name><value><string>tdc project</string></value></member>
+  <member><name>opt</name><value><struct>
+  <member><name>requirementsEnabled</name><value><int>1</int></value></member>
+  <member><name>testPriorityEnabled</name><value><int>1</int></value></member>
+  <member><name>automationEnabled</name><value><int>1</int></value></member>
+  <member><name>inventoryEnabled</name><value><int>1</int></value></member>
+</struct></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

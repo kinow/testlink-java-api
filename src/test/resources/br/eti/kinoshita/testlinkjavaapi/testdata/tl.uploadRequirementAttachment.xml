@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>fk_id</name><value><int>11</int></value></member>
+  <member><name>fk_table</name><value><string>requirements</string></value></member>
+  <member><name>title</name><value><string>My attachment</string></value></member>
+  <member><name>description</name><value><string>Sample</string></value></member>
+  <member><name>file_name</name><value><string>o.txt</string></value></member>
+  <member><name>file_size</name><value><int>3</int></value></member>
+  <member><name>file_type</name><value><string>text/plain</string></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="TestLink Java API">
+  
+  <bannerLeft>
+    <name>TestLink Java API</name>
+    <src>images/testlink-java-api-project.png</src>
+    <href>http://sourceforge.net/projects/testlinkjavaapi/</href>
+  </bannerLeft>
+  
+  <body>
+  
+  	<breadcrumbs>
+  		<item name="TestLink" href="http://www.teamst.org" />
+  	</breadcrumbs>
+  
+    <links>
+      <item name="Bruno P. Kinoshita" href="http://www.kinoshita.eti.br" />
+    </links>
+
+    <menu name="Reference">
+      <item name="Introduction" href="index.html"/>
+      <item name="Implemented methods" href="implemented_methods.html"/>
+      <item name="Download" href="downloads.html"/>
+      <item name="Release Notes" href="release_notes.html"/>
+      <item name="Roadmap" href="roadmap.html"/>
+      <!-- item name="FAQ" href="faq.html"/ -->
+      <item name="Related projects" href="related_projects.html"/>
+    </menu>
+    
+    <menu name="API Architecture">
+      <item name="Internal Structure" href="structure.html"/>
+      <item name="Exception Handling" href="exceptions.html"/>
+    </menu>
+    
+    <menu name="Tutorial">
+      <item name="Develop TestLink Java API" href="extending.html"/>
+      <item name="Creating a new instance of the API object" href="sample1.html"/>
+      <item name="Creating a new test project" href="sample2.html"/>
+      <item name="Uploading an attachment to a test case execution" href="sample3.html"/>
+    </menu>
+
+    <menu ref="reports" />
+
+  </body>
+  
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-stylus-skin</artifactId>
+    <version>1.2</version>
+  </skin>
+  
+</project>

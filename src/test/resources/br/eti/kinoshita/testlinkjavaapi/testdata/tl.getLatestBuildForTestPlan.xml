@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>id</name><value><string>7</string></value></member>
+  <member><name>testplan_id</name><value><string>5</string></value></member>
+  <member><name>name</name><value><string>tdc-1.0</string></value></member>
+  <member><name>notes</name><value><string>Build creado automaticamente con TestLink Jenkins Plug-in.</string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>is_open</name><value><string>1</string></value></member>
+  <member><name>release_date</name><value><string></string></value></member>
+  <member><name>closed_on_date</name><value><string></string></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

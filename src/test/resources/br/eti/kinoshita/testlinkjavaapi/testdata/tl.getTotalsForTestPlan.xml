@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>type</name><value><string>platform</string></value></member>
+  <member><name>name</name><value><string></string></value></member>
+  <member><name>total_tc</name><value><int>2</int></value></member>
+  <member><name>details</name><value><struct>
+  <member><name>not_run</name><value><struct>
+  <member><name>qty</name><value><int>0</int></value></member>
+</struct></value></member>
+  <member><name>passed</name><value><struct>
+  <member><name>qty</name><value><int>1</int></value></member>
+</struct></value></member>
+  <member><name>failed</name><value><struct>
+  <member><name>qty</name><value><int>0</int></value></member>
+</struct></value></member>
+  <member><name>blocked</name><value><struct>
+  <member><name>qty</name><value><int>1</int></value></member>
+</struct></value></member>
+</struct></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

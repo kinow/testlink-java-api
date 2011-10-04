@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>9</name><value><array><data>
+  <value><string>tdc project</string></value>
+  <value><string>suite1</string></value>
+  <value><string>Show all veterinarians</string></value>
+  <value><string></string></value>
+</data></array></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+

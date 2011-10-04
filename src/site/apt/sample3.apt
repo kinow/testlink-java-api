@@ -1,0 +1,32 @@
+Uploading an attachment to a test case execution
+
+ In this example I'm using commons-io and commons-codec to retrieve the 
+ attachment content Base64 encoded.
+
++-----+
+	
+	File attachmentFile = new File("c:\\tmp\\selenium_temp.jpg");
+	
+	String fileContent = null;
+	
+	try
+	{
+		byte[] byteArray = FileUtils.readFileToByteArray(attachmentFile);
+		fileContent = Base64.encodeBase64String( byteArray );
+	} catch (IOException e)
+	{
+		e.printStackTrace( System.err );
+		System.exit(-1);
+	}
+	
+	Attachment attachment =  api.uploadExecutionAttachment(
+		1, //executionId 
+		"Setting customer plan", //title 
+		"In this screen the attendant is defining the customer plan", //description  
+		"screenshot_customer_plan_"+System.currentTimeMillis()+".jpg", //fileName 
+		"image/jpeg", //fileType
+		fileContent); //content
+	
+	System.out.println("Attachment uploaded");
+
++-----+
