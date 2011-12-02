@@ -20,6 +20,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
@@ -134,6 +135,74 @@ extends BaseService
 		}
 		
 		return testCase;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> createTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		TestCaseStepAction action,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		Map<String, Object> responseMap = null;
+		
+		try
+		{
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), testCaseExternalId);
+			executionData.put(TestLinkParams.version.toString(), version);
+			executionData.put(TestLinkParams.action.toString(), action.toString());
+			
+			List<Map<String, Object>> steps = Util.getTestCaseStepsMap(testCaseSteps);
+			executionData.put(TestLinkParams.steps.toString(), steps);
+			
+			Object response = this.executeXmlRpcCall(
+					TestLinkMethods.createTestCaseSteps.toString(), executionData);
+			responseMap = (Map<String, Object>) response;
+		} 
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException(
+					"Error adding steps to test case: " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+		
+		return responseMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> deleteTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		Map<String, Object> responseMap = null;
+		
+		try
+		{
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), testCaseExternalId);
+			executionData.put(TestLinkParams.version.toString(), version);
+			
+			List<Integer> steps = Util.getTestCaseStepsIdList(testCaseSteps);
+			executionData.put(TestLinkParams.steps.toString(), steps);
+			
+			Object response = this.executeXmlRpcCall(
+					TestLinkMethods.deleteTestCaseSteps.toString(), executionData);
+			responseMap = (Map<String, Object>) response;
+		} 
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException(
+					"Error deleting steps from test case: " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+		
+		return responseMap;
 	}
 
 	@SuppressWarnings("unchecked")

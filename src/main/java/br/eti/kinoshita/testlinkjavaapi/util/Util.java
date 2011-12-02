@@ -293,20 +293,7 @@ public class Util
 		executionData.put(TestLinkParams.authorLogin.toString(), testCase.getAuthorLogin());
 		executionData.put(TestLinkParams.summary.toString(), testCase.getSummary());
 				
-		List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
-		List<TestCaseStep> testCaseSteps = testCase.getSteps();
-		if ( testCaseSteps != null && testCaseSteps.size() > 0 )
-		{
-			for (
-				Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); 
-				iterator.hasNext();
-				) 
-			{
-				TestCaseStep testCaseStep = iterator.next();
-				Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep);
-				steps.add( testCaseStepMap );
-			}
-		}
+		List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
 		executionData.put(TestLinkParams.steps.toString(), steps);
 		
 		executionData.put(TestLinkParams.preconditions.toString(), testCase.getPreconditions());
@@ -318,6 +305,69 @@ public class Util
 		executionData.put(TestLinkParams.actionOnDuplicatedName.toString(), testCase.getActionOnDuplicatedName());
 
 		return executionData;
+	}
+	
+	/**
+	 * 
+	 * @param testCaseSteps
+	 * @return A list whit one Map for each TestCaseStep
+	 * @since 1.9.4-1
+	 */
+	public static final List<Map<String, Object>> getTestCaseStepsMap(List<TestCaseStep> testCaseSteps)
+	{
+		List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
+		
+		if ( testCaseSteps != null && testCaseSteps.size() > 0 )
+		{
+			/*
+			for(TestCaseStep step : testCaseSteps)
+				steps.add(getTestCaseStepMap(step));
+			*/
+			
+			// Why uses an iterator over a foreach?
+			for (
+				Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); 
+				iterator.hasNext();
+				) 
+			{
+				TestCaseStep testCaseStep = iterator.next();
+				Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep, true);
+				steps.add( testCaseStepMap );
+			}
+		}
+		
+		return steps;
+	}
+	
+	/**
+	 * 
+	 * @param testCaseSteps
+	 * @return A list with the step's id
+	 * @since 1.9.4-1
+	 */
+	public static final List<Integer> getTestCaseStepsIdList(List<TestCaseStep> testCaseSteps)
+	{
+		List<Integer> steps = new ArrayList<Integer>();
+		
+		if ( testCaseSteps != null && testCaseSteps.size() > 0 )
+		{
+			/*
+			for (TestCaseStep step : testCaseSteps)
+				steps.add(step.getId());
+			*/
+			
+			// Why uses an iterator over a foreach?
+			for (
+				Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); 
+				iterator.hasNext();
+				) 
+			{
+				TestCaseStep testCaseStep = iterator.next();
+				steps.add( testCaseStep.getNumber() );
+			}
+		}
+		
+		return steps;
 	}
 
 	/**
@@ -353,17 +403,31 @@ public class Util
 	}
 	
 	/**
+	 * 
 	 * @param testCaseStep
 	 * @return Map of Test Case Step.
 	 */
 	public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) 
 	{
+		return getTestCaseStepMap(testCaseStep, false);
+	}
+	
+	/**
+	 * @param testCaseStep
+	 * @param internal the API uses different names for the the same parameter in different methods.
+	 * @return Map of Test Case Step.
+	 */
+	public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) 
+	{
 		Map<String, Object> executionData = new HashMap<String, Object>();
 		executionData.put(TestLinkParams.stepNumber.toString(), testCaseStep.getNumber());
 		executionData.put(TestLinkParams.actions.toString(), testCaseStep.getActions());
 		executionData.put(TestLinkParams.expectedResults.toString(), testCaseStep.getExpectedResults());
+		if (internal)
+			executionData.put(TestLinkParams.stepExecutionType.toString(), testCaseStep.getExecutionType().getValue());
+		else
+			executionData.put(TestLinkParams.executionType.toString(), testCaseStep.getExecutionType());
 		
-		executionData.put(TestLinkParams.executionType.toString(), testCaseStep.getExecutionType());
 		return executionData;
 	}
 

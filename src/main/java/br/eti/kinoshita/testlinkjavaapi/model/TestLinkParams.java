@@ -41,6 +41,7 @@ public enum TestLinkParams
 {
 	actionOnDuplicatedName("actionOnDuplicatedName"), 
 	actions("actions"), 
+	action("action"), 
 	active("active"), 
 	assignedTo("assignedto"), 
 	authorLogin("authorlogin"), 
@@ -64,7 +65,8 @@ public enum TestLinkParams
 	executeStatus("executestatus"),
 	execution("execution"), 
 	executionId("executionid"), 
-	executionType("executiontype"), 
+	executionType("executiontype"),
+	stepExecutionType("execution_type"), 
 	expectedResults("expected_results"), 
 	fileName("filename"), 
 	fileType("filetype"), 

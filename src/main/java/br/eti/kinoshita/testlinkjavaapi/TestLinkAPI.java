@@ -51,6 +51,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
@@ -859,6 +860,133 @@ public class TestLinkAPI
 			internalId, 
 			checkDuplicatedName, 
 			actionOnDuplicatedName
+		);
+	}
+	
+	/**
+	 * Create, Update or Push a list of TestCaseSteps in a Test Case.
+	 * 
+	 * @param testCaseExternalId
+	 * @param version
+	 * @param testCaseSteps
+	 * @return a Map with results.
+	 * @throws TestLinkAPIException
+	 */
+	public Map<String, Object> createTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		TestCaseStepAction action,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		return this.testCaseService.createTestCaseSteps(
+			testCaseExternalId,
+			version,
+			TestCaseStepAction.Create,
+			testCaseSteps
+		);
+	}
+	
+	/**
+	 * Add a list of TestCaseSteps in a Test Case.
+	 * A convenient method to add steps, internally call to the
+	 * {@link #createTestCaseSteps(Integer, Integer, TestCaseStepAction, List)} method with 'Create' action.
+	 * 
+	 * @param testCaseExternalId
+	 * @param version
+	 * @param testCaseSteps
+	 * @return a Map with results.
+	 * @throws TestLinkAPIException
+	 */
+	public Map<String, Object> addTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		return createTestCaseSteps(
+			testCaseExternalId,
+			version,
+			TestCaseStepAction.Create,
+			testCaseSteps
+		);
+	}
+	
+	/**
+	 * Update (override) a list of TestCaseSteps in a Test Case.
+	 * A convenient method to update steps, internally call to the
+	 * {@link #createTestCaseSteps(Integer, Integer, TestCaseStepAction, List)} method with 'Update' action.
+	 * 
+	 * @param testCaseExternalId
+	 * @param version
+	 * @param testCaseSteps
+	 * @return a Map with results.
+	 * @throws TestLinkAPIException
+	 */
+	public Map<String, Object> updateTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		return createTestCaseSteps(
+			testCaseExternalId,
+			version,
+			TestCaseStepAction.Update,
+			testCaseSteps
+		);
+	}
+	
+	/**
+	 * Push (insert and move down previous steps) a list of
+	 * TestCaseSteps in a TestCase.
+	 * A convenient method to push steps, internally call to the
+	 * {@link #createTestCaseSteps(Integer, Integer, TestCaseStepAction, List)} method with 'Push' action.
+	 * 
+	 * @param testCaseExternalId
+	 * @param version
+	 * @param testCaseSteps
+	 * @return a Map with results.
+	 * @throws TestLinkAPIException
+	 */
+	public Map<String, Object> pushTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		return createTestCaseSteps(
+			testCaseExternalId,
+			version,
+			TestCaseStepAction.Push,
+			testCaseSteps
+		);
+	}
+	
+	/**
+	 * Delete a list if TestCaseSteps from a Test Case.
+	 * 
+	 * @param testCaseExternalId
+	 * @param version
+	 * @param testCaseSteps
+	 * @return a Map with results.
+	 * @throws TestLinkAPIException
+	 */
+	public Map<String, Object> deleteTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		return this.testCaseService.deleteTestCaseSteps(
+			testCaseExternalId,
+			version,
+			testCaseSteps
 		);
 	}
 	
