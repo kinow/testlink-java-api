@@ -101,7 +101,7 @@ extends BaseService
 			Map<String, Object> executionData = Util.getTestSuiteMap(testSuite);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.createTestSuite.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -134,7 +134,7 @@ extends BaseService
 					TestLinkMethods.getTestSuiteByID.toString(), executionData);
 			if ( response instanceof Object[] )
 			{
-				Object[] responseArray = (Object[])response;
+				Object[] responseArray = Util.castToArray(response);
 				testSuites = new TestSuite[responseArray.length];
 				
 				for (int i = 0; i < responseArray.length; i++) 
@@ -230,7 +230,7 @@ extends BaseService
 			
 			Object response = this.executeXmlRpcCall( TestLinkMethods.getTestSuitesForTestPlan.toString(), executionData );
 		
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			testSuites = new TestSuite[ responseArray.length ];
 			
 			for (int i = 0; i < responseArray.length; i++) 
@@ -321,7 +321,7 @@ extends BaseService
 			executionData.put(TestLinkParams.testProjectId.toString(), testProjectId);
 			Object response = this.executeXmlRpcCall( TestLinkMethods.getFirstLevelTestSuitesForTestProject.toString(), executionData );
 			
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			testSuites = new TestSuite[ responseArray.length ];
 			
 			for (int i = 0; i < responseArray.length; i++) 

@@ -1062,6 +1062,24 @@ public class TestLinkAPI
 	}
 	
 	/**
+	 * Get a Test Case using the full external id, composed by the prefix and
+	 * the external id: prefix-externalId
+	 * 
+	 * @param fullTestCaseExternalId Full external id: prefix-externalId
+	 * @param version
+	 * @return Test Case.
+	 * @throws TestLinkAPIException
+	 */
+	public TestCase getTestCaseByExternalId(
+			String fullTestCaseExternalId, 
+			Integer version
+	) 
+	throws TestLinkAPIException
+	{
+		return this.testCaseService.getTestCaseByExternalId(fullTestCaseExternalId, version);
+	}
+	
+	/**
 	 * Retrieves Test Cases for Test Plans.
 	 * 
 	 * @param testPlanId

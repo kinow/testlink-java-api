@@ -69,6 +69,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
  */
 public class Util
 {
+	public static final Object[] EMPTY_ARRAY = new Object[0];
 
 	private Util(){}
 	
@@ -556,11 +557,28 @@ public class Util
 		if ( map != null && map.size() > 0 )
 		{
 			Object o = map.get(key);
-			if ( o != null )
-			{
-				array = (Object[])o;
-			}
+			array = castToArray(o);
 		}
+		return array;
+	}
+	
+	/**
+	 * 
+	 * @param object
+	 * @return Array of objects
+	 */
+	public static Object[] castToArray(Object object)
+	{
+		Object[] array = null;
+		
+		if ( object != null )
+		{
+			if (object instanceof String)
+				array = EMPTY_ARRAY;
+			else
+				array = (Object[])object;
+		}
+		
 		return array;
 	}
 

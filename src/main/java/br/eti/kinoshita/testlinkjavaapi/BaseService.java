@@ -103,7 +103,7 @@ abstract class BaseService
 	{
 		if ( response instanceof Object[] ) // may be an array of errors (IXError)
 		{
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			
 			for (int i = 0; i < responseArray.length; i++)
 			{

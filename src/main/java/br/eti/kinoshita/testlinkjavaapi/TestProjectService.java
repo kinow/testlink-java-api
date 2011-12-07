@@ -97,7 +97,7 @@ extends BaseService
 			Map<String, Object> executionData = Util.getTestProjectMap(testProject);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.createTestProject.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -124,7 +124,7 @@ extends BaseService
 			executionData.put(TestLinkParams.testProjectName.toString(), projectName);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestProjectByName.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			testProject = Util.getTestProject( responseMap );
 		}
@@ -153,7 +153,7 @@ extends BaseService
 			Map<String, Object> executionData = new HashMap<String, Object>();
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getProjects.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			projects = new TestProject[responseArray.length];
 			for (int i = 0; i < responseArray.length; i++)
 			{
@@ -191,7 +191,7 @@ extends BaseService
 			executionData.put(TestLinkParams.testProjectId.toString(), projectId);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getProjectTestPlans.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			testPlans = new TestPlan[responseArray.length];
 			for (int i = 0; i < responseArray.length; i++)
 			{

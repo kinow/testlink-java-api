@@ -122,7 +122,7 @@ extends BaseService
 			Map<String, Object> executionData = Util.getTestCaseMap(testCase);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.createTestCase.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -270,7 +270,7 @@ extends BaseService
 			executionData.put(TestLinkParams.details.toString(), details);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestSuite.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			
 			testCases = new TestCase[ responseArray.length ];
 			
@@ -381,7 +381,6 @@ extends BaseService
 		return testCases;
 	}
 	
-	
 	/**
 	 * 
 	 * @param testCaseId
@@ -408,7 +407,7 @@ extends BaseService
 			
 			Object response = this.executeXmlRpcCall( TestLinkMethods.getTestCase.toString(), executionData );
 			
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			testCase = Util.getTestCase( responseMap );
@@ -421,6 +420,42 @@ extends BaseService
 		return testCase;
 	}
 	
+	/**
+	 * 
+	 * @param fullTestCaseExternalId Full external id: prefix-externalId
+	 * @param version
+	 * @return
+	 * @throws TestLinkAPIException
+	 */
+	@SuppressWarnings("unchecked")
+	protected TestCase getTestCaseByExternalId( 
+								   String fullTestCaseExternalId, 
+								   Integer version) 
+	throws TestLinkAPIException
+	{
+		TestCase testCase = null;
+		
+		try 
+		{
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), fullTestCaseExternalId);
+			executionData.put(TestLinkParams.version.toString(), version);
+			
+			Object response = this.executeXmlRpcCall( TestLinkMethods.getTestCase.toString(), executionData );
+			
+			Object[] responseArray = Util.castToArray(response);
+			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
+			
+			testCase = Util.getTestCase( responseMap );
+		}
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException( "Error getting test case info : " + xmlrpcex.getMessage(), xmlrpcex );
+		}
+		
+		return testCase;
+	}
 	
 	/**
 	 * 
@@ -454,7 +489,7 @@ extends BaseService
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCaseIDByName.toString(), executionData);
 			
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			testCaseID = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -705,7 +740,7 @@ extends BaseService
 			// the error verification routine is called inside super.executeXml...
 			if ( response instanceof Object[] )
 			{
-				Object[] responseArray = (Object[])response;
+				Object[] responseArray = Util.castToArray(response);
 				Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 				
 				reportTCResultResponse = Util.getReportTCResultResponse( responseMap );
