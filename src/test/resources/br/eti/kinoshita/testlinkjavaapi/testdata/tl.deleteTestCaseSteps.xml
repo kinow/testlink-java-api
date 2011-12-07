@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>testcaseid</name><value><int>1</int></value></member>
+  <member><name>item</name><value><string></string></value></member>
+  <member><name>version</name><value><string>exists</string></value></member>
+  <member><name>stepSet</name><value><struct>
+  <member><name>1</name><value><struct>
+  <member><name>id</name><value><string>2</string></value></member>
+  <member><name>step_number</name><value><string>1</string></value></member>
+  <member><name>actions</name><value><string>action1</string></value></member>
+  <member><name>expected_results</name><value><string>result1</string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>execution_type</name><value><string>2</string></value></member>
+</struct></value></member>
+  <member><name>2</name><value><struct>
+  <member><name>id</name><value><string>3</string></value></member>
+  <member><name>step_number</name><value><string>2</string></value></member>
+  <member><name>actions</name><value><string>action2</string></value></member>
+  <member><name>expected_results</name><value><string>result2</string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>execution_type</name><value><string>2</string></value></member>
+</struct></value></member>
+</struct></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

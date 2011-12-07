@@ -20,6 +20,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
@@ -121,7 +122,7 @@ extends BaseService
 			Map<String, Object> executionData = Util.getTestCaseMap(testCase);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.createTestCase.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -134,6 +135,74 @@ extends BaseService
 		}
 		
 		return testCase;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> createTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		TestCaseStepAction action,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		Map<String, Object> responseMap = null;
+		
+		try
+		{
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), testCaseExternalId);
+			executionData.put(TestLinkParams.version.toString(), version);
+			executionData.put(TestLinkParams.action.toString(), action.toString());
+			
+			List<Map<String, Object>> steps = Util.getTestCaseStepsMap(testCaseSteps);
+			executionData.put(TestLinkParams.steps.toString(), steps);
+			
+			Object response = this.executeXmlRpcCall(
+					TestLinkMethods.createTestCaseSteps.toString(), executionData);
+			responseMap = (Map<String, Object>) response;
+		} 
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException(
+					"Error adding steps to test case: " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+		
+		return responseMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> deleteTestCaseSteps(
+		String testCaseExternalId,
+		Integer version,
+		List<TestCaseStep> testCaseSteps
+	)
+	throws TestLinkAPIException
+	{
+		Map<String, Object> responseMap = null;
+		
+		try
+		{
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), testCaseExternalId);
+			executionData.put(TestLinkParams.version.toString(), version);
+			
+			List<Integer> steps = Util.getTestCaseStepsIdList(testCaseSteps);
+			executionData.put(TestLinkParams.steps.toString(), steps);
+			
+			Object response = this.executeXmlRpcCall(
+					TestLinkMethods.deleteTestCaseSteps.toString(), executionData);
+			responseMap = (Map<String, Object>) response;
+		} 
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException(
+					"Error deleting steps from test case: " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+		
+		return responseMap;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -201,7 +270,7 @@ extends BaseService
 			executionData.put(TestLinkParams.details.toString(), details);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestSuite.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			
 			testCases = new TestCase[ responseArray.length ];
 			
@@ -312,7 +381,6 @@ extends BaseService
 		return testCases;
 	}
 	
-	
 	/**
 	 * 
 	 * @param testCaseId
@@ -339,7 +407,7 @@ extends BaseService
 			
 			Object response = this.executeXmlRpcCall( TestLinkMethods.getTestCase.toString(), executionData );
 			
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			testCase = Util.getTestCase( responseMap );
@@ -352,6 +420,42 @@ extends BaseService
 		return testCase;
 	}
 	
+	/**
+	 * 
+	 * @param fullTestCaseExternalId Full external id: prefix-externalId
+	 * @param version
+	 * @return
+	 * @throws TestLinkAPIException
+	 */
+	@SuppressWarnings("unchecked")
+	protected TestCase getTestCaseByExternalId( 
+								   String fullTestCaseExternalId, 
+								   Integer version) 
+	throws TestLinkAPIException
+	{
+		TestCase testCase = null;
+		
+		try 
+		{
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), fullTestCaseExternalId);
+			executionData.put(TestLinkParams.version.toString(), version);
+			
+			Object response = this.executeXmlRpcCall( TestLinkMethods.getTestCase.toString(), executionData );
+			
+			Object[] responseArray = Util.castToArray(response);
+			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
+			
+			testCase = Util.getTestCase( responseMap );
+		}
+		catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException( "Error getting test case info : " + xmlrpcex.getMessage(), xmlrpcex );
+		}
+		
+		return testCase;
+	}
 	
 	/**
 	 * 
@@ -385,7 +489,7 @@ extends BaseService
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCaseIDByName.toString(), executionData);
 			
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			testCaseID = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -636,7 +740,7 @@ extends BaseService
 			// the error verification routine is called inside super.executeXml...
 			if ( response instanceof Object[] )
 			{
-				Object[] responseArray = (Object[])response;
+				Object[] responseArray = Util.castToArray(response);
 				Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 				
 				reportTCResultResponse = Util.getReportTCResultResponse( responseMap );

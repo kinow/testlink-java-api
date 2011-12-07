@@ -41,6 +41,15 @@
 				<role>developer</role>
 			</roles>
 		</developer>
+		<developer>
+			<id>mario-fuentes</id>
+			<email>mario@gnome.cl</email>
+			<name>Mario Fuentes</name>
+			<timezone>-4</timezone>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
 	</developers>
 
 	<url>http://sourceforge.net/projects/testlinkjavaapi</url>

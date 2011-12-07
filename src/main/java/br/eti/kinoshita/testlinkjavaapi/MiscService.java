@@ -333,7 +333,7 @@ extends BaseService
 			executionData.put( TestLinkParams.testCaseExternalId.toString(), testCaseExternalId );
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getLastExecutionResult.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			if ( responseMap instanceof Map<?, ?> && responseMap.size() > 0  )
 			{
