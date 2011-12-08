@@ -51,7 +51,7 @@ extends BaseService
 			Map<String, Object> executionData = Util.getBuildMap(build);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.createBuild.toString(), executionData);
-			Object[] responseArray = (Object[])response;
+			Object[] responseArray = Util.castToArray(response);
 			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
 			
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
@@ -84,7 +84,7 @@ extends BaseService
 					TestLinkMethods.getBuildsForTestPlan.toString(), executionData);
 			if ( response instanceof Object[])
 			{
-				Object[] responseArray = (Object[])response;
+				Object[] responseArray = Util.castToArray(response);
 				builds = new Build[ responseArray.length ];
 				for (int i = 0; i < responseArray.length; i++)
 				{

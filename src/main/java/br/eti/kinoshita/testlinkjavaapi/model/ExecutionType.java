@@ -38,6 +38,11 @@ public enum ExecutionType
 		return null;
 	}
 	
+	public Integer getValue()
+	{
+		return value;
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Enum#toString()
 	 */
