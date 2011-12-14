@@ -267,7 +267,7 @@ extends BaseService
 			executionData.put(TestLinkParams.testSuiteId.toString(), testSuiteId);
 			Object response = this.executeXmlRpcCall( TestLinkMethods.getTestSuitesForTestSuite.toString(), executionData );
 
-			Map<String, Object> responseMap = (Map<String, Object>)response;
+			Map<String, Object> responseMap = Util.castToMap(response);
 			Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 			
 			testSuites = new TestSuite[ entrySet.size() ];

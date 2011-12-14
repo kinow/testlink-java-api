@@ -9,9 +9,9 @@ package br.eti.kinoshita.testlinkjavaapi.model;
  */
 public enum TestImportance {
 
-	LOW("Low"), 
-	MEDIUM("Medium"), 
-	HIGH("High");
+	LOW("1"), 
+	MEDIUM("2"), 
+	HIGH("3");
 	
 	private String value;
 	

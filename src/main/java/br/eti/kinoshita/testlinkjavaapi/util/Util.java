@@ -70,6 +70,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
 public class Util
 {
 	public static final Object[] EMPTY_ARRAY = new Object[0];
+	public static final Map<String,Object> EMPTY_MAP = new HashMap<String, Object>();
 
 	private Util(){}
 	
@@ -299,7 +300,7 @@ public class Util
 		
 		executionData.put(TestLinkParams.preconditions.toString(), testCase.getPreconditions());
 		executionData.put(TestLinkParams.importance.toString(), Util.getStringValueOrNull(testCase.getTestImportance()));
-		executionData.put(TestLinkParams.execution.toString(), Util.getStringValueOrNull( testCase.getExecutionType()));
+		executionData.put(TestLinkParams.executionType.toString(), Util.getStringValueOrNull( testCase.getExecutionType()));
 		executionData.put(TestLinkParams.order.toString(), testCase.getOrder());
 		executionData.put(TestLinkParams.internalId.toString(), testCase.getInternalId());
 		executionData.put(TestLinkParams.checkDuplicatedName.toString(), testCase.getCheckDuplicatedName());
@@ -580,6 +581,27 @@ public class Util
 		}
 		
 		return array;
+	}
+	
+	/**
+	 * 
+	 * @param object
+	 * @return Map of objects
+	 */
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> castToMap(Object object)
+	{
+		Map<String, Object> map = null;
+		
+		if ( object != null )
+		{
+			if (object instanceof String)
+				map = EMPTY_MAP;
+			else
+				map = (Map<String, Object>) object; 
+		}
+		
+		return map;
 	}
 
 	/**
