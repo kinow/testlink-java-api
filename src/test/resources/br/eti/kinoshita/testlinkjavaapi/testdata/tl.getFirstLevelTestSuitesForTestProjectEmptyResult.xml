@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>code</name><value><int>7008</int></value></member>
+  <member><name>message</name><value><string>(getFirstLevelTestSuitesForTestProject) - El proyecto (EMPTY PROJECT) est\xc3\xa1 vac\xc3\xado.</string></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>
