@@ -66,6 +66,7 @@ extends BaseTest
 					null, 
 					null, 
 					null, 
+					null,
 					null);
 			
 			for( TestCase tc : tcs )

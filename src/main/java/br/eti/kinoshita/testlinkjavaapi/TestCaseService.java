@@ -19,6 +19,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
@@ -256,7 +257,7 @@ extends BaseService
 	protected TestCase[] getTestCasesForTestSuite(
 		Integer testSuiteId,
 		Boolean deep, 
-		String details)
+		TestCaseDetails detail)
 	throws TestLinkAPIException
 	{
 		
@@ -267,7 +268,7 @@ extends BaseService
 			Map<String, Object> executionData = new HashMap<String, Object>();
 			executionData.put(TestLinkParams.testSuiteId.toString(), testSuiteId);
 			executionData.put(TestLinkParams.deep.toString(), deep);
-			executionData.put(TestLinkParams.details.toString(), details);
+			executionData.put(TestLinkParams.details.toString(), Util.getStringValueOrNull(detail));
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestSuite.toString(), executionData);
 			Object[] responseArray = Util.castToArray(response);
@@ -314,7 +315,8 @@ extends BaseService
 		List<Integer> assignedTo, 
 		String executeStatus,
 		ExecutionType executionType, 
-		Boolean getStepInfo)
+		Boolean getStepInfo,
+		TestCaseDetails detail)
 	throws TestLinkAPIException
 	{
 		TestCase[] testCases = null;
@@ -332,6 +334,7 @@ extends BaseService
 			executionData.put(TestLinkParams.executeStatus.toString(), Util.getStringValueOrNull( executeStatus ));
 			executionData.put(TestLinkParams.executionType.toString(), Util.getStringValueOrNull( executionType ) );
 			executionData.put(TestLinkParams.getStepInfo.toString(), getStepInfo);
+			executionData.put(TestLinkParams.details.toString(), Util.getStringValueOrNull( detail ));
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestPlan.toString(), executionData);
 			

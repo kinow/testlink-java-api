@@ -50,6 +50,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
@@ -1035,11 +1036,11 @@ public class TestLinkAPI
 	public TestCase[] getTestCasesForTestSuite(
 		Integer testSuiteId, 
 		Boolean deep, 
-		String details
+		TestCaseDetails detail
 	) 
 	throws TestLinkAPIException
 	{
-		return this.testCaseService.getTestCasesForTestSuite(testSuiteId, deep, details);
+		return this.testCaseService.getTestCasesForTestSuite(testSuiteId, deep, detail);
 	}
 	
 
@@ -1105,7 +1106,8 @@ public class TestLinkAPI
 		List<Integer> assignedTo, 
 		String executeStatus, // , separated e.g.: p,n,f
 		ExecutionType executionType, 
-		Boolean getStepInfo
+		Boolean getStepInfo,
+		TestCaseDetails detail
 		) 
 	throws TestLinkAPIException
 	{
@@ -1119,7 +1121,8 @@ public class TestLinkAPI
 			assignedTo, 
 			executeStatus, 
 			executionType, 
-			getStepInfo
+			getStepInfo,
+			detail
 		);
 	}
 	

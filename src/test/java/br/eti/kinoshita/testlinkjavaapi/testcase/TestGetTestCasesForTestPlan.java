@@ -81,6 +81,7 @@ extends BaseTest
 				null, 
 				null, 
 				null, 
+				null,
 				null
 			);
 		} 
@@ -136,6 +137,7 @@ extends BaseTest
 				null, 
 				null, 
 				ExecutionType.AUTOMATED, 
+				null,
 				null
 			);
 		} 
