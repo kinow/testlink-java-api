@@ -490,7 +490,12 @@ public class Util
 		TestCase testCase = null;
 		if ( map != null && map.size() > 0 )
 		{
-			Object o = map.get( TestLinkResponseParams.id.toString());
+			// IMPORTANT: http://mantis.testlink.org/view.php?id=4784
+			// Different methods to recover test cases use different parameter
+			// names for the id, some uses "id" and others "testcase_id".
+			Object o = map.get( TestLinkResponseParams.testCaseId.toString());
+			if (o == null)
+				o = map.get( TestLinkResponseParams.id.toString());
 			
 			if ( o != null )
 			{
@@ -508,6 +513,7 @@ public class Util
 					testCase.setOrder( getInteger(map, TestLinkResponseParams.order.toString() ) );
 					testCase.setExecutionOrder( getInteger(map, TestLinkResponseParams.executionOrder.toString()));
 					testCase.setName( getString(map, TestLinkResponseParams.name.toString()) );
+					testCase.setFullExternalId( getString(map, TestLinkResponseParams.fullTestCaseExternalId.toString()));
  					Integer executionTypeValue = getInteger( map, TestLinkResponseParams.executionType.toString() );
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
 					testCase.setExecutionType( execution );
