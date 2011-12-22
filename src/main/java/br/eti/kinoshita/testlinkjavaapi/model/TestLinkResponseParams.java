@@ -97,7 +97,8 @@ public enum TestLinkResponseParams
 	actions("actions"), 
 	stepNumber("step_number"), 
 	expectedResults("expected_results"),
-	fullTestCaseExternalId("full_tc_external_id")
+	fullTestCaseExternalId("full_tc_external_id"),
+	externalId("external_id")
 	;
 	
 	private String textValue;

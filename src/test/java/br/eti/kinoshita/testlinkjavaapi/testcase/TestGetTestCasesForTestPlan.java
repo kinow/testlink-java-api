@@ -148,7 +148,7 @@ extends BaseTest
 		
 		Assert.assertNotNull( testCases );
 		
-		Assert.assertTrue( testCases.length == 2 );
+		Assert.assertTrue( testCases.length == 1 );
 	}
 
 }

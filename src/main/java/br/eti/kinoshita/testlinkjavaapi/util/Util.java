@@ -513,7 +513,18 @@ public class Util
 					testCase.setOrder( getInteger(map, TestLinkResponseParams.order.toString() ) );
 					testCase.setExecutionOrder( getInteger(map, TestLinkResponseParams.executionOrder.toString()));
 					testCase.setName( getString(map, TestLinkResponseParams.name.toString()) );
-					testCase.setFullExternalId( getString(map, TestLinkResponseParams.fullTestCaseExternalId.toString()));
+					
+					// IMPORTANT: the full external id (composed by prefix-external_id) come on
+					//            different parameters depending of what methods was used.
+					//
+					// In 'getTestCase' -> 'full_tc_external_id'
+					// In 'getTestCasesForTestSuite' -> 'external_id'
+					// In 'getTestCasesForTestPlan' does not come (ToDo: add)
+					String fullExternalId = getString(map, TestLinkResponseParams.fullTestCaseExternalId.toString());
+					if (fullExternalId == null)
+						fullExternalId = getString(map, TestLinkResponseParams.externalId.toString());
+					testCase.setFullExternalId( fullExternalId );
+					
  					Integer executionTypeValue = getInteger( map, TestLinkResponseParams.executionType.toString() );
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
 					testCase.setExecutionType( execution );
