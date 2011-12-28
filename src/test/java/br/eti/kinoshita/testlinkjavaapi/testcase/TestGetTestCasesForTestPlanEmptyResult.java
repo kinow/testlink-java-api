@@ -2,6 +2,7 @@
  * The MIT License
  *
  * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) <2011> <Mario Fuentes>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,18 +30,18 @@ import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
-import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @author Mario Fuentes - http://www.rhiscom.com
  * @since 
  */
-public class TestGetTestCasesForTestPlan 
+public class TestGetTestCasesForTestPlanEmptyResult 
 extends BaseTest
 {
 	
-	@DataProvider(name="testPlanData")
+	@DataProvider(name="testPlanEmptyData")
 	public Object[][] createTestPlanData()
 	{
 		return new Object[][] 
@@ -51,10 +52,10 @@ extends BaseTest
         };
 	}
 	
-	@Test(dataProvider="testPlanData")
-	public void testGetAutomatedTestCasesForTestPlan(Integer testPlanId)
+	@Test(dataProvider="testPlanEmptyData")
+	public void testGetTestCasesForTestPlan(Integer testPlanId)
 	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
+		this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
 		
 		TestCase[] testCases = null;
 		
@@ -69,7 +70,7 @@ extends BaseTest
 				null, 
 				null, 
 				null, 
-				ExecutionType.AUTOMATED, 
+				null, 
 				null,
 				null
 			);
@@ -81,6 +82,6 @@ extends BaseTest
 		
 		Assert.assertNotNull( testCases );
 		
-		Assert.assertTrue( testCases.length == 1 );
+		Assert.assertTrue( testCases.length == 0 );
 	}
 }

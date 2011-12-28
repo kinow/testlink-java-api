@@ -39,6 +39,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.IntegerValueEnum;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
@@ -992,6 +993,18 @@ public class Util
 		{
 			value = o.toString();
 		}
+		return value;
+	}
+	
+	public static final Integer getIntegerValueOrNull( IntegerValueEnum o )
+	{
+		Integer value = null;
+		
+		if ( o != null )
+		{
+			value = o.getValue();
+		}
+		
 		return value;
 	}
 	
