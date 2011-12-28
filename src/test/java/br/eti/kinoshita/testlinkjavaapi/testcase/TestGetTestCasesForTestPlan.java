@@ -51,72 +51,6 @@ extends BaseTest
         };
 	}
 	
-	@DataProvider(name="testPlanWithoutTestCaseData")
-	public Object[][] createTestPlanWithoutTestCaseData()
-	{
-		return new Object[][] 
-        {
-			{
-				16
-			}
-        };
-	}
-	
-	@Test(dataProvider="testPlanData")
-	public void testGetTestCasesForTestPlan(Integer testPlanId)
-	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
-		
-		TestCase[] testCases = null;
-		
-		try 
-		{
-			testCases = this.api.getTestCasesForTestPlan(
-				testPlanId, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null
-			);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCases );
-		
-		Assert.assertTrue( testCases.length > 0  );
-	}
-	
-//	@Test(dataProvider="testPlanWithoutTestCaseData", 
-//			expectedExceptions=TestLinkAPIException.class)
-//	public void testGetTestCasesForTestPlanWithoutTestCases(Integer testPlanId) 
-//	throws TestLinkAPIException
-//	{
-//		this.loadXMLRPCMockData("tl.getTestCase.xml");
-//		
-//		this.api.getTestCasesForTestPlan(
-//			testPlanId, 
-//			null, 
-//			null, 
-//			null, 
-//			null, 
-//			null, 
-//			null, 
-//			null, 
-//			null, 
-//			null
-//		);
-//		
-//		Assert.fail( "Not supposed to get here." );
-//	}
-	
 	@Test(dataProvider="testPlanData")
 	public void testGetAutomatedTestCasesForTestPlan(Integer testPlanId)
 	{
@@ -136,6 +70,7 @@ extends BaseTest
 				null, 
 				null, 
 				ExecutionType.AUTOMATED, 
+				null,
 				null
 			);
 		} 
@@ -146,7 +81,6 @@ extends BaseTest
 		
 		Assert.assertNotNull( testCases );
 		
-		Assert.assertTrue( testCases.length == 2 );
+		Assert.assertTrue( testCases.length == 1 );
 	}
-
 }

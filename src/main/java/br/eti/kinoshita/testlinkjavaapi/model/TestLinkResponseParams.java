@@ -59,7 +59,8 @@ public enum TestLinkResponseParams
 	testCaseVersionId("tcversion_id"), 
 	summary("summary"), 
 	executionType("execution_type"), 
-	testCaseId("tc_id"), 
+	tcId("tc_id"), 
+	testCaseId("testcase_id"), 
 	content("content"), 
 	fileType("file_type"), 
 	title("title"), 
@@ -95,7 +96,9 @@ public enum TestLinkResponseParams
 	executionOrder("execution_order"), 
 	actions("actions"), 
 	stepNumber("step_number"), 
-	expectedResults("expected_results")
+	expectedResults("expected_results"),
+	fullTestCaseExternalId("full_tc_external_id"),
+	externalId("external_id")
 	;
 	
 	private String textValue;

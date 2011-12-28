@@ -51,6 +51,7 @@ implements Serializable
 	private Integer executionOrder;
 	private Integer order;
 	private Integer internalId;
+	private String fullExternalId;
 	private Boolean checkDuplicatedName;
 	private String actionOnDuplicatedName;
 	private Integer versionId;
@@ -313,6 +314,20 @@ implements Serializable
 	 */
 	public void setInternalId(Integer internalId) {
 		this.internalId = internalId;
+	}
+	/**
+	 * 
+	 * @return the full external Id, composed by the prefix + externalId
+	 */
+	public String getFullExternalId() {
+		return fullExternalId;
+	}
+	/**
+	 * 
+	 * @param fullExternalId the full externalId to set
+	 */
+	public void setFullExternalId(String fullExternalId) {
+		this.fullExternalId = fullExternalId;
 	}
 	/**
 	 * @return the checkDuplicatedName

@@ -9,7 +9,7 @@ package br.eti.kinoshita.testlinkjavaapi.model;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
-public enum ExecutionType 
+public enum ExecutionType implements IntegerValueEnum
 {
 
 	MANUAL(1), 

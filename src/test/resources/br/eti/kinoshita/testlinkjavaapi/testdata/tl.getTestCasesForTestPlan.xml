@@ -4,83 +4,35 @@
     <param>
       <value>
         <struct>
-  <member><name>3</name><value><array><data>
-  <value><struct>
-  <member><name>testsuite_id</name><value><string>2</string></value></member>
-  <member><name>summary</name><value><string>&lt;p&gt;Correctly display the list of veterinarians in the system. Our Sharon must be there!&amp;nbsp;She's very special for our team.&lt;/p&gt;</string></value></member>
-  <member><name>tsuite_name</name><value><string>suite1</string></value></member>
-  <member><name>tc_id</name><value><string>3</string></value></member>
-  <member><name>z</name><value><string>100</string></value></member>
-  <member><name>name</name><value><string>Show all veterinarians</string></value></member>
-  <member><name>platform_id</name><value><string>0</string></value></member>
-  <member><name>platform_name</name><value><string></string></value></member>
-  <member><name>feature_id</name><value><string>2</string></value></member>
-  <member><name>tcversion_id</name><value><string>4</string></value></member>
-  <member><name>execution_order</name><value><string>1000</string></value></member>
-  <member><name>linked_ts</name><value><string>2011-09-27 16:04:55</string></value></member>
-  <member><name>linked_by</name><value><string>1</string></value></member>
-  <member><name>version</name><value><string>1</string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>external_id</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-  <member><name>importance</name><value><string>2</string></value></member>
-  <member><name>exec_id</name><value><string>45</string></value></member>
-  <member><name>tcversion_number</name><value><string>1</string></value></member>
-  <member><name>executed</name><value><string>4</string></value></member>
-  <member><name>exec_on_tplan</name><value><string>5</string></value></member>
-  <member><name>execution_run_type</name><value><string>2</string></value></member>
-  <member><name>execution_ts</name><value><string>2011-09-28 14:58:08</string></value></member>
-  <member><name>tester_id</name><value><string>1</string></value></member>
-  <member><name>execution_notes</name><value><string>1..4
-ok 1 - PASS
-not ok 2 - FAIL
-ok 3 # SKIP SKIP test
-not ok 4 - TODO  # TODO TODO test
-# Failed (TODO) test 'TODO'
-# at -e line 10.
-</string></value></member>
-  <member><name>exec_on_build</name><value><string>7</string></value></member>
-  <member><name>assigned_build_id</name><value><string></string></value></member>
-  <member><name>user_id</name><value><string></string></value></member>
-  <member><name>type</name><value><string></string></value></member>
-  <member><name>status</name><value><string></string></value></member>
-  <member><name>assigner_id</name><value><string></string></value></member>
-  <member><name>urgency</name><value><string>2</string></value></member>
-  <member><name>exec_status</name><value><string>b</string></value></member>
-  <member><name>priority</name><value><string>4</string></value></member>
-</struct></value>
-</data></array></value></member>
-  <member><name>15</name><value><array><data>
-  <value><struct>
-  <member><name>testsuite_id</name><value><string>2</string></value></member>
-  <member><name>summary</name><value><string>&lt;p&gt;List last veterinarian that attended an occurrency&lt;/p&gt;</string></value></member>
-  <member><name>tsuite_name</name><value><string>suite1</string></value></member>
-  <member><name>tc_id</name><value><string>15</string></value></member>
-  <member><name>z</name><value><string>101</string></value></member>
-  <member><name>name</name><value><string>List last veterinarian</string></value></member>
-  <member><name>platform_id</name><value><string>0</string></value></member>
-  <member><name>platform_name</name><value><string></string></value></member>
+  <member><name>57529</name><value><struct>
+  <member><name>8</name><value><struct>
+  <member><name>testsuite_id</name><value><string>1</string></value></member>
+  <member><name>summary</name><value><string>Summary sample</string></value></member>
+  <member><name>tsuite_name</name><value><string>A Suite</string></value></member>
+  <member><name>tc_id</name><value><string>2</string></value></member>
+  <member><name>z</name><value><string>0</string></value></member>
+  <member><name>name</name><value><string>The TestCase Name</string></value></member>
+  <member><name>platform_id</name><value><string>8</string></value></member>
+  <member><name>platform_name</name><value><string>Linux</string></value></member>
   <member><name>feature_id</name><value><string>3</string></value></member>
-  <member><name>tcversion_id</name><value><string>16</string></value></member>
-  <member><name>execution_order</name><value><string>1010</string></value></member>
-  <member><name>linked_ts</name><value><string>2011-09-27 16:04:55</string></value></member>
-  <member><name>linked_by</name><value><string>1</string></value></member>
+  <member><name>tcversion_id</name><value><string>4</string></value></member>
+  <member><name>execution_order</name><value><string>0</string></value></member>
+  <member><name>linked_ts</name><value><string>2011-11-10 18:12:15</string></value></member>
+  <member><name>linked_by</name><value><string>7</string></value></member>
   <member><name>version</name><value><string>1</string></value></member>
   <member><name>active</name><value><string>1</string></value></member>
-  <member><name>external_id</name><value><string>2</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
+  <member><name>external_id</name><value><string>STC-10</string></value></member>
+  <member><name>execution_type</name><value><string>1</string></value></member>
   <member><name>importance</name><value><string>2</string></value></member>
-  <member><name>exec_id</name><value><string>46</string></value></member>
+  <member><name>exec_id</name><value><string>5</string></value></member>
   <member><name>tcversion_number</name><value><string>1</string></value></member>
-  <member><name>executed</name><value><string>16</string></value></member>
-  <member><name>exec_on_tplan</name><value><string>5</string></value></member>
+  <member><name>executed</name><value><string>6</string></value></member>
+  <member><name>exec_on_tplan</name><value><string>7</string></value></member>
   <member><name>execution_run_type</name><value><string>2</string></value></member>
-  <member><name>execution_ts</name><value><string>2011-09-28 14:58:08</string></value></member>
-  <member><name>tester_id</name><value><string>1</string></value></member>
-  <member><name>execution_notes</name><value><string>1..1
-ok 1 - PASS
-</string></value></member>
-  <member><name>exec_on_build</name><value><string>7</string></value></member>
+  <member><name>execution_ts</name><value><string>2011-11-10 18:20:30</string></value></member>
+  <member><name>tester_id</name><value><string>7</string></value></member>
+  <member><name>execution_notes</name><value><string></string></value></member>
+  <member><name>exec_on_build</name><value><string>38</string></value></member>
   <member><name>assigned_build_id</name><value><string></string></value></member>
   <member><name>user_id</name><value><string></string></value></member>
   <member><name>type</name><value><string></string></value></member>
@@ -89,11 +41,10 @@ ok 1 - PASS
   <member><name>urgency</name><value><string>2</string></value></member>
   <member><name>exec_status</name><value><string>p</string></value></member>
   <member><name>priority</name><value><string>4</string></value></member>
-</struct></value>
-</data></array></value></member>
+</struct></value></member>
+</struct></value></member>
 </struct>
       </value>
     </param>
   </params>
 </methodResponse>
-

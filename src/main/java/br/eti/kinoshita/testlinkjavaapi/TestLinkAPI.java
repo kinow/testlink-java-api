@@ -45,11 +45,14 @@ import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.ImportanceLevel;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
@@ -864,6 +867,64 @@ public class TestLinkAPI
 	}
 	
 	/**
+	 * Update a Test Case.
+	 * 
+	 * @param testCaseFullExternalId
+	 * @param version
+	 * @param name
+	 * @param summary
+	 * @param preconditions
+	 * @param importance
+	 * @param executionType
+	 * @param status
+	 * @param estimatedExecutionDuration
+	 * @throws TestLinkAPIException
+	 */
+	public void updateTestCase(
+		String testCaseFullExternalId,
+		String version,
+		String name,
+		String summary,
+		String preconditions,
+		ImportanceLevel importance,
+		ExecutionType executionType,
+		TestCaseStatus status,
+		String estimatedExecutionDuration
+	)
+	throws TestLinkAPIException
+	{
+		this.testCaseService.updateTestCase(
+			testCaseFullExternalId,
+			version,
+			name,
+			summary,
+			preconditions,
+			importance,
+			executionType,
+			status,
+			estimatedExecutionDuration
+		);
+	}
+	
+	public void updateTestCase(
+		TestCase testCase
+	)
+	throws TestLinkAPIException
+	{
+		this.testCaseService.updateTestCase(
+			testCase.getFullExternalId(), //testCaseFullExternalId,
+			testCase.getVersion() != null ? testCase.getVersion().toString() : null, //version,
+			testCase.getName(), //name,
+			testCase.getSummary(), //summary,
+			testCase.getPreconditions(), //preconditions,
+			null, //importance,
+			testCase.getExecutionType(), //executionType,
+			null, //status,
+			null //estimatedExecutionDuration
+		);
+	}
+	
+	/**
 	 * Create, Update or Push a list of TestCaseSteps in a Test Case.
 	 * 
 	 * @param testCaseExternalId
@@ -1035,11 +1096,11 @@ public class TestLinkAPI
 	public TestCase[] getTestCasesForTestSuite(
 		Integer testSuiteId, 
 		Boolean deep, 
-		String details
+		TestCaseDetails detail
 	) 
 	throws TestLinkAPIException
 	{
-		return this.testCaseService.getTestCasesForTestSuite(testSuiteId, deep, details);
+		return this.testCaseService.getTestCasesForTestSuite(testSuiteId, deep, detail);
 	}
 	
 
@@ -1105,7 +1166,8 @@ public class TestLinkAPI
 		List<Integer> assignedTo, 
 		String executeStatus, // , separated e.g.: p,n,f
 		ExecutionType executionType, 
-		Boolean getStepInfo
+		Boolean getStepInfo,
+		TestCaseDetails detail
 		) 
 	throws TestLinkAPIException
 	{
@@ -1119,7 +1181,8 @@ public class TestLinkAPI
 			assignedTo, 
 			executeStatus, 
 			executionType, 
-			getStepInfo
+			getStepInfo,
+			detail
 		);
 	}
 	
