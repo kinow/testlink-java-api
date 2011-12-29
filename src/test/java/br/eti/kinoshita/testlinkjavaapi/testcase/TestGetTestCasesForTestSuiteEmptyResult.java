@@ -30,6 +30,7 @@ import org.testng.annotations.Test;
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
@@ -60,7 +61,7 @@ extends BaseTest
 		
 		try 
 		{
-			testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, "full");
+			testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, TestCaseDetails.Full);
 		} 
 		catch (TestLinkAPIException e) 
 		{

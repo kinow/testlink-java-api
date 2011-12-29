@@ -39,6 +39,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.IntegerValueEnum;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
@@ -490,7 +491,12 @@ public class Util
 		TestCase testCase = null;
 		if ( map != null && map.size() > 0 )
 		{
-			Object o = map.get( TestLinkResponseParams.id.toString());
+			// IMPORTANT: http://mantis.testlink.org/view.php?id=4784
+			// Different methods to recover test cases use different parameter
+			// names for the id, some uses "id" and others "testcase_id".
+			Object o = map.get( TestLinkResponseParams.testCaseId.toString());
+			if (o == null)
+				o = map.get( TestLinkResponseParams.id.toString());
 			
 			if ( o != null )
 			{
@@ -508,6 +514,18 @@ public class Util
 					testCase.setOrder( getInteger(map, TestLinkResponseParams.order.toString() ) );
 					testCase.setExecutionOrder( getInteger(map, TestLinkResponseParams.executionOrder.toString()));
 					testCase.setName( getString(map, TestLinkResponseParams.name.toString()) );
+					
+					// IMPORTANT: the full external id (composed by prefix-external_id) come on
+					//            different parameters depending of what methods was used.
+					//
+					// In 'getTestCase' -> 'full_tc_external_id'
+					// In 'getTestCasesForTestSuite' -> 'external_id'
+					// In 'getTestCasesForTestPlan' does not come (ToDo: add)
+					String fullExternalId = getString(map, TestLinkResponseParams.fullTestCaseExternalId.toString());
+					if (fullExternalId == null)
+						fullExternalId = getString(map, TestLinkResponseParams.externalId.toString());
+					testCase.setFullExternalId( fullExternalId );
+					
  					Integer executionTypeValue = getInteger( map, TestLinkResponseParams.executionType.toString() );
 					ExecutionType execution = ExecutionType.getExecutionType( executionTypeValue );
 					testCase.setExecutionType( execution );
@@ -975,6 +993,18 @@ public class Util
 		{
 			value = o.toString();
 		}
+		return value;
+	}
+	
+	public static final Integer getIntegerValueOrNull( IntegerValueEnum o )
+	{
+		Integer value = null;
+		
+		if ( o != null )
+		{
+			value = o.getValue();
+		}
+		
 		return value;
 	}
 	

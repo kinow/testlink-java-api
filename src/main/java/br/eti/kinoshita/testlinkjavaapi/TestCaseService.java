@@ -6,8 +6,8 @@ package br.eti.kinoshita.testlinkjavaapi;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
@@ -16,9 +16,12 @@ import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.ImportanceLevel;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
@@ -137,6 +140,55 @@ extends BaseService
 		return testCase;
 	}
 	
+	/**
+	 * 
+	 * @param testCaseFullExternalId
+	 * @param version
+	 * @param name
+	 * @param summary
+	 * @param preconditions
+	 * @param importance
+	 * @param executionType
+	 * @param status
+	 * @param estimatedExecutionDuration
+	 * @throws TestLinkAPIException
+	 */
+	public void updateTestCase(
+		String testCaseFullExternalId,
+		String version,
+		String name,
+		String summary,
+		String preconditions,
+		ImportanceLevel importance,
+		ExecutionType executionType,
+		TestCaseStatus status,
+		String estimatedExecutionDuration
+	)
+	throws TestLinkAPIException
+	{
+		try {
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			executionData.put(TestLinkParams.testCaseExternalId.toString(), testCaseFullExternalId);
+			executionData.put(TestLinkParams.version.toString(), Util.getStringValueOrNull(version));
+			executionData.put(TestLinkParams.name.toString(), Util.getStringValueOrNull(name));
+			executionData.put(TestLinkParams.summary.toString(), Util.getStringValueOrNull(summary));
+			executionData.put(TestLinkParams.preconditions.toString(), Util.getStringValueOrNull(preconditions));
+			executionData.put(TestLinkParams.importance.toString(), Util.getIntegerValueOrNull(importance));
+			// WTF!! now uses 'execution_type'!
+			executionData.put(TestLinkParams.stepExecutionType.toString(), Util.getIntegerValueOrNull(executionType));
+			executionData.put(TestLinkParams.status.toString(), Util.getIntegerValueOrNull(status));
+			executionData.put(TestLinkParams.estimatedExecutionDuration.toString(), Util.getStringValueOrNull(estimatedExecutionDuration));
+			
+			this.executeXmlRpcCall(
+					TestLinkMethods.updateTestCase.toString(), executionData);
+			
+		} catch ( XmlRpcException xmlrpcex )
+		{
+			throw new TestLinkAPIException(
+					"Error adding steps to test case: " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> createTestCaseSteps(
 		String testCaseExternalId,
@@ -204,8 +256,7 @@ extends BaseService
 		
 		return responseMap;
 	}
-
-	@SuppressWarnings("unchecked")
+	
 	protected Integer addTestCaseToTestPlan(
 		Integer testProjectId, 
 		Integer testPlanId, 
@@ -233,7 +284,7 @@ extends BaseService
 			
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.addTestCaseToTestPlan.toString(), executionData);
-			Map<String, Object> responseMap = (Map<String, Object>)response;
+			Map<String, Object> responseMap = Util.castToMap(response);
 			
 			featureId = Util.getInteger(responseMap, TestLinkResponseParams.featureId.toString());
 		} 
@@ -256,7 +307,7 @@ extends BaseService
 	protected TestCase[] getTestCasesForTestSuite(
 		Integer testSuiteId,
 		Boolean deep, 
-		String details)
+		TestCaseDetails detail)
 	throws TestLinkAPIException
 	{
 		
@@ -267,7 +318,7 @@ extends BaseService
 			Map<String, Object> executionData = new HashMap<String, Object>();
 			executionData.put(TestLinkParams.testSuiteId.toString(), testSuiteId);
 			executionData.put(TestLinkParams.deep.toString(), deep);
-			executionData.put(TestLinkParams.details.toString(), details);
+			executionData.put(TestLinkParams.details.toString(), Util.getStringValueOrNull(detail));
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestSuite.toString(), executionData);
 			Object[] responseArray = Util.castToArray(response);
@@ -314,7 +365,8 @@ extends BaseService
 		List<Integer> assignedTo, 
 		String executeStatus,
 		ExecutionType executionType, 
-		Boolean getStepInfo)
+		Boolean getStepInfo,
+		TestCaseDetails detail)
 	throws TestLinkAPIException
 	{
 		TestCase[] testCases = null;
@@ -332,15 +384,19 @@ extends BaseService
 			executionData.put(TestLinkParams.executeStatus.toString(), Util.getStringValueOrNull( executeStatus ));
 			executionData.put(TestLinkParams.executionType.toString(), Util.getStringValueOrNull( executionType ) );
 			executionData.put(TestLinkParams.getStepInfo.toString(), getStepInfo);
+			executionData.put(TestLinkParams.details.toString(), Util.getStringValueOrNull( detail ));
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.getTestCasesForTestPlan.toString(), executionData);
 			
+			/*
+			// The Util.castToMap method will return an empty Map
 			if ( response instanceof String )
 			{
 				throw new TestLinkAPIException( "The test plan you requested does not contain Test Cases." );
 			}
+			*/
 			
-			Map<String, Object> responseMap = (Map<String, Object>)response;
+			Map<String, Object> responseMap = Util.castToMap(response);
 			Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 			testCases = new TestCase[ entrySet.size() ];
 			int index = 0;
@@ -511,7 +567,6 @@ extends BaseService
 	 * @param content
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	protected Attachment uploadTestCaseAttachment( 
 		Integer testCaseId,
 		String title, 
@@ -543,7 +598,7 @@ extends BaseService
 			Map<String, Object> executionData = Util.getTestCaseAttachmentMap(attachment);
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.uploadTestCaseAttachment.toString(), executionData);
-			Map<String, Object> responseMap = (Map<String, Object>)response;
+			Map<String, Object> responseMap = Util.castToMap(response);
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
 			attachment.setId(id);
 		} 
@@ -579,7 +634,7 @@ extends BaseService
 					TestLinkMethods.getTestCaseAttachments.toString(), executionData);
 			if ( response instanceof Map<?, ?> )
 			{
-				Map<String, Object> responseMap = (Map<String, Object>)response;
+				Map<String, Object> responseMap = Util.castToMap(response);
 				Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 				
 				attachments = new Attachment[ entrySet.size() ];
@@ -608,9 +663,7 @@ extends BaseService
 		
 		return attachments;
 	}
-
 	
-	@SuppressWarnings("unchecked")
 	protected Attachment uploadExecutionAttachment(
 			Integer executionId, 
 			String title, 
@@ -644,7 +697,7 @@ extends BaseService
 			
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.uploadExecutionAttachment.toString(), executionData);
-			Map<String, Object> responseMap = (Map<String, Object>)response;
+			Map<String, Object> responseMap = Util.castToMap(response);
 			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
 			attachment.setId(id);
 		} 
@@ -766,7 +819,6 @@ extends BaseService
 	 * @return Custom Field.
 	 * @throws TestLinkAPIException
 	 */
-	@SuppressWarnings("unchecked")
 	protected CustomField getTestCaseCustomFieldDesignValue( 
 		Integer testCaseId,
 		Integer testCaseExternalId, 
@@ -799,7 +851,7 @@ extends BaseService
 			}
 			else if ( response instanceof Map<?, ?> )
 			{
-				Map<String, Object> responseMap = (Map<String, Object>)response;
+				Map<String, Object> responseMap = Util.castToMap(response);
 				customField = Util.getCustomField( responseMap );
 			}
 				

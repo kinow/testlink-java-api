@@ -2,6 +2,7 @@
  * The MIT License
  *
  * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) <2011> <Mario Fuentes>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,37 +31,49 @@ import org.testng.annotations.Test;
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @author Mario Fuentes - http://www.rhiscom.com
  * @since 
  */
-public class TestGetTestCasesForTestSuite 
+public class TestGetTestCasesForTestPlanEmptyResult 
 extends BaseTest
 {
 	
-	@DataProvider(name="testCaseData")
-	public Object[][] createData()
+	@DataProvider(name="testPlanEmptyData")
+	public Object[][] createTestPlanData()
 	{
 		return new Object[][] 
         {
 			{
-				2
+				10
 			}
         };
 	}
 	
-	@Test(dataProvider="testCaseData")
-	public void testGetTestCasesForTestSuite(Integer testSuiteId)
+	@Test(dataProvider="testPlanEmptyData")
+	public void testGetTestCasesForTestPlan(Integer testPlanId)
 	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestSuite.xml");
+		this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
 		
 		TestCase[] testCases = null;
 		
 		try 
 		{
-			testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, TestCaseDetails.Full);
+			testCases = this.api.getTestCasesForTestPlan(
+				testPlanId, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null,
+				null
+			);
 		} 
 		catch (TestLinkAPIException e) 
 		{
@@ -69,7 +82,6 @@ extends BaseTest
 		
 		Assert.assertNotNull( testCases );
 		
-		Assert.assertTrue( testCases.length > 0 );
+		Assert.assertTrue( testCases.length == 0 );
 	}
-	
 }

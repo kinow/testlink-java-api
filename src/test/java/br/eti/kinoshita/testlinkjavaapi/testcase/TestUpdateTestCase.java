@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) <2011> <Mario Fuentes>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,47 +29,72 @@ import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.model.ImportanceLevel;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStatus;
 
 /**
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @author Mario Fuentes - http://www.rhiscom.com
+ * @since 1.9.4-1
  */
-public class TestGetTestCasesForTestSuite 
+public class TestUpdateTestCase 
 extends BaseTest
 {
-	
+
 	@DataProvider(name="testCaseData")
 	public Object[][] createData()
 	{
 		return new Object[][] 
         {
 			{
-				2
+				"tl-100", 
+				"1.0.0", 
+				"Sample test case",
+				"No summary.", 
+				"No preconditions.",
+				ImportanceLevel.Medium,
+				ExecutionType.AUTOMATED,
+				TestCaseStatus.Final,
+				"0"
 			}
         };
 	}
 	
 	@Test(dataProvider="testCaseData")
-	public void testGetTestCasesForTestSuite(Integer testSuiteId)
+	public void testUpdateTestCase(
+			String testCaseFullExternalId,
+			String version,
+			String name,
+			String summary,
+			String preconditions,
+			ImportanceLevel importance,
+			ExecutionType executionType,
+			TestCaseStatus status,
+			String estimatedExecutionDuration)
 	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestSuite.xml");
+		this.loadXMLRPCMockData("tl.updateTestCase.xml");
 		
-		TestCase[] testCases = null;
-		
-		try 
+		try
 		{
-			testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, TestCaseDetails.Full);
-		} 
-		catch (TestLinkAPIException e) 
+			api.updateTestCase(
+				testCaseFullExternalId,
+				version,
+				name,
+				summary,
+				preconditions,
+				importance,
+				executionType,
+				status,
+				estimatedExecutionDuration
+			);
+		} catch (TestLinkAPIException e)
 		{
 			Assert.fail(e.getMessage(), e);
 		}
 		
-		Assert.assertNotNull( testCases );
+		//Assert.assertNotNull( testCase );
 		
-		Assert.assertTrue( testCases.length > 0 );
+		//Assert.assertTrue( testCase.getId() > 0 );
 	}
 	
 }

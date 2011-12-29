@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>testcaseexternalid</name><value><string>tl-100</string></value></member>
+  <member><name>devKey</name><value><string>12dfa046ad109d2d721da6ad073f35e0</string></value></member>
+  <member><name>execution_type</name><value><string>0</string></value></member>
+  <member><name>testcaseid</name><value><int>113</int></value></member>
+  <member><name>debug</name><value><struct>
+  <member><name>sql</name><value><string>/* Class:testcase - Method: updateSimpleFields */ UPDATE tcversions SET execution_type = 0 WHERE id=114</string></value></member>
+  <member><name>fv</name><value><struct>
+  <member><name>execution_type</name><value><string>0</string></value></member>
+</struct></value></member>
+</struct></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
