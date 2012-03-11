@@ -1,5 +1,13 @@
 Release Notes
 
+* Version 1.9.3-2
+
+ * Fixing minor issues after code review, merging pull requests
+
+* Version 1.9.3-1
+
+ * Pull Requests GitHub to enhance the API, specially how it handles java.util.Map
+
 * Version 1.9.2-2
 
  * Added support to Execution Order in Test Cases
