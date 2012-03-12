@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="TestLink Java API">
   
+  <poweredBy>
+    <logo name="Maven" href="http://maven.apache.org/"
+          img="http://maven.apache.org/images/logos/maven-feather.png"/>
+  </poweredBy>
+  
   <bannerLeft>
     <name>TestLink Java API</name>
-    <src>images/testlink-java-api-project.png</src>
+    <src>images/testlinkjavaapi-logo-white.png</src>
     <href>http://sourceforge.net/projects/testlinkjavaapi/</href>
+    <alt>TestLink Java API</alt>
   </bannerLeft>
   
   <body>
@@ -44,9 +50,9 @@
   </body>
   
   <skin>
-    <groupId>org.apache.maven.skins</groupId>
-    <artifactId>maven-stylus-skin</artifactId>
-    <version>1.2</version>
+      <groupId>org.apache.maven.skins</groupId>
+      <artifactId>maven-fluido-skin</artifactId>
+      <version>1.1</version>
   </skin>
   
 </project>
