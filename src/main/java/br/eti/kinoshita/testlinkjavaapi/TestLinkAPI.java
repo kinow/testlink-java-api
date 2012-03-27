@@ -1506,6 +1506,67 @@ public class TestLinkAPI
 				testCaseId, testProjectId, requirements);
 	}	
 	
+	 public void updateTestCaseCustomFieldDesignValue(
+			 String testcaseexternalid, 
+			 Integer version, 
+			 String testprojectid, 
+			 Map<String,Object> customfields
+	 )
+     throws TestLinkAPIException
+     {
+		 this.testCaseService.updateTestCaseCustomFieldDesignValue(
+    		 testcaseexternalid, 
+    		 version, 
+    		 testprojectid,
+    		 customfields);
+     }
+
+	 public void setTestCaseExecutionType(
+			 String testcaseexternalid, 
+			 Integer version, 
+			 String testprojectid, 
+			 ExecutionType executionType
+	 )
+     throws TestLinkAPIException
+     {
+		 this.testCaseService.setTestCaseExecutionType(
+				 testcaseexternalid, 
+				 version, 
+				 testprojectid, 
+				 executionType.getValue());
+     }
+
+
+	 public CustomField getTestCaseCustomFieldExecutionValue(
+			 String customfieldname, 
+			 Integer tprojectid, 
+			 Integer version, 
+			 Integer executionid, 
+			 Integer testplanid
+	 )
+     throws TestLinkAPIException
+     {
+		 return  this.testCaseService.getTestCaseCustomFieldExecutionValue(
+				 customfieldname, 
+				 tprojectid, 
+				 version, 
+				 executionid, 
+				 testplanid);
+     }
+
+	 public CustomField getTestPlanCustomFieldDesignValue(
+			 String customfieldname, 
+			 Integer tprojectid, 
+			 Integer testplanid
+	 )
+     throws TestLinkAPIException
+     {
+		 return this.testPlanService.getTestPlanCustomFieldDesignValue(
+				 customfieldname, 
+				 tprojectid, 
+				 testplanid);
+     }
+	
 	/**
 	 * Executes a XML-RPC call. Use this method to talk with TestLink in a 
 	 * lower level.

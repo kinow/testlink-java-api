@@ -788,14 +788,15 @@ extends BaseService
 			executionData.put(TestLinkParams.platformName.toString(), platformName);
 			executionData.put(TestLinkParams.customFields.toString(), customFields);
 			executionData.put(TestLinkParams.overwrite.toString(), overwrite);
+			
 			Object response = this.executeXmlRpcCall(
 					TestLinkMethods.reportTCResult.toString(), executionData);
 			// the error verification routine is called inside super.executeXml...
+			
 			if ( response instanceof Object[] )
 			{
 				Object[] responseArray = Util.castToArray(response);
 				Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
-				
 				reportTCResultResponse = Util.getReportTCResultResponse( responseMap );
 			}
 		} 
@@ -863,5 +864,87 @@ extends BaseService
 		}
 		
 		return customField;
+	}
+
+	protected CustomField getTestCaseCustomFieldExecutionValue(
+			String customfieldname, 
+			Integer tprojectid, 
+			Integer version,
+			Integer executionid, 
+			Integer testplanid)
+			throws TestLinkAPIException {
+		CustomField customField = null;
+		try {
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.customFieldName.toString(),customfieldname);
+			executionData.put(TestLinkParams.testProjectId.toString(),tprojectid);
+			executionData.put(TestLinkParams.version.toString(), version);
+			executionData.put(TestLinkParams.executionId.toString(),executionid);
+			executionData.put(TestLinkParams.testPlanId.toString(), testplanid);
+			
+			Object response = executeXmlRpcCall(
+					TestLinkMethods.getTestCaseCustomFieldExecutionValue
+							.toString(), executionData);
+			
+			if (response instanceof String) {
+				
+				customField = new CustomField();
+				customField.setValue(response.toString());
+			
+			} else if (response instanceof Map<?,?>) {
+				
+				Map<String, Object> responseMap = Util.castToMap(response);
+				customField = Util.getCustomField(responseMap);
+			
+			}
+		} catch (XmlRpcException xmlrpcex) {
+			throw new TestLinkAPIException((
+					new StringBuilder()).append(
+					"Error retrieving test case custom field value: ").append(
+					xmlrpcex.getMessage()).toString(), xmlrpcex);
+		}
+		return customField;
+	}
+
+	public void updateTestCaseCustomFieldDesignValue(String testcaseexternalid,
+			Integer version, String testprojectid, Map<String, Object> customfields)
+			throws TestLinkAPIException {
+		try {
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			
+			executionData.put(TestLinkParams.testCaseExternalId.toString(),testcaseexternalid);
+			executionData.put(TestLinkParams.version.toString(), version);
+			executionData.put(TestLinkParams.testProjectId.toString(),testprojectid);
+			executionData.put(TestLinkParams.customFields.toString(),customfields);
+			
+			this.executeXmlRpcCall(
+					TestLinkMethods.updateTestCaseCustomFieldDesignValue
+							.toString(), executionData);
+		} catch (XmlRpcException xmlrpcex) {
+			throw new TestLinkAPIException((new StringBuilder()).append(
+					"Error retrieving test case custom field value: ").append(
+					xmlrpcex.getMessage()).toString(), xmlrpcex);
+		}
+	}
+
+	public void setTestCaseExecutionType(String testcaseexternalid,
+			Integer version, String testprojectid, Integer executiontype)
+			throws TestLinkAPIException {
+		try {
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			executionData.put(TestLinkParams.testCaseExternalId.toString(),testcaseexternalid);
+			executionData.put(TestLinkParams.version.toString(), version);
+			executionData.put(TestLinkParams.testProjectId.toString(),testprojectid);
+			executionData.put(TestLinkParams.executionType.toString(),executiontype);
+			
+			this.executeXmlRpcCall(TestLinkMethods.setTestCaseExecutionType
+					.toString(), executionData);
+			
+		} catch (XmlRpcException xmlrpcex) {
+			throw new TestLinkAPIException((new StringBuilder()).append(
+					"Error retrieving test case custom field value: ").append(
+					xmlrpcex.getMessage()).toString(), xmlrpcex);
+		}
 	}
 }
