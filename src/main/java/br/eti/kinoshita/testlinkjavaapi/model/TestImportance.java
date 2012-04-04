@@ -29,4 +29,24 @@ public enum TestImportance {
 		return this.value;
 	}
 	
+	public static TestImportance getTestImportance( Integer integer )
+	{
+		if( integer != null )
+		{
+			if ( integer == 1)
+			{
+				return LOW;
+			} 
+			else if ( integer == 2 )
+			{
+				return MEDIUM;
+			}
+			else if ( integer == 3 )
+			{
+				return HIGH;
+			}
+		}
+		return null;
+	}
+	
 }

@@ -907,13 +907,13 @@ extends BaseService
 		return customField;
 	}
 
-	public void updateTestCaseCustomFieldDesignValue(String testcaseexternalid,
+	public void updateTestCaseCustomFieldDesignValue(Integer id,
 			Integer version, String testprojectid, Map<String, Object> customfields)
 			throws TestLinkAPIException {
 		try {
 			Map<String, Object> executionData = new HashMap<String, Object>();
 			
-			executionData.put(TestLinkParams.testCaseExternalId.toString(),testcaseexternalid);
+			executionData.put(TestLinkParams.testCaseId.toString(),id);
 			executionData.put(TestLinkParams.version.toString(), version);
 			executionData.put(TestLinkParams.testProjectId.toString(),testprojectid);
 			executionData.put(TestLinkParams.customFields.toString(),customfields);
@@ -928,12 +928,12 @@ extends BaseService
 		}
 	}
 
-	public void setTestCaseExecutionType(String testcaseexternalid,
+	public void setTestCaseExecutionType(Integer id,
 			Integer version, String testprojectid, Integer executiontype)
 			throws TestLinkAPIException {
 		try {
 			Map<String, Object> executionData = new HashMap<String, Object>();
-			executionData.put(TestLinkParams.testCaseExternalId.toString(),testcaseexternalid);
+			executionData.put(TestLinkParams.testCaseId.toString(),id);
 			executionData.put(TestLinkParams.version.toString(), version);
 			executionData.put(TestLinkParams.testProjectId.toString(),testprojectid);
 			executionData.put(TestLinkParams.executionType.toString(),executiontype);

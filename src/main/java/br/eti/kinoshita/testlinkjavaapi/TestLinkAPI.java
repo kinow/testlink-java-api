@@ -52,6 +52,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
@@ -1507,7 +1508,7 @@ public class TestLinkAPI
 	}	
 	
 	 public void updateTestCaseCustomFieldDesignValue(
-			 String testcaseexternalid, 
+			 Integer id, 
 			 Integer version, 
 			 String testprojectid, 
 			 Map<String,Object> customfields
@@ -1515,25 +1516,25 @@ public class TestLinkAPI
      throws TestLinkAPIException
      {
 		 this.testCaseService.updateTestCaseCustomFieldDesignValue(
-    		 testcaseexternalid, 
+    		 id, 
     		 version, 
     		 testprojectid,
     		 customfields);
      }
 
 	 public void setTestCaseExecutionType(
-			 String testcaseexternalid, 
+			 Integer id, 
 			 Integer version, 
 			 String testprojectid, 
-			 ExecutionType executionType
+			 TestCaseExecutionType testCaseExecutionType
 	 )
      throws TestLinkAPIException
      {
 		 this.testCaseService.setTestCaseExecutionType(
-				 testcaseexternalid, 
+				 id, 
 				 version, 
 				 testprojectid, 
-				 executionType.getValue());
+				 testCaseExecutionType.getValue());
      }
 
 
@@ -1567,6 +1568,12 @@ public class TestLinkAPI
 				 testplanid);
      }
 	
+	 
+	 
+	 
+	 
+	 
+	 
 	/**
 	 * Executes a XML-RPC call. Use this method to talk with TestLink in a 
 	 * lower level.

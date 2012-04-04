@@ -26,7 +26,7 @@ public enum ExecutionType implements IntegerValueEnum
 	{
 		if( integer != null )
 		{
-			if ( integer == 1 )
+			if ( integer == 1)
 			{
 				return MANUAL;
 			} 
