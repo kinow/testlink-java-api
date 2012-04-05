@@ -3,6 +3,9 @@ TestLink Java API
  TestLink Java API is a Java API that interfaces TestLink XML-RPC API. 
  This API lets you call TestLink internal methods such as createTestProject, 
  uploadAttachment, getTestProjectByName among others.
+ 
+ <<This project is developed separately to TestLink. Issues should be 
+ reported {{{http://sourceforge.net/tracker/?group_id=372361}here}}>>.
 
  Our aim with this project is always release one version of this API after a new 
  version of TestLink has been released. So if, for instance, TestLink releases 
