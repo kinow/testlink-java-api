@@ -29,6 +29,7 @@ import java.util.Map;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 
+import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
@@ -201,5 +202,40 @@ extends BaseService
 		return responseMap;
 		
 	}
+	
+	 public CustomField getTestPlanCustomFieldDesignValue(
+			 String customfieldname, 
+			 Integer tprojectid, 
+			 Integer testplanid
+	 )
+     throws TestLinkAPIException
+     {
+		 CustomField customField = null;
+		 try
+	     {
+	         Map<String, Object> executionData = new HashMap<String, Object>();
+	         executionData.put(TestLinkParams.customFieldName.toString(), customfieldname);
+	         executionData.put(TestLinkParams.testProjectId.toString(), tprojectid);
+	         executionData.put(TestLinkParams.testPlanId.toString(), testplanid);
+	         Object response = executeXmlRpcCall(
+	        		 TestLinkMethods.getTestPlanCustomFieldDesignValue.toString(), executionData);
+	         if(response instanceof String)
+	         {
+	             customField = new CustomField();
+	             customField.setValue(response.toString());
+	         } else
+	         if(response instanceof Map<?, ?>)
+	         {
+	             Map<String, Object> responseMap = Util.castToMap(response);
+	             customField = Util.getCustomField(responseMap);
+	         }
+	     }
+	     catch(XmlRpcException xmlrpcex)
+	     {
+	         throw new TestLinkAPIException(
+	        		 "Error retrieving test plan custom field:", xmlrpcex);
+	     }
+     return customField;
+ }
 
 }

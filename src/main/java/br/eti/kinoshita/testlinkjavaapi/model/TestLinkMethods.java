@@ -74,7 +74,11 @@ public enum TestLinkMethods
 	getBuildsForTestPlan("tl.getBuildsForTestPlan"), 
 	getLatestBuildForTestPlan("tl.getLatestBuildForTestPlan"), 
 	getTestCaseCustomFieldDesignValue("tl.getTestCaseCustomFieldDesignValue"), 
-	getTotalsForTestPlan("tl.getTotalsForTestPlan")
+	getTotalsForTestPlan("tl.getTotalsForTestPlan"),
+	getTestCaseCustomFieldExecutionValue("tl.getTestCaseCustomFieldExecutionValue"),
+	updateTestCaseCustomFieldDesignValue("tl.updateTestCaseCustomFieldDesignValue"),
+	setTestCaseExecutionType("tl.setTestCaseExecutionType"),
+	getTestPlanCustomFieldDesignValue("tl.getTestPlanCustomFieldDesignValue")
 	;
 	
 	private String value;

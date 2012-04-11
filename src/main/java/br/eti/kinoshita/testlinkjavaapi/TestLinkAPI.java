@@ -52,6 +52,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepAction;
@@ -1506,6 +1507,73 @@ public class TestLinkAPI
 				testCaseId, testProjectId, requirements);
 	}	
 	
+	 public void updateTestCaseCustomFieldDesignValue(
+			 Integer id, 
+			 Integer version, 
+			 String testprojectid, 
+			 Map<String,Object> customfields
+	 )
+     throws TestLinkAPIException
+     {
+		 this.testCaseService.updateTestCaseCustomFieldDesignValue(
+    		 id, 
+    		 version, 
+    		 testprojectid,
+    		 customfields);
+     }
+
+	 public void setTestCaseExecutionType(
+			 Integer id, 
+			 Integer version, 
+			 String testprojectid, 
+			 TestCaseExecutionType testCaseExecutionType
+	 )
+     throws TestLinkAPIException
+     {
+		 this.testCaseService.setTestCaseExecutionType(
+				 id, 
+				 version, 
+				 testprojectid, 
+				 testCaseExecutionType.getValue());
+     }
+
+
+	 public CustomField getTestCaseCustomFieldExecutionValue(
+			 String customfieldname, 
+			 Integer tprojectid, 
+			 Integer version, 
+			 Integer executionid, 
+			 Integer testplanid
+	 )
+     throws TestLinkAPIException
+     {
+		 return  this.testCaseService.getTestCaseCustomFieldExecutionValue(
+				 customfieldname, 
+				 tprojectid, 
+				 version, 
+				 executionid, 
+				 testplanid);
+     }
+
+	 public CustomField getTestPlanCustomFieldDesignValue(
+			 String customfieldname, 
+			 Integer tprojectid, 
+			 Integer testplanid
+	 )
+     throws TestLinkAPIException
+     {
+		 return this.testPlanService.getTestPlanCustomFieldDesignValue(
+				 customfieldname, 
+				 tprojectid, 
+				 testplanid);
+     }
+	
+	 
+	 
+	 
+	 
+	 
+	 
 	/**
 	 * Executes a XML-RPC call. Use this method to talk with TestLink in a 
 	 * lower level.

@@ -45,6 +45,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
 import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
@@ -558,6 +559,9 @@ public class Util
 							testCase.getSteps().add( step );
 						}
 					}
+					
+					testCase.setTestImportance(TestImportance.getTestImportance(
+							new Integer((String)map.get("importance"))));
 				}
 				
 			}			
