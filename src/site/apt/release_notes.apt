@@ -1,5 +1,9 @@
 Release Notes
 
+* Version 1.9.3-3
+
+ * Fixing parameters with wrong names (for checking duplicated)
+
 * Version 1.9.3-2
 
  * Fixing minor issues after code review, merging pull requests
