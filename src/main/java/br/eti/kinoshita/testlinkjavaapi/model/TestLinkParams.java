@@ -39,7 +39,7 @@ package br.eti.kinoshita.testlinkjavaapi.model;
  */
 public enum TestLinkParams
 {
-	actionOnDuplicatedName("actionOnDuplicatedName"), 
+	actionOnDuplicatedName("actiononduplicatedname"), 
 	actions("actions"), 
 	action("action"), 
 	active("active"), 
@@ -49,7 +49,7 @@ public enum TestLinkParams
 	buildId("buildid"), 
 	buildName("buildname"), 
 	buildNotes("buildnotes"), 
-	checkDuplicatedName("checkDuplicatedName"), 
+	checkDuplicatedName("checkduplicatedname"), 
 	content("content"), 
 	customFieldName("customfieldname"),
 	customFields("customfields"), 
