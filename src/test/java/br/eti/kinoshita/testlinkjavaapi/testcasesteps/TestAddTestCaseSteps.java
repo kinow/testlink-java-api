@@ -32,9 +32,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
-import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * 
@@ -42,59 +42,42 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
  * @since 1.9.3-2
  */
 public class TestAddTestCaseSteps extends BaseTest {
-	@DataProvider(name="testCaseStepData")
-	public Object[][] createData()
-	{
-		List<TestCaseStep> steps = new ArrayList<TestCaseStep>();
-		steps.add(new TestCaseStep(
-			1, // ID
-			1, // Version
-			1, // Step number
-			"", // Actions
-			"", // Expected Results
-			true, // Active?
-			ExecutionType.AUTOMATED // Execution type
-		));
-		steps.add(new TestCaseStep(
-				1, // ID
-				1, // Version
-				2, // Step number
-				"", // Actions
-				"", // Expected Results
-				true, // Active?
-				ExecutionType.AUTOMATED // Execution type
-			));
-		
-		return new Object[][] 
-        {
-			{
-				"1", 
-				steps
-			}
-        };
+    @DataProvider(name = "testCaseStepData")
+    public Object[][] createData() {
+	List<TestCaseStep> steps = new ArrayList<TestCaseStep>();
+	steps.add(new TestCaseStep(1, // ID
+		1, // Version
+		1, // Step number
+		"", // Actions
+		"", // Expected Results
+		true, // Active?
+		ExecutionType.AUTOMATED // Execution type
+	));
+	steps.add(new TestCaseStep(1, // ID
+		1, // Version
+		2, // Step number
+		"", // Actions
+		"", // Expected Results
+		true, // Active?
+		ExecutionType.AUTOMATED // Execution type
+	));
+
+	return new Object[][] { { "1", steps } };
+    }
+
+    @Test(dataProvider = "testCaseStepData")
+    public void testCreateTestCaseSteps(String testCaseExternalId,
+	    List<TestCaseStep> steps) {
+	this.loadXMLRPCMockData("tl.createTestCaseSteps.xml");
+
+	Map<String, Object> result = null;
+
+	try {
+	    result = api.addTestCaseSteps(testCaseExternalId, 1, steps);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testCaseStepData")
-	public void testCreateTestCaseSteps(
-		String testCaseExternalId,
-		List<TestCaseStep> steps
-	)
-	{
-		this.loadXMLRPCMockData("tl.createTestCaseSteps.xml");
-		
-		Map<String, Object> result = null;
-		
-		try
-		{
-			result = api.addTestCaseSteps(
-				testCaseExternalId, 
-				1,
-				steps);
-		} catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( result );
-	}
+
+	Assert.assertNotNull(result);
+    }
 }

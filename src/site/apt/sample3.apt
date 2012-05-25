@@ -9,12 +9,10 @@ Uploading an attachment to a test case execution
 	
 	String fileContent = null;
 	
-	try
-	{
+	try {
 		byte[] byteArray = FileUtils.readFileToByteArray(attachmentFile);
-		fileContent = Base64.encodeBase64String( byteArray );
-	} catch (IOException e)
-	{
+        fileContent = new String(Base64.encodeBase64(byteArray));
+	} catch (IOException e) {
 		e.printStackTrace( System.err );
 		System.exit(-1);
 	}

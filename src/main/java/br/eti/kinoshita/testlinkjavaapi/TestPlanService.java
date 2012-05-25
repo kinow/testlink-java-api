@@ -29,177 +29,157 @@ import java.util.Map;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 
+import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkMethods;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkParams;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
-import br.eti.kinoshita.testlinkjavaapi.model.TestLinkMethods;
-import br.eti.kinoshita.testlinkjavaapi.model.TestLinkParams;
-import br.eti.kinoshita.testlinkjavaapi.model.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
-class TestPlanService 
-extends BaseService
-{
+class TestPlanService extends BaseService {
 
-	/**
-	 * @param xmlRpcClient XML RPC Client.
-	 * @param devKey TestLink User DevKey.
-	 */
-	protected TestPlanService( XmlRpcClient xmlRpcClient, String devKey ) 
-	{
-		super( xmlRpcClient, devKey );
-	}
+    /**
+     * @param xmlRpcClient
+     *            XML RPC Client.
+     * @param devKey
+     *            TestLink User DevKey.
+     */
+    protected TestPlanService(XmlRpcClient xmlRpcClient, String devKey) {
+	super(xmlRpcClient, devKey);
+    }
 
-	@SuppressWarnings("unchecked")
-	protected TestPlan createTestPlan(
-			String planName,
-			String projectName,
-			String notes, 
-			Boolean isActive,  
-			Boolean isPublic) 
-	throws TestLinkAPIException
-	{
-		TestPlan testPlan = null;
-		
-		Integer id = 0;
-		
-		testPlan = new TestPlan(
-				id,
-				planName, 
-				projectName, 
-				notes, 
-				isActive, 
-				isPublic);
-		
-		try
-		{
-			Map<String, Object> executionData = Util.getTestPlanMap(testPlan);
-			Object response = this.executeXmlRpcCall(
-					TestLinkMethods.createTestPlan.toString(), executionData);
-			Object[] responseArray = (Object[])response;
-			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
-			
-			id = Util.getInteger(responseMap, TestLinkResponseParams.id.toString());
-			testPlan.setId( id );
-		} 
-		catch ( XmlRpcException xmlrpcex )
-		{
-			throw new TestLinkAPIException(
-					"Error creating test plan: " + xmlrpcex.getMessage(), xmlrpcex);
-		}
-		
-		return testPlan;
-	}
-	
-	/**
-	 * Retrieves a Test Plan by its name. 
-	 * 
-	 * @param planName Test Plan name.
-	 * @param projectName Test Project name.
-	 * @return Test Plane.
-	 * @throws TestLinkAPIException
-	 */
-	@SuppressWarnings("unchecked")
-	protected TestPlan getTestPlanByName(String planName, String projectName) 
-	throws TestLinkAPIException 
-	{
-		TestPlan testPlan = null;
-		
-		try
-		{
-			Map<String, Object> executionData = new HashMap<String, Object>();
-			executionData.put(TestLinkParams.testPlanName.toString(), planName);
-			executionData.put(TestLinkParams.testProjectName.toString(), projectName);
-			Object response = this.executeXmlRpcCall(
-					TestLinkMethods.getTestPlanByName.toString(), executionData);
-			Object[] responseArray = (Object[])response;
-			Map<String, Object> responseMap = (Map<String, Object>)responseArray[0];
-			//TBD: check with TL team if we can change it there.
-			responseMap.put(TestLinkResponseParams.projectName.toString(), projectName);
-			testPlan = Util.getTestPlan( responseMap );
-		}
-		catch ( XmlRpcException xmlrpcex )
-		{
-			throw new TestLinkAPIException(
-					"Error creating test project: " + xmlrpcex.getMessage(), xmlrpcex);
-		}
-		
-		return testPlan;
+    @SuppressWarnings("unchecked")
+    protected TestPlan createTestPlan(String planName, String projectName,
+	    String notes, Boolean isActive, Boolean isPublic)
+	    throws TestLinkAPIException {
+	TestPlan testPlan = null;
+
+	Integer id = 0;
+
+	testPlan = new TestPlan(id, planName, projectName, notes, isActive,
+		isPublic);
+
+	try {
+	    Map<String, Object> executionData = Util.getTestPlanMap(testPlan);
+	    Object response = this.executeXmlRpcCall(
+		    TestLinkMethods.CREATE_TEST_PLAN.toString(), executionData);
+	    Object[] responseArray = (Object[]) response;
+	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+
+	    id = Util.getInteger(responseMap,
+		    TestLinkResponseParams.ID.toString());
+	    testPlan.setId(id);
+	} catch (XmlRpcException xmlrpcex) {
+	    throw new TestLinkAPIException("Error creating test plan: "
+		    + xmlrpcex.getMessage(), xmlrpcex);
 	}
 
-	/**
-	 * @param planId
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	protected Platform[] getTestPlanPlatforms(Integer planId)
-	throws TestLinkAPIException
-	{
-		Platform[] platforms = null;
-		
-		try
-		{
-			Map<String, Object> executionData = new HashMap<String, Object>();
-			executionData.put(TestLinkParams.testPlanId.toString(), planId);
-			Object response = this.executeXmlRpcCall(
-					TestLinkMethods.getTestPlanPlatforms.toString(), executionData);
-			Object[] responseArray = (Object[])response;
-			platforms = new Platform[responseArray.length];
-			for (int i = 0; i < responseArray.length; i++)
-			{
-				Map<String, Object> projectMap = (Map<String, Object>)responseArray[i];
-				Platform platform = Util.getPlatform(projectMap);
-				platforms[i] = platform;
-			}
-			
-		}
-		catch ( XmlRpcException xmlrpcex )
-		{
-			throw new TestLinkAPIException(
-					"Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
-		}
-		
-		return platforms;
+	return testPlan;
+    }
+
+    /**
+     * Retrieves a Test Plan by its name.
+     * 
+     * @param planName
+     *            Test Plan name.
+     * @param projectName
+     *            Test Project name.
+     * @return Test Plane.
+     * @throws TestLinkAPIException
+     */
+    @SuppressWarnings("unchecked")
+    protected TestPlan getTestPlanByName(String planName, String projectName)
+	    throws TestLinkAPIException {
+	TestPlan testPlan = null;
+
+	try {
+	    Map<String, Object> executionData = new HashMap<String, Object>();
+	    executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), planName);
+	    executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(),
+		    projectName);
+	    Object response = this
+		    .executeXmlRpcCall(
+			    TestLinkMethods.GET_TEST_PLAN_BY_NAME.toString(),
+			    executionData);
+	    Object[] responseArray = (Object[]) response;
+	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+	    // TBD: check with TL team if we can change it there.
+	    responseMap.put(TestLinkResponseParams.PROJECT_NAME.toString(),
+		    projectName);
+	    testPlan = Util.getTestPlan(responseMap);
+	} catch (XmlRpcException xmlrpcex) {
+	    throw new TestLinkAPIException("Error creating test project: "
+		    + xmlrpcex.getMessage(), xmlrpcex);
 	}
 
-	/**
-	 * @param testPlanId
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	protected Map<String, Object> getTotalsForTestPlan( Integer testPlanId ) 
-	throws TestLinkAPIException
-	{
-		
-		Map<String, Object> responseMap = null;
-		
-		try
-		{
-			Map<String, Object> executionData = new HashMap<String, Object>();
-			executionData.put(TestLinkParams.testPlanId.toString(), testPlanId);
-			Object response = this.executeXmlRpcCall(
-					TestLinkMethods.getTotalsForTestPlan.toString(), executionData);
-			if ( response instanceof Object[] )
-			{
-				Object[] responseArray = (Object[])response;
-				responseMap = ( Map<String, Object> ) responseArray[0];
-			} 
-			else if ( response instanceof Map<?, ?> )
-			{
-				responseMap = ( Map<String, Object> ) response;
-			}
-		}
-		catch ( XmlRpcException xmlrpcex )
-		{
-			throw new TestLinkAPIException(
-					"Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
-		}
-		
-		return responseMap;
-		
+	return testPlan;
+    }
+
+    /**
+     * @param planId
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    protected Platform[] getTestPlanPlatforms(Integer planId)
+	    throws TestLinkAPIException {
+	Platform[] platforms = null;
+
+	try {
+	    Map<String, Object> executionData = new HashMap<String, Object>();
+	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), planId);
+	    Object response = this.executeXmlRpcCall(
+		    TestLinkMethods.GET_TEST_PLAN_PLATFORMS.toString(),
+		    executionData);
+	    Object[] responseArray = (Object[]) response;
+	    platforms = new Platform[responseArray.length];
+	    for (int i = 0; i < responseArray.length; i++) {
+		Map<String, Object> projectMap = (Map<String, Object>) responseArray[i];
+		Platform platform = Util.getPlatform(projectMap);
+		platforms[i] = platform;
+	    }
+
+	} catch (XmlRpcException xmlrpcex) {
+	    throw new TestLinkAPIException("Error retrieving platforms: "
+		    + xmlrpcex.getMessage(), xmlrpcex);
 	}
+
+	return platforms;
+    }
+
+    /**
+     * @param testPlanId
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    protected Map<String, Object> getTotalsForTestPlan(Integer testPlanId)
+	    throws TestLinkAPIException {
+
+	Map<String, Object> responseMap = null;
+
+	try {
+	    Map<String, Object> executionData = new HashMap<String, Object>();
+	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+	    Object response = this.executeXmlRpcCall(
+		    TestLinkMethods.GET_TOTALS_FOR_TEST_PLAN.toString(),
+		    executionData);
+	    if (response instanceof Object[]) {
+		Object[] responseArray = (Object[]) response;
+		responseMap = (Map<String, Object>) responseArray[0];
+	    } else if (response instanceof Map<?, ?>) {
+		responseMap = (Map<String, Object>) response;
+	    }
+	} catch (XmlRpcException xmlrpcex) {
+	    throw new TestLinkAPIException("Error retrieving platforms: "
+		    + xmlrpcex.getMessage(), xmlrpcex);
+	}
+
+	return responseMap;
+
+    }
 
 }

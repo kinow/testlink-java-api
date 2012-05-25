@@ -28,47 +28,35 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.0
  */
-public class TestGetTestCaseAttachments 
-extends BaseTest
-{
+public class TestGetTestCaseAttachments extends BaseTest {
 
-	@DataProvider(name="tcsWithASingleAttachment")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				4
-			}
-        };
+    @DataProvider(name = "tcsWithASingleAttachment")
+    public Object[][] createData() {
+	return new Object[][] { { 4 } };
+    }
+
+    @Test(dataProvider = "tcsWithASingleAttachment")
+    public void testGetTestCaseAttachments(Integer testCaseId) {
+	this.loadXMLRPCMockData("tl.getTestCaseAttachments.xml");
+
+	Attachment[] attachments = null;
+
+	try {
+	    attachments = this.api.getTestCaseAttachments(testCaseId, null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="tcsWithASingleAttachment")
-	public void testGetTestCaseAttachments( Integer testCaseId )
-	{
-		this.loadXMLRPCMockData("tl.getTestCaseAttachments.xml");
-		
-		Attachment[] attachments = null;
-		
-		try 
-		{
-			attachments = this.api.getTestCaseAttachments(testCaseId, null);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( attachments );
-		
-		Assert.assertTrue( attachments.length > 0 );
-	}
-	
+
+	Assert.assertNotNull(attachments);
+
+	Assert.assertTrue(attachments.length > 0);
+    }
+
 }

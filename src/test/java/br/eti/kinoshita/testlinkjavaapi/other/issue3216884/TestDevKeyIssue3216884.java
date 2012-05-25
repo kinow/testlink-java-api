@@ -28,35 +28,28 @@ import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.1-1
  */
-public class TestDevKeyIssue3216884 
-extends BaseTest
-{
+public class TestDevKeyIssue3216884 extends BaseTest {
 
-	@Test()
-	public void testCheckValidKey()
-	{
-		this.loadXMLRPCMockData("tl.checkDevKey.xml");
-		try
-		{
-			Assert.assertTrue( this.api.checkDevKey(api.getDevKey()) );
-		} 
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail( "Error checking devKey: " + e.getMessage(), e );
-		}
+    @Test()
+    public void testCheckValidKey() {
+	this.loadXMLRPCMockData("tl.checkDevKey.xml");
+	try {
+	    Assert.assertTrue(this.api.checkDevKey(api.getDevKey()));
+	} catch (TestLinkAPIException e) {
+	    Assert.fail("Error checking devKey: " + e.getMessage(), e);
 	}
-	
-	@Test(expectedExceptions={TestLinkAPIException.class})
-	public void testCheckInvalidKey() 
-	{
-		this.loadXMLRPCMockData("tl.checkDevKey_invalid.xml");
-		this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
-	}
-	
+    }
+
+    @Test(expectedExceptions = { TestLinkAPIException.class })
+    public void testCheckInvalidKey() {
+	this.loadXMLRPCMockData("tl.checkDevKey_invalid.xml");
+	this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
+    }
+
 }

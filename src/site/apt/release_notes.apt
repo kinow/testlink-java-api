@@ -1,5 +1,23 @@
 Release Notes
 
+* Version 1.9.3-4
+
+ * Fixing code conventions and format
+ 
+ * Fixed Javadoc warnings
+ 
+ * Included license header in files that were without it
+ 
+ * Moved enum and constant classes to constants package
+ 
+ * Moved exceptions to util packages
+ 
+ * Included example of how to create a test case with steps in the web site
+ 
+ * Updated example of how to include attachments with Base64 commons class
+ 
+ * Bug fix: 3515280 - 1.9.3-2 should have constants/actions eg:ACTION_BLOCK_ON_DUP
+
 * Version 1.9.3-3
 
  * Fixing parameters with wrong names (for checking duplicated)

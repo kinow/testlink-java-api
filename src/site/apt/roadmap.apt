@@ -10,7 +10,3 @@ Roadmap
  
  * Keep 100% compatibility with TestLink XML-RPC API
  
- * Increase overall test coverage above 75%
- 
- * Remove warnings during Javadoc generation
- 

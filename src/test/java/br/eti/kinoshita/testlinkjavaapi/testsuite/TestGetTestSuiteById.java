@@ -31,53 +31,38 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestSuiteById 
-extends BaseTest
-{
-	
-	@DataProvider(name="validTestSuite")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				2
-			}, 
-			{
-				3
-			}
-        };
+public class TestGetTestSuiteById extends BaseTest {
+
+    @DataProvider(name = "validTestSuite")
+    public Object[][] createData() {
+	return new Object[][] { { 2 }, { 3 } };
+    }
+
+    @Test(dataProvider = "validTestSuite")
+    public void testGetTestSuiteById(Integer suiteId) {
+	this.loadXMLRPCMockData("tl.getTestSuiteByID.xml");
+
+	TestSuite[] testSuites = null;
+
+	List<Integer> testSuiteIds = new ArrayList<Integer>();
+	testSuiteIds.add(suiteId);
+
+	try {
+	    testSuites = api.getTestSuiteByID(testSuiteIds);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
 
-	@Test(dataProvider="validTestSuite")
-	public void testGetTestSuiteById(Integer suiteId)
-	{
-		this.loadXMLRPCMockData("tl.getTestSuiteByID.xml");
-		
-		TestSuite[] testSuites = null;
-		
-		List<Integer> testSuiteIds = new ArrayList<Integer>();
-		testSuiteIds.add( suiteId );
-		
-		try
-		{
-			testSuites = api.getTestSuiteByID( testSuiteIds );
-		} 
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testSuites );
-		
-		Assert.assertTrue( testSuites.length == 1 );
-	}
-	
+	Assert.assertNotNull(testSuites);
+
+	Assert.assertTrue(testSuites.length == 1);
+    }
+
 }

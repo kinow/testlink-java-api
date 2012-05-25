@@ -32,45 +32,32 @@ import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestPlanPlatforms 
-extends BaseTest
-{
-	
-	@DataProvider(name="testPlanWithPlatforms")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				10, 
-				"TC1"
-			}
-        };
+public class TestGetTestPlanPlatforms extends BaseTest {
+
+    @DataProvider(name = "testPlanWithPlatforms")
+    public Object[][] createData() {
+	return new Object[][] { { 10, "TC1" } };
+    }
+
+    @Test(dataProvider = "testPlanWithPlatforms")
+    public void testGetTestPlanPlatforms(Integer planId, String expectedPlatform) {
+	this.loadXMLRPCMockData("tl.getTestPlanPlatforms.xml");
+
+	Platform[] platforms = null;
+
+	try {
+	    platforms = this.api.getTestPlanPlatforms(planId);
+	} catch (Exception e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testPlanWithPlatforms")
-	public void testGetTestPlanPlatforms(Integer planId, String expectedPlatform)
-	{
-		this.loadXMLRPCMockData("tl.getTestPlanPlatforms.xml");
-		
-		Platform[] platforms = null;
-		
-		try
-		{
-			platforms = this.api.getTestPlanPlatforms(planId);
-		} 
-		catch (Exception e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( platforms );
-		
-		Assert.assertTrue( platforms.length > 0 );
-		
-		Assert.assertTrue( platforms[0].getName().equals(expectedPlatform) );
-	}
+
+	Assert.assertNotNull(platforms);
+
+	Assert.assertTrue(platforms.length > 0);
+
+	Assert.assertTrue(platforms[0].getName().equals(expectedPlatform));
+    }
 
 }

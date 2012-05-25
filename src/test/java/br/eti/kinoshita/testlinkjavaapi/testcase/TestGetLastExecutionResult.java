@@ -28,49 +28,38 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetLastExecutionResult 
-extends BaseTest
-{
+public class TestGetLastExecutionResult extends BaseTest {
 
-	@DataProvider(name="executionData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				10, 
-				8
-			}
-        };
+    @DataProvider(name = "executionData")
+    public Object[][] createData() {
+	return new Object[][] { { 10, 8 } };
+    }
+
+    @Test(dataProvider = "executionData")
+    public void testGetLastExecutionResult(Integer testPlanId,
+	    Integer testCaseId) {
+	this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
+
+	Execution execution = null;
+
+	try {
+	    execution = this.api.getLastExecutionResult(testPlanId, testCaseId,
+		    null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="executionData")
-	public void testGetLastExecutionResult(Integer testPlanId, Integer testCaseId)
-	{
-		this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
-		
-		Execution execution = null;
-		
-		try 
-		{
-			execution = this.api.getLastExecutionResult(testPlanId, testCaseId, null);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail( e.getMessage(), e );
-		}
-		
-		Assert.assertNotNull( execution );
-		
-		Assert.assertTrue( execution.getId() > 0 );
-		
-	}
-	
+
+	Assert.assertNotNull(execution);
+
+	Assert.assertTrue(execution.getId() > 0);
+
+    }
+
 }

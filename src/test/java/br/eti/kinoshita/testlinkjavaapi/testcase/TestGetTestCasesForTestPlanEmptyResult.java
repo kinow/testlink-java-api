@@ -29,59 +29,36 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @author Mario Fuentes - http://www.rhiscom.com
- * @since 
+ * @since 1.9.3-4
  */
-public class TestGetTestCasesForTestPlanEmptyResult 
-extends BaseTest
-{
-	
-	@DataProvider(name="testPlanEmptyData")
-	public Object[][] createTestPlanData()
-	{
-		return new Object[][] 
-        {
-			{
-				10
-			}
-        };
+public class TestGetTestCasesForTestPlanEmptyResult extends BaseTest {
+
+    @DataProvider(name = "testPlanEmptyData")
+    public Object[][] createTestPlanData() {
+	return new Object[][] { { 10 } };
+    }
+
+    @Test(dataProvider = "testPlanEmptyData")
+    public void testGetTestCasesForTestPlan(Integer testPlanId) {
+	this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
+
+	TestCase[] testCases = null;
+
+	try {
+	    testCases = this.api.getTestCasesForTestPlan(testPlanId, null,
+		    null, null, null, null, null, null, null, null, null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testPlanEmptyData")
-	public void testGetTestCasesForTestPlan(Integer testPlanId)
-	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
-		
-		TestCase[] testCases = null;
-		
-		try 
-		{
-			testCases = this.api.getTestCasesForTestPlan(
-				testPlanId, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null,
-				null
-			);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCases );
-		
-		Assert.assertTrue( testCases.length == 0 );
-	}
+
+	Assert.assertNotNull(testCases);
+
+	Assert.assertTrue(testCases.length == 0);
+    }
 }

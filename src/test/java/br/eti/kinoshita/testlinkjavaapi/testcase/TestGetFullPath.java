@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /*
  * The MIT License
@@ -33,42 +33,30 @@ import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetFullPath 
-extends BaseTest
-{
+public class TestGetFullPath extends BaseTest {
 
-	@DataProvider(name="simpleChildrenTestCases")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				9
-			}
-        };
+    @DataProvider(name = "simpleChildrenTestCases")
+    public Object[][] createData() {
+	return new Object[][] { { 9 } };
+    }
+
+    @Test(dataProvider = "simpleChildrenTestCases")
+    public void testGetFullPath(Integer nodeId) {
+	this.loadXMLRPCMockData("tl.getFullPath.xml");
+	String[] nodes = null;
+
+	try {
+	    nodes = this.api.getFullPath(nodeId);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="simpleChildrenTestCases")
-	public void testGetFullPath( Integer nodeId )
-	{
-		this.loadXMLRPCMockData("tl.getFullPath.xml");
-		String[] nodes = null;
-		
-		try 
-		{
-			nodes = this.api.getFullPath(nodeId);
-		}
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail( e.getMessage(), e );
-		}
-		
-		Assert.assertNotNull( nodes );
-		
-		Assert.assertTrue( nodes.length == 4 );
-		
-	}
-	
+
+	Assert.assertNotNull(nodes);
+
+	Assert.assertTrue(nodes.length == 4);
+
+    }
+
 }

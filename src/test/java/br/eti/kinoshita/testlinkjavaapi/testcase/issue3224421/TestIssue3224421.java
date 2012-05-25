@@ -27,63 +27,48 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
-import br.eti.kinoshita.testlinkjavaapi.model.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.1-1
  */
-public class TestIssue3224421 
-extends BaseTest
-{
+public class TestIssue3224421 extends BaseTest {
 
-	@Test
-	public void testRetrieveTestCaseForBuild()
-	{
-		try
-		{
-			this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
-			TestPlan plan = this.api.getTestPlanByName("Sample plan", "Sample project");
-			
-			this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
-			Build build = this.api.getLatestBuildForTestPlan(plan.getId());
-			
-			Assert.assertNotNull( build );
-			
-			this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
-			TestCase[] tcs = this.api.getTestCasesForTestPlan(
-					plan.getId(), 
-					null, 
-					null, 
-					null, 
-					null,  
-					Boolean.TRUE, 
-					null, 
-					null, 
-					null, 
-					null,
-					null);
-			
-			for( TestCase tc : tcs )
-			{
-				Assert.assertNotNull(tc.getExecutionStatus());
-				if ( tc.getExecutionStatus() != ExecutionStatus.NOT_RUN )
-				{
-					this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
-					Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null);
-					Assert.assertNotNull(execution);
-				}
-			}
-		} 
-		catch ( TestLinkAPIException e )
-		{
-			Assert.fail(""+e.getMessage(), e);
+    @Test
+    public void testRetrieveTestCaseForBuild() {
+	try {
+	    this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
+	    TestPlan plan = this.api.getTestPlanByName("Sample plan",
+		    "Sample project");
+
+	    this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
+	    Build build = this.api.getLatestBuildForTestPlan(plan.getId());
+
+	    Assert.assertNotNull(build);
+
+	    this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
+	    TestCase[] tcs = this.api.getTestCasesForTestPlan(plan.getId(),
+		    null, null, null, null, Boolean.TRUE, null, null, null,
+		    null, null);
+
+	    for (TestCase tc : tcs) {
+		Assert.assertNotNull(tc.getExecutionStatus());
+		if (tc.getExecutionStatus() != ExecutionStatus.NOT_RUN) {
+		    this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
+		    Execution execution = this.api.getLastExecutionResult(
+			    plan.getId(), tc.getId(), null);
+		    Assert.assertNotNull(execution);
 		}
+	    }
+	} catch (TestLinkAPIException e) {
+	    Assert.fail("" + e.getMessage(), e);
 	}
-	
+    }
+
 }

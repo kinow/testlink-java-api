@@ -25,185 +25,188 @@ package br.eti.kinoshita.testlinkjavaapi.model;
 
 import java.io.Serializable;
 
+import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
+
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
-public class TestSuite 
-implements Serializable
-{
+public class TestSuite implements Serializable {
 
-	private static final long serialVersionUID = 1808991369379189571L;
-	
-	private Integer id;
-	private Integer testProjectId;
-	private String name;
-	private String details;
-	private Integer parentId;
-	private Integer order;
-	private Boolean checkDuplicatedName;
-	private String actionOnDuplicatedName;
-	
-	/**
+    private static final long serialVersionUID = 1808991369379189571L;
+    
+    private Integer id;
+    private Integer testProjectId;
+    private String name;
+    private String details;
+    private Integer parentId;
+    private Integer order;
+    private Boolean checkDuplicatedName;
+    private ActionOnDuplicate actionOnDuplicatedName;
+
+    /**
 	 * 
 	 */
-	public TestSuite()
-	{
-		super();
-	}
-	/**
-	 * @param id
-	 * @param testProjectId
-	 * @param name
-	 * @param details
-	 * @param parentId
-	 * @param order
-	 * @param checkDuplicatedName
-	 * @param actionOnDuplicatedName
-	 */
-	public TestSuite(
-		Integer id, 
-		Integer testProjectId, 
-		String name,
-		String details, 
-		Integer parentId, 
-		Integer order,
-		Boolean checkDuplicatedName, 
-		String actionOnDuplicatedName)
-	{
-		super();
-		this.id = id;
-		this.testProjectId = testProjectId;
-		this.name = name;
-		this.details = details;
-		this.parentId = parentId;
-		this.order = order;
-		this.checkDuplicatedName = checkDuplicatedName;
-		this.actionOnDuplicatedName = actionOnDuplicatedName;
-	}
-	/**
-	 * @return the id
-	 */
-	public Integer getId()
-	{
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId( Integer id )
-	{
-		this.id = id;
-	}
-	/**
-	 * @return the testProjectId
-	 */
-	public Integer getTestProjectId()
-	{
-		return testProjectId;
-	}
-	/**
-	 * @param testProjectId the testProjectId to set
-	 */
-	public void setTestProjectId( Integer testProjectId )
-	{
-		this.testProjectId = testProjectId;
-	}
-	/**
-	 * @return the name
-	 */
-	public String getName()
-	{
-		return name;
-	}
-	/**
-	 * @param name the name to set
-	 */
-	public void setName( String name )
-	{
-		this.name = name;
-	}
-	/**
-	 * @return the details
-	 */
-	public String getDetails()
-	{
-		return details;
-	}
-	/**
-	 * @param details the details to set
-	 */
-	public void setDetails( String details )
-	{
-		this.details = details;
-	}
-	/**
-	 * @return the parentId
-	 */
-	public Integer getParentId()
-	{
-		return parentId;
-	}
-	/**
-	 * @param parentId the parentId to set
-	 */
-	public void setParentId( Integer parentId )
-	{
-		this.parentId = parentId;
-	}
-	/**
-	 * @return the order
-	 */
-	public Integer getOrder()
-	{
-		return order;
-	}
-	/**
-	 * @param order the order to set
-	 */
-	public void setOrder( Integer order )
-	{
-		this.order = order;
-	}
-	/**
-	 * @return the checkDuplicatedName
-	 */
-	public Boolean getCheckDuplicatedName()
-	{
-		return checkDuplicatedName;
-	}
-	/**
-	 * @param checkDuplicatedName the checkDuplicatedName to set
-	 */
-	public void setCheckDuplicatedName( Boolean checkDuplicatedName )
-	{
-		this.checkDuplicatedName = checkDuplicatedName;
-	}
-	/**
-	 * @return the actionOnDuplicatedName
-	 */
-	public String getActionOnDuplicatedName()
-	{
-		return actionOnDuplicatedName;
-	}
-	/**
-	 * @param actionOnDuplicatedName the actionOnDuplicatedName to set
-	 */
-	public void setActionOnDuplicatedName( String actionOnDuplicatedName )
-	{
-		this.actionOnDuplicatedName = actionOnDuplicatedName;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return "TestSuite [id=" + id + ", testProjectId=" + testProjectId
-				+ ", name=" + name + ", details=" + details + ", parentId="
-				+ parentId + ", order=" + order + ", checkDuplicatedName="
-				+ checkDuplicatedName + ", actionOnDuplicatedName="
-				+ actionOnDuplicatedName + "]";
-	}
-	
+    public TestSuite() {
+	super();
+    }
+
+    /**
+     * @param id
+     * @param testProjectId
+     * @param name
+     * @param details
+     * @param parentId
+     * @param order
+     * @param checkDuplicatedName
+     * @param actionOnDuplicatedName
+     */
+    public TestSuite(Integer id, Integer testProjectId, String name,
+	    String details, Integer parentId, Integer order,
+	    Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) {
+	super();
+	this.id = id;
+	this.testProjectId = testProjectId;
+	this.name = name;
+	this.details = details;
+	this.parentId = parentId;
+	this.order = order;
+	this.checkDuplicatedName = checkDuplicatedName;
+	this.actionOnDuplicatedName = actionOnDuplicatedName;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+	return id;
+    }
+
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(Integer id) {
+	this.id = id;
+    }
+
+    /**
+     * @return the testProjectId
+     */
+    public Integer getTestProjectId() {
+	return testProjectId;
+    }
+
+    /**
+     * @param testProjectId
+     *            the testProjectId to set
+     */
+    public void setTestProjectId(Integer testProjectId) {
+	this.testProjectId = testProjectId;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+	return name;
+    }
+
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    /**
+     * @return the details
+     */
+    public String getDetails() {
+	return details;
+    }
+
+    /**
+     * @param details
+     *            the details to set
+     */
+    public void setDetails(String details) {
+	this.details = details;
+    }
+
+    /**
+     * @return the parentId
+     */
+    public Integer getParentId() {
+	return parentId;
+    }
+
+    /**
+     * @param parentId
+     *            the parentId to set
+     */
+    public void setParentId(Integer parentId) {
+	this.parentId = parentId;
+    }
+
+    /**
+     * @return the order
+     */
+    public Integer getOrder() {
+	return order;
+    }
+
+    /**
+     * @param order
+     *            the order to set
+     */
+    public void setOrder(Integer order) {
+	this.order = order;
+    }
+
+    /**
+     * @return the checkDuplicatedName
+     */
+    public Boolean getCheckDuplicatedName() {
+	return checkDuplicatedName;
+    }
+
+    /**
+     * @param checkDuplicatedName
+     *            the checkDuplicatedName to set
+     */
+    public void setCheckDuplicatedName(Boolean checkDuplicatedName) {
+	this.checkDuplicatedName = checkDuplicatedName;
+    }
+
+    /**
+     * @return the actionOnDuplicatedName
+     */
+    public ActionOnDuplicate getActionOnDuplicatedName() {
+	return actionOnDuplicatedName;
+    }
+
+    /**
+     * @param actionOnDuplicatedName
+     *            the actionOnDuplicatedName to set
+     */
+    public void setActionOnDuplicatedName(ActionOnDuplicate actionOnDuplicatedName) {
+	this.actionOnDuplicatedName = actionOnDuplicatedName;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+	return "TestSuite [id=" + id + ", testProjectId=" + testProjectId
+		+ ", name=" + name + ", details=" + details + ", parentId="
+		+ parentId + ", order=" + order + ", checkDuplicatedName="
+		+ checkDuplicatedName + ", actionOnDuplicatedName="
+		+ actionOnDuplicatedName + "]";
+    }
+
 }

@@ -27,47 +27,39 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestProjects 
-extends BaseTest
-{
-	
-	@Test
-	public void testGetProjects()
-	{
-		this.loadXMLRPCMockData("tl.getProjects.xml");
-		TestProject[] projects = null;
-		
-		try
-		{
-			projects = api.getProjects();
-		} 
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( projects );
-		
-		Assert.assertTrue( projects.length > 0 );
-		
-		boolean found = false;
-		for (int i = 0; i < projects.length; i++)
-		{
-			TestProject project = projects[i];
-			if ( project.getName().equals("tdc project") )
-			{
-				found = true;
-			}
-		}
-		
-		Assert.assertTrue( found );
+public class TestGetTestProjects extends BaseTest {
+
+    @Test
+    public void testGetProjects() {
+	this.loadXMLRPCMockData("tl.getProjects.xml");
+	TestProject[] projects = null;
+
+	try {
+	    projects = api.getProjects();
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
+
+	Assert.assertNotNull(projects);
+
+	Assert.assertTrue(projects.length > 0);
+
+	boolean found = false;
+	for (int i = 0; i < projects.length; i++) {
+	    TestProject project = projects[i];
+	    if (project.getName().equals("tdc project")) {
+		found = true;
+	    }
+	}
+
+	Assert.assertTrue(found);
+    }
 
 }

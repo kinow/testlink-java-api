@@ -28,73 +28,42 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
-import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.model.ImportanceLevel;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStatus;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Mario Fuentes - http://www.rhiscom.com
- * @since 1.9.4-1
+ * @since 1.9.3-4
  */
-public class TestUpdateTestCase 
-extends BaseTest
-{
+public class TestUpdateTestCase extends BaseTest {
 
-	@DataProvider(name="testCaseData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				"tl-100", 
-				"1.0.0", 
-				"Sample test case",
-				"No summary.", 
-				"No preconditions.",
-				ImportanceLevel.Medium,
-				ExecutionType.AUTOMATED,
-				TestCaseStatus.Final,
-				"0"
-			}
-        };
+    @DataProvider(name = "testCaseData")
+    public Object[][] createData() {
+	return new Object[][] { { "tl-100", "1.0.0", "Sample test case",
+		"No summary.", "No preconditions.", TestImportance.MEDIUM,
+		ExecutionType.AUTOMATED, TestCaseStatus.FINAL, "0" } };
+    }
+
+    @Test(dataProvider = "testCaseData")
+    public void testUpdateTestCase(String testCaseFullExternalId,
+	    String version, String name, String summary, String preconditions,
+	    TestImportance importance, ExecutionType executionType,
+	    TestCaseStatus status, String estimatedExecutionDuration) {
+	this.loadXMLRPCMockData("tl.updateTestCase.xml");
+
+	try {
+	    api.updateTestCase(testCaseFullExternalId, version, name, summary,
+		    preconditions, importance, executionType, status,
+		    estimatedExecutionDuration);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testCaseData")
-	public void testUpdateTestCase(
-			String testCaseFullExternalId,
-			String version,
-			String name,
-			String summary,
-			String preconditions,
-			ImportanceLevel importance,
-			ExecutionType executionType,
-			TestCaseStatus status,
-			String estimatedExecutionDuration)
-	{
-		this.loadXMLRPCMockData("tl.updateTestCase.xml");
-		
-		try
-		{
-			api.updateTestCase(
-				testCaseFullExternalId,
-				version,
-				name,
-				summary,
-				preconditions,
-				importance,
-				executionType,
-				status,
-				estimatedExecutionDuration
-			);
-		} catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		//Assert.assertNotNull( testCase );
-		
-		//Assert.assertTrue( testCase.getId() > 0 );
-	}
-	
+
+	// Assert.assertNotNull( testCase );
+
+	// Assert.assertTrue( testCase.getId() > 0 );
+    }
+
 }

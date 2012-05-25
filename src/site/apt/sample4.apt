@@ -1,0 +1,32 @@
+Creating a test case with steps.
+
+ In this example we will create a simple test case that contains test steps. 
+
++-----+
+	
+	List<TestCaseStep> steps = new ArrayList<TestCaseStep>();
+    TestCaseStep step = new TestCaseStep();
+    step.setNumber(1);
+    step.setExpectedResults("User name appeared in top menu.");
+    step.setExecutionType(ExecutionType.MANUAL);
+    step.setActions("Go to login screen and enter user credentials.");
+    steps.add(step);
+	
+	TestCase tc = api.createTestCase(
+            "TcName", // testCaseName
+            new Integer(2), // testSuiteId
+            new Integer(1), // testProjectId
+            "admin", // authorLogin
+            "No summary", // summary
+            steps, // steps
+            null, // preconditions
+            TestImportance.HIGH, // importance
+            ExecutionType.MANUAL, // execution
+            new Integer(10), // order
+            null, // internalId
+            null, // checkDuplicatedName 
+            null); // actionOnDuplicatedName
+    
+    System.out.println("Test case with steps created");
+
++-----+

@@ -28,69 +28,40 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.0
  */
-public class TestCreateTestCase 
-extends BaseTest
-{
+public class TestCreateTestCase extends BaseTest {
 
-	@DataProvider(name="testCaseData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				2, 
-				1, 
-				"admin", 
-				"Sample summary.", 
-				"No preconditions."
-			}
-        };
+    @DataProvider(name = "testCaseData")
+    public Object[][] createData() {
+	return new Object[][] { { 2, 1, "admin", "Sample summary.",
+		"No preconditions." } };
+    }
+
+    @Test(dataProvider = "testCaseData")
+    public void testCreateTestCase(Integer testSuiteId, Integer testProjectId,
+	    String authorLogin, String summary, String preconditions) {
+	this.loadXMLRPCMockData("tl.createTestCase.xml");
+
+	TestCase testCase = null;
+
+	try {
+	    testCase = api.createTestCase(
+		    "Sample Test Case " + System.currentTimeMillis(),
+		    testSuiteId, testProjectId, authorLogin, summary, null,
+		    preconditions, null, null, null, null, null, null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testCaseData")
-	public void testCreateTestCase(
-		Integer testSuiteId,
-		Integer testProjectId, 
-		String authorLogin, 
-		String summary,
-		String preconditions
-	)
-	{
-		this.loadXMLRPCMockData("tl.createTestCase.xml");
-		
-		TestCase testCase = null;
-		
-		try
-		{
-			testCase = api.createTestCase(
-				"Sample Test Case " + System.currentTimeMillis(), 
-				testSuiteId,
-				testProjectId, 
-				authorLogin, 
-				summary,
-				null, 
-				preconditions,
-				null, 
-				null, 
-				null,
-				null, 
-				null,
-				null);
-		} catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCase );
-		
-		Assert.assertTrue( testCase.getId() > 0 );
-	}
-	
+
+	Assert.assertNotNull(testCase);
+
+	Assert.assertTrue(testCase.getId() > 0);
+    }
+
 }

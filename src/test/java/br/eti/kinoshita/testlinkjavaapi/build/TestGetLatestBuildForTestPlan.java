@@ -28,57 +28,44 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetLatestBuildForTestPlan 
-extends BaseTest
-{
+public class TestGetLatestBuildForTestPlan extends BaseTest {
 
-	@DataProvider(name="buildData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				5, 
-				7, 
-				"tdc-1.0", 
-				"Build creado automaticamente con TestLink Jenkins Plug-in."
-			}
-        };
+    @DataProvider(name = "buildData")
+    public Object[][] createData() {
+	return new Object[][] { { 5, 7, "tdc-1.0",
+		"Build creado automaticamente con TestLink Jenkins Plug-in." } };
+    }
+
+    @Test(dataProvider = "buildData")
+    public void testGetLatestBuildForTestPlan(Integer testPlanId,
+	    Integer buildId, String buildName, String buildNotes) {
+	this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
+	Build build = null;
+
+	try {
+	    build = api.getLatestBuildForTestPlan(testPlanId);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="buildData")
-	public void testGetLatestBuildForTestPlan( Integer testPlanId, Integer buildId, String buildName, String buildNotes )
-	{
-		this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
-		Build build = null;
-		
-		try
-		{
-			build = api.getLatestBuildForTestPlan( testPlanId );
-		}
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( build );
-		
-		Assert.assertTrue( build.getId() > 0 );	
-		
-		Assert.assertEquals( build.getId(), buildId );
-		
-		Assert.assertEquals( build.getTestPlanId(), testPlanId );
-		
-		Assert.assertEquals( build.getName(), buildName );
-		
-		Assert.assertEquals( build.getNotes(), buildNotes );
-	}
-	
+
+	Assert.assertNotNull(build);
+
+	Assert.assertTrue(build.getId() > 0);
+
+	Assert.assertEquals(build.getId(), buildId);
+
+	Assert.assertEquals(build.getTestPlanId(), testPlanId);
+
+	Assert.assertEquals(build.getName(), buildName);
+
+	Assert.assertEquals(build.getNotes(), buildNotes);
+    }
+
 }

@@ -30,74 +30,47 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestCreateTestProject 
-extends BaseTest
-{
-	
-	@DataProvider(name="createTestProjectDataProvider")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				"Test Project created with TestNG", 
-				true, 
-				true, 
-				true, 
-				false, 
-				false, 
-				true
-			}
-        };
+public class TestCreateTestProject extends BaseTest {
+
+    @DataProvider(name = "createTestProjectDataProvider")
+    public Object[][] createData() {
+	return new Object[][] { { "Test Project created with TestNG", true,
+		true, true, false, false, true } };
+    }
+
+    @Test(dataProvider = "createTestProjectDataProvider")
+    public void testCreateProject(String notes, Boolean enableRequirements,
+	    Boolean enableTestPriority, Boolean enableAutomation,
+	    Boolean enableInventory, Boolean isActive, Boolean isPublic) {
+	this.loadXMLRPCMockData("tl.createTestProject.xml");
+
+	TestProject project = null;
+
+	try {
+	    Random random = new Random(System.currentTimeMillis());
+
+	    project = api.createTestProject(
+		    "Sample project " + System.currentTimeMillis(),
+		    "" + random.nextInt(9999), notes, enableRequirements,
+		    enableTestPriority, enableAutomation, enableInventory,
+		    isActive, isPublic);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="createTestProjectDataProvider")
-	public void testCreateProject(
-		String notes, 
-		Boolean enableRequirements, 
-		Boolean enableTestPriority, 
-		Boolean enableAutomation, 
-		Boolean enableInventory, 
-		Boolean isActive, 
-		Boolean isPublic
-	)
-	{
-		this.loadXMLRPCMockData("tl.createTestProject.xml");
-		
-		TestProject project = null;
-		
-		try
-		{
-			Random random = new Random(System.currentTimeMillis());
-			
-			project = api.createTestProject(
-					"Sample project " + System.currentTimeMillis(), 
-					""+random.nextInt(9999), 
-					notes, 
-					enableRequirements, 
-					enableTestPriority, 
-					enableAutomation, 
-					enableInventory, 
-					isActive, 
-					isPublic);
-		} catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( project );
-		
-		Assert.assertTrue( project.getId() > 0 );
-		
-		Assert.assertFalse( project.isActive() );
-		
-	}
+
+	Assert.assertNotNull(project);
+
+	Assert.assertTrue(project.getId() > 0);
+
+	Assert.assertFalse(project.isActive());
+
+    }
 
 }

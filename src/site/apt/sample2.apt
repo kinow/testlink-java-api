@@ -4,8 +4,7 @@ Creating a new Test Project
 	
 	TestProject project = null;
 	
-	try
-	{
+	try {
 		project = api.createTestProject(
 				"Minecraft", //testProjectName
 				"MC", //testProjectPrefix
@@ -16,8 +15,7 @@ Creating a new Test Project
 				false, //enableInventory
 				true, //isActive
 				true); //isPublic
-	} catch (TestLinkAPIException e)
-	{
+	} catch (TestLinkAPIException e) {
 		e.printStackTrace( System.err );
 		System.exit(-1);
 	}

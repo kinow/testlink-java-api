@@ -32,48 +32,36 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestPlanByName 
-extends BaseTest
-{
-	
-	@DataProvider(name="testPlanData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				"Sample plan", 
-				"Sample project"
-			}
-        };
+public class TestGetTestPlanByName extends BaseTest {
+
+    @DataProvider(name = "testPlanData")
+    public Object[][] createData() {
+	return new Object[][] { { "Sample plan", "Sample project" } };
+    }
+
+    @Test(dataProvider = "testPlanData")
+    public void testGetTestPlanByName(String testPlanName,
+	    String testProjectName) {
+	this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
+
+	TestPlan testPlan = null;
+
+	try {
+	    testPlan = this.api
+		    .getTestPlanByName(testPlanName, testProjectName);
+	} catch (Exception e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testPlanData")
-	public void testGetTestPlanByName(
-			String testPlanName, 
-			String testProjectName)
-	{
-		this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
-		
-		TestPlan testPlan = null;
-		
-		try
-		{
-			testPlan = this.api.getTestPlanByName(testPlanName, testProjectName);
-		}
-		catch (Exception e)
-		{
-			Assert.fail( e.getMessage(), e );
-		}
-		
-		Assert.assertNotNull( testPlan );
-		
-		Assert.assertTrue( testPlan.getId() > 0 );
-		
-		Assert.assertTrue( testPlan.getName() != null && testPlan.getName().length() > 0 );
-		
-	}
+
+	Assert.assertNotNull(testPlan);
+
+	Assert.assertTrue(testPlan.getId() > 0);
+
+	Assert.assertTrue(testPlan.getName() != null
+		&& testPlan.getName().length() > 0);
+
+    }
 
 }

@@ -28,40 +28,28 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestDeleteExecution 
-extends BaseTest
-{
-	
-	@DataProvider(name="executionData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				1
-			}
-        };
+public class TestDeleteExecution extends BaseTest {
+
+    @DataProvider(name = "executionData")
+    public Object[][] createData() {
+	return new Object[][] { { 1 } };
+    }
+
+    @Test(dataProvider = "executionData")
+    public void testDeleteExecution(Integer executionId) {
+	this.loadXMLRPCMockData("tl.deleteExecution.xml");
+
+	try {
+	    this.api.deleteExecution(executionId);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="executionData")
-	public void testDeleteExecution(Integer executionId)
-	{
-		this.loadXMLRPCMockData("tl.deleteExecution.xml");
-		
-		try 
-		{
-			this.api.deleteExecution(executionId);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-	}
+    }
 
 }

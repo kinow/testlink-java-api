@@ -42,120 +42,96 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
  * @author Olaf Otto - http://olafsblog.sysbsb.de
  * @since 1.0
  */
-public class HttpTestServer
-{
+public class HttpTestServer {
 
-	private static int DEFAULT_SERVER_PORT = 31984;
-	
-	protected int port;
-	protected Server server;
-	protected String responseBody;
-	protected String requestBody;
-	protected String mockResposeData;
-	
-	public HttpTestServer() 
-	{
-		this( DEFAULT_SERVER_PORT );
-	}
-	
-	public HttpTestServer( int port )
-	{
-		this.port = port;
-	}
-	
-	public int getPort()
-	{
-		return this.port;
-	}
-	
-	protected void start() 
-	throws Exception 
-	{
-		configureServer();
-		startServer();
-	}
-	
-	protected void configureServer()
-	{
-		this.server = new Server(this.port);
-		this.server.setHandler(getMockHandler());
-	}
-	
-	public Handler getMockHandler() 
-	{
-		Handler mockHandler = new AbstractHandler()
-		{
-			public void handle( 
-				String target, 
-				Request request,
-				HttpServletRequest httpRequest, 
-				HttpServletResponse httpResponse )
-			throws IOException, ServletException
-			{
-				Request baseRequest = HttpConnection.getCurrentConnection().getRequest();
-				setResponseBody(getMockResponseBody());
-				setRequestBody(IOUtils.toString(baseRequest.getInputStream()));
-				httpResponse.setStatus(HttpServletResponse.SC_OK);
-				httpResponse.setContentType("text/xml;charset=utf-8");
-				httpResponse.getWriter().write(getResponseBody());
-				baseRequest.setHandled(true);
-			}
-		};
-		return mockHandler;
-	}
-	
-	protected void startServer() 
-	throws Exception
-	{
-		this.server.start();
-	}
-	
-	public void stop() 
-	throws Exception
-	{
-		this.server.stop();
-	}
-	
-	public void setRequestBody( String requestBody )
-	{
-		this.requestBody = requestBody;
-	}
-	
-	public String getRequestBody()
-	{
-		return this.requestBody;
-	}
-	
-	public void setResponseBody( String responseBody )
-	{
-		this.responseBody = responseBody;
-	}
-	
-	public String getResponseBody() 
-	{
-		return this.responseBody;
-	}
-	
-	public void setMockResponseBody( String mockResponseBody )
-	{
-		this.mockResposeData = mockResponseBody;
-	}
-	
-	public String getMockResponseBody()
-	{
-		return this.mockResposeData;
-	}
-	
-	public Server getServer()
-	{
-		return this.server;
-	}
-	
-	public static void main( String[] args ) 
-	throws Exception
-	{
-		HttpTestServer server = new HttpTestServer();
-		server.start();
-	}
-	
+    private static int DEFAULT_SERVER_PORT = 31984;
+
+    protected int port;
+    protected Server server;
+    protected String responseBody;
+    protected String requestBody;
+    protected String mockResposeData;
+
+    public HttpTestServer() {
+	this(DEFAULT_SERVER_PORT);
+    }
+
+    public HttpTestServer(int port) {
+	this.port = port;
+    }
+
+    public int getPort() {
+	return this.port;
+    }
+
+    protected void start() throws Exception {
+	configureServer();
+	startServer();
+    }
+
+    protected void configureServer() {
+	this.server = new Server(this.port);
+	this.server.setHandler(getMockHandler());
+    }
+
+    public Handler getMockHandler() {
+	Handler mockHandler = new AbstractHandler() {
+	    public void handle(String target, Request request,
+		    HttpServletRequest httpRequest,
+		    HttpServletResponse httpResponse) throws IOException,
+		    ServletException {
+		Request baseRequest = HttpConnection.getCurrentConnection()
+			.getRequest();
+		setResponseBody(getMockResponseBody());
+		setRequestBody(IOUtils.toString(baseRequest.getInputStream()));
+		httpResponse.setStatus(HttpServletResponse.SC_OK);
+		httpResponse.setContentType("text/xml;charset=utf-8");
+		httpResponse.getWriter().write(getResponseBody());
+		baseRequest.setHandled(true);
+	    }
+	};
+	return mockHandler;
+    }
+
+    protected void startServer() throws Exception {
+	this.server.start();
+    }
+
+    public void stop() throws Exception {
+	this.server.stop();
+    }
+
+    public void setRequestBody(String requestBody) {
+	this.requestBody = requestBody;
+    }
+
+    public String getRequestBody() {
+	return this.requestBody;
+    }
+
+    public void setResponseBody(String responseBody) {
+	this.responseBody = responseBody;
+    }
+
+    public String getResponseBody() {
+	return this.responseBody;
+    }
+
+    public void setMockResponseBody(String mockResponseBody) {
+	this.mockResposeData = mockResponseBody;
+    }
+
+    public String getMockResponseBody() {
+	return this.mockResposeData;
+    }
+
+    public Server getServer() {
+	return this.server;
+    }
+
+    public static void main(String[] args) throws Exception {
+	HttpTestServer server = new HttpTestServer();
+	server.start();
+    }
+
 }

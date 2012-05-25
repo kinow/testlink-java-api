@@ -28,59 +28,37 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
-import br.eti.kinoshita.testlinkjavaapi.model.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestCasesForTestPlan 
-extends BaseTest
-{
-	
-	@DataProvider(name="testPlanData")
-	public Object[][] createTestPlanData()
-	{
-		return new Object[][] 
-        {
-			{
-				10
-			}
-        };
+public class TestGetTestCasesForTestPlan extends BaseTest {
+
+    @DataProvider(name = "testPlanData")
+    public Object[][] createTestPlanData() {
+	return new Object[][] { { 10 } };
+    }
+
+    @Test(dataProvider = "testPlanData")
+    public void testGetAutomatedTestCasesForTestPlan(Integer testPlanId) {
+	this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
+
+	TestCase[] testCases = null;
+
+	try {
+	    testCases = this.api.getTestCasesForTestPlan(testPlanId, null,
+		    null, null, null, null, null, null,
+		    ExecutionType.AUTOMATED, null, null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testPlanData")
-	public void testGetAutomatedTestCasesForTestPlan(Integer testPlanId)
-	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
-		
-		TestCase[] testCases = null;
-		
-		try 
-		{
-			testCases = this.api.getTestCasesForTestPlan(
-				testPlanId, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				null, 
-				ExecutionType.AUTOMATED, 
-				null,
-				null
-			);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCases );
-		
-		Assert.assertTrue( testCases.length == 1 );
-	}
+
+	Assert.assertNotNull(testCases);
+
+	Assert.assertTrue(testCases.length == 1);
+    }
 }

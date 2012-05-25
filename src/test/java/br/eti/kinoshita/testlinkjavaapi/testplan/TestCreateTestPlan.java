@@ -28,56 +28,38 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestCreateTestPlan 
-extends BaseTest
-{
-	
-	@DataProvider(name="testPlanData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				"Sample project", 
-				"Sample notes.", 
-				true, 
-				true
-			}
-        };
+public class TestCreateTestPlan extends BaseTest {
+
+    @DataProvider(name = "testPlanData")
+    public Object[][] createData() {
+	return new Object[][] { { "Sample project", "Sample notes.", true, true } };
+    }
+
+    @Test(dataProvider = "testPlanData")
+    public void testCreateTestPlan(String testProjectName, String notes,
+	    Boolean isActive, Boolean isPublic) {
+	this.loadXMLRPCMockData("tl.createTestPlan.xml");
+
+	TestPlan testPlan = null;
+
+	try {
+	    testPlan = api.createTestPlan(
+		    "Sample plan " + System.currentTimeMillis(),
+		    testProjectName, notes, isActive, isPublic);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testPlanData")
-	public void testCreateTestPlan(
-		String testProjectName, 
-		String notes,
-		Boolean isActive,
-		Boolean isPublic
-	)
-	{
-		this.loadXMLRPCMockData("tl.createTestPlan.xml");
-		
-		TestPlan testPlan = null;
-		
-		try
-		{
-			testPlan = api.createTestPlan(
-					"Sample plan "+System.currentTimeMillis(), testProjectName, notes, isActive, isPublic);
-		}
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull(testPlan);
-		
-		Assert.assertTrue(testPlan.getId() > 0);
-	}
+
+	Assert.assertNotNull(testPlan);
+
+	Assert.assertTrue(testPlan.getId() > 0);
+    }
 
 }

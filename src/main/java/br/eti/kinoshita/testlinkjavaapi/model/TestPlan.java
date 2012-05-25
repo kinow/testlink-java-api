@@ -29,138 +29,143 @@ import java.io.Serializable;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
-public class TestPlan 
-implements Serializable
-{
-	
-	private static final long serialVersionUID = 3030116951146834578L;
-	
-	private Integer id;
-	private String name;
-	private String projectName;
-	private String notes;
-	private Boolean isActive;
-	private Boolean isPublic;
-	/**
+public class TestPlan implements Serializable {
+
+    private static final long serialVersionUID = 3030116951146834578L;
+    
+    private Integer id;
+    private String name;
+    private String projectName;
+    private String notes;
+    private Boolean isActive;
+    private Boolean isPublic;
+
+    /**
 	 * 
 	 */
-	public TestPlan()
-	{
-		super();
-	}
-	/**
-	 * @param id
-	 * @param name
-	 * @param projectName
-	 * @param notes
-	 * @param isActive
-	 * @param isPublic
-	 */
-	public TestPlan(Integer id, String name, String projectName, String notes,
-			Boolean isActive, Boolean isPublic)
-	{
-		super();
-		this.id = id;
-		this.name = name;
-		this.projectName = projectName;
-		this.notes = notes;
-		this.isActive = isActive;
-		this.isPublic = isPublic;
-	}
-	
-	/**
-	 * @return the id
-	 */
-	public Integer getId()
-	{
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId( Integer id )
-	{
-		this.id = id;
-	}
-	/**
-	 * @return the name
-	 */
-	public String getName()
-	{
-		return name;
-	}
-	/**
-	 * @param name the name to set
-	 */
-	public void setName( String name )
-	{
-		this.name = name;
-	}
-	/**
-	 * @return the projectName
-	 */
-	public String getProjectName()
-	{
-		return projectName;
-	}
-	/**
-	 * @param projectName the projectName to set
-	 */
-	public void setProjectName( String projectName )
-	{
-		this.projectName = projectName;
-	}
-	/**
-	 * @return the notes
-	 */
-	public String getNotes()
-	{
-		return notes;
-	}
-	/**
-	 * @param notes the notes to set
-	 */
-	public void setNotes( String notes )
-	{
-		this.notes = notes;
-	}
-	/**
-	 * @return the isActive
-	 */
-	public Boolean isActive()
-	{
-		return isActive;
-	}
-	/**
-	 * @param isActive the isActive to set
-	 */
-	public void setActive( Boolean isActive )
-	{
-		this.isActive = isActive;
-	}
-	/**
-	 * @return the isPublic
-	 */
-	public Boolean isPublic()
-	{
-		return isPublic;
-	}
-	/**
-	 * @param isPublic the isPublic to set
-	 */
-	public void setPublic( Boolean isPublic )
-	{
-		this.isPublic = isPublic;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return "TestPlan [id=" + id + "name=" + name + ", projectName=" + projectName
-				+ ", notes=" + notes + ", isActive=" + isActive + ", isPublic="
-				+ isPublic + "]";
-	}
-	
+    public TestPlan() {
+	super();
+    }
+
+    /**
+     * @param id
+     * @param name
+     * @param projectName
+     * @param notes
+     * @param isActive
+     * @param isPublic
+     */
+    public TestPlan(Integer id, String name, String projectName, String notes,
+	    Boolean isActive, Boolean isPublic) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.projectName = projectName;
+	this.notes = notes;
+	this.isActive = isActive;
+	this.isPublic = isPublic;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+	return id;
+    }
+
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(Integer id) {
+	this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+	return name;
+    }
+
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    /**
+     * @return the projectName
+     */
+    public String getProjectName() {
+	return projectName;
+    }
+
+    /**
+     * @param projectName
+     *            the projectName to set
+     */
+    public void setProjectName(String projectName) {
+	this.projectName = projectName;
+    }
+
+    /**
+     * @return the notes
+     */
+    public String getNotes() {
+	return notes;
+    }
+
+    /**
+     * @param notes
+     *            the notes to set
+     */
+    public void setNotes(String notes) {
+	this.notes = notes;
+    }
+
+    /**
+     * @return the isActive
+     */
+    public Boolean isActive() {
+	return isActive;
+    }
+
+    /**
+     * @param isActive
+     *            the isActive to set
+     */
+    public void setActive(Boolean isActive) {
+	this.isActive = isActive;
+    }
+
+    /**
+     * @return the isPublic
+     */
+    public Boolean isPublic() {
+	return isPublic;
+    }
+
+    /**
+     * @param isPublic
+     *            the isPublic to set
+     */
+    public void setPublic(Boolean isPublic) {
+	this.isPublic = isPublic;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+	return "TestPlan [id=" + id + "name=" + name + ", projectName="
+		+ projectName + ", notes=" + notes + ", isActive=" + isActive
+		+ ", isPublic=" + isPublic + "]";
+    }
+
 }

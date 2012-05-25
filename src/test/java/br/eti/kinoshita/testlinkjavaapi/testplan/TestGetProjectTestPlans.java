@@ -32,41 +32,30 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetProjectTestPlans 
-extends BaseTest
-{
-	
-	@DataProvider(name="testProjectData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				1
-			}
-        };
+public class TestGetProjectTestPlans extends BaseTest {
+
+    @DataProvider(name = "testProjectData")
+    public Object[][] createData() {
+	return new Object[][] { { 1 } };
+    }
+
+    @Test(dataProvider = "testProjectData")
+    public void testGetProjectTestPlans(Integer projectId) {
+	this.loadXMLRPCMockData("tl.getProjectTestPlans.xml");
+
+	TestPlan[] testPlans = null;
+
+	try {
+	    testPlans = this.api.getProjectTestPlans(projectId);
+	} catch (Exception e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testProjectData")
-	public void testGetProjectTestPlans(Integer projectId)
-	{
-		this.loadXMLRPCMockData("tl.getProjectTestPlans.xml");
-		
-		TestPlan[] testPlans = null;
-		
-		try 
-		{
-			testPlans = this.api.getProjectTestPlans(projectId);
-		} 
-		catch (Exception e) {
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull(testPlans);
-		
-		Assert.assertTrue(testPlans.length > 0);
-	}
+
+	Assert.assertNotNull(testPlans);
+
+	Assert.assertTrue(testPlans.length > 0);
+    }
 
 }

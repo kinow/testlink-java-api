@@ -28,57 +28,40 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestCase 
-extends BaseTest
-{
+public class TestGetTestCase extends BaseTest {
 
-	@DataProvider(name="testCaseData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				4, 1
-			}
-			,
-			{
-				6, 1
-			}
-        };
+    @DataProvider(name = "testCaseData")
+    public Object[][] createData() {
+	return new Object[][] { { 4, 1 }, { 6, 1 } };
+    }
+
+    @Test(dataProvider = "testCaseData")
+    public void testGetTestCase(Integer testCaseId, Integer version) {
+	this.loadXMLRPCMockData("tl.getTestCase.xml");
+
+	TestCase testCase = null;
+
+	try {
+	    testCase = this.api.getTestCase(testCaseId, null, version);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testCaseData")
-	public void testGetTestCase(Integer testCaseId, 
-			   				    Integer version)
-	{
-		this.loadXMLRPCMockData("tl.getTestCase.xml");
-		
-		TestCase testCase = null;
-		
-		try 
-		{
-			testCase = this.api.getTestCase(testCaseId, null, version);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCase );
-		
-		Assert.assertTrue( testCase.getId() > 0 );
-		
-		Assert.assertNotNull( testCase.getSteps() );
-		
-		Assert.assertEquals( testCase.getSteps().size(), 6 );
-		
-	}
-	
+
+	Assert.assertNotNull(testCase);
+
+	Assert.assertTrue(testCase.getId() > 0);
+
+	Assert.assertNotNull(testCase.getSteps());
+
+	Assert.assertEquals(testCase.getSteps().size(), 6);
+
+    }
+
 }

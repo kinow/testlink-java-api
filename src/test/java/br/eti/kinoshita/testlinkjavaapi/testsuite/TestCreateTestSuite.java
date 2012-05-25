@@ -28,63 +28,38 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestCreateTestSuite 
-extends BaseTest
-{
+public class TestCreateTestSuite extends BaseTest {
 
-	@DataProvider(name="validTestSuite")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				1, 
-				"Sample test suite 2"
-			}, 
-			{
-				1,
-				"Sample test suite 3"
-			}
-        };
+    @DataProvider(name = "validTestSuite")
+    public Object[][] createData() {
+	return new Object[][] { { 1, "Sample test suite 2" },
+		{ 1, "Sample test suite 3" } };
+    }
+
+    @Test(dataProvider = "validTestSuite")
+    public void testCreateTestSuite(Integer testProjectId, String details) {
+	this.loadXMLRPCMockData("tl.createTestSuite.xml");
+
+	TestSuite testSuite = null;
+
+	try {
+	    testSuite = api.createTestSuite(testProjectId, "Sample suite "
+		    + System.currentTimeMillis(), details, null, null, null,
+		    null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="validTestSuite")
-	public void testCreateTestSuite(
-		Integer testProjectId, 
-		String details
-	)
-	{
-		this.loadXMLRPCMockData("tl.createTestSuite.xml");
-		
-		TestSuite testSuite = null;
-		
-		try
-		{
-			testSuite = api.createTestSuite(
-				testProjectId, 
-				"Sample suite " + System.currentTimeMillis(), 
-				details, 
-				null, 
-				null, 
-				null, 
-				null
-			);
-		} 
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testSuite );
-		
-		Assert.assertTrue( testSuite.getId() > 0 );
-	}
-	
+
+	Assert.assertNotNull(testSuite);
+
+	Assert.assertTrue(testSuite.getId() > 0);
+    }
+
 }

@@ -30,44 +30,38 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestAssignRequirement 
-extends BaseTest
-{
-	
-	@Test
-	public void testAssignRequirement()
-	{
-		this.loadXMLRPCMockData("tl.assignRequirements.xml");
-		
-		List<Requirement> requirements = new ArrayList<Requirement>();
-		
-		Requirement requirement = new Requirement();
-		requirement.setId( 12 );
-		requirement.setReqSpecId( 11 );
-		
-		requirements.add( requirement );
-		
-		requirement = new Requirement();
-		requirement.setId( 14 );
-		requirement.setReqSpecId( 11 );
-		
-		requirements.add( requirement );
-		
-		try 
-		{
-			this.api.assignRequirements( 4 , 1, requirements);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
+public class TestAssignRequirement extends BaseTest {
+
+    @Test
+    public void testAssignRequirement() {
+	this.loadXMLRPCMockData("tl.assignRequirements.xml");
+
+	List<Requirement> requirements = new ArrayList<Requirement>();
+
+	Requirement requirement = new Requirement();
+	requirement.setId(12);
+	requirement.setReqSpecId(11);
+
+	requirements.add(requirement);
+
+	requirement = new Requirement();
+	requirement.setId(14);
+	requirement.setReqSpecId(11);
+
+	requirements.add(requirement);
+
+	try {
+	    this.api.assignRequirements(4, 1, requirements);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
+    }
 
 }

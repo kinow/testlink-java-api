@@ -2,27 +2,30 @@ TestLink Java API
 
  TestLink Java API is a Java API that interfaces TestLink XML-RPC API. 
  This API lets you call TestLink internal methods such as createTestProject, 
- uploadAttachment, getTestProjectByName among others.
+ uploadAttachment, getTestProjectByName and others.
  
- <<This project is developed separately to TestLink. Issues should be 
- reported {{{http://sourceforge.net/tracker/?group_id=372361}here}}>>.
+ <<This project is developed separately from TestLink. Issues should be 
+ reported here {{{http://sourceforge.net/tracker/?group_id=372361}here}}>>.
 
  Our aim with this project is always release one version of this API after a new 
- version of TestLink has been released. So if, for instance, TestLink releases 
- version 2.0, we will release testlink-java-api-2.0. 
+ version of TestLink has been released. Let's say TestLink releases 
+ version 2.0, we will release testlink-java-api-2.0-1. Where -1 reprensents the 
+ internal version, for control of bug fixes and enhancements in the Java API. 
  
  One fact to keep in mind is that TestLink Java API can't assure you Backward 
  Compabitility among its versions. It occurs because TestLink XML-RPC API is 
  constantly changing. Even some methods are renamed. So trying to keep 
  Backward Compatibility would be really cumbersome. 
  
- Another important thing is that behind the scenes we are using xml-rpc to 
- communicate with TestLink. However you won't see any xml or even a Map/HashMap 
- when using TestLink Java API (ok, maybe in only one method :-).
+ Another important thing is that behind the scenes we are using XML-RPC to 
+ communicate with TestLink. The Java API abstracts the calls, providing objects 
+ that represent the entities in TestLink. This way you build your objects and 
+ retrieve objects from TestLink. You can still use low level XML-RPC, with a 
+ Hashmap with the parameters.
  
  If you call the method getTestPlanPlatforms it will return an array of 
  Platform (an object in TestLink Java API). This way you won't need handle 
- Maps :-) And in case of any error, the message will come to you in a nice 
+ Maps. In case of any error, the message will come to you wrapped in a  
  TestLinkAPIException. This is the basic concepts to get the gist of the 
  TestLink Java API.
 

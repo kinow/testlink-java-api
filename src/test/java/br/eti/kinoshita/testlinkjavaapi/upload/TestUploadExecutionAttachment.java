@@ -28,66 +28,41 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Cesar Fernandes de Almeida
- * @since 
+ * @since
  */
-public class TestUploadExecutionAttachment 
-extends BaseTest
-{
-	
-	@DataProvider(name="testExecutionAttachmentData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				2, 
-				"Execution Attachment title", 
-				"Execution Attachment description", 
-				"executionAttachmentFileName.txt", 
-				"text/plain", 
-				"QnJ1bm8="
-			}
-        };
+public class TestUploadExecutionAttachment extends BaseTest {
+
+    @DataProvider(name = "testExecutionAttachmentData")
+    public Object[][] createData() {
+	return new Object[][] { { 2, "Execution Attachment title",
+		"Execution Attachment description",
+		"executionAttachmentFileName.txt", "text/plain", "QnJ1bm8=" } };
+    }
+
+    @Test(dataProvider = "testExecutionAttachmentData")
+    public void testUploadExecutionAttachment(Integer testExecutionId,
+	    String title, String description, String fileName, String fileType,
+	    String content) {
+	this.loadXMLRPCMockData("tl.uploadExecutionAttachment.xml");
+
+	Attachment attachment = null;
+
+	try {
+	    attachment = this.api.uploadExecutionAttachment(testExecutionId,
+		    title, description, fileName, fileType, content);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testExecutionAttachmentData")
-	public void testUploadExecutionAttachment(
-		Integer testExecutionId, 
-		String title, 
-		String description, 
-		String fileName, 
-		String fileType, 
-		String content
-	)
-	{
-		this.loadXMLRPCMockData("tl.uploadExecutionAttachment.xml");
-		
-		Attachment attachment = null;
-		
-		try 
-		{
-			attachment = this.api.uploadExecutionAttachment(
-					testExecutionId, 
-					title, 
-					description, 
-					fileName, 
-					fileType, 
-					content);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( attachment );
-		
-		// TBD: open an issue because php XMLRPC API is not returning the ID.
-		//assertTrue( attachment.getId() > 0);
-	}
+
+	Assert.assertNotNull(attachment);
+
+	// TBD: open an issue because php XMLRPC API is not returning the ID.
+	// assertTrue( attachment.getId() > 0);
+    }
 
 }

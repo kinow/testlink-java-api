@@ -28,60 +28,40 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestCaseIDByName 
-extends BaseTest
-{
-	
-	@DataProvider(name="testCaseData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				"Sample Test Case 001", 
-				"Sample test suite", 
-				"Sample project"
-			}
-			,
-			{
-				"Sample test Case 002", 
-				"Sample test suite", 
-				"Sample project"
-			}
-        };
+public class TestGetTestCaseIDByName extends BaseTest {
+
+    @DataProvider(name = "testCaseData")
+    public Object[][] createData() {
+	return new Object[][] {
+		{ "Sample Test Case 001", "Sample test suite", "Sample project" },
+		{ "Sample test Case 002", "Sample test suite", "Sample project" } };
+    }
+
+    @Test(dataProvider = "testCaseData")
+    public void testGetTestCaseIDByName(String testCaseName,
+	    String testSuiteName, String testProjectName) {
+	this.loadXMLRPCMockData("tl.getTestCaseIDByName.xml");
+
+	Integer testCaseId = null;
+	try {
+	    testCaseId = this.api.getTestCaseIDByName(testCaseName,
+		    testSuiteName, testProjectName, null);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testCaseData")
-	public void testGetTestCaseIDByName(String testCaseName, 
-									    String testSuiteName, 
-									    String testProjectName)
-	{
-		this.loadXMLRPCMockData("tl.getTestCaseIDByName.xml");
-		
-		Integer testCaseId = null;
-		try 
-		{
-			testCaseId = this.api.getTestCaseIDByName(testCaseName, testSuiteName, testProjectName, null);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCaseId );
-		
-		Assert.assertTrue( testCaseId > 0 );
-		
-		Assert.assertTrue ( testCaseId == 3 );
-		
-	}
-	
-	
+
+	Assert.assertNotNull(testCaseId);
+
+	Assert.assertTrue(testCaseId > 0);
+
+	Assert.assertTrue(testCaseId == 3);
+
+    }
 
 }

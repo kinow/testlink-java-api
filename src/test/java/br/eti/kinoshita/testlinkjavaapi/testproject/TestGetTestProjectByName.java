@@ -28,63 +28,42 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetTestProjectByName 
-extends BaseTest
-{
-	
-	@DataProvider(name="getValidProjects")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				"Sample project"
-			}
-        };
+public class TestGetTestProjectByName extends BaseTest {
+
+    @DataProvider(name = "getValidProjects")
+    public Object[][] createData() {
+	return new Object[][] { { "Sample project" } };
+    }
+
+    @DataProvider(name = "getInvalidProjects")
+    public Object[][] createInvalidData() {
+	return new Object[][] { { "Acai" }, { "Cupuacu" } };
+    }
+
+    @Test(dataProvider = "getValidProjects")
+    public void testGetTestProjectByName(String testProjectName) {
+	this.loadXMLRPCMockData("tl.getTestProjectByName.xml");
+
+	TestProject project = null;
+
+	try {
+	    project = api.getTestProjectByName(testProjectName);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@DataProvider(name="getInvalidProjects")
-	public Object[][] createInvalidData()
-	{
-		return new Object[][] 
-        {
-			{
-				"Acai"
-			}, 
-			{
-				"Cupuacu"
-			}
-        };
-	}
-	
-	@Test(dataProvider="getValidProjects")
-	public void testGetTestProjectByName(String testProjectName)
-	{
-		this.loadXMLRPCMockData("tl.getTestProjectByName.xml");
-		
-		TestProject project = null;
-		
-		try
-		{
-			project = api.getTestProjectByName(testProjectName);
-		} 
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( project );
-		
-		Assert.assertTrue( project.getId() > 0 );
-		
-		Assert.assertTrue( project.isEnableAutomation() );
-	}
-	
+
+	Assert.assertNotNull(project);
+
+	Assert.assertTrue(project.getId() > 0);
+
+	Assert.assertTrue(project.isEnableAutomation());
+    }
+
 }

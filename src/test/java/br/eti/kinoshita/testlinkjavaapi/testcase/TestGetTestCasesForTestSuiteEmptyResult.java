@@ -28,49 +28,38 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @author Mario Fiuentes - http://www.rhiscom.com
- * @since 
+ * @since 1.9.3-4
  */
-public class TestGetTestCasesForTestSuiteEmptyResult 
-extends BaseTest
-{
-	
-	@DataProvider(name="testCaseData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				2
-			}
-        };
+public class TestGetTestCasesForTestSuiteEmptyResult extends BaseTest {
+
+    @DataProvider(name = "testCaseData")
+    public Object[][] createData() {
+	return new Object[][] { { 2 } };
+    }
+
+    @Test(dataProvider = "testCaseData")
+    public void testGetTestCasesForTestSuiteEmptyResult(Integer testSuiteId) {
+	this.loadXMLRPCMockData("tl.getTestCasesForTestSuiteEmptyResult.xml");
+
+	TestCase[] testCases = null;
+
+	try {
+	    testCases = this.api.getTestCasesForTestSuite(testSuiteId, true,
+		    TestCaseDetails.FULL);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="testCaseData")
-	public void testGetTestCasesForTestSuiteEmptyResult(Integer testSuiteId)
-	{
-		this.loadXMLRPCMockData("tl.getTestCasesForTestSuiteEmptyResult.xml");
-		
-		TestCase[] testCases = null;
-		
-		try 
-		{
-			testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, TestCaseDetails.Full);
-		} 
-		catch (TestLinkAPIException e) 
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull( testCases );
-		
-		Assert.assertTrue( testCases.length == 0 );
-	}
-	
+
+	Assert.assertNotNull(testCases);
+
+	Assert.assertTrue(testCases.length == 0);
+    }
+
 }

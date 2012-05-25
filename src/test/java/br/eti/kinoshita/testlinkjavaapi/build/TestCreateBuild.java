@@ -28,56 +28,39 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.model.Build;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestCreateBuild 
-extends BaseTest
-{
-	
-	@DataProvider(name="buildData")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				10, 
-				"Build Notes", 
-				8
-			}
-        };
+public class TestCreateBuild extends BaseTest {
+
+    @DataProvider(name = "buildData")
+    public Object[][] createData() {
+	return new Object[][] { { 10, "Build Notes", 8 } };
+    }
+
+    @Test(dataProvider = "buildData")
+    public void testCreateBuild(Integer testPlanId, String buildNotes,
+	    Integer expectedBuildId) {
+	this.loadXMLRPCMockData("tl.createBuild.xml");
+
+	Build build = null;
+
+	try {
+	    build = api.createBuild(testPlanId,
+		    "Sample build " + System.currentTimeMillis(), buildNotes);
+	} catch (TestLinkAPIException e) {
+	    Assert.fail(e.getMessage(), e);
 	}
-	
-	@Test(dataProvider="buildData")
-	public void testCreateBuild(
-		Integer testPlanId, 
-		String buildNotes, 
-		Integer expectedBuildId
-	)
-	{
-		this.loadXMLRPCMockData("tl.createBuild.xml");
-		
-		Build build = null;
-		
-		try
-		{
-			build = api.createBuild(
-					testPlanId, "Sample build " + System.currentTimeMillis(), buildNotes);
-		}
-		catch (TestLinkAPIException e)
-		{
-			Assert.fail(e.getMessage(), e);
-		}
-		
-		Assert.assertNotNull(build);
-		
-		Assert.assertTrue(build.getId() > 0);
-		
-		Assert.assertEquals(build.getId(), expectedBuildId);
-	}
+
+	Assert.assertNotNull(build);
+
+	Assert.assertTrue(build.getId() > 0);
+
+	Assert.assertEquals(build.getId(), expectedBuildId);
+    }
 
 }

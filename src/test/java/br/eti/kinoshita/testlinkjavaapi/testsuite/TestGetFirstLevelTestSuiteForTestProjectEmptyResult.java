@@ -28,46 +28,37 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIErrors;
-import br.eti.kinoshita.testlinkjavaapi.TestLinkAPIException;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkAPIErrors;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 
+ * @since
  */
-public class TestGetFirstLevelTestSuiteForTestProjectEmptyResult 
-extends BaseTest
-{
-	
-	@DataProvider(name="validTestProjects")
-	public Object[][] createData()
-	{
-		return new Object[][] 
-        {
-			{
-				1
-			}
-        };
+public class TestGetFirstLevelTestSuiteForTestProjectEmptyResult extends
+	BaseTest {
+
+    @DataProvider(name = "validTestProjects")
+    public Object[][] createData() {
+	return new Object[][] { { 1 } };
+    }
+
+    @Test(dataProvider = "validTestProjects")
+    public void testGetFirstLevelTestSuitesForTestProject(Integer testProjectId) {
+	this.loadXMLRPCMockData("tl.getFirstLevelTestSuitesForTestProjectEmptyResult.xml");
+
+	TestSuite[] testSuites = null;
+
+	try {
+	    testSuites = api
+		    .getFirstLevelTestSuitesForTestProject(testProjectId);
+	} catch (TestLinkAPIException e) {
+	    Assert.assertTrue(TestLinkAPIErrors.TEST_PROJECT_IS_EMPTY.isCode(e
+		    .getCode()));
+
 	}
-	
-	@Test(dataProvider="validTestProjects")
-	public void testGetFirstLevelTestSuitesForTestProject(Integer testProjectId)
-	{
-		this.loadXMLRPCMockData("tl.getFirstLevelTestSuitesForTestProjectEmptyResult.xml");
-		
-		TestSuite[] testSuites = null;
-		
-		try
-		{
-			testSuites = api.getFirstLevelTestSuitesForTestProject( testProjectId );
-		} 
-		catch (TestLinkAPIException e)
-		{
-			Assert.assertTrue(TestLinkAPIErrors.TestProjectIsEmpty.isCode(e.getCode()));
-			
-		}
-		
-		Assert.assertTrue( testSuites == null );
-	}
+
+	Assert.assertTrue(testSuites == null);
+    }
 }
