@@ -45,6 +45,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
+@SuppressWarnings("unchecked")
 class TestProjectService extends BaseService {
 
     /**
@@ -62,7 +63,6 @@ class TestProjectService extends BaseService {
      * 
      * @return Created Test Project object.
      */
-    @SuppressWarnings("unchecked")
     protected TestProject createTestProject(String testProjectName,
 	    String testProjectPrefix, String notes, Boolean enableRequirements,
 	    Boolean enableTestPriority, Boolean enableAutomation,
@@ -97,7 +97,6 @@ class TestProjectService extends BaseService {
 	return testProject;
     }
 
-    @SuppressWarnings("unchecked")
     protected TestProject getTestProjectByName(String projectName)
 	    throws TestLinkAPIException {
 	TestProject testProject = null;
@@ -125,7 +124,6 @@ class TestProjectService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestProject[] getProjects() throws TestLinkAPIException {
 	TestProject[] projects = null;
 
@@ -157,7 +155,6 @@ class TestProjectService extends BaseService {
      * @return Associated Test Plans.
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestPlan[] getProjectTestPlans(Integer projectId)
 	    throws TestLinkAPIException {
 	TestPlan[] testPlans = null;
@@ -195,7 +192,6 @@ class TestProjectService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected Attachment uploadTestProjectAttachment(Integer testProjectId,
 	    String title, String description, String fileName, String fileType,
 	    String content) throws TestLinkAPIException {

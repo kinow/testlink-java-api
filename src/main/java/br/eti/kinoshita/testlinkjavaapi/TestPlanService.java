@@ -41,6 +41,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
+@SuppressWarnings("unchecked")
 class TestPlanService extends BaseService {
 
     /**
@@ -53,7 +54,6 @@ class TestPlanService extends BaseService {
 	super(xmlRpcClient, devKey);
     }
 
-    @SuppressWarnings("unchecked")
     protected TestPlan createTestPlan(String planName, String projectName,
 	    String notes, Boolean isActive, Boolean isPublic)
 	    throws TestLinkAPIException {
@@ -92,7 +92,6 @@ class TestPlanService extends BaseService {
      * @return Test Plane.
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestPlan getTestPlanByName(String planName, String projectName)
 	    throws TestLinkAPIException {
 	TestPlan testPlan = null;
@@ -124,7 +123,6 @@ class TestPlanService extends BaseService {
      * @param planId
      * @return
      */
-    @SuppressWarnings("unchecked")
     protected Platform[] getTestPlanPlatforms(Integer planId)
 	    throws TestLinkAPIException {
 	Platform[] platforms = null;
@@ -155,7 +153,6 @@ class TestPlanService extends BaseService {
      * @param testPlanId
      * @return
      */
-    @SuppressWarnings("unchecked")
     protected Map<String, Object> getTotalsForTestPlan(Integer testPlanId)
 	    throws TestLinkAPIException {
 

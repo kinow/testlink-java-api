@@ -119,7 +119,7 @@ abstract class BaseService {
 	    final Map<String, Object> errorMap = (Map<String, Object>) response;
 	    final Integer statusOk = Util.getInteger(errorMap, "status_ok");
 	    final String message = Util.getString(errorMap, "msg");
-	    if (statusOk != null && statusOk == FALSE_IN_PHP) {
+	    if (statusOk != null && statusOk.equals(FALSE_IN_PHP)) {
 		throw new TestLinkAPIException(statusOk, message);
 	    }
 	}

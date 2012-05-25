@@ -68,6 +68,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
+@SuppressWarnings("unchecked")
 class TestCaseService extends BaseService {
 
     /**
@@ -99,7 +100,6 @@ class TestCaseService extends BaseService {
      * @return Test Case.
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestCase createTestCase(String testCaseName, Integer testSuiteId,
 	    Integer testProjectId, String authorLogin, String summary,
 	    List<TestCaseStep> steps, String preconditions,
@@ -182,7 +182,6 @@ class TestCaseService extends BaseService {
 	}
     }
 
-    @SuppressWarnings("unchecked")
     public Map<String, Object> createTestCaseSteps(String testCaseExternalId,
 	    Integer version, TestCaseStepAction action,
 	    List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
@@ -213,7 +212,6 @@ class TestCaseService extends BaseService {
 	return responseMap;
     }
 
-    @SuppressWarnings("unchecked")
     public Map<String, Object> deleteTestCaseSteps(String testCaseExternalId,
 	    Integer version, List<TestCaseStep> testCaseSteps)
 	    throws TestLinkAPIException {
@@ -282,7 +280,6 @@ class TestCaseService extends BaseService {
      * @param DETAILS
      * @return
      */
-    @SuppressWarnings("unchecked")
     protected TestCase[] getTestCasesForTestSuite(Integer testSuiteId,
 	    Boolean deep, TestCaseDetails detail) throws TestLinkAPIException {
 
@@ -329,7 +326,6 @@ class TestCaseService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings({ "unchecked" })
     protected TestCase[] getTestCasesForTestPlan(Integer testPlanId,
 	    List<Integer> testCasesIds, Integer buildId,
 	    List<Integer> keywordsIds, String keywords, Boolean executed,
@@ -408,7 +404,6 @@ class TestCaseService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestCase getTestCase(Integer testCaseId,
 	    Integer testCaseExternalId, Integer version)
 	    throws TestLinkAPIException {
@@ -445,7 +440,6 @@ class TestCaseService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestCase getTestCaseByExternalId(String fullTestCaseExternalId,
 	    Integer version) throws TestLinkAPIException {
 	TestCase testCase = null;
@@ -482,7 +476,6 @@ class TestCaseService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected Integer getTestCaseIDByName(String testCaseName,
 	    String testSuiteName, String testProjectName,
 	    String testCasePathName) throws TestLinkAPIException {
@@ -562,7 +555,6 @@ class TestCaseService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected Attachment[] getTestCaseAttachments(Integer testCaseId,
 	    Integer testCaseExternalId) throws TestLinkAPIException {
 	Attachment[] attachments = null;
@@ -673,7 +665,6 @@ class TestCaseService extends BaseService {
      * @return Response object of reportTCResult method
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected ReportTCResultResponse reportTCResult(Integer testCaseId,
 	    Integer testCaseExternalId, Integer testPlanId,
 	    ExecutionStatus status, Integer buildId, String buildName,

@@ -6,6 +6,8 @@ Release Notes
  
  * Fixed Javadoc warnings
  
+ * Fixed issues found in Sonar (most major warnings)
+ 
  * Included license header in files that were without it
  
  * Moved enum and constant classes to constants package

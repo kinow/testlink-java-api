@@ -46,6 +46,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
+@SuppressWarnings("unchecked")
 class TestSuiteService extends BaseService {
 
     /**
@@ -71,7 +72,6 @@ class TestSuiteService extends BaseService {
      * @return Test Suite.
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestSuite createTestSuite(Integer testProjectId, String name,
 	    String details, Integer parentId, Integer order,
 	    Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
@@ -105,7 +105,6 @@ class TestSuiteService extends BaseService {
      * @param TEST_SUITE_ID
      * @return
      */
-    @SuppressWarnings("unchecked")
     protected TestSuite[] getTestSuiteByID(List<Integer> testSuiteIds)
 	    throws TestLinkAPIException {
 	TestSuite[] testSuites = null;
@@ -148,7 +147,6 @@ class TestSuiteService extends BaseService {
      * @param content
      * @return
      */
-    @SuppressWarnings("unchecked")
     protected Attachment uploadTestSuiteAttachment(Integer testSuiteId,
 	    String title, String description, String fileName, String fileType,
 	    String content) throws TestLinkAPIException {
@@ -185,7 +183,6 @@ class TestSuiteService extends BaseService {
      * @param testPlanId
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestSuite[] getTestSuitesForTestPlan(Integer testPlanId)
 	    throws TestLinkAPIException {
 	TestSuite[] testSuites = null;
@@ -221,7 +218,6 @@ class TestSuiteService extends BaseService {
      * @param testSuiteId
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestSuite[] getTestSuitesForTestSuite(Integer testSuiteId)
 	    throws TestLinkAPIException {
 	TestSuite[] testSuites = null;
@@ -274,7 +270,6 @@ class TestSuiteService extends BaseService {
      * @param testProjectId
      * @throws TestLinkAPIException
      */
-    @SuppressWarnings("unchecked")
     protected TestSuite[] getFirstLevelTestSuitesForTestProject(
 	    Integer testProjectId) throws TestLinkAPIException {
 	TestSuite[] testSuites = null;

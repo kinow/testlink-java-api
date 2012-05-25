@@ -69,8 +69,8 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
-public class Util {
-    
+public final class Util {
+
     public static final Object[] EMPTY_ARRAY = new Object[0];
     public static final Map<String, Object> EMPTY_MAP = new HashMap<String, Object>();
 
@@ -103,8 +103,7 @@ public class Util {
 	executionData.put(TestLinkParams.OPTIONS.toString(), options);
 
 	executionData.put(TestLinkParams.ACTIVE.toString(), project.isActive());
-	executionData
-		.put(TestLinkParams.PUBLIC.toString(), project.isPublic());
+	executionData.put(TestLinkParams.PUBLIC.toString(), project.isPublic());
 
 	return executionData;
     }
@@ -137,10 +136,9 @@ public class Util {
 
 		    Map<String, Object> optMap = (Map<String, Object>) map
 			    .get(TestLinkResponseParams.OPT.toString());
-		    testProject
-			    .setEnableAutomation(getBoolean(optMap,
-				    TestLinkResponseParams.AUTOMATION_ENABLED
-					    .toString()));
+		    testProject.setEnableAutomation(getBoolean(optMap,
+			    TestLinkResponseParams.AUTOMATION_ENABLED
+				    .toString()));
 		    testProject.setEnableRequirements(getBoolean(optMap,
 			    TestLinkResponseParams.REQUIREMENTS_ENABLED
 				    .toString()));
@@ -325,7 +323,8 @@ public class Util {
 	executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(),
 		testCase.getCheckDuplicatedName());
 	executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
-		testCase.getActionOnDuplicatedName() != null ? testCase.getActionOnDuplicatedName().toString() : null);
+		testCase.getActionOnDuplicatedName() != null ? testCase
+			.getActionOnDuplicatedName().toString() : null);
 
 	return executionData;
     }
@@ -446,12 +445,13 @@ public class Util {
 		testCaseStep.getActions());
 	executionData.put(TestLinkParams.EXPECTED_RESULTS.toString(),
 		testCaseStep.getExpectedResults());
-	if (internal)
+	if (internal) {
 	    executionData.put(TestLinkParams.STEP_EXECUTION_TYPE.toString(),
 		    testCaseStep.getExecutionType().getValue());
-	else
+	} else {
 	    executionData.put(TestLinkParams.EXECUTION_TYPE.toString(),
 		    testCaseStep.getExecutionType());
+	}
 
 	return executionData;
     }
@@ -475,7 +475,8 @@ public class Util {
 	executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(),
 		testSuite.getCheckDuplicatedName());
 	executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
-		testSuite.getActionOnDuplicatedName() != null ? testSuite.getActionOnDuplicatedName().toString() : null);
+		testSuite.getActionOnDuplicatedName() != null ? testSuite
+			.getActionOnDuplicatedName().toString() : null);
 	return executionData;
     }
 
@@ -521,8 +522,9 @@ public class Util {
 	    // Different methods to recover test cases use different parameter
 	    // names for the id, some uses "id" and others "testcase_id".
 	    Object o = map.get(TestLinkResponseParams.TEST_CASE_ID.toString());
-	    if (o == null)
+	    if (o == null) {
 		o = map.get(TestLinkResponseParams.ID.toString());
+	    }
 
 	    if (o != null) {
 		Integer id = Integer.parseInt(o.toString());
@@ -531,7 +533,8 @@ public class Util {
 		    testCase = new TestCase();
 		    testCase.setId(id);
 		    testCase.setVersionId(getInteger(map,
-			    TestLinkResponseParams.TEST_CASE_VERSION_ID.toString()));
+			    TestLinkResponseParams.TEST_CASE_VERSION_ID
+				    .toString()));
 		    testCase.setVersion(getInteger(map,
 			    TestLinkResponseParams.VERSION.toString()));
 		    testCase.setPreconditions(getString(map,
@@ -557,9 +560,10 @@ public class Util {
 		    String fullExternalId = getString(map,
 			    TestLinkResponseParams.FULE__TEST_CASE_EXTERNAL_ID
 				    .toString());
-		    if (fullExternalId == null)
+		    if (fullExternalId == null) {
 			fullExternalId = getString(map,
 				TestLinkResponseParams.EXTERNAL_ID.toString());
+		    }
 		    testCase.setFullExternalId(fullExternalId);
 
 		    Integer executionTypeValue = getInteger(map,
@@ -632,10 +636,11 @@ public class Util {
 	Object[] array = null;
 
 	if (object != null) {
-	    if (object instanceof String)
+	    if (object instanceof String) {
 		array = EMPTY_ARRAY;
-	    else
+	    } else {
 		array = (Object[]) object;
+	    }
 	}
 
 	return array;
@@ -651,10 +656,11 @@ public class Util {
 	Map<String, Object> map = null;
 
 	if (object != null) {
-	    if (object instanceof String)
+	    if (object instanceof String) {
 		map = EMPTY_MAP;
-	    else
+	    } else {
 		map = (Map<String, Object>) object;
+	    }
 	}
 
 	return map;
@@ -668,7 +674,8 @@ public class Util {
 	Map<String, Object> executionData = new HashMap<String, Object>();
 	executionData.put(TestLinkParams.TEST_PLAN_ID.toString(),
 		build.getTestPlanId());
-	executionData.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
+	executionData
+		.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
 	executionData.put(TestLinkParams.BUILD_NOTES.toString(),
 		build.getNotes());
 	return executionData;
@@ -681,7 +688,8 @@ public class Util {
     public static final Map<String, Object> getAttachmentMap(
 	    Attachment attachment) {
 	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
+	executionData
+		.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
 	executionData.put(TestLinkParams.FK_TABLE.toString(),
 		attachment.getFkTable());
 	executionData.put(TestLinkParams.TITLE.toString(),
@@ -800,7 +808,8 @@ public class Util {
     public static final Map<String, Object> getRequirementSpecificationAttachmentMap(
 	    Attachment attachment) {
 	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(),
+	executionData.put(
+		TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(),
 		attachment.getFkId());
 	executionData.put(TestLinkParams.FK_TABLE.toString(),
 		attachment.getFkTable());
@@ -937,10 +946,9 @@ public class Util {
 		    execution.setStatus(status);
 		    execution.setTestPlanId(getInteger(map,
 			    TestLinkResponseParams.TEST_PLAN_ID.toString()));
-		    execution
-			    .setTestCaseVersionId(getInteger(map,
-				    TestLinkResponseParams.TEST_CASE_VERSION_ID
-					    .toString()));
+		    execution.setTestCaseVersionId(getInteger(map,
+			    TestLinkResponseParams.TEST_CASE_VERSION_ID
+				    .toString()));
 		    execution.setTestCaseVersionNumber(getInteger(map,
 			    TestLinkResponseParams.TEST_CASE_VERSION_NUMBER
 				    .toString()));
@@ -1016,10 +1024,9 @@ public class Util {
 			    TestLinkResponseParams.MESSAGE.toString()));
 		    reportTCResultResponse.setBugIDStatus(getBoolean(map,
 			    TestLinkResponseParams.BUG_ID_STATUS.toString()));
-		    reportTCResultResponse
-			    .setCustomFieldStatus(getBoolean(map,
-				    TestLinkResponseParams.CUSTOM_FIELD_STATUS
-					    .toString()));
+		    reportTCResultResponse.setCustomFieldStatus(getBoolean(map,
+			    TestLinkResponseParams.CUSTOM_FIELD_STATUS
+				    .toString()));
 		}
 
 	    }
@@ -1047,7 +1054,8 @@ public class Util {
 	    customField.setEnableOnExecution(getBoolean(map,
 		    TestLinkResponseParams.ENABLE_ON_EXECUTION.toString()));
 	    customField.setEnableOnTestPlanDesign(getBoolean(map,
-		    TestLinkResponseParams.ENABLE_ON_TEST_PLAN_DESIGN.toString()));
+		    TestLinkResponseParams.ENABLE_ON_TEST_PLAN_DESIGN
+			    .toString()));
 	    customField.setLabel(getString(map,
 		    TestLinkResponseParams.LABEL.toString()));
 	    customField.setLengthMax(getInteger(map,
@@ -1064,8 +1072,10 @@ public class Util {
 		    TestLinkResponseParams.SHOW_ON_DESIGN.toString()));
 	    customField.setShowOnExecution(getBoolean(map,
 		    TestLinkResponseParams.SHOW_ON_EXECUTION.toString()));
-	    customField.setShowOnTestPlanDesign(getBoolean(map,
-		    TestLinkResponseParams.SHOW_ON_TEST_PLAN_DESIGN.toString()));
+	    customField
+		    .setShowOnTestPlanDesign(getBoolean(map,
+			    TestLinkResponseParams.SHOW_ON_TEST_PLAN_DESIGN
+				    .toString()));
 	    customField.setType(getInteger(map,
 		    TestLinkResponseParams.TYPE.toString()));
 	    customField.setValidRegexp(getString(map,
@@ -1089,7 +1099,7 @@ public class Util {
      */
     public static final void putIfNotNullAndTrue(Map<String, Object> map,
 	    String key, Boolean boolValue) {
-	if (boolValue != null && boolValue == true) {
+	if (Boolean.TRUE.equals(boolValue)) {
 	    map.put(key, 0);
 	}
     }
