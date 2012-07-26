@@ -74,7 +74,7 @@ public enum TestLinkParams {
     FILE_TYPE("filetype"), 
     FK_ID("fkid"), 
     FK_TABLE("fktable"), 
-    GET_STEP_INFO("getstepinfo"), 
+    GET_STEP_INFO("getstepsinfo"), 
     GUESS("guess"), 
     IMPORTANCE("importance"), 
     INTERNAL_ID("internalId"), 
