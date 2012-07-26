@@ -1,6 +1,11 @@
 Release Notes
 
 * Version 1.9.3-4
+ 
+ * Fixed wrong parameter name in getTestCasesForTestPlan. The getstepsinfo 
+ parameter was getstepinfo
+ 
+* Version 1.9.3-4
 
  * Fixing code conventions and format
  
