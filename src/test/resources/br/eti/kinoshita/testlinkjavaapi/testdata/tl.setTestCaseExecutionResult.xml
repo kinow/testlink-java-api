@@ -7,13 +7,12 @@
   <value><struct>
   <member><name>status</name><value><boolean>1</boolean></value></member>
   <member><name>operation</name><value><string>reportTCResult</string></value></member>
-  <member><name>overwrite</name><value><boolean>0</boolean></value></member>
+  <member><name>overwrite</name><value><boolean>1</boolean></value></member>
   <member><name>message</name><value><string>Success!</string></value></member>
-  <member><name>id</name><value><string>47</string></value></member>
+  <member><name>id</name><value><string>1</string></value></member>
 </struct></value>
 </data></array>
       </value>
     </param>
   </params>
 </methodResponse>
-

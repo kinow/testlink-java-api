@@ -5,58 +5,25 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>3</string></value></member>
-  <member><name>parent_id</name><value><string>2</string></value></member>
-  <member><name>tcversion_id</name><value><string>2</string></value></member>
+  <member><name>id</name><value><string>10</string></value></member>
+  <member><name>parent_id</name><value><string>3</string></value></member>
+  <member><name>node_type_id</name><value><string>3</string></value></member>
+  <member><name>node_order</name><value><string>0</string></value></member>
+  <member><name>node_table</name><value><string>testcases</string></value></member>
+  <member><name>name</name><value><string>tc1348071707753</string></value></member>
+  <member><name>external_id</name><value><string>tja-2</string></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>4</string></value></member>
+  <member><name>parent_id</name><value><string>3</string></value></member>
   <member><name>node_type_id</name><value><string>3</string></value></member>
   <member><name>node_order</name><value><string>100</string></value></member>
   <member><name>node_table</name><value><string>testcases</string></value></member>
-  <member><name>name</name><value><string>Show all veterinarians</string></value></member>
-  <member><name>external_id</name><value><string>tp-1</string></value></member>
-  <member><name>tc_external_id</name><value><string>1</string></value></member>
-  <member><name>version</name><value><string>1</string></value></member>
-  <member><name>layout</name><value><string>1</string></value></member>
-  <member><name>status</name><value><string>1</string></value></member>
-  <member><name>summary</name><value><string>&lt;p&gt;Correctly display the list of veterinarians in the system. Our Sharon must be there!&amp;nbsp;She's very special for our team.&lt;/p&gt;</string></value></member>
-  <member><name>preconditions</name><value><string>&lt;p&gt;pre conditions&lt;/p&gt;</string></value></member>
-  <member><name>importance</name><value><string>2</string></value></member>
-  <member><name>author_id</name><value><string>1</string></value></member>
-  <member><name>creation_ts</name><value><string>2011-08-16 22:36:02</string></value></member>
-  <member><name>updater_id</name><value><string>1</string></value></member>
-  <member><name>modification_ts</name><value><string>2011-09-28 14:45:53</string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>is_open</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-  <member><name>tsuite_name</name><value><string>suite1</string></value></member>
-</struct></value>
-  <value><struct>
-  <member><name>id</name><value><string>15</string></value></member>
-  <member><name>parent_id</name><value><string>2</string></value></member>
-  <member><name>tcversion_id</name><value><string>2</string></value></member>
-  <member><name>node_type_id</name><value><string>3</string></value></member>
-  <member><name>node_order</name><value><string>101</string></value></member>
-  <member><name>node_table</name><value><string>testcases</string></value></member>
-  <member><name>name</name><value><string>List last veterinarian</string></value></member>
-  <member><name>external_id</name><value><string>tp-2</string></value></member>
-  <member><name>tc_external_id</name><value><string>2</string></value></member>
-  <member><name>version</name><value><string>1</string></value></member>
-  <member><name>layout</name><value><string>1</string></value></member>
-  <member><name>status</name><value><string>1</string></value></member>
-  <member><name>summary</name><value><string>&lt;p&gt;List last veterinarian that attended an occurrency&lt;/p&gt;</string></value></member>
-  <member><name>preconditions</name><value><string></string></value></member>
-  <member><name>importance</name><value><string>2</string></value></member>
-  <member><name>author_id</name><value><string>1</string></value></member>
-  <member><name>creation_ts</name><value><string>2011-09-10 10:26:42</string></value></member>
-  <member><name>updater_id</name><value><string>1</string></value></member>
-  <member><name>modification_ts</name><value><string>2011-09-27 16:51:23</string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>is_open</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-  <member><name>tsuite_name</name><value><string>suite1</string></value></member>
+  <member><name>name</name><value><string>testcase001</string></value></member>
+  <member><name>external_id</name><value><string>tja-1</string></value></member>
 </struct></value>
 </data></array>
       </value>
     </param>
   </params>
 </methodResponse>
-

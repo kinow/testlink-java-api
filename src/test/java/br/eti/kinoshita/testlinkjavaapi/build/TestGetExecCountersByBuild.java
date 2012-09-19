@@ -23,44 +23,40 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.build;
 
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.model.Build;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since
  */
-public class TestGetBuildsForTestPlan extends BaseTest {
+public class TestGetExecCountersByBuild extends BaseTest {
 
     @DataProvider(name = "testPlanData")
     public Object[][] createData() {
-	return new Object[][] { { 5, 7, "tdc-1.0",
-		"Build creado automaticamente con TestLink Jenkins Plug-in." } };
+	return new Object[][] { { 5 } };
     }
 
     @Test(dataProvider = "testPlanData")
-    public void testGetBuildsForTestPlan(Integer testPlanId, Integer buildId,
-	    String buildName, String buildNotes) {
-	this.loadXMLRPCMockData("tl.getBuildsForTestPlan.xml");
+    public void testGetExecCountersByBuild(Integer testPlanId) {
+	this.loadXMLRPCMockData("tl.getExecCountersByBuild.xml");
 
-	Build[] builds = null;
+	Map<String, Object> response = null;
 
 	try {
-	    builds = api.getBuildsForTestPlan(testPlanId);
+	    response = api.getExecCountersByBuild(testPlanId);
 	} catch (TestLinkAPIException e) {
 	    Assert.fail(e.getMessage(), e);
 	}
 
-	Assert.assertNotNull(builds);
-
-	Assert.assertTrue(builds.length > 0);
-
-	Assert.assertTrue(builds.length == 1);
-
+	Assert.assertNotNull(response);
+	
+	Assert.assertNotNull(response.get("raw"));
     }
 }

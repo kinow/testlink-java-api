@@ -38,7 +38,6 @@ public enum TestLinkMethods {
     GET_PROJECT_TEST_PLANS("tl.getProjectTestPlans"), 
     GET_TEST_PLAN_PLATFORMS("tl.getTestPlanPlatforms"), 
     CREATE_TEST_CASE("tl.createTestCase"), 
-    UPDATE_TEST_CASE("tl.updateTestCase"), 
     CREATE_TEST_CASE_STEPS("tl.createTestCaseSteps"), 
     DELETE_TEST_CASE_STEPS("tl.deleteTestCaseSteps"), 
     CREATE_TEST_SUITE("tl.createTestSuite"), 
@@ -73,7 +72,11 @@ public enum TestLinkMethods {
     GET_BUILDS_FOR_TEST_PLAN("tl.getBuildsForTestPlan"), 
     GET_LATEST_BUILD_FOR_TEST_PLAN("tl.getLatestBuildForTestPlan"), 
     GET_TEST_CASE_CUSTOM_FIELD_DESIGN_VALUE("tl.getTestCaseCustomFieldDesignValue"), 
-    GET_TOTALS_FOR_TEST_PLAN("tl.getTotalsForTestPlan")
+    GET_TEST_CASE_CUSTOM_FIELD_TEST_PLAN_DESIGN_VALUE("tl.getTestCaseCustomFieldTestPlanDesignValue"), 
+    GET_TEST_CASE_CUSTOM_FIELD_EXECUTION_VALUE("tl.getTestCaseCustomFieldExecutionValue"), 
+    GET_TOTALS_FOR_TEST_PLAN("tl.getTotalsForTestPlan"), 
+    GET_EXEC_COUNTERS_BY_BUILD("tl.getExecCountersByBuild"), 
+    SET_TEST_CASE_EXECUTION_TYPE("tl.setTestCaseExecutionType")
     ;
 
     private String value;

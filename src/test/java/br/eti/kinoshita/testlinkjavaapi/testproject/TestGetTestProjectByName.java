@@ -65,5 +65,16 @@ public class TestGetTestProjectByName extends BaseTest {
 
 	Assert.assertTrue(project.isEnableAutomation());
     }
+    
+    @Test(dataProvider = "getInvalidProjects")
+    public void testGetTestProjectByName_nonexistent(String testProjectName) {
+	this.loadXMLRPCMockData("tl.getTestProjectByName_nonexistent.xml");
+
+	try {
+	    api.getTestProjectByName(testProjectName);
+	    Assert.fail("Not supposed to get here");
+	} catch (TestLinkAPIException e) {
+	}
+    }
 
 }

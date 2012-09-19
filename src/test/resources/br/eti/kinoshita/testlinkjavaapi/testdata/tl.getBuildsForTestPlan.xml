@@ -5,10 +5,10 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>7</string></value></member>
-  <member><name>testplan_id</name><value><string>5</string></value></member>
-  <member><name>name</name><value><string>tdc-1.0</string></value></member>
-  <member><name>notes</name><value><string>Build creado automaticamente con TestLink Jenkins Plug-in.</string></value></member>
+  <member><name>id</name><value><string>1</string></value></member>
+  <member><name>testplan_id</name><value><string>2</string></value></member>
+  <member><name>name</name><value><string>build-1348071623545</string></value></member>
+  <member><name>notes</name><value><string>no notes</string></value></member>
   <member><name>active</name><value><string>1</string></value></member>
   <member><name>is_open</name><value><string>1</string></value></member>
   <member><name>release_date</name><value><string></string></value></member>
@@ -19,4 +19,3 @@
     </param>
   </params>
 </methodResponse>
-

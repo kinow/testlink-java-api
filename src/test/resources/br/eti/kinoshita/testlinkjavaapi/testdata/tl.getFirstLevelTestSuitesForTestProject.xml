@@ -5,16 +5,23 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>2</string></value></member>
+  <member><name>id</name><value><string>15</string></value></member>
+  <member><name>parent_id</name><value><string>1</string></value></member>
+  <member><name>node_type_id</name><value><string>2</string></value></member>
+  <member><name>node_order</name><value><string>0</string></value></member>
+  <member><name>node_table</name><value><string>testsuites</string></value></member>
+  <member><name>name</name><value><string>suite-1348072448450</string></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>3</string></value></member>
   <member><name>parent_id</name><value><string>1</string></value></member>
   <member><name>node_type_id</name><value><string>2</string></value></member>
   <member><name>node_order</name><value><string>1</string></value></member>
   <member><name>node_table</name><value><string>testsuites</string></value></member>
-  <member><name>name</name><value><string>suite1</string></value></member>
+  <member><name>name</name><value><string>suite001</string></value></member>
 </struct></value>
 </data></array>
       </value>
     </param>
   </params>
 </methodResponse>
-

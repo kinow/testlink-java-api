@@ -4,12 +4,20 @@
     <param>
       <value>
         <struct>
-  <member><name>60</name><value><struct>
-  <member><name>id</name><value><string>60</string></value></member>
-  <member><name>name</name><value><string>o.txt</string></value></member>
+  <member><name>7</name><value><struct>
+  <member><name>id</name><value><string>7</string></value></member>
+  <member><name>name</name><value><string>nothing.txt</string></value></member>
   <member><name>file_type</name><value><string>text/plain</string></value></member>
-  <member><name>title</name><value><string>My attachment</string></value></member>
-  <member><name>date_added</name><value><string>2011-10-01 18:11:41</string></value></member>
+  <member><name>title</name><value><string>nothing</string></value></member>
+  <member><name>date_added</name><value><string>2012-09-19 15:24:49</string></value></member>
+  <member><name>content</name><value><string>eW8h</string></value></member>
+</struct></value></member>
+  <member><name>2</name><value><struct>
+  <member><name>id</name><value><string>2</string></value></member>
+  <member><name>name</name><value><string>1297750332397.jpeg</string></value></member>
+  <member><name>file_type</name><value><string>image/jpeg</string></value></member>
+  <member><name>title</name><value><string></string></value></member>
+  <member><name>date_added</name><value><string>2012-09-19 14:58:50</string></value></member>
   <member><name>content</name><value><string>eW8h</string></value></member>
 </struct></value></member>
 </struct>
@@ -17,4 +25,4 @@
     </param>
   </params>
 </methodResponse>
-
+      

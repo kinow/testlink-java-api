@@ -441,9 +441,7 @@ public class TestCase implements Serializable {
 	this.executionStatus = executionStatus;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
+    /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
@@ -453,12 +451,14 @@ public class TestCase implements Serializable {
 		+ ", authorLogin=" + authorLogin + ", summary=" + summary
 		+ ", steps=" + steps + ", preconditions=" + preconditions
 		+ ", testImportance=" + testImportance + ", executionType="
-		+ executionType + ", order=" + order + ", internalId="
-		+ internalId + ", checkDuplicatedName=" + checkDuplicatedName
+		+ executionType + ", executionOrder=" + executionOrder
+		+ ", order=" + order + ", internalId=" + internalId
+		+ ", fullExternalId=" + fullExternalId
+		+ ", checkDuplicatedName=" + checkDuplicatedName
 		+ ", actionOnDuplicatedName=" + actionOnDuplicatedName
 		+ ", versionId=" + versionId + ", version=" + version
 		+ ", parentId=" + parentId + ", customFields=" + customFields
 		+ ", executionStatus=" + executionStatus + "]";
     }
-
+    
 }

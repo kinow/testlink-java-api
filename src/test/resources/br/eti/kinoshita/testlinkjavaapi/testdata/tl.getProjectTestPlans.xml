@@ -5,8 +5,24 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>5</string></value></member>
-  <member><name>name</name><value><string>My plan</string></value></member>
+  <member><name>id</name><value><string>13</string></value></member>
+  <member><name>name</name><value><string>plan-1348072269696</string></value></member>
+  <member><name>notes</name><value><string>no notes</string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>is_public</name><value><string>1</string></value></member>
+  <member><name>testproject_id</name><value><string>1</string></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>2</string></value></member>
+  <member><name>name</name><value><string>plan001</string></value></member>
+  <member><name>notes</name><value><string></string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>is_public</name><value><string>1</string></value></member>
+  <member><name>testproject_id</name><value><string>1</string></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>18</string></value></member>
+  <member><name>name</name><value><string>plan002</string></value></member>
   <member><name>notes</name><value><string></string></value></member>
   <member><name>active</name><value><string>1</string></value></member>
   <member><name>is_public</name><value><string>1</string></value></member>
@@ -17,4 +33,3 @@
     </param>
   </params>
 </methodResponse>
-

@@ -3,29 +3,40 @@
   <params>
     <param>
       <value>
-        <array><data>
+        <struct>
+  <member><name>with_tester</name><value><array><data>
   <value><struct>
-  <member><name>type</name><value><string>platform</string></value></member>
-  <member><name>name</name><value><string></string></value></member>
-  <member><name>total_tc</name><value><int>2</int></value></member>
-  <member><name>details</name><value><struct>
-  <member><name>not_run</name><value><struct>
-  <member><name>qty</name><value><int>0</int></value></member>
+  <member><name>n</name><value><struct>
+  <member><name>platform_id</name><value><string>0</string></value></member>
+  <member><name>status</name><value><string>n</string></value></member>
+  <member><name>exec_qty</name><value><string>1</string></value></member>
 </struct></value></member>
-  <member><name>passed</name><value><struct>
-  <member><name>qty</name><value><int>1</int></value></member>
+  <member><name>p</name><value><struct>
+  <member><name>platform_id</name><value><int>0</int></value></member>
+  <member><name>status</name><value><string>p</string></value></member>
+  <member><name>exec_qty</name><value><int>0</int></value></member>
 </struct></value></member>
-  <member><name>failed</name><value><struct>
-  <member><name>qty</name><value><int>0</int></value></member>
+  <member><name>f</name><value><struct>
+  <member><name>platform_id</name><value><int>0</int></value></member>
+  <member><name>status</name><value><string>f</string></value></member>
+  <member><name>exec_qty</name><value><int>0</int></value></member>
 </struct></value></member>
-  <member><name>blocked</name><value><struct>
-  <member><name>qty</name><value><int>1</int></value></member>
-</struct></value></member>
+  <member><name>b</name><value><struct>
+  <member><name>platform_id</name><value><int>0</int></value></member>
+  <member><name>status</name><value><string>b</string></value></member>
+  <member><name>exec_qty</name><value><int>0</int></value></member>
 </struct></value></member>
 </struct></value>
-</data></array>
+</data></array></value></member>
+  <member><name>total</name><value><array><data>
+  <value><struct>
+  <member><name>qty</name><value><string>1</string></value></member>
+  <member><name>platform_id</name><value><string>0</string></value></member>
+</struct></value>
+</data></array></value></member>
+  <member><name>platforms</name><value><string></string></value></member>
+</struct>
       </value>
     </param>
   </params>
 </methodResponse>
-

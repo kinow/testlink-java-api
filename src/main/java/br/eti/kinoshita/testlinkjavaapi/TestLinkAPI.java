@@ -44,7 +44,6 @@ import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.constants.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseDetails;
-import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
@@ -626,6 +625,15 @@ public class TestLinkAPI {
 	    throws TestLinkAPIException {
 	return this.buildService.getLatestBuildForTestPlan(testPlanId);
     }
+    
+    /**
+     * Gets the exec counters by build.
+     * @param testPlanId
+     * @return Map
+     */
+    public Map<String, Object> getExecCountersByBuild(Integer testPlanId) {
+	return this.buildService.getExecCountersByBuild(testPlanId);
+    }
 
     /* XX Test Suite operations XX */
 
@@ -735,44 +743,6 @@ public class TestLinkAPI {
 		testProjectId, authorLogin, summary, steps, preconditions,
 		importance, execution, order, internalId, checkDuplicatedName,
 		actionOnDuplicatedName);
-    }
-
-    /**
-     * Update a Test Case.
-     * 
-     * @param testCaseFullExternalId
-     * @param version
-     * @param name
-     * @param summary
-     * @param preconditions
-     * @param importance
-     * @param executionType
-     * @param status
-     * @param estimatedExecutionDuration
-     * @throws TestLinkAPIException
-     */
-    public void updateTestCase(String testCaseFullExternalId, String version,
-	    String name, String summary, String preconditions,
-	    TestImportance importance, ExecutionType executionType,
-	    TestCaseStatus status, String estimatedExecutionDuration)
-	    throws TestLinkAPIException {
-	this.testCaseService.updateTestCase(testCaseFullExternalId, version,
-		name, summary, preconditions, importance, executionType,
-		status, estimatedExecutionDuration);
-    }
-
-    public void updateTestCase(TestCase testCase) throws TestLinkAPIException {
-	this.testCaseService.updateTestCase(testCase.getFullExternalId(), // testCaseFullExternalId,
-		testCase.getVersion() != null ? testCase.getVersion()
-			.toString() : null, // version,
-		testCase.getName(), // name,
-		testCase.getSummary(), // summary,
-		testCase.getPreconditions(), // preconditions,
-		null, // importance,
-		testCase.getExecutionType(), // executionType,
-		null, // status,
-		null // estimatedExecutionDuration
-		);
     }
 
     /**
@@ -1101,6 +1071,64 @@ public class TestLinkAPI {
 	return this.testCaseService.getTestCaseCustomFieldDesignValue(
 		testCaseId, testCaseExternalId, versionNumber, testProjectId,
 		customFieldName, details);
+    }
+    
+    /**
+     * Gets the test case custom field value on test plan design scope.
+     * @param testCaseId
+     * @param testCaseExternalId
+     * @param versionNumber
+     * @param testProjectId
+     * @param customFieldName
+     * @param details
+     * @return
+     * @throws TestLinkAPIException
+     */
+    protected CustomField getTestCaseCustomFieldTestPlanDesignValue(
+	    Integer testCaseId, Integer testCaseExternalId,
+	    Integer versionNumber, Integer testProjectId,
+	    String customFieldName, ResponseDetails details)
+	    throws TestLinkAPIException {
+	return this.testCaseService.getTestCaseCustomFieldTestPlanDesignValue(
+		testCaseId, testCaseExternalId, versionNumber, testProjectId,
+		customFieldName, details);
+    }
+    
+    /**
+     * Gets the test case custom field value on test execution scope.
+     * @param testCaseId
+     * @param testCaseExternalId
+     * @param versionNumber
+     * @param executionId
+     * @param testProjectId
+     * @param customFieldName
+     * @param details
+     * @return
+     * @throws TestLinkAPIException
+     */
+    protected CustomField getTestCaseCustomFieldExecutionValue(
+	    Integer testCaseId, Integer testCaseExternalId,
+	    Integer versionNumber, Integer executionId, Integer testProjectId,
+	    String customFieldName, ResponseDetails details)
+	    throws TestLinkAPIException {
+	return this.testCaseService.getTestCaseCustomFieldExecutionValue(
+		testCaseId, testCaseExternalId, versionNumber, executionId, testProjectId,
+		customFieldName, details);
+    }
+    
+    /**
+     * Sets the test case execution type.
+     * @param testProjectId
+     * @param testCaseExternalId
+     * @param versionNumber
+     * @param executionType
+     * @return Map
+     */
+    public Map<String, Object> setTestCaseExecutionType(Integer testProjectId,
+	    Integer testCaseId, Integer testCaseExternalId,
+	    Integer versionNumber, ExecutionType executionType) {
+	return this.testCaseService.setTestCaseExecutionType(testProjectId,
+		testCaseId, testCaseExternalId, versionNumber, executionType);
     }
 
     /* XX Requirements Specification operations XX */

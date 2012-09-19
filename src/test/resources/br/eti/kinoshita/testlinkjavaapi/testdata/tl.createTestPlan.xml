@@ -8,7 +8,7 @@
   <member><name>operation</name><value><string>createTestPlan</string></value></member>
   <member><name>additionalInfo</name><value><string></string></value></member>
   <member><name>status</name><value><boolean>1</boolean></value></member>
-  <member><name>id</name><value><string>23</string></value></member>
+  <member><name>id</name><value><string>13</string></value></member>
   <member><name>message</name><value><string>Success!</string></value></member>
 </struct></value>
 </data></array>
@@ -16,4 +16,3 @@
     </param>
   </params>
 </methodResponse>
-

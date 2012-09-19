@@ -140,5 +140,29 @@ class BuildService extends BaseService {
 
 	return build;
     }
+    
+    /**
+     * @param testPlanId
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    protected Map<String, Object> getExecCountersByBuild(Integer testPlanId) {
+	Map<String, Object> responseMap = null;
+	try {
+	    Map<String, Object> executionData = new HashMap<String, Object>();
+	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+	    Object response = this.executeXmlRpcCall(
+		    TestLinkMethods.GET_EXEC_COUNTERS_BY_BUILD.toString(),
+		    executionData);
+	    if (response instanceof Map<?, ?>) {
+		responseMap = (Map<String, Object>) response;
+	    }
+	} catch (XmlRpcException xmlrpcex) {
+	    throw new TestLinkAPIException(
+		    "Error getting exec counters by build: "
+			    + xmlrpcex.getMessage(), xmlrpcex);
+	}
+	return responseMap;
+    }
 
 }

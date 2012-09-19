@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>id</name><value><string>3</string></value></member>
+  <member><name>name</name><value><string>java class plan</string></value></member>
+  <member><name>label</name><value><string>java class plan</string></value></member>
+  <member><name>type</name><value><string>0</string></value></member>
+  <member><name>possible_values</name><value><string></string></value></member>
+  <member><name>default_value</name><value><string></string></value></member>
+  <member><name>valid_regexp</name><value><string></string></value></member>
+  <member><name>length_min</name><value><string>0</string></value></member>
+  <member><name>length_max</name><value><string>0</string></value></member>
+  <member><name>show_on_design</name><value><string>0</string></value></member>
+  <member><name>enable_on_design</name><value><string>0</string></value></member>
+  <member><name>show_on_execution</name><value><string>0</string></value></member>
+  <member><name>enable_on_execution</name><value><string>0</string></value></member>
+  <member><name>show_on_testplan_design</name><value><string>1</string></value></member>
+  <member><name>enable_on_testplan_design</name><value><string>1</string></value></member>
+  <member><name>display_order</name><value><string>1</string></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

@@ -5,10 +5,10 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>3</string></value></member>
-  <member><name>name</name><value><string>Show all veterinarians</string></value></member>
-  <member><name>parent_id</name><value><string>2</string></value></member>
-  <member><name>tsuite_name</name><value><string>suite1</string></value></member>
+  <member><name>id</name><value><string>4</string></value></member>
+  <member><name>name</name><value><string>testcase001</string></value></member>
+  <member><name>parent_id</name><value><string>3</string></value></member>
+  <member><name>tsuite_name</name><value><string>suite001</string></value></member>
   <member><name>tc_external_id</name><value><string>1</string></value></member>
 </struct></value>
 </data></array>

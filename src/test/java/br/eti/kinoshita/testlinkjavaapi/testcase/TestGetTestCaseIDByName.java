@@ -60,8 +60,6 @@ public class TestGetTestCaseIDByName extends BaseTest {
 
 	Assert.assertTrue(testCaseId > 0);
 
-	Assert.assertTrue(testCaseId == 3);
-
     }
 
 }

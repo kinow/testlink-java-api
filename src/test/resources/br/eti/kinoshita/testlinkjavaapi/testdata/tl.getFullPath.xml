@@ -4,15 +4,12 @@
     <param>
       <value>
         <struct>
-  <member><name>9</name><value><array><data>
-  <value><string>tdc project</string></value>
-  <value><string>suite1</string></value>
-  <value><string>Show all veterinarians</string></value>
-  <value><string></string></value>
+  <member><name>4</name><value><array><data>
+  <value><string>testlink-java-api</string></value>
+  <value><string>suite001</string></value>
 </data></array></value></member>
 </struct>
       </value>
     </param>
   </params>
 </methodResponse>
-

@@ -5,7 +5,9 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>20</string></value></member>
+  <member><name>id</name><value><string>15</string></value></member>
+  <member><name>name</name><value><string></string></value></member>
+  <member><name>name_changed</name><value><boolean>0</boolean></value></member>
   <member><name>status</name><value><boolean>1</boolean></value></member>
   <member><name>operation</name><value><string>createTestSuite</string></value></member>
   <member><name>additionalInfo</name><value><string></string></value></member>
@@ -16,4 +18,3 @@
     </param>
   </params>
 </methodResponse>
-

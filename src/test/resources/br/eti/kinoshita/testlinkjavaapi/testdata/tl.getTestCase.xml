@@ -5,85 +5,36 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>updater_login</name><value><string>admin</string></value></member>
+  <member><name>updater_login</name><value><string></string></value></member>
   <member><name>author_login</name><value><string>admin</string></value></member>
-  <member><name>name</name><value><string>Show all veterinarians</string></value></member>
+  <member><name>name</name><value><string>testcase001</string></value></member>
   <member><name>node_order</name><value><string>100</string></value></member>
-  <member><name>testsuite_id</name><value><string>2</string></value></member>
-  <member><name>testcase_id</name><value><string>3</string></value></member>
-  <member><name>id</name><value><string>4</string></value></member>
+  <member><name>testsuite_id</name><value><string>3</string></value></member>
+  <member><name>testcase_id</name><value><string>4</string></value></member>
+  <member><name>id</name><value><string>5</string></value></member>
   <member><name>tc_external_id</name><value><string>1</string></value></member>
   <member><name>version</name><value><string>1</string></value></member>
   <member><name>layout</name><value><string>1</string></value></member>
   <member><name>status</name><value><string>1</string></value></member>
-  <member><name>summary</name><value><string>&lt;p&gt;Correctly display the list of veterinarians in the system. Our Sharon must be there!&amp;nbsp;She's very special for our team.&lt;/p&gt;</string></value></member>
-  <member><name>preconditions</name><value><string>&lt;p&gt;pre conditions&lt;/p&gt;</string></value></member>
+  <member><name>summary</name><value><string></string></value></member>
+  <member><name>preconditions</name><value><string></string></value></member>
   <member><name>importance</name><value><string>2</string></value></member>
   <member><name>author_id</name><value><string>1</string></value></member>
-  <member><name>creation_ts</name><value><string>2011-08-16 22:36:02</string></value></member>
-  <member><name>updater_id</name><value><string>1</string></value></member>
-  <member><name>modification_ts</name><value><string>2011-09-28 14:45:53</string></value></member>
+  <member><name>creation_ts</name><value><string>2012-09-19 13:11:19</string></value></member>
+  <member><name>updater_id</name><value><string></string></value></member>
+  <member><name>modification_ts</name><value><string>0000-00-00 00:00:00</string></value></member>
   <member><name>active</name><value><string>1</string></value></member>
   <member><name>is_open</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
+  <member><name>execution_type</name><value><string>1</string></value></member>
   <member><name>author_first_name</name><value><string>Testlink</string></value></member>
   <member><name>author_last_name</name><value><string>Administrator</string></value></member>
-  <member><name>updater_first_name</name><value><string>Testlink</string></value></member>
-  <member><name>updater_last_name</name><value><string>Administrator</string></value></member>
-  <member><name>steps</name><value><array><data>
-  <value><struct>
-  <member><name>id</name><value><string>6</string></value></member>
-  <member><name>step_number</name><value><string>1</string></value></member>
-  <member><name>actions</name><value><string>&lt;p&gt;Log in &lt;/p&gt;</string></value></member>
-  <member><name>expected_results</name><value><string></string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-</struct></value>
-  <value><struct>
-  <member><name>id</name><value><string>7</string></value></member>
-  <member><name>step_number</name><value><string>2</string></value></member>
-  <member><name>actions</name><value><string>&lt;p&gt;Enter city code&lt;/p&gt;</string></value></member>
-  <member><name>expected_results</name><value><string>&lt;p&gt;Yo!&lt;/p&gt;</string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-</struct></value>
-  <value><struct>
-  <member><name>id</name><value><string>8</string></value></member>
-  <member><name>step_number</name><value><string>3</string></value></member>
-  <member><name>actions</name><value><string>&lt;p&gt;Enter value in dollar&lt;/p&gt;</string></value></member>
-  <member><name>expected_results</name><value><string></string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-</struct></value>
-  <value><struct>
-  <member><name>id</name><value><string>9</string></value></member>
-  <member><name>step_number</name><value><string>4</string></value></member>
-  <member><name>actions</name><value><string>&lt;p&gt;Logoff&lt;/p&gt;</string></value></member>
-  <member><name>expected_results</name><value><string></string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-</struct></value>
-  <value><struct>
-  <member><name>id</name><value><string>17</string></value></member>
-  <member><name>step_number</name><value><string>5</string></value></member>
-  <member><name>actions</name><value><string>&lt;p&gt;Send mail to manager&lt;/p&gt;</string></value></member>
-  <member><name>expected_results</name><value><string></string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>1</string></value></member>
-</struct></value>
-  <value><struct>
-  <member><name>id</name><value><string>18</string></value></member>
-  <member><name>step_number</name><value><string>6</string></value></member>
-  <member><name>actions</name><value><string></string></value></member>
-  <member><name>expected_results</name><value><string></string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-</struct></value>
-</data></array></value></member>
+  <member><name>updater_first_name</name><value><string></string></value></member>
+  <member><name>updater_last_name</name><value><string></string></value></member>
+  <member><name>steps</name><value><string></string></value></member>
+  <member><name>full_tc_external_id</name><value><string>tja-1</string></value></member>
 </struct></value>
 </data></array>
       </value>
     </param>
   </params>
 </methodResponse>
-

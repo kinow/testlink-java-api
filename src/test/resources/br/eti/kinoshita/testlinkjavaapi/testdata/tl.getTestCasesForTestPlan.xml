@@ -4,45 +4,22 @@
     <param>
       <value>
         <struct>
-  <member><name>57529</name><value><struct>
-  <member><name>8</name><value><struct>
-  <member><name>testsuite_id</name><value><string>1</string></value></member>
-  <member><name>summary</name><value><string>Summary sample</string></value></member>
-  <member><name>tsuite_name</name><value><string>A Suite</string></value></member>
-  <member><name>tc_id</name><value><string>2</string></value></member>
-  <member><name>z</name><value><string>0</string></value></member>
-  <member><name>name</name><value><string>The TestCase Name</string></value></member>
-  <member><name>platform_id</name><value><string>8</string></value></member>
-  <member><name>platform_name</name><value><string>Linux</string></value></member>
-  <member><name>feature_id</name><value><string>3</string></value></member>
-  <member><name>tcversion_id</name><value><string>4</string></value></member>
-  <member><name>execution_order</name><value><string>0</string></value></member>
-  <member><name>linked_ts</name><value><string>2011-11-10 18:12:15</string></value></member>
-  <member><name>linked_by</name><value><string>7</string></value></member>
+  <member><name>4</name><value><array><data>
+  <value><struct>
+  <member><name>tcase_id</name><value><string>4</string></value></member>
+  <member><name>tc_id</name><value><string>4</string></value></member>
+  <member><name>tcversion_id</name><value><string>5</string></value></member>
   <member><name>version</name><value><string>1</string></value></member>
-  <member><name>active</name><value><string>1</string></value></member>
-  <member><name>external_id</name><value><string>STC-10</string></value></member>
+  <member><name>external_id</name><value><string>1</string></value></member>
   <member><name>execution_type</name><value><string>1</string></value></member>
-  <member><name>importance</name><value><string>2</string></value></member>
-  <member><name>exec_id</name><value><string>5</string></value></member>
-  <member><name>tcversion_number</name><value><string>1</string></value></member>
-  <member><name>executed</name><value><string>6</string></value></member>
-  <member><name>exec_on_tplan</name><value><string>7</string></value></member>
-  <member><name>execution_run_type</name><value><string>2</string></value></member>
-  <member><name>execution_ts</name><value><string>2011-11-10 18:20:30</string></value></member>
-  <member><name>tester_id</name><value><string>7</string></value></member>
-  <member><name>execution_notes</name><value><string></string></value></member>
-  <member><name>exec_on_build</name><value><string>38</string></value></member>
-  <member><name>assigned_build_id</name><value><string></string></value></member>
-  <member><name>user_id</name><value><string></string></value></member>
-  <member><name>type</name><value><string></string></value></member>
-  <member><name>status</name><value><string></string></value></member>
-  <member><name>assigner_id</name><value><string></string></value></member>
-  <member><name>urgency</name><value><string>2</string></value></member>
-  <member><name>exec_status</name><value><string>p</string></value></member>
-  <member><name>priority</name><value><string>4</string></value></member>
-</struct></value></member>
-</struct></value></member>
+  <member><name>feature_id</name><value><string>1</string></value></member>
+  <member><name>platform_id</name><value><string>0</string></value></member>
+  <member><name>platform_name</name><value><string></string></value></member>
+  <member><name>execution_order</name><value><string>1</string></value></member>
+  <member><name>exec_status</name><value><string>n</string></value></member>
+  <member><name>full_external_id</name><value><string>tja-1</string></value></member>
+</struct></value>
+</data></array></value></member>
 </struct>
       </value>
     </param>

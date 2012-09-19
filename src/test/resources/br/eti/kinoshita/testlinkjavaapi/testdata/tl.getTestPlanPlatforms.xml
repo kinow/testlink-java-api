@@ -5,8 +5,8 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>2</string></value></member>
-  <member><name>name</name><value><string>TC1</string></value></member>
+  <member><name>id</name><value><string>1</string></value></member>
+  <member><name>name</name><value><string>platform001</string></value></member>
   <member><name>notes</name><value><string></string></value></member>
 </struct></value>
 </data></array>
@@ -14,4 +14,3 @@
     </param>
   </params>
 </methodResponse>
-

@@ -59,6 +59,8 @@ public class TestCreateTestSuite extends BaseTest {
 
 	Assert.assertNotNull(testSuite);
 
+	Assert.assertNotNull(testSuite.getName());
+	
 	Assert.assertTrue(testSuite.getId() > 0);
     }
 

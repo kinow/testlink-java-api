@@ -5,28 +5,20 @@
       <value>
         <array><data>
   <value><struct>
-  <member><name>id</name><value><string>45</string></value></member>
-  <member><name>build_id</name><value><string>7</string></value></member>
+  <member><name>id</name><value><string>1</string></value></member>
+  <member><name>build_id</name><value><string>1</string></value></member>
   <member><name>tester_id</name><value><string>1</string></value></member>
-  <member><name>execution_ts</name><value><string>2011-09-28 14:58:08</string></value></member>
-  <member><name>status</name><value><string>b</string></value></member>
-  <member><name>testplan_id</name><value><string>5</string></value></member>
-  <member><name>tcversion_id</name><value><string>4</string></value></member>
+  <member><name>execution_ts</name><value><string>2012-09-19 14:14:13</string></value></member>
+  <member><name>status</name><value><string>p</string></value></member>
+  <member><name>testplan_id</name><value><string>2</string></value></member>
+  <member><name>tcversion_id</name><value><string>5</string></value></member>
   <member><name>tcversion_number</name><value><string>1</string></value></member>
   <member><name>platform_id</name><value><string>0</string></value></member>
-  <member><name>execution_type</name><value><string>2</string></value></member>
-  <member><name>notes</name><value><string>1..4
-ok 1 - PASS
-not ok 2 - FAIL
-ok 3 # SKIP SKIP test
-not ok 4 - TODO  # TODO TODO test
-# Failed (TODO) test 'TODO'
-# at -e line 10.
-</string></value></member>
+  <member><name>execution_type</name><value><string>1</string></value></member>
+  <member><name>notes</name><value><string></string></value></member>
 </struct></value>
 </data></array>
       </value>
     </param>
   </params>
 </methodResponse>
-

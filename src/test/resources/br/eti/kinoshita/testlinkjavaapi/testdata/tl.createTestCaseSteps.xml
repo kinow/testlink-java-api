@@ -4,22 +4,19 @@
     <param>
       <value>
         <struct>
-  <member><name>testcaseid</name><value><int>1</int></value></member>
+  <member><name>testcaseid</name><value><int>4</int></value></member>
   <member><name>item</name><value><string></string></value></member>
   <member><name>version</name><value><string>exists</string></value></member>
+  <member><name>tcversion_id</name><value><string>5</string></value></member>
   <member><name>stepSet</name><value><array><data>
 </data></array></value></member>
   <member><name>stepNumberIDSet</name><value><array><data>
 </data></array></value></member>
-  <member><name>stepID</name><value><array><data>
-  <value><array><data>
-  <value><int>0</int></value>
-  <value><int>1</int></value>
-</data></array></value>
-  <value><array><data>
-  <value><int>0</int></value>
-  <value><int>2</int></value>
-</data></array></value>
+  <member><name>feedback</name><value><array><data>
+  <value><struct>
+  <member><name>operation</name><value><string>create</string></value></member>
+  <member><name>step_number</name><value><int>1</int></value></member>
+</struct></value>
 </data></array></value></member>
 </struct>
       </value>

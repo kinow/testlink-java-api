@@ -6,9 +6,9 @@
         <struct>
   <member><name>fk_id</name><value><int>1</int></value></member>
   <member><name>fk_table</name><value><string>nodes_hierarchy</string></value></member>
-  <member><name>title</name><value><string>My attachment</string></value></member>
-  <member><name>description</name><value><string>Sample</string></value></member>
-  <member><name>file_name</name><value><string>o.txt</string></value></member>
+  <member><name>title</name><value><string>nothing</string></value></member>
+  <member><name>description</name><value><string>nothing</string></value></member>
+  <member><name>file_name</name><value><string>nothing.txt</string></value></member>
   <member><name>file_size</name><value><int>3</int></value></member>
   <member><name>file_type</name><value><string>text/plain</string></value></member>
 </struct>
@@ -16,4 +16,3 @@
     </param>
   </params>
 </methodResponse>
-

@@ -50,16 +50,6 @@ public class TestGetTestProjects extends BaseTest {
 	Assert.assertNotNull(projects);
 
 	Assert.assertTrue(projects.length > 0);
-
-	boolean found = false;
-	for (int i = 0; i < projects.length; i++) {
-	    TestProject project = projects[i];
-	    if (project.getName().equals("tdc project")) {
-		found = true;
-	    }
-	}
-
-	Assert.assertTrue(found);
     }
 
 }

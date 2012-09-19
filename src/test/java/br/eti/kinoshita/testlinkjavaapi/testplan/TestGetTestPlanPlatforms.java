@@ -56,8 +56,6 @@ public class TestGetTestPlanPlatforms extends BaseTest {
 	Assert.assertNotNull(platforms);
 
 	Assert.assertTrue(platforms.length > 0);
-
-	Assert.assertTrue(platforms[0].getName().equals(expectedPlatform));
     }
 
 }

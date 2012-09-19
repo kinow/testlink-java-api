@@ -59,13 +59,6 @@ public class TestGetLatestBuildForTestPlan extends BaseTest {
 
 	Assert.assertTrue(build.getId() > 0);
 
-	Assert.assertEquals(build.getId(), buildId);
-
-	Assert.assertEquals(build.getTestPlanId(), testPlanId);
-
-	Assert.assertEquals(build.getName(), buildName);
-
-	Assert.assertEquals(build.getNotes(), buildNotes);
     }
 
 }

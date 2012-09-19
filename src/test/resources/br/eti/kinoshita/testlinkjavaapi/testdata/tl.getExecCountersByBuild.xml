@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>raw</name><value><struct>
+  <member><name>with_tester</name><value><array><data>
+</data></array></value></member>
+  <member><name>total</name><value><array><data>
+</data></array></value></member>
+  <member><name>active_builds</name><value><struct>
+  <member><name>2</name><value><struct>
+  <member><name>id</name><value><string>2</string></value></member>
+  <member><name>testplan_id</name><value><string>2</string></value></member>
+  <member><name>name</name><value><string>11111</string></value></member>
+  <member><name>notes</name><value><string></string></value></member>
+  <member><name>active</name><value><string>1</string></value></member>
+  <member><name>is_open</name><value><string>1</string></value></member>
+  <member><name>release_date</name><value><string></string></value></member>
+  <member><name>closed_on_date</name><value><string></string></value></member>
+</struct></value></member>
+</struct></value></member>
+</struct></value></member>
+  <member><name>table</name><value><array><data>
+</data></array></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

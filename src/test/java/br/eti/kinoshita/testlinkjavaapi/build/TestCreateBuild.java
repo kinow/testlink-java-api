@@ -39,12 +39,11 @@ public class TestCreateBuild extends BaseTest {
 
     @DataProvider(name = "buildData")
     public Object[][] createData() {
-	return new Object[][] { { 10, "Build Notes", 8 } };
+	return new Object[][] { { 10, "Build Notes" } };
     }
 
     @Test(dataProvider = "buildData")
-    public void testCreateBuild(Integer testPlanId, String buildNotes,
-	    Integer expectedBuildId) {
+    public void testCreateBuild(Integer testPlanId, String buildNotes) {
 	this.loadXMLRPCMockData("tl.createBuild.xml");
 
 	Build build = null;
@@ -59,8 +58,6 @@ public class TestCreateBuild extends BaseTest {
 	Assert.assertNotNull(build);
 
 	Assert.assertTrue(build.getId() > 0);
-
-	Assert.assertEquals(build.getId(), expectedBuildId);
     }
 
 }

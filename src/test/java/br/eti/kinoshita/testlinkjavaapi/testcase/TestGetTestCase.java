@@ -60,8 +60,6 @@ public class TestGetTestCase extends BaseTest {
 
 	Assert.assertNotNull(testCase.getSteps());
 
-	Assert.assertEquals(testCase.getSteps().size(), 6);
-
     }
 
 }

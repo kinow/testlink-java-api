@@ -90,9 +90,10 @@ class TestSuiteService extends BaseService {
 	    Object[] responseArray = Util.castToArray(response);
 	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
 
-	    id = Util.getInteger(responseMap,
-		    TestLinkResponseParams.ID.toString());
+	    id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
 	    testSuite.setId(id);
+	    
+	    testSuite.setName(name);
 	} catch (XmlRpcException xmlrpcex) {
 	    throw new TestLinkAPIException("Error creating test suite: "
 		    + xmlrpcex.getMessage(), xmlrpcex);

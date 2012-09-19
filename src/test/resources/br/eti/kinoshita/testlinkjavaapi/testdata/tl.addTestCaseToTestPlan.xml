@@ -4,7 +4,7 @@
     <param>
       <value>
         <struct>
-  <member><name>feature_id</name><value><string>5</string></value></member>
+  <member><name>feature_id</name><value><string>1</string></value></member>
   <member><name>operation</name><value><string>addTestCaseToTestPlan</string></value></member>
   <member><name>status</name><value><boolean>1</boolean></value></member>
   <member><name>message</name><value><string></string></value></member>

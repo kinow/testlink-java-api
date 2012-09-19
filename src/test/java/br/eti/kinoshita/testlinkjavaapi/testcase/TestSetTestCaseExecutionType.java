@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2011> <Mario Fuentes>
+ * Copyright (c) <2012> <Bruno P. Kinoshita>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.eti.kinoshita.testlinkjavaapi.testcasesteps;
+package br.eti.kinoshita.testlinkjavaapi.testcase;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.testng.Assert;
@@ -33,53 +31,36 @@ import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * 
- * @author Mario Fuentes - http://www.rhiscom.com
- * @since 1.9.3-2
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 0.1
  */
-public class TestAddTestCaseSteps extends BaseTest {
-    @DataProvider(name = "testCaseStepData")
-    public Object[][] createData() {
-	List<TestCaseStep> steps = new ArrayList<TestCaseStep>();
-	steps.add(new TestCaseStep(1, // ID
-		1, // Version
-		1, // Step number
-		"", // Actions
-		"", // Expected Results
-		true, // Active?
-		ExecutionType.AUTOMATED // Execution type
-	));
-	steps.add(new TestCaseStep(1, // ID
-		1, // Version
-		2, // Step number
-		"", // Actions
-		"", // Expected Results
-		true, // Active?
-		ExecutionType.AUTOMATED // Execution type
-	));
+public class TestSetTestCaseExecutionType extends BaseTest {
 
-	return new Object[][] { { "1", steps } };
+    @DataProvider(name = "testCaseData")
+    public Object[][] createData() {
+	return new Object[][] { { 1, 4, null, 1, ExecutionType.AUTOMATED } };
     }
 
-    @Test(dataProvider = "testCaseStepData")
-    public void testCreateTestCaseSteps(String testCaseExternalId,
-	    List<TestCaseStep> steps) {
-	this.loadXMLRPCMockData("tl.createTestCaseSteps.xml");
+    @Test(dataProvider = "testCaseData")
+    public void testSetTestCaseExecutionType(Integer testProjectId, Integer testCaseId, Integer testCaseExternalId,
+	    Integer versionNumber, ExecutionType executionType) {
+	this.loadXMLRPCMockData("tl.setTestCaseExecutionType.xml");
 
-	Map<String, Object> result = null;
-
+	Map<String, Object> response = null;
 	try {
-	    result = api.addTestCaseSteps(testCaseExternalId, 1, steps);
+	    response = this.api.setTestCaseExecutionType(testProjectId, testCaseId, testCaseExternalId, versionNumber, executionType);
 	} catch (TestLinkAPIException e) {
 	    Assert.fail(e.getMessage(), e);
 	}
 
-	Assert.assertNotNull(result);
-	
-	Assert.assertTrue(Integer.parseInt(result.get("testcaseid").toString()) > 0);
+	Assert.assertNotNull(response);
+
+	Assert.assertTrue(Integer.parseInt(response.get("testprojectid").toString()) > 0);
+	Assert.assertTrue(Integer.parseInt(response.get("testcaseid").toString()) > 0);
     }
+    
 }
