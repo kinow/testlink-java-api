@@ -1,51 +1,97 @@
 List of methods from TestLink XML-RPC API implemented in TestLink Java API
 
- * reportTCResult
+ * tl.createTestProject
 
- * setTestCaseExecutionResult
+ * tl.getTestProjectByName
 
- * createBuild
+ * tl.checkDevKey
 
- * createTestCase
+ * tl.getProjects
 
- * createTestPlan
+ * tl.createTestPlan
 
- * createTestProject
+ * tl.getTestPlanByName
 
- * createTestSuite
+ * tl.getProjectTestPlans
 
- * uploadRequirementSpecificationAttachment
+ * tl.getTestPlanPlatforms
 
- * uploadRequirementAttachment
+ * tl.createTestCase
 
- * uploadTestProjectAttachment
+ * tl.createTestCaseSteps
 
- * uploadTestSuiteAttachment
+ * tl.deleteTestCaseSteps
 
- * uploadTestCaseAttachment
+ * tl.createTestSuite
 
- * uploadAttachment
+ * tl.addTestCaseToTestPlan
 
- * assignRequirements
+ * tl.doesUserExist
 
- * addTestCaseToTestPlan
+ * tl.sayHello
 
- * getProjects
+ * tl.about
 
- * getTestProjectByName
+ * tl.getTestSuiteByID
 
- * getTestPlanByName
+ * tl.setTestMode
 
- * getProjectTestPlans
+ * tl.repeat
 
- * getTestPlanPlatforms
+ * tl.getTestCase
 
- * getTotalsForTestPlan
+ * tl.getTestCasesForTestSuite
 
- * getBuildsForTestPlan
+ * tl.createBuild
 
- * getLatestBuildForTestPlan
+ * tl.getTestCasesForTestPlan
 
- * getLastExecutionResult
+ * tl.getTestCaseIDByName
 
- * getTestSuitesForTestPlan
+ * tl.getTestSuitesForTestPlan
+
+ * tl.uploadAttachment
+
+ * tl.uploadTestCaseAttachment
+
+ * tl.uploadTestSuiteAttachment
+
+ * tl.uploadTestProjectAttachment
+
+ * tl.uploadRequirementAttachment
+
+ * tl.uploadRequirementSpecificationAttachment
+
+ * tl.getTestCaseAttachments
+
+ * tl.uploadExecutionAttachment
+
+ * tl.deleteExecution
+
+ * tl.getFullPath
+
+ * tl.assignRequirements
+
+ * tl.getTestSuitesForTestSuite
+
+ * tl.getFirstLevelTestSuitesForTestProject
+
+ * tl.reportTCResult
+
+ * tl.getLastExecutionResult
+
+ * tl.getBuildsForTestPlan
+
+ * tl.getLatestBuildForTestPlan
+
+ * tl.getTestCaseCustomFieldDesignValue
+
+ * tl.getTestCaseCustomFieldTestPlanDesignValue
+
+ * tl.getTestCaseCustomFieldExecutionValue
+
+ * tl.getTotalsForTestPlan
+
+ * tl.getExecCountersByBuild
+
+ * tl.setTestCaseExecutionType

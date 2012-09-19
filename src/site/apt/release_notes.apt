@@ -1,5 +1,15 @@
 Release Notes
 
+* Version 1.9.4-0
+
+ * Updated XML-RPC samples for testing
+ 
+ * Removed method updateTestCase (not implemented in TL XML-RPC yet)
+ 
+ * Added method getExecCountersByBuild
+ 
+ * Added method setTestCaseExecutionType
+
 * Version 1.9.3-5
  
  * Fixed wrong parameter name in getTestCasesForTestPlan. The getstepsinfo 
