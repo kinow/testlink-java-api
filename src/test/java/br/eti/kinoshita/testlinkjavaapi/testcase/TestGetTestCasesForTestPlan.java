@@ -59,9 +59,5 @@ public class TestGetTestCasesForTestPlan extends BaseTest {
         Assert.assertNotNull(testCases);
 
         Assert.assertTrue(testCases.length == 1);
-        
-        for (TestCase tc : testCases) {
-            System.out.println(tc);
-        }
     }
 }

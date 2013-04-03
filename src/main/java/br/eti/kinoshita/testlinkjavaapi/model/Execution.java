@@ -24,6 +24,7 @@
 package br.eti.kinoshita.testlinkjavaapi.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
@@ -35,11 +36,11 @@ import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 public class Execution implements Serializable {
 
     private static final long serialVersionUID = -8012620477419689135L;
-    
+
     private Integer id;
     private Integer buildId;
     private Integer testerId;
-    // TBD: include execution_ts
+    private Date executionTimeStamp;
     private ExecutionStatus status;
     private Integer testPlanId;
     private Integer testCaseVersionId;
@@ -51,13 +52,16 @@ public class Execution implements Serializable {
 	 * 
 	 */
     public Execution() {
-	super();
+        super();
     }
 
     /**
+     * Constructor with args.
+     * 
      * @param id
      * @param buildId
      * @param testerId
+     * @param executionTimeStamp
      * @param status
      * @param testPlanId
      * @param testCaseVersionId
@@ -65,155 +69,160 @@ public class Execution implements Serializable {
      * @param executionType
      * @param notes
      */
-    public Execution(Integer id, Integer buildId, Integer testerId,
-	    ExecutionStatus status, Integer testPlanId,
-	    Integer testCaseVersionId, Integer testCaseVersionNumber,
-	    ExecutionType executionType, String notes) {
-	super();
-	this.id = id;
-	this.buildId = buildId;
-	this.testerId = testerId;
-	this.status = status;
-	this.testPlanId = testPlanId;
-	this.testCaseVersionId = testCaseVersionId;
-	this.testCaseVersionNumber = testCaseVersionNumber;
-	this.executionType = executionType;
-	this.notes = notes;
+    public Execution(Integer id, Integer buildId, Integer testerId, Date executionTimeStamp, ExecutionStatus status,
+            Integer testPlanId, Integer testCaseVersionId, Integer testCaseVersionNumber, ExecutionType executionType,
+            String notes) {
+        super();
+        this.id = id;
+        this.buildId = buildId;
+        this.testerId = testerId;
+        this.executionTimeStamp = executionTimeStamp;
+        this.status = status;
+        this.testPlanId = testPlanId;
+        this.testCaseVersionId = testCaseVersionId;
+        this.testCaseVersionNumber = testCaseVersionNumber;
+        this.executionType = executionType;
+        this.notes = notes;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the buildId
      */
     public Integer getBuildId() {
-	return buildId;
+        return buildId;
     }
 
     /**
-     * @param buildId
-     *            the buildId to set
+     * @param buildId the buildId to set
      */
     public void setBuildId(Integer buildId) {
-	this.buildId = buildId;
+        this.buildId = buildId;
     }
 
     /**
      * @return the testerId
      */
     public Integer getTesterId() {
-	return testerId;
+        return testerId;
     }
 
     /**
-     * @param testerId
-     *            the testerId to set
+     * @param testerId the testerId to set
      */
     public void setTesterId(Integer testerId) {
-	this.testerId = testerId;
+        this.testerId = testerId;
     }
 
     /**
      * @return the status
      */
     public ExecutionStatus getStatus() {
-	return status;
+        return status;
     }
 
     /**
-     * @param status
-     *            the status to set
+     * @param status the status to set
      */
     public void setStatus(ExecutionStatus status) {
-	this.status = status;
+        this.status = status;
     }
 
     /**
      * @return the testPlanId
      */
     public Integer getTestPlanId() {
-	return testPlanId;
+        return testPlanId;
     }
 
     /**
-     * @param testPlanId
-     *            the testPlanId to set
+     * @param testPlanId the testPlanId to set
      */
     public void setTestPlanId(Integer testPlanId) {
-	this.testPlanId = testPlanId;
+        this.testPlanId = testPlanId;
     }
 
     /**
      * @return the testCaseVersionId
      */
     public Integer getTestCaseVersionId() {
-	return testCaseVersionId;
+        return testCaseVersionId;
     }
 
     /**
-     * @param testCaseVersionId
-     *            the testCaseVersionId to set
+     * @param testCaseVersionId the testCaseVersionId to set
      */
     public void setTestCaseVersionId(Integer testCaseVersionId) {
-	this.testCaseVersionId = testCaseVersionId;
+        this.testCaseVersionId = testCaseVersionId;
     }
 
     /**
      * @return the testCaseVersionNumber
      */
     public Integer getTestCaseVersionNumber() {
-	return testCaseVersionNumber;
+        return testCaseVersionNumber;
     }
 
     /**
-     * @param testCaseVersionNumber
-     *            the testCaseVersionNumber to set
+     * @param testCaseVersionNumber the testCaseVersionNumber to set
      */
     public void setTestCaseVersionNumber(Integer testCaseVersionNumber) {
-	this.testCaseVersionNumber = testCaseVersionNumber;
+        this.testCaseVersionNumber = testCaseVersionNumber;
     }
 
     /**
      * @return the executionType
      */
     public ExecutionType getExecutionType() {
-	return executionType;
+        return executionType;
     }
 
     /**
-     * @param executionType
-     *            the executionType to set
+     * @param executionType the executionType to set
      */
     public void setExecutionType(ExecutionType executionType) {
-	this.executionType = executionType;
+        this.executionType = executionType;
     }
 
     /**
      * @return the notes
      */
     public String getNotes() {
-	return notes;
+        return notes;
     }
 
     /**
-     * @param notes
-     *            the notes to set
+     * @param notes the notes to set
      */
     public void setNotes(String notes) {
-	this.notes = notes;
+        this.notes = notes;
+    }
+
+    /**
+     * @return the executionTimeStamp
+     */
+    public Date getExecutionTimeStamp() {
+        return executionTimeStamp;
+    }
+
+    /**
+     * @param executionTimeStamp the executionTimeStamp to set
+     */
+    public void setExecutionTimeStamp(Date executionTimeStamp) {
+        this.executionTimeStamp = executionTimeStamp;
     }
 
     /*
@@ -223,11 +232,10 @@ public class Execution implements Serializable {
      */
     @Override
     public String toString() {
-	return "Execution [id=" + id + ", buildId=" + buildId + ", testerId="
-		+ testerId + ", status=" + status + ", testPlanId="
-		+ testPlanId + ", testCaseVersionId=" + testCaseVersionId
-		+ ", testCaseVersionNumber=" + testCaseVersionNumber
-		+ ", executionType=" + executionType + ", notes=" + notes + "]";
+        return "Execution [id=" + id + ", buildId=" + buildId + ", testerId=" + testerId + ", executionTimeStamp="
+                + executionTimeStamp + ", status=" + status + ", testPlanId=" + testPlanId + ", testCaseVersionId="
+                + testCaseVersionId + ", testCaseVersionNumber=" + testCaseVersionNumber + ", executionType="
+                + executionType + ", notes=" + notes + "]";
     }
 
 }

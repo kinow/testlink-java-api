@@ -39,26 +39,26 @@ public class TestGetLastExecutionResult extends BaseTest {
 
     @DataProvider(name = "executionData")
     public Object[][] createData() {
-	return new Object[][] { { 10, 8 } };
+        return new Object[][] { { 12, 8 } };
     }
 
     @Test(dataProvider = "executionData")
-    public void testGetLastExecutionResult(Integer testPlanId,
-	    Integer testCaseId) {
-	this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
+    public void testGetLastExecutionResult(Integer testPlanId, Integer testCaseId) {
+        this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
 
-	Execution execution = null;
+        Execution execution = null;
 
-	try {
-	    execution = this.api.getLastExecutionResult(testPlanId, testCaseId,
-		    null);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            execution = this.api.getLastExecutionResult(testPlanId, testCaseId, null);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(execution);
+        Assert.assertNotNull(execution);
 
-	Assert.assertTrue(execution.getId() > 0);
+        Assert.assertTrue(execution.getId() > 0);
+        
+        System.out.println(execution);
 
     }
 

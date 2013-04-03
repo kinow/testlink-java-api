@@ -22,11 +22,17 @@
             <action dev="kinow" type="update">
                 Added new parameters to TestCase (platform:Platform and featureId:Integer).
             </action>
-            <action dev="kinow" type="update">
+            <action dev="kinow" type="update" issue="5">
                 Added new parameters to TestCase (platform:Platform and featureId:Integer).
             </action>
             <action dev="kinow" type="remove">
                 Removed bugs notes from javadoc headers (inherited from TL project, but deprecated here now).
+            </action>
+            <action dev="kinow" type="add">
+                Added changes.xml to the project.
+            </action>
+            <action dev="kinow" type="add" issue="7">
+                Added new parameter executionTimeStamp to Execution.
             </action>
         </release>
     </body>

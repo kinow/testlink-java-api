@@ -44,30 +44,26 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
 class MiscService extends BaseService {
 
     /**
-     * @param xmlRpcClient
-     *            XML RPC Client.
-     * @param devKey
-     *            TestLink User DevKey.
+     * @param xmlRpcClient XML RPC Client.
+     * @param devKey TestLink User DevKey.
      */
     public MiscService(XmlRpcClient xmlRpcClient, String devKey) {
-	super(xmlRpcClient, devKey);
+        super(xmlRpcClient, devKey);
     }
 
     protected Boolean checkDevKey(String devKey) throws TestLinkAPIException {
-	Boolean statusOk = false;
+        Boolean statusOk = false;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.DEV_KEY.toString(), devKey);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.CHECK_DEV_KEY.toString(), executionData);
-	    statusOk = Boolean.valueOf(response.toString());
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error verifying developer key: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.DEV_KEY.toString(), devKey);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.CHECK_DEV_KEY.toString(), executionData);
+            statusOk = Boolean.valueOf(response.toString());
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error verifying developer key: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return statusOk;
+        return statusOk;
     }
 
     /**
@@ -78,20 +74,18 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected Boolean doesUserExist(String user) throws TestLinkAPIException {
-	Boolean userExist = false;
+        Boolean userExist = false;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.USER.toString(), user);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.DOES_USER_EXIST.toString(), executionData);
-	    userExist = Boolean.valueOf(response.toString());
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error verifying if user exists: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.USER.toString(), user);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.DOES_USER_EXIST.toString(), executionData);
+            userExist = Boolean.valueOf(response.toString());
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error verifying if user exists: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return userExist;
+        return userExist;
     }
 
     /**
@@ -101,18 +95,16 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected String sayHello() throws TestLinkAPIException {
-	String message = null;
+        String message = null;
 
-	try {
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.SAY_HELLO.toString(), null);
-	    message = (String) response;
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error saying hello: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Object response = this.executeXmlRpcCall(TestLinkMethods.SAY_HELLO.toString(), null);
+            message = (String) response;
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error saying hello: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return message;
+        return message;
     }
 
     /**
@@ -120,18 +112,16 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected String about() throws TestLinkAPIException {
-	String message = null;
+        String message = null;
 
-	try {
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.ABOUT.toString(), null);
-	    message = (String) response;
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error in about method: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Object response = this.executeXmlRpcCall(TestLinkMethods.ABOUT.toString(), null);
+            message = (String) response;
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error in about method: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return message;
+        return message;
     }
 
     /**
@@ -142,20 +132,18 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected Boolean setTestMode(Boolean testMode) throws TestLinkAPIException {
-	Boolean result = null;
+        Boolean result = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_MODE.toString(), testMode);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.SET_TEST_MODE.toString(), executionData);
-	    result = (Boolean) response;
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error setting test mode: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_MODE.toString(), testMode);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.SET_TEST_MODE.toString(), executionData);
+            result = (Boolean) response;
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error setting test mode: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return result;
+        return result;
     }
 
     /**
@@ -164,20 +152,18 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected String repeat(String str) throws TestLinkAPIException {
-	String repeatMessage = null;
+        String repeatMessage = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.STR.toString(), str);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.REPEAT.toString(), executionData);
-	    repeatMessage = (String) response;
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error setting test mode: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.STR.toString(), str);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.REPEAT.toString(), executionData);
+            repeatMessage = (String) response;
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error setting test mode: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return repeatMessage;
+        return repeatMessage;
     }
 
     /**
@@ -192,31 +178,25 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     @SuppressWarnings("unchecked")
-    protected Attachment uploadAttachment(Integer fkId, String fkTable,
-	    String title, String description, String fileName, String fileType,
-	    String content) throws TestLinkAPIException {
-	Attachment attachment = null;
+    protected Attachment uploadAttachment(Integer fkId, String fkTable, String title, String description,
+            String fileName, String fileType, String content) throws TestLinkAPIException {
+        Attachment attachment = null;
 
-	Integer id = 0;
+        Integer id = 0;
 
-	attachment = new Attachment(id, fkId, fkTable, title, description,
-		fileName, null, fileType, content);
+        attachment = new Attachment(id, fkId, fkTable, title, description, fileName, null, fileType, content);
 
-	try {
-	    Map<String, Object> executionData = Util
-		    .getAttachmentMap(attachment);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.UPLOAD_ATTACHMENT.toString(), executionData);
-	    Map<String, Object> responseMap = (Map<String, Object>) response;
-	    id = Util.getInteger(responseMap,
-		    TestLinkResponseParams.ID.toString());
-	    attachment.setId(id);
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error uploading attachment: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = Util.getAttachmentMap(attachment);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_ATTACHMENT.toString(), executionData);
+            Map<String, Object> responseMap = (Map<String, Object>) response;
+            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
+            attachment.setId(id);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error uploading attachment: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return attachment;
+        return attachment;
     }
 
     /**
@@ -225,31 +205,29 @@ class MiscService extends BaseService {
     @SuppressWarnings("unchecked")
     protected String[] getFullPath(Integer nodeId) throws TestLinkAPIException {
 
-	String[] names = null;
+        String[] names = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.NODE_ID.toString(), nodeId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_FULL_PATH.toString(), executionData);
-	    if (response instanceof Map<?, ?>) {
-		Map<String, Object> responseMap = (Map<String, Object>) response;
-		if (responseMap.size() > 0) {
-		    Object value = responseMap.get(nodeId.toString());
-		    Object values[] = (Object[]) value;
-		    names = new String[values.length];
-		    for (int i = 0; i < values.length; i++) {
-			names[i] = values[i].toString();
-		    }
-		}
-	    }
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.NODE_ID.toString(), nodeId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_FULL_PATH.toString(), executionData);
+            if (response instanceof Map<?, ?>) {
+                Map<String, Object> responseMap = (Map<String, Object>) response;
+                if (responseMap.size() > 0) {
+                    Object value = responseMap.get(nodeId.toString());
+                    Object values[] = (Object[]) value;
+                    names = new String[values.length];
+                    for (int i = 0; i < values.length; i++) {
+                        names[i] = values[i].toString();
+                    }
+                }
+            }
 
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error uploading attachment: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error uploading attachment: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return names;
+        return names;
 
     }
 
@@ -260,34 +238,29 @@ class MiscService extends BaseService {
      * @return
      */
     @SuppressWarnings("unchecked")
-    protected Execution getLastExecutionResult(Integer testPlanId,
-	    Integer testCaseId, Integer testCaseExternalId)
-	    throws TestLinkAPIException {
+    protected Execution getLastExecutionResult(Integer testPlanId, Integer testCaseId, Integer testCaseExternalId)
+            throws TestLinkAPIException {
 
-	Execution execution = null;
+        Execution execution = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-	    executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
-	    executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(),
-		    testCaseExternalId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_LAST_EXECUTION_RESULT.toString(),
-		    executionData);
-	    Object[] responseArray = Util.castToArray(response);
-	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
-	    if (responseMap instanceof Map<?, ?> && responseMap.size() > 0) {
-		execution = Util.getExecution(responseMap);
-	    }
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
+            executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_LAST_EXECUTION_RESULT.toString(),
+                    executionData);
+            Object[] responseArray = Util.castToArray(response);
+            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+            if (responseMap instanceof Map<?, ?> && responseMap.size() > 0) {
+                execution = Util.getExecution(responseMap);
+            }
 
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving last execution result: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving last execution result: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return execution;
+        return execution;
 
     }
 

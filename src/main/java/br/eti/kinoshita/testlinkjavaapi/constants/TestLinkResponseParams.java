@@ -95,7 +95,8 @@ public enum TestLinkResponseParams {
     FULL_TEST_CASE_EXTERNAL_ID2("full_external_id"),
     PLATFORM_ID("platform_id"),
     PLATFORM_NAME("platform_name"),
-    EXTERNAL_ID("external_id")
+    EXTERNAL_ID("external_id"),
+    EXECUTION_TS("execution_ts")
     ;
 
     private String textValue;

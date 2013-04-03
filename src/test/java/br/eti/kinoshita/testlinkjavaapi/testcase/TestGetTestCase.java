@@ -39,27 +39,27 @@ public class TestGetTestCase extends BaseTest {
 
     @DataProvider(name = "testCaseData")
     public Object[][] createData() {
-	return new Object[][] { { 4, 1 }, { 6, 1 } };
+        return new Object[][] { { 4, 1 }, { 6, 1 } };
     }
 
     @Test(dataProvider = "testCaseData")
     public void testGetTestCase(Integer testCaseId, Integer version) {
-	this.loadXMLRPCMockData("tl.getTestCase.xml");
+        this.loadXMLRPCMockData("tl.getTestCase.xml");
 
-	TestCase testCase = null;
+        TestCase testCase = null;
 
-	try {
-	    testCase = this.api.getTestCase(testCaseId, null, version);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testCase = this.api.getTestCase(testCaseId, null, version);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testCase);
+        Assert.assertNotNull(testCase);
 
-	Assert.assertTrue(testCase.getId() > 0);
+        Assert.assertTrue(testCase.getId() > 0);
 
-	Assert.assertNotNull(testCase.getSteps());
-
+        Assert.assertNotNull(testCase.getSteps());
+        
     }
 
 }

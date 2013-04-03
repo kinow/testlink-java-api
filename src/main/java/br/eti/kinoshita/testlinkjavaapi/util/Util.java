@@ -23,13 +23,19 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -58,6 +64,8 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
  * @since 1.9.0-1
  */
 public final class Util {
+    
+    private static final Logger LOG = Logger.getLogger(Util.class.getName());
 
     public static final Object[] EMPTY_ARRAY = new Object[0];
     public static final Map<String, Object> EMPTY_MAP = new HashMap<String, Object>();
@@ -472,7 +480,7 @@ public final class Util {
                     testCase.setPlatform(platform);
 
                     testCase.setFeatureId(getInteger(map, TestLinkResponseParams.FEATURE_ID.toString()));
-                    
+
                     // IMPORTANT: the full external id (composed by
                     // prefix-external_id) come on
                     // different parameters depending of what methods was used.
@@ -480,8 +488,7 @@ public final class Util {
                     // In 'getTestCase' -> 'full_tc_external_id'
                     // In 'getTestCasesForTestSuite' -> 'external_id'
                     // In 'getTestCasesForTestPlan' does not come (ToDo: add)
-                    String fullExternalId = getString(map,
-                            TestLinkResponseParams.FULL_TEST_CASE_EXTERNAL_ID.toString());
+                    String fullExternalId = getString(map, TestLinkResponseParams.FULL_TEST_CASE_EXTERNAL_ID.toString());
                     if (fullExternalId == null) {
                         fullExternalId = getString(map, TestLinkResponseParams.FULL_TEST_CASE_EXTERNAL_ID2.toString());
                         if (fullExternalId == null) {
@@ -799,6 +806,16 @@ public final class Util {
                     ExecutionType executionType = ExecutionType.getExecutionType(executionTypeText);
                     execution.setExecutionType(executionType);
                     execution.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
+                    String timestamp = getString(map, TestLinkResponseParams.EXECUTION_TS.toString());
+                    if (StringUtils.isNotBlank(timestamp)) {
+                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        try {
+                            Date executionTimeStamp = df.parse(timestamp);
+                            execution.setExecutionTimeStamp(executionTimeStamp);
+                        } catch (ParseException e) {
+                            LOG.log(Level.WARNING, "Failed to parse execution_ts: " + e.getMessage(), e);
+                        }
+                    }
                 }
 
             }
