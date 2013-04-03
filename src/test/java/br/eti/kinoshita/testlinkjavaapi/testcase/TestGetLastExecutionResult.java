@@ -39,7 +39,7 @@ public class TestGetLastExecutionResult extends BaseTest {
 
     @DataProvider(name = "executionData")
     public Object[][] createData() {
-        return new Object[][] { { 12, 8 } };
+        return new Object[][] { { 10, 8 } };
     }
 
     @Test(dataProvider = "executionData")

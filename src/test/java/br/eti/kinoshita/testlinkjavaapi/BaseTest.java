@@ -59,18 +59,19 @@ public class BaseTest {
      */
     @BeforeClass
     protected void setUp() throws Exception {
-        // this.server = new HttpTestServer();
-        // this.loadXMLRPCMockData("tl.checkDevKey.xml");
-        // this.server.start();
+        this.mocked = true; // TODO: read it from pom
 
-        // this.api = new TestLinkAPI(new URL("http://localhost:"
-        // + this.server.getPort() + "/testlink/lib/api/xmlrpc.php"),
-        // "devKey");
+        if (!mocked) {
+            this.api = new TestLinkAPI(new URL("http://localhost:3300/testlink-1.9.4/lib/api/xmlrpc.php"),
+                    "667d7d4b89f235aadcf3881fe327a7b8");
+        } else {
+            this.server = new HttpTestServer();
+            this.loadXMLRPCMockData("tl.checkDevKey.xml");
+            this.server.start();
 
-        this.mocked = false; // TODO: read it from pom
-
-        this.api = new TestLinkAPI(new URL("http://localhost:3300/testlink-1.9.4/lib/api/xmlrpc.php"),
-                "667d7d4b89f235aadcf3881fe327a7b8");
+            this.api = new TestLinkAPI(new URL("http://localhost:" + this.server.getPort()
+                    + "/testlink/lib/api/xmlrpc.php"), "devKey");
+        }
     }
 
     public void loadXMLRPCMockData(String xmlFile) {

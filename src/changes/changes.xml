@@ -34,6 +34,9 @@
             <action dev="kinow" type="add" issue="7">
                 Added new parameter executionTimeStamp to Execution.
             </action>
+            <action dev="kinow" type="update" issue="9">
+                Fixed bug when selecting multiple suites by ID.
+            </action>
         </release>
     </body>
 </document>

@@ -536,24 +536,11 @@ class TestCaseService extends BaseService {
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
             ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, // TODO:
-            // change for
-            // a list of
-            // custom
-            // fields.
-            // After
-            // implementing
-            // method
-            // getTestCaseCustomFieldDesignValue
-            // this
-            // entities
-            // properties
-            // will
-            // become
-            // much more
-            // clear
+            Integer platformId, String platformName, Map<String, String> customFields, 
             Boolean overwrite) throws TestLinkAPIException {
-
+        // TODO: Map<String, String> customFields => 
+        // change for a list of custom fields. After implementing method getTestCaseCustomFieldDesignValue this
+        // entities properties will become much more clear
         ReportTCResultResponse reportTCResultResponse = null;
 
         try {

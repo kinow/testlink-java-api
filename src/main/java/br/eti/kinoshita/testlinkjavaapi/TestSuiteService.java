@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 
@@ -50,13 +51,11 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
 class TestSuiteService extends BaseService {
 
     /**
-     * @param xmlRpcClient
-     *            XML RPC Client.
-     * @param devKey
-     *            TestLink User DevKey.
+     * @param xmlRpcClient XML RPC Client.
+     * @param devKey TestLink User DevKey.
      */
     public TestSuiteService(XmlRpcClient xmlRpcClient, String devKey) {
-	super(xmlRpcClient, devKey);
+        super(xmlRpcClient, devKey);
     }
 
     /**
@@ -72,71 +71,79 @@ class TestSuiteService extends BaseService {
      * @return Test Suite.
      * @throws TestLinkAPIException
      */
-    protected TestSuite createTestSuite(Integer testProjectId, String name,
-	    String details, Integer parentId, Integer order,
-	    Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
-	    throws TestLinkAPIException {
-	TestSuite testSuite = null;
+    protected TestSuite createTestSuite(Integer testProjectId, String name, String details, Integer parentId,
+            Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
+            throws TestLinkAPIException {
+        TestSuite testSuite = null;
 
-	Integer id = 0;
+        Integer id = 0;
 
-	testSuite = new TestSuite(id, testProjectId, name, details, parentId,
-		order, checkDuplicatedName, actionOnDuplicatedName);
+        testSuite = new TestSuite(id, testProjectId, name, details, parentId, order, checkDuplicatedName,
+                actionOnDuplicatedName);
 
-	try {
-	    Map<String, Object> executionData = Util.getTestSuiteMap(testSuite);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.CREATE_TEST_SUITE.toString(), executionData);
-	    Object[] responseArray = Util.castToArray(response);
-	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+        try {
+            Map<String, Object> executionData = Util.getTestSuiteMap(testSuite);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_SUITE.toString(), executionData);
+            Object[] responseArray = Util.castToArray(response);
+            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
 
-	    id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
-	    testSuite.setId(id);
-	    
-	    testSuite.setName(name);
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error creating test suite: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
+            testSuite.setId(id);
 
-	return testSuite;
+            testSuite.setName(name);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error creating test suite: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+
+        return testSuite;
     }
 
     /**
      * @param TEST_SUITE_ID
      * @return
      */
-    protected TestSuite[] getTestSuiteByID(List<Integer> testSuiteIds)
-	    throws TestLinkAPIException {
-	TestSuite[] testSuites = null;
+    protected TestSuite[] getTestSuiteByID(List<Integer> testSuiteIds) throws TestLinkAPIException {
+        TestSuite[] testSuites = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_SUITE_ID.toString(),
-		    testSuiteIds);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_TEST_SUITE_BY_ID.toString(), executionData);
-	    if (response instanceof Object[]) {
-		Object[] responseArray = Util.castToArray(response);
-		testSuites = new TestSuite[responseArray.length];
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteIds);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_BY_ID.toString(), executionData);
+            if (response instanceof Object[]) {
+                Object[] responseArray = Util.castToArray(response);
+                testSuites = new TestSuite[responseArray.length];
 
-		for (int i = 0; i < responseArray.length; i++) {
-		    Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
-		    testSuites[i] = Util.getTestSuite(responseMap);
-		}
-	    } else if (response instanceof Map<?, ?>) {
-		testSuites = new TestSuite[1];
-		Map<String, Object> responseMap = (Map<String, Object>) response;
-		testSuites[0] = Util.getTestSuite(responseMap);
-	    }
+                for (int i = 0; i < responseArray.length; i++) {
+                    Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                    testSuites[i] = Util.getTestSuite(responseMap);
+                }
+            } else if (response instanceof Map<?, ?>) {
+                Map<String, Object> responseMap = (Map<String, Object>) response;
+                if (StringUtils.isBlank(Util.getString(responseMap, TestLinkResponseParams.ID.toString()))) {
+                    testSuites = new TestSuite[responseMap.size()];
+                    int i = 0;
+                    Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+                    for (Entry<String, Object> entry : entrySet) {
+                        Map<String, Object> testSuiteMap = null;
+                        if (entry.getValue() instanceof Object[]) {
+                            Object[] responseArray = (Object[]) entry.getValue();
+                            testSuiteMap = (Map<String, Object>) responseArray[0];
+                        } else {
+                            testSuiteMap = (Map<String, Object>) entry.getValue();
+                        }
+                        testSuites[i] = Util.getTestSuite(testSuiteMap);
+                        i++;
+                    }
+                } else {
+                    testSuites = new TestSuite[1];
+                    testSuites[0] = Util.getTestSuite(responseMap);
+                }
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test suites by id: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving test suites by id: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
-
-	return testSuites;
+        return testSuites;
     }
 
     /**
@@ -148,34 +155,28 @@ class TestSuiteService extends BaseService {
      * @param content
      * @return
      */
-    protected Attachment uploadTestSuiteAttachment(Integer testSuiteId,
-	    String title, String description, String fileName, String fileType,
-	    String content) throws TestLinkAPIException {
-	Attachment attachment = null;
+    protected Attachment uploadTestSuiteAttachment(Integer testSuiteId, String title, String description,
+            String fileName, String fileType, String content) throws TestLinkAPIException {
+        Attachment attachment = null;
 
-	Integer id = 0;
+        Integer id = 0;
 
-	attachment = new Attachment(id, testSuiteId,
-		TestLinkTables.NODES_HIERARCHY.toString(), title, description,
-		fileName, null, fileType, content);
+        attachment = new Attachment(id, testSuiteId, TestLinkTables.NODES_HIERARCHY.toString(), title, description,
+                fileName, null, fileType, content);
 
-	try {
-	    Map<String, Object> executionData = Util
-		    .getTestSuiteAttachmentMap(attachment);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.UPLOAD_TEST_SUITE_ATTACHMENT.toString(),
-		    executionData);
-	    Map<String, Object> responseMap = (Map<String, Object>) response;
-	    id = Util.getInteger(responseMap,
-		    TestLinkResponseParams.ID.toString());
-	    attachment.setId(id);
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error uploading attachment for test suite: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = Util.getTestSuiteAttachmentMap(attachment);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_TEST_SUITE_ATTACHMENT.toString(),
+                    executionData);
+            Map<String, Object> responseMap = (Map<String, Object>) response;
+            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
+            attachment.setId(id);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error uploading attachment for test suite: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
 
-	return attachment;
+        return attachment;
     }
 
     /**
@@ -184,33 +185,30 @@ class TestSuiteService extends BaseService {
      * @param testPlanId
      * @throws TestLinkAPIException
      */
-    protected TestSuite[] getTestSuitesForTestPlan(Integer testPlanId)
-	    throws TestLinkAPIException {
-	TestSuite[] testSuites = null;
+    protected TestSuite[] getTestSuitesForTestPlan(Integer testPlanId) throws TestLinkAPIException {
+        TestSuite[] testSuites = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
 
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_TEST_SUITES_FOR_TEST_PLAN.toString(),
-		    executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_PLAN.toString(),
+                    executionData);
 
-	    Object[] responseArray = Util.castToArray(response);
-	    testSuites = new TestSuite[responseArray.length];
+            Object[] responseArray = Util.castToArray(response);
+            testSuites = new TestSuite[responseArray.length];
 
-	    for (int i = 0; i < responseArray.length; i++) {
-		Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
-		testSuites[i] = Util.getTestSuite(responseMap);
-	    }
+            for (int i = 0; i < responseArray.length; i++) {
+                Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                testSuites[i] = Util.getTestSuite(responseMap);
+            }
 
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving test suites by Test Plan ID: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test suites by Test Plan ID: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
 
-	return testSuites;
+        return testSuites;
     }
 
     /**
@@ -219,50 +217,46 @@ class TestSuiteService extends BaseService {
      * @param testSuiteId
      * @throws TestLinkAPIException
      */
-    protected TestSuite[] getTestSuitesForTestSuite(Integer testSuiteId)
-	    throws TestLinkAPIException {
-	TestSuite[] testSuites = null;
+    protected TestSuite[] getTestSuitesForTestSuite(Integer testSuiteId) throws TestLinkAPIException {
+        TestSuite[] testSuites = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_SUITE_ID.toString(),
-		    testSuiteId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_TEST_SUITES_FOR_TEST_SUITE.toString(),
-		    executionData);
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_SUITE.toString(),
+                    executionData);
 
-	    Map<String, Object> responseMap = Util.castToMap(response);
-	    Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+            Map<String, Object> responseMap = Util.castToMap(response);
+            Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 
-	    testSuites = new TestSuite[entrySet.size()];
-	    boolean singleElement = false;
-	    int index = 0;
-	    for (Entry<String, Object> entry : entrySet) {
-		String key = entry.getKey();
-		Object o = entry.getValue();
-		if (o instanceof String) {
-		    // TBD: think something wiser
-		    singleElement = true;
-		    break;
-		}
-		Map<String, Object> testSuiteMap = (Map<String, Object>) entry
-			.getValue();
-		testSuiteMap.put(TestLinkResponseParams.ID.toString(), key);
-		testSuites[index] = Util.getTestSuite(testSuiteMap);
-		index += 1;
-	    }
+            testSuites = new TestSuite[entrySet.size()];
+            boolean singleElement = false;
+            int index = 0;
+            for (Entry<String, Object> entry : entrySet) {
+                String key = entry.getKey();
+                Object o = entry.getValue();
+                if (o instanceof String) {
+                    // TBD: think something wiser
+                    singleElement = true;
+                    break;
+                }
+                Map<String, Object> testSuiteMap = (Map<String, Object>) entry.getValue();
+                testSuiteMap.put(TestLinkResponseParams.ID.toString(), key);
+                testSuites[index] = Util.getTestSuite(testSuiteMap);
+                index += 1;
+            }
 
-	    if (singleElement) {
-		testSuites = new TestSuite[1];
-		testSuites[0] = Util.getTestSuite(responseMap);
-	    }
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving test suites which are DIRECT children of a given TestSuite: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+            if (singleElement) {
+                testSuites = new TestSuite[1];
+                testSuites[0] = Util.getTestSuite(responseMap);
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException(
+                    "Error retrieving test suites which are DIRECT children of a given TestSuite: "
+                            + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return testSuites;
+        return testSuites;
     }
 
     /**
@@ -271,31 +265,27 @@ class TestSuiteService extends BaseService {
      * @param testProjectId
      * @throws TestLinkAPIException
      */
-    protected TestSuite[] getFirstLevelTestSuitesForTestProject(
-	    Integer testProjectId) throws TestLinkAPIException {
-	TestSuite[] testSuites = null;
+    protected TestSuite[] getFirstLevelTestSuitesForTestProject(Integer testProjectId) throws TestLinkAPIException {
+        TestSuite[] testSuites = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(),
-		    testProjectId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_FIRST_LEVEL_TEST_SUITES_FOR_TEST_PROJECT
-			    .toString(), executionData);
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            Object response = this.executeXmlRpcCall(
+                    TestLinkMethods.GET_FIRST_LEVEL_TEST_SUITES_FOR_TEST_PROJECT.toString(), executionData);
 
-	    Object[] responseArray = Util.castToArray(response);
-	    testSuites = new TestSuite[responseArray.length];
+            Object[] responseArray = Util.castToArray(response);
+            testSuites = new TestSuite[responseArray.length];
 
-	    for (int i = 0; i < responseArray.length; i++) {
-		Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
-		testSuites[i] = Util.getTestSuite(responseMap);
-	    }
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving test suites AT TOP LEVEL of tree on a Test Project: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+            for (int i = 0; i < responseArray.length; i++) {
+                Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                testSuites[i] = Util.getTestSuite(responseMap);
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test suites AT TOP LEVEL of tree on a Test Project: "
+                    + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return testSuites;
+        return testSuites;
     }
 }

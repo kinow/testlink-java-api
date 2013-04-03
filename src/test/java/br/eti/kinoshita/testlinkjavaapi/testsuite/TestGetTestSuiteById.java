@@ -42,27 +42,27 @@ public class TestGetTestSuiteById extends BaseTest {
 
     @DataProvider(name = "validTestSuite")
     public Object[][] createData() {
-	return new Object[][] { { 2 }, { 3 } };
+        return new Object[][] { { 4 }, { 3 } };
     }
 
     @Test(dataProvider = "validTestSuite")
     public void testGetTestSuiteById(Integer suiteId) {
-	this.loadXMLRPCMockData("tl.getTestSuiteByID.xml");
+        this.loadXMLRPCMockData("tl.getTestSuiteByID.xml");
 
-	TestSuite[] testSuites = null;
+        TestSuite[] testSuites = null;
 
-	List<Integer> testSuiteIds = new ArrayList<Integer>();
-	testSuiteIds.add(suiteId);
+        List<Integer> testSuiteIds = new ArrayList<Integer>();
+        testSuiteIds.add(suiteId);
 
-	try {
-	    testSuites = api.getTestSuiteByID(testSuiteIds);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testSuites = api.getTestSuiteByID(testSuiteIds);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testSuites);
+        Assert.assertNotNull(testSuites);
 
-	Assert.assertTrue(testSuites.length == 1);
+        Assert.assertTrue(testSuites.length == 1);
     }
 
 }
