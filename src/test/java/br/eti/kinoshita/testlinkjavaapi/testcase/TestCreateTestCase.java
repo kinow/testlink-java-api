@@ -39,29 +39,26 @@ public class TestCreateTestCase extends BaseTest {
 
     @DataProvider(name = "testCaseData")
     public Object[][] createData() {
-	return new Object[][] { { 2, 1, "admin", "Sample summary.",
-		"No preconditions." } };
+        return new Object[][] { { 2, 1, "admin", "Sample summary.", "No preconditions." } };
     }
 
     @Test(dataProvider = "testCaseData")
-    public void testCreateTestCase(Integer testSuiteId, Integer testProjectId,
-	    String authorLogin, String summary, String preconditions) {
-	this.loadXMLRPCMockData("tl.createTestCase.xml");
+    public void testCreateTestCase(Integer testSuiteId, Integer testProjectId, String authorLogin, String summary,
+            String preconditions) {
+        this.loadXMLRPCMockData("tl.createTestCase.xml");
 
-	TestCase testCase = null;
+        TestCase testCase = null;
 
-	try {
-	    testCase = api.createTestCase(
-		    "Sample Test Case " + System.currentTimeMillis(),
-		    testSuiteId, testProjectId, authorLogin, summary, null,
-		    preconditions, null, null, null, null, null, null);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testCase = api.createTestCase("Sample Test Case " + System.currentTimeMillis(), testSuiteId, testProjectId,
+                    authorLogin, summary, null, preconditions, null, null, null, null, null, null);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testCase);
+        Assert.assertNotNull(testCase);
 
-	Assert.assertTrue(testCase.getId() > 0);
+        Assert.assertTrue(testCase.getId() > 0);
     }
 
 }

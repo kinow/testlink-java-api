@@ -1,0 +1,33 @@
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+    <properties>
+        <title>Changes testlink-java-api</title>
+        <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
+    </properties>
+    <body>
+        <release version="1.9.4-1" date="2013-04-03" description="1.9.4-1 release">
+            <action dev="kinow" type="update">
+                Renamed method addTestCaseSteps to createTestCaseSteps in the the TL API.
+            </action>
+            <action dev="kinow" type="remove">
+                Removed method updateTestCaseSteps that doesn't exist in the PHP XML-RPC API.
+            </action>
+            <action dev="kinow" type="remove">
+                Removed method pushTestCaseSteps that doesn't exist in the PHP XML-RPC API.
+            </action>
+            <action dev="kinow" type="updated">
+                Reformatted parts of the code using Java code style.
+            </action>
+            <action dev="kinow" type="update">
+                Added new parameters to TestCase (platform:Platform and featureId:Integer).
+            </action>
+            <action dev="kinow" type="update">
+                Added new parameters to TestCase (platform:Platform and featureId:Integer).
+            </action>
+            <action dev="kinow" type="remove">
+                Removed bugs notes from javadoc headers (inherited from TL project, but deprecated here now).
+            </action>
+        </release>
+    </body>
+</document>

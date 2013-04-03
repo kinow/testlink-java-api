@@ -110,6 +110,7 @@ public enum TestLinkParams {
     TEST_PLAN_NAME("testplanname"), 
     TEST_PROJECT_ID("testprojectid"), 
     TEST_SUITE_ID("testsuiteid"), 
+    TEST_SUITE_ID2("testsuite_id"), 
     TEST_SUITE_NAME("testsuitename"), 
     TITLE("title"), 
     URGENCY("urgency"), 

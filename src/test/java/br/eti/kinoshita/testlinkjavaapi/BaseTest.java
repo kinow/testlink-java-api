@@ -39,41 +39,59 @@ import org.testng.annotations.BeforeClass;
  */
 public class BaseTest {
 
+    /**
+     * API.
+     */
     protected TestLinkAPI api;
 
+    /**
+     * Test HTTP server. Used for mocked tests.
+     */
     protected HttpTestServer server;
+
+    /**
+     * Whether the tests are being mocked, and XML with the prepared response are being used.
+     */
+    protected boolean mocked = true;
 
     /**
      * Set up method that creates the instance of the TestLink API.
      */
     @BeforeClass
     protected void setUp() throws Exception {
-	this.server = new HttpTestServer();
-	this.loadXMLRPCMockData("tl.checkDevKey.xml");
-	this.server.start();
+        // this.server = new HttpTestServer();
+        // this.loadXMLRPCMockData("tl.checkDevKey.xml");
+        // this.server.start();
 
-	this.api = new TestLinkAPI(new URL("http://localhost:"
-		+ this.server.getPort() + "/testlink/lib/api/xmlrpc.php"),
-		"devKey");
+        // this.api = new TestLinkAPI(new URL("http://localhost:"
+        // + this.server.getPort() + "/testlink/lib/api/xmlrpc.php"),
+        // "devKey");
+
+        this.mocked = false; // TODO: read it from pom
+
+        this.api = new TestLinkAPI(new URL("http://localhost:3300/testlink-1.9.4/lib/api/xmlrpc.php"),
+                "667d7d4b89f235aadcf3881fe327a7b8");
     }
 
     public void loadXMLRPCMockData(String xmlFile) {
-	URL url = getClass().getResource(
-		"/br/eti/kinoshita/testlinkjavaapi/testdata/" + xmlFile);
-	String filePath = url.getFile();
-	File file = new File(filePath);
-	String mockXml;
-	try {
-	    mockXml = FileUtils.readFileToString(file);
-	} catch (IOException e) {
-	    throw new RuntimeException(e);
-	}
-	this.server.setMockResponseBody(mockXml);
+        if (mocked) {
+            URL url = getClass().getResource("/br/eti/kinoshita/testlinkjavaapi/testdata/" + xmlFile);
+            String filePath = url.getFile();
+            File file = new File(filePath);
+            String mockXml;
+            try {
+                mockXml = FileUtils.readFileToString(file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            this.server.setMockResponseBody(mockXml);
+        }
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
-	this.server.stop();
+        if (this.server != null)
+            this.server.stop();
     }
 
 }

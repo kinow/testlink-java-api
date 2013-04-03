@@ -51,20 +51,8 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
 
 /**
- * 
- * <p>
- * Utility class with methods to handle the response or prepare the request to
- * the PHP XML-RPC API. This class is able to convert from a Map to an Object
- * and vice-versa.
- * </p>
- * 
- * <p>
- * <ul>
- * <li>20101129 - BUGID: 3122394 - kinow - Invalid type when passing
- * ExecutionType as param</li>
- * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning
- * execution data</li>
- * </p>
+ * Utility class with methods to handle the response or prepare the request to the PHP XML-RPC API. This class is able
+ * to convert from a Map to an Object and vice-versa.
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
@@ -81,84 +69,65 @@ public final class Util {
      * @param project
      * @return Map of Test Project
      */
-    public static final Map<String, Object> getTestProjectMap(
-	    TestProject project) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(),
-		project.getName());
-	executionData.put(TestLinkParams.TEST_CASE_PREFIX.toString(),
-		project.getPrefix());
-	executionData.put(TestLinkParams.NOTES.toString(), project.getNotes());
+    public static final Map<String, Object> getTestProjectMap(TestProject project) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), project.getName());
+        executionData.put(TestLinkParams.TEST_CASE_PREFIX.toString(), project.getPrefix());
+        executionData.put(TestLinkParams.NOTES.toString(), project.getNotes());
 
-	Map<String, Object> options = new HashMap<String, Object>();
-	options.put(TestLinkParams.ENABLE_REQUIREMENTS.toString(),
-		project.isEnableRequirements());
-	options.put(TestLinkParams.ENABLE_TEST_PRIORITY.toString(),
-		project.isEnableTestPriority());
-	options.put(TestLinkParams.ENABLE_AUTOMATION.toString(),
-		project.isEnableAutomation());
-	options.put(TestLinkParams.ENABLE_INVENTORY.toString(),
-		project.isEnableInventory());
+        Map<String, Object> options = new HashMap<String, Object>();
+        options.put(TestLinkParams.ENABLE_REQUIREMENTS.toString(), project.isEnableRequirements());
+        options.put(TestLinkParams.ENABLE_TEST_PRIORITY.toString(), project.isEnableTestPriority());
+        options.put(TestLinkParams.ENABLE_AUTOMATION.toString(), project.isEnableAutomation());
+        options.put(TestLinkParams.ENABLE_INVENTORY.toString(), project.isEnableInventory());
 
-	executionData.put(TestLinkParams.OPTIONS.toString(), options);
+        executionData.put(TestLinkParams.OPTIONS.toString(), options);
 
-	executionData.put(TestLinkParams.ACTIVE.toString(), project.isActive());
-	executionData.put(TestLinkParams.PUBLIC.toString(), project.isPublic());
+        executionData.put(TestLinkParams.ACTIVE.toString(), project.isActive());
+        executionData.put(TestLinkParams.PUBLIC.toString(), project.isPublic());
 
-	return executionData;
+        return executionData;
     }
 
     /**
      * Extracts a Test Project from a Map.
      * 
-     * @param map
-     *            Map with properties of a Test Project.
+     * @param map Map with properties of a Test Project.
      * @return Test Project.
      */
     @SuppressWarnings("unchecked")
     public static final TestProject getTestProject(Map<String, Object> map) {
-	TestProject testProject = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        TestProject testProject = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    testProject = new TestProject();
-		    testProject.setId(id);
+                if (id > 0) {
+                    testProject = new TestProject();
+                    testProject.setId(id);
 
-		    testProject.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    testProject.setPrefix(getString(map,
-			    TestLinkResponseParams.PREFIX.toString()));
-		    testProject.setNotes(getString(map,
-			    TestLinkResponseParams.NOTES.toString()));
+                    testProject.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    testProject.setPrefix(getString(map, TestLinkResponseParams.PREFIX.toString()));
+                    testProject.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
 
-		    Map<String, Object> optMap = (Map<String, Object>) map
-			    .get(TestLinkResponseParams.OPT.toString());
-		    testProject.setEnableAutomation(getBoolean(optMap,
-			    TestLinkResponseParams.AUTOMATION_ENABLED
-				    .toString()));
-		    testProject.setEnableRequirements(getBoolean(optMap,
-			    TestLinkResponseParams.REQUIREMENTS_ENABLED
-				    .toString()));
-		    testProject.setEnableTestPriority(getBoolean(optMap,
-			    TestLinkResponseParams.TEST_PRIORITY_ENABLED
-				    .toString()));
-		    testProject
-			    .setEnableInventory(getBoolean(optMap,
-				    TestLinkResponseParams.INVENTORY_ENABLED
-					    .toString()));
+                    Map<String, Object> optMap = (Map<String, Object>) map.get(TestLinkResponseParams.OPT.toString());
+                    testProject.setEnableAutomation(getBoolean(optMap,
+                            TestLinkResponseParams.AUTOMATION_ENABLED.toString()));
+                    testProject.setEnableRequirements(getBoolean(optMap,
+                            TestLinkResponseParams.REQUIREMENTS_ENABLED.toString()));
+                    testProject.setEnableTestPriority(getBoolean(optMap,
+                            TestLinkResponseParams.TEST_PRIORITY_ENABLED.toString()));
+                    testProject.setEnableInventory(getBoolean(optMap,
+                            TestLinkResponseParams.INVENTORY_ENABLED.toString()));
 
-		    testProject.setActive(getBoolean(map,
-			    TestLinkResponseParams.ACTIVE.toString()));
-		    testProject.setPublic(getBoolean(map,
-			    TestLinkResponseParams.IS_PUBLIC.toString()));
-		}
+                    testProject.setActive(getBoolean(map, TestLinkResponseParams.ACTIVE.toString()));
+                    testProject.setPublic(getBoolean(map, TestLinkResponseParams.IS_PUBLIC.toString()));
+                }
 
-	    }
-	}
-	return testProject;
+            }
+        }
+        return testProject;
     }
 
     /**
@@ -167,16 +136,16 @@ public final class Util {
      * @return Boolean value.
      */
     public static Boolean getBoolean(Map<String, Object> map, String key) {
-	Boolean booleanObj = null;
-	Integer integer = getInteger(map, key);
-	if (integer != null) {
-	    if (integer == 0) {
-		booleanObj = Boolean.FALSE;
-	    } else {
-		booleanObj = Boolean.TRUE;
-	    }
-	}
-	return booleanObj;
+        Boolean booleanObj = null;
+        Integer integer = getInteger(map, key);
+        if (integer != null) {
+            if (integer == 0) {
+                booleanObj = Boolean.FALSE;
+            } else {
+                booleanObj = Boolean.TRUE;
+            }
+        }
+        return booleanObj;
     }
 
     /**
@@ -185,14 +154,14 @@ public final class Util {
      * @return String value.
      */
     public static final String getString(Map<String, Object> map, String key) {
-	String string = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(key);
-	    if (o != null) {
-		string = o.toString();
-	    }
-	}
-	return string;
+        String string = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(key);
+            if (o != null) {
+                string = o.toString();
+            }
+        }
+        return string;
     }
 
     /**
@@ -201,18 +170,18 @@ public final class Util {
      * @return Integer value.
      */
     public static final Integer getInteger(Map<String, Object> map, String key) {
-	Integer integer = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(key);
-	    if (o != null) {
-		try {
-		    integer = Integer.parseInt(o.toString());
-		} catch (NumberFormatException nfe) {
-		    integer = null;
-		}
-	    }
-	}
-	return integer;
+        Integer integer = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(key);
+            if (o != null) {
+                try {
+                    integer = Integer.parseInt(o.toString());
+                } catch (NumberFormatException nfe) {
+                    integer = null;
+                }
+            }
+        }
+        return integer;
     }
 
     /**
@@ -220,15 +189,13 @@ public final class Util {
      * @return Map of Test Plan.
      */
     public static final Map<String, Object> getTestPlanMap(TestPlan plan) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(),
-		plan.getName());
-	executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(),
-		plan.getProjectName());
-	executionData.put(TestLinkParams.NOTES.toString(), plan.getNotes());
-	executionData.put(TestLinkParams.ACTIVE.toString(), plan.isActive());
-	executionData.put(TestLinkParams.PUBLIC.toString(), plan.isPublic());
-	return executionData;
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), plan.getName());
+        executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), plan.getProjectName());
+        executionData.put(TestLinkParams.NOTES.toString(), plan.getNotes());
+        executionData.put(TestLinkParams.ACTIVE.toString(), plan.isActive());
+        executionData.put(TestLinkParams.PUBLIC.toString(), plan.isPublic());
+        return executionData;
     }
 
     /**
@@ -236,32 +203,27 @@ public final class Util {
      * @return Test Plan.
      */
     public static final TestPlan getTestPlan(Map<String, Object> map) {
-	TestPlan testPlan = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        TestPlan testPlan = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    testPlan = new TestPlan();
-		    testPlan.setId(id);
+                if (id > 0) {
+                    testPlan = new TestPlan();
+                    testPlan.setId(id);
 
-		    testPlan.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    testPlan.setProjectName(getString(map,
-			    TestLinkResponseParams.PROJECT_NAME.toString()));
-		    testPlan.setNotes(getString(map,
-			    TestLinkResponseParams.NOTES.toString()));
+                    testPlan.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    testPlan.setProjectName(getString(map, TestLinkResponseParams.PROJECT_NAME.toString()));
+                    testPlan.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
 
-		    testPlan.setActive(getBoolean(map,
-			    TestLinkResponseParams.ACTIVE.toString()));
-		    testPlan.setPublic(getBoolean(map,
-			    TestLinkResponseParams.IS_PUBLIC.toString()));
-		}
+                    testPlan.setActive(getBoolean(map, TestLinkResponseParams.ACTIVE.toString()));
+                    testPlan.setPublic(getBoolean(map, TestLinkResponseParams.IS_PUBLIC.toString()));
+                }
 
-	    }
-	}
-	return testPlan;
+            }
+        }
+        return testPlan;
     }
 
     /**
@@ -269,25 +231,23 @@ public final class Util {
      * @return Platform.
      */
     public static final Platform getPlatform(Map<String, Object> map) {
-	Platform platform = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        Platform platform = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    platform = new Platform();
-		    platform.setId(id);
+                if (id > 0) {
+                    platform = new Platform();
+                    platform.setId(id);
 
-		    platform.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    platform.setNotes(getString(map,
-			    TestLinkResponseParams.NOTES.toString()));
-		}
+                    platform.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    platform.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
+                }
 
-	    }
-	}
-	return platform;
+            }
+        }
+        return platform;
     }
 
     /**
@@ -295,38 +255,28 @@ public final class Util {
      * @return Map of Test Case.
      */
     public static final Map<String, Object> getTestCaseMap(TestCase testCase) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_CASE_NAME.toString(),
-		testCase.getName());
-	executionData.put(TestLinkParams.TEST_SUITE_ID.toString(),
-		testCase.getTestSuiteId());
-	executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(),
-		testCase.getTestProjectId());
-	executionData.put(TestLinkParams.AUTHOR_LOGIN.toString(),
-		testCase.getAuthorLogin());
-	executionData.put(TestLinkParams.SUMMARY.toString(),
-		testCase.getSummary());
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
+        executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
+        executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testCase.getTestProjectId());
+        executionData.put(TestLinkParams.AUTHOR_LOGIN.toString(), testCase.getAuthorLogin());
+        executionData.put(TestLinkParams.SUMMARY.toString(), testCase.getSummary());
 
-	List<Map<String, Object>> steps = getTestCaseStepsMap(testCase
-		.getSteps());
-	executionData.put(TestLinkParams.STEPS.toString(), steps);
+        List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
+        executionData.put(TestLinkParams.STEPS.toString(), steps);
 
-	executionData.put(TestLinkParams.PRECONDITIONS.toString(),
-		testCase.getPreconditions());
-	executionData.put(TestLinkParams.IMPORTANCE.toString(),
-		Util.getStringValueOrNull(testCase.getTestImportance()));
-	executionData.put(TestLinkParams.EXECUTION_TYPE.toString(),
-		Util.getStringValueOrNull(testCase.getExecutionType()));
-	executionData.put(TestLinkParams.ORDER.toString(), testCase.getOrder());
-	executionData.put(TestLinkParams.INTERNAL_ID.toString(),
-		testCase.getInternalId());
-	executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(),
-		testCase.getCheckDuplicatedName());
-	executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
-		testCase.getActionOnDuplicatedName() != null ? testCase
-			.getActionOnDuplicatedName().toString() : null);
+        executionData.put(TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
+        executionData
+                .put(TestLinkParams.IMPORTANCE.toString(), Util.getStringValueOrNull(testCase.getTestImportance()));
+        executionData.put(TestLinkParams.EXECUTION_TYPE.toString(),
+                Util.getStringValueOrNull(testCase.getExecutionType()));
+        executionData.put(TestLinkParams.ORDER.toString(), testCase.getOrder());
+        executionData.put(TestLinkParams.INTERNAL_ID.toString(), testCase.getInternalId());
+        executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testCase.getCheckDuplicatedName());
+        executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
+                testCase.getActionOnDuplicatedName() != null ? testCase.getActionOnDuplicatedName().toString() : null);
 
-	return executionData;
+        return executionData;
     }
 
     /**
@@ -335,27 +285,23 @@ public final class Util {
      * @return A list whit one Map for each TestCaseStep
      * @since 1.9.4-1
      */
-    public static final List<Map<String, Object>> getTestCaseStepsMap(
-	    List<TestCaseStep> testCaseSteps) {
-	List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
+    public static final List<Map<String, Object>> getTestCaseStepsMap(List<TestCaseStep> testCaseSteps) {
+        List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
 
-	if (testCaseSteps != null && testCaseSteps.size() > 0) {
-	    /*
-	     * for(TestCaseStep step : testCaseSteps)
-	     * steps.add(getTestCaseStepMap(step));
-	     */
+        if (testCaseSteps != null && testCaseSteps.size() > 0) {
+            /*
+             * for(TestCaseStep step : testCaseSteps) steps.add(getTestCaseStepMap(step));
+             */
 
-	    // Why uses an iterator over a foreach?
-	    for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator
-		    .hasNext();) {
-		TestCaseStep testCaseStep = iterator.next();
-		Map<String, Object> testCaseStepMap = getTestCaseStepMap(
-			testCaseStep, true);
-		steps.add(testCaseStepMap);
-	    }
-	}
+            // Why uses an iterator over a foreach?
+            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext();) {
+                TestCaseStep testCaseStep = iterator.next();
+                Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep, true);
+                steps.add(testCaseStepMap);
+            }
+        }
 
-	return steps;
+        return steps;
     }
 
     /**
@@ -364,59 +310,50 @@ public final class Util {
      * @return A list with the step's id
      * @since 1.9.4-1
      */
-    public static final List<Integer> getTestCaseStepsIdList(
-	    List<TestCaseStep> testCaseSteps) {
-	List<Integer> steps = new ArrayList<Integer>();
+    public static final List<Integer> getTestCaseStepsIdList(List<TestCaseStep> testCaseSteps) {
+        List<Integer> steps = new ArrayList<Integer>();
 
-	if (testCaseSteps != null && testCaseSteps.size() > 0) {
-	    /*
-	     * for (TestCaseStep step : testCaseSteps) steps.add(step.getId());
-	     */
+        if (testCaseSteps != null && testCaseSteps.size() > 0) {
+            /*
+             * for (TestCaseStep step : testCaseSteps) steps.add(step.getId());
+             */
 
-	    // Why uses an iterator over a foreach?
-	    for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator
-		    .hasNext();) {
-		TestCaseStep testCaseStep = iterator.next();
-		steps.add(testCaseStep.getNumber());
-	    }
-	}
+            // Why uses an iterator over a foreach?
+            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext();) {
+                TestCaseStep testCaseStep = iterator.next();
+                steps.add(testCaseStep.getNumber());
+            }
+        }
 
-	return steps;
+        return steps;
     }
 
     /**
-     * @param map
-     *            Case Step map
+     * @param map Case Step map
      * @return Test Case
      */
     public static TestCaseStep getTestCaseStep(Map<String, Object> map) {
-	TestCaseStep step = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        TestCaseStep step = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    step = new TestCaseStep();
-		    step.setId(id);
-		    step.setActions(getString(map,
-			    TestLinkResponseParams.ACTIONS.toString()));
-		    step.setActive(getBoolean(map,
-			    TestLinkResponseParams.ACTIVE.toString()));
-		    Integer executionTypeValue = getInteger(map,
-			    TestLinkResponseParams.EXECUTION_TYPE.toString());
-		    ExecutionType execution = ExecutionType
-			    .getExecutionType(executionTypeValue);
-		    step.setExecutionType(execution);
-		    step.setExpectedResults(getString(map,
-			    TestLinkResponseParams.EXPECTED_RESULTS.toString()));
-		    step.setNumber(getInteger(map,
-			    TestLinkResponseParams.STEP_NUMBER.toString()));
-		}
+                if (id > 0) {
+                    step = new TestCaseStep();
+                    step.setId(id);
+                    step.setActions(getString(map, TestLinkResponseParams.ACTIONS.toString()));
+                    step.setActive(getBoolean(map, TestLinkResponseParams.ACTIVE.toString()));
+                    Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
+                    ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
+                    step.setExecutionType(execution);
+                    step.setExpectedResults(getString(map, TestLinkResponseParams.EXPECTED_RESULTS.toString()));
+                    step.setNumber(getInteger(map, TestLinkResponseParams.STEP_NUMBER.toString()));
+                }
 
-	    }
-	}
-	return step;
+            }
+        }
+        return step;
     }
 
     /**
@@ -424,36 +361,28 @@ public final class Util {
      * @param testCaseStep
      * @return Map of Test Case Step.
      */
-    public static final Map<String, Object> getTestCaseStepMap(
-	    TestCaseStep testCaseStep) {
-	return getTestCaseStepMap(testCaseStep, false);
+    public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) {
+        return getTestCaseStepMap(testCaseStep, false);
     }
 
     /**
      * @param testCaseStep
-     * @param internal
-     *            the API uses different names for the the same parameter in
-     *            different methods.
+     * @param internal the API uses different names for the the same parameter in different methods.
      * @return Map of Test Case Step.
      */
-    public static final Map<String, Object> getTestCaseStepMap(
-	    TestCaseStep testCaseStep, boolean internal) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.STEP_NUMBER.toString(),
-		testCaseStep.getNumber());
-	executionData.put(TestLinkParams.ACTIONS.toString(),
-		testCaseStep.getActions());
-	executionData.put(TestLinkParams.EXPECTED_RESULTS.toString(),
-		testCaseStep.getExpectedResults());
-	if (internal) {
-	    executionData.put(TestLinkParams.STEP_EXECUTION_TYPE.toString(),
-		    testCaseStep.getExecutionType().getValue());
-	} else {
-	    executionData.put(TestLinkParams.EXECUTION_TYPE.toString(),
-		    testCaseStep.getExecutionType());
-	}
+    public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.STEP_NUMBER.toString(), testCaseStep.getNumber());
+        executionData.put(TestLinkParams.ACTIONS.toString(), testCaseStep.getActions());
+        executionData.put(TestLinkParams.EXPECTED_RESULTS.toString(), testCaseStep.getExpectedResults());
+        if (internal) {
+            executionData
+                    .put(TestLinkParams.STEP_EXECUTION_TYPE.toString(), testCaseStep.getExecutionType().getValue());
+        } else {
+            executionData.put(TestLinkParams.EXECUTION_TYPE.toString(), testCaseStep.getExecutionType());
+        }
 
-	return executionData;
+        return executionData;
     }
 
     /**
@@ -461,23 +390,18 @@ public final class Util {
      * @return Map of Test Suite Map.
      */
     public static final Map<String, Object> getTestSuiteMap(TestSuite testSuite) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_SUITE_NAME.toString(),
-		testSuite.getName());
-	executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(),
-		testSuite.getTestProjectId());
-	executionData.put(TestLinkParams.PARENT_ID.toString(),
-		testSuite.getParentId());
-	executionData.put(TestLinkParams.DETAILS.toString(),
-		testSuite.getDetails());
-	executionData
-		.put(TestLinkParams.ORDER.toString(), testSuite.getOrder());
-	executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(),
-		testSuite.getCheckDuplicatedName());
-	executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
-		testSuite.getActionOnDuplicatedName() != null ? testSuite
-			.getActionOnDuplicatedName().toString() : null);
-	return executionData;
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_SUITE_NAME.toString(), testSuite.getName());
+        executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testSuite.getTestProjectId());
+        executionData.put(TestLinkParams.PARENT_ID.toString(), testSuite.getParentId());
+        executionData.put(TestLinkParams.DETAILS.toString(), testSuite.getDetails());
+        executionData.put(TestLinkParams.ORDER.toString(), testSuite.getOrder());
+        executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testSuite.getCheckDuplicatedName());
+        executionData
+                .put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
+                        testSuite.getActionOnDuplicatedName() != null ? testSuite.getActionOnDuplicatedName()
+                                .toString() : null);
+        return executionData;
     }
 
     /**
@@ -485,29 +409,25 @@ public final class Util {
      * @return Test Suite.
      */
     public static final TestSuite getTestSuite(Map<String, Object> map) {
-	TestSuite testSuite = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        TestSuite testSuite = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    testSuite = new TestSuite();
-		    testSuite.setId(id);
+                if (id > 0) {
+                    testSuite = new TestSuite();
+                    testSuite.setId(id);
 
-		    testSuite.setDetails(getString(map,
-			    TestLinkResponseParams.DETAILS.toString()));
-		    testSuite.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    testSuite.setParentId(getInteger(map,
-			    TestLinkResponseParams.PARENT_ID.toString()));
-		    testSuite.setOrder(getInteger(map,
-			    TestLinkResponseParams.ORDER.toString()));
-		}
+                    testSuite.setDetails(getString(map, TestLinkResponseParams.DETAILS.toString()));
+                    testSuite.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    testSuite.setParentId(getInteger(map, TestLinkResponseParams.PARENT_ID.toString()));
+                    testSuite.setOrder(getInteger(map, TestLinkResponseParams.ORDER.toString()));
+                }
 
-	    }
-	}
-	return testSuite;
+            }
+        }
+        return testSuite;
     }
 
     /**
@@ -516,101 +436,98 @@ public final class Util {
      */
     @SuppressWarnings("unchecked")
     public static final TestCase getTestCase(Map<String, Object> map) {
-	TestCase testCase = null;
-	if (map != null && map.size() > 0) {
-	    // IMPORTANT: http://mantis.testlink.org/view.php?id=4784
-	    // Different methods to recover test cases use different parameter
-	    // names for the id, some uses "id" and others "testcase_id".
-	    Object o = map.get(TestLinkResponseParams.TEST_CASE_ID.toString());
-	    if (o == null) {
-		o = map.get(TestLinkResponseParams.ID.toString());
-	    }
+        TestCase testCase = null;
+        if (map != null && map.size() > 0) {
+            // IMPORTANT: http://mantis.testlink.org/view.php?id=4784
+            // Different methods to recover test cases use different parameter
+            // names for the id, some uses "id" and others "testcase_id".
+            Object o = map.get(TestLinkResponseParams.TEST_CASE_ID.toString());
+            if (o == null) {
+                o = map.get(TestLinkResponseParams.ID.toString());
+            }
 
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    testCase = new TestCase();
-		    testCase.setId(id);
-		    testCase.setVersionId(getInteger(map,
-			    TestLinkResponseParams.TEST_CASE_VERSION_ID
-				    .toString()));
-		    testCase.setVersion(getInteger(map,
-			    TestLinkResponseParams.VERSION.toString()));
-		    testCase.setPreconditions(getString(map,
-			    TestLinkResponseParams.PRECONDITIONS.toString()));
-		    testCase.setSummary(getString(map,
-			    TestLinkResponseParams.SUMMARY.toString()));
-		    testCase.setParentId(getInteger(map,
-			    TestLinkResponseParams.PARENT_ID.toString()));
-		    testCase.setOrder(getInteger(map,
-			    TestLinkResponseParams.ORDER.toString()));
-		    testCase.setExecutionOrder(getInteger(map,
-			    TestLinkResponseParams.EXECUTION_ORDER.toString()));
-		    testCase.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
+                if (id > 0) {
+                    testCase = new TestCase();
+                    testCase.setId(id);
+                    testCase.setVersionId(getInteger(map, TestLinkResponseParams.TEST_CASE_VERSION_ID.toString()));
+                    testCase.setVersion(getInteger(map, TestLinkResponseParams.VERSION.toString()));
+                    testCase.setPreconditions(getString(map, TestLinkResponseParams.PRECONDITIONS.toString()));
+                    testCase.setSummary(getString(map, TestLinkResponseParams.SUMMARY.toString()));
+                    testCase.setParentId(getInteger(map, TestLinkResponseParams.PARENT_ID.toString()));
+                    testCase.setOrder(getInteger(map, TestLinkResponseParams.ORDER.toString()));
+                    testCase.setExecutionOrder(getInteger(map, TestLinkResponseParams.EXECUTION_ORDER.toString()));
+                    testCase.setName(getString(map, TestLinkResponseParams.NAME.toString()));
 
-		    // IMPORTANT: the full external id (composed by
-		    // prefix-external_id) come on
-		    // different parameters depending of what methods was used.
-		    //
-		    // In 'getTestCase' -> 'full_tc_external_id'
-		    // In 'getTestCasesForTestSuite' -> 'external_id'
-		    // In 'getTestCasesForTestPlan' does not come (ToDo: add)
-		    String fullExternalId = getString(map,
-			    TestLinkResponseParams.FULE__TEST_CASE_EXTERNAL_ID
-				    .toString());
-		    if (fullExternalId == null) {
-			fullExternalId = getString(map,
-				TestLinkResponseParams.EXTERNAL_ID.toString());
-		    }
-		    testCase.setFullExternalId(fullExternalId);
+                    Platform platform = null;
+                    String platformName = getString(map, TestLinkResponseParams.PLATFORM_NAME.toString());
+                    Integer platformId = getInteger(map, TestLinkResponseParams.PLATFORM_ID.toString());
+                    if (platformName != null || platformId != null) { // sometimes TL may return only one or the other
+                        platform = new Platform();
+                        platform.setId(platformId);
+                        platform.setName(platformName);
+                    }
+                    testCase.setPlatform(platform);
 
-		    Integer executionTypeValue = getInteger(map,
-			    TestLinkResponseParams.EXECUTION_TYPE.toString());
-		    ExecutionType execution = ExecutionType
-			    .getExecutionType(executionTypeValue);
-		    testCase.setExecutionType(execution);
-		    ExecutionStatus executionStatus = ExecutionStatus.NOT_RUN;
-		    String executionStatusText = getString(map,
-			    TestLinkResponseParams.EXEC_STATUS.toString());
-		    if (StringUtils.isNotBlank(executionStatusText)) {
-			executionStatus = ExecutionStatus
-				.getExecutionStatus(executionStatusText
-					.charAt(0));
-		    }
-		    testCase.setExecutionStatus(executionStatus);
-		    testCase.setTestProjectId(getInteger(map,
-			    TestLinkParams.TEST_PROJECT_ID.toString()));
-		    testCase.setTestSuiteId(getInteger(map, "testsuite_id")); // TBD:
-									      // inconsistent
-									      // parameter
-									      // name
-		    // TODO: check if TL 2.0 allows it
-		    // CustomField[] customFields = (CustomField[])getArray(map,
-		    // TestLinkResponseParams.customFields.toString());
-		    // if ( customFields != null )
-		    // {
-		    // for (int i = 0; i < customFields.length; i++)
-		    // {
-		    // CustomField customField = customFields[i];
-		    // testCase.getCustomFields().add( customField );
-		    // }
-		    // }
-		    Object[] stepsArray = (Object[]) getArray(map,
-			    TestLinkResponseParams.STEPS.toString());
-		    if (stepsArray != null && stepsArray.length > 0) {
-			for (Object stepObject : stepsArray) {
-			    Map<String, Object> stepMap = (Map<String, Object>) stepObject;
-			    TestCaseStep step = Util.getTestCaseStep(stepMap);
-			    testCase.getSteps().add(step);
-			}
-		    }
-		}
+                    testCase.setFeatureId(getInteger(map, TestLinkResponseParams.FEATURE_ID.toString()));
+                    
+                    // IMPORTANT: the full external id (composed by
+                    // prefix-external_id) come on
+                    // different parameters depending of what methods was used.
+                    //
+                    // In 'getTestCase' -> 'full_tc_external_id'
+                    // In 'getTestCasesForTestSuite' -> 'external_id'
+                    // In 'getTestCasesForTestPlan' does not come (ToDo: add)
+                    String fullExternalId = getString(map,
+                            TestLinkResponseParams.FULL_TEST_CASE_EXTERNAL_ID.toString());
+                    if (fullExternalId == null) {
+                        fullExternalId = getString(map, TestLinkResponseParams.FULL_TEST_CASE_EXTERNAL_ID2.toString());
+                        if (fullExternalId == null) {
+                            fullExternalId = getString(map, TestLinkResponseParams.EXTERNAL_ID.toString());
+                        }
+                    }
+                    testCase.setFullExternalId(fullExternalId);
 
-	    }
-	}
-	return testCase;
+                    Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
+                    ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
+                    testCase.setExecutionType(execution);
+                    ExecutionStatus executionStatus = ExecutionStatus.NOT_RUN;
+                    String executionStatusText = getString(map, TestLinkResponseParams.EXEC_STATUS.toString());
+                    if (StringUtils.isNotBlank(executionStatusText)) {
+                        executionStatus = ExecutionStatus.getExecutionStatus(executionStatusText.charAt(0));
+                    }
+                    testCase.setExecutionStatus(executionStatus);
+                    testCase.setTestProjectId(getInteger(map, TestLinkParams.TEST_PROJECT_ID.toString()));
+                    testCase.setTestSuiteId(getInteger(map, TestLinkParams.TEST_SUITE_ID2.toString()));
+                    // inconsistent
+                    // parameter
+                    // name
+                    // TODO: check if TL 2.0 allows it
+                    // CustomField[] customFields = (CustomField[])getArray(map,
+                    // TestLinkResponseParams.customFields.toString());
+                    // if ( customFields != null )
+                    // {
+                    // for (int i = 0; i < customFields.length; i++)
+                    // {
+                    // CustomField customField = customFields[i];
+                    // testCase.getCustomFields().add( customField );
+                    // }
+                    // }
+                    Object[] stepsArray = (Object[]) getArray(map, TestLinkResponseParams.STEPS.toString());
+                    if (stepsArray != null && stepsArray.length > 0) {
+                        for (Object stepObject : stepsArray) {
+                            Map<String, Object> stepMap = (Map<String, Object>) stepObject;
+                            TestCaseStep step = Util.getTestCaseStep(stepMap);
+                            testCase.getSteps().add(step);
+                        }
+                    }
+                }
+
+            }
+        }
+        return testCase;
     }
 
     /**
@@ -619,12 +536,12 @@ public final class Util {
      * @return Array of objects.
      */
     public static Object[] getArray(Map<String, Object> map, String key) {
-	Object[] array = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(key);
-	    array = castToArray(o);
-	}
-	return array;
+        Object[] array = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(key);
+            array = castToArray(o);
+        }
+        return array;
     }
 
     /**
@@ -633,17 +550,17 @@ public final class Util {
      * @return Array of objects
      */
     public static Object[] castToArray(Object object) {
-	Object[] array = null;
+        Object[] array = null;
 
-	if (object != null) {
-	    if (object instanceof String) {
-		array = EMPTY_ARRAY;
-	    } else {
-		array = (Object[]) object;
-	    }
-	}
+        if (object != null) {
+            if (object instanceof String) {
+                array = EMPTY_ARRAY;
+            } else {
+                array = (Object[]) object;
+            }
+        }
 
-	return array;
+        return array;
     }
 
     /**
@@ -653,17 +570,17 @@ public final class Util {
      */
     @SuppressWarnings("unchecked")
     public static Map<String, Object> castToMap(Object object) {
-	Map<String, Object> map = null;
+        Map<String, Object> map = null;
 
-	if (object != null) {
-	    if (object instanceof String) {
-		map = EMPTY_MAP;
-	    } else {
-		map = (Map<String, Object>) object;
-	    }
-	}
+        if (object != null) {
+            if (object instanceof String) {
+                map = EMPTY_MAP;
+            } else {
+                map = (Map<String, Object>) object;
+            }
+        }
 
-	return map;
+        return map;
     }
 
     /**
@@ -671,183 +588,123 @@ public final class Util {
      * @return Map of Build.
      */
     public static final Map<String, Object> getBuildMap(Build build) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_PLAN_ID.toString(),
-		build.getTestPlanId());
-	executionData
-		.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
-	executionData.put(TestLinkParams.BUILD_NOTES.toString(),
-		build.getNotes());
-	return executionData;
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), build.getTestPlanId());
+        executionData.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
+        executionData.put(TestLinkParams.BUILD_NOTES.toString(), build.getNotes());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Attachment.
      */
-    public static final Map<String, Object> getAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData
-		.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Test Case Attachment.
      */
-    public static final Map<String, Object> getTestCaseAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_CASE_ID.toString(),
-		attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getTestCaseAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_CASE_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Test Suite Attachment.
      */
-    public static final Map<String, Object> getTestSuiteAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_SUITE_ID.toString(),
-		attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getTestSuiteAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Test Project Attachment.
      */
-    public static final Map<String, Object> getTestProjectAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(),
-		attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getTestProjectAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Requirement Attachment.
      */
-    public static final Map<String, Object> getRequirementAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.REQUIREMENT_ID.toString(),
-		attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getRequirementAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.REQUIREMENT_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Requirement Specification Attachment.
      */
-    public static final Map<String, Object> getRequirementSpecificationAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(
-		TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(),
-		attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getRequirementSpecificationAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
      * @param attachment
      * @return Map of Execution Attachment
      */
-    public static final Map<String, Object> getExecutionAttachmentMap(
-	    Attachment attachment) {
-	Map<String, Object> executionData = new HashMap<String, Object>();
-	executionData.put(TestLinkParams.EXECUTION_ID.toString(),
-		attachment.getFkId());
-	executionData.put(TestLinkParams.FK_TABLE.toString(),
-		attachment.getFkTable());
-	executionData.put(TestLinkParams.TITLE.toString(),
-		attachment.getTitle());
-	executionData.put(TestLinkParams.DESCRIPTION.toString(),
-		attachment.getDescription());
-	executionData.put(TestLinkParams.FILE_NAME.toString(),
-		attachment.getFileName());
-	executionData.put(TestLinkParams.FILE_TYPE.toString(),
-		attachment.getFileType());
-	executionData.put(TestLinkParams.CONTENT.toString(),
-		attachment.getContent());
-	return executionData;
+    public static final Map<String, Object> getExecutionAttachmentMap(Attachment attachment) {
+        Map<String, Object> executionData = new HashMap<String, Object>();
+        executionData.put(TestLinkParams.EXECUTION_ID.toString(), attachment.getFkId());
+        executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
+        executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
+        executionData.put(TestLinkParams.DESCRIPTION.toString(), attachment.getDescription());
+        executionData.put(TestLinkParams.FILE_NAME.toString(), attachment.getFileName());
+        executionData.put(TestLinkParams.FILE_TYPE.toString(), attachment.getFileType());
+        executionData.put(TestLinkParams.CONTENT.toString(), attachment.getContent());
+        return executionData;
     }
 
     /**
@@ -855,69 +712,62 @@ public final class Util {
      * @return Attachment.
      */
     public static final Attachment getAttachment(Map<String, Object> map) {
-	Attachment attachment = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        Attachment attachment = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    attachment = new Attachment();
-		    attachment.setId(id);
+                if (id > 0) {
+                    attachment = new Attachment();
+                    attachment.setId(id);
 
-		    attachment.setFileName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    attachment.setFileType(getString(map,
-			    TestLinkResponseParams.FILE_TYPE.toString()));
-		    attachment.setTitle(getString(map,
-			    TestLinkResponseParams.TITLE.toString()));
-		    // TBD: put the date too...
-		    attachment.setContent(getString(map,
-			    TestLinkResponseParams.CONTENT.toString()));
-		    // TBD: description not beign returned
-		    // attachment.setDescription( getString(map,
-		    // TestLinkResponseParams.description.toString() ) );
-		    // TBD: returning name instead of file_name
-		    // TBD: file size not beign returned
+                    attachment.setFileName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    attachment.setFileType(getString(map, TestLinkResponseParams.FILE_TYPE.toString()));
+                    attachment.setTitle(getString(map, TestLinkResponseParams.TITLE.toString()));
+                    // TBD: put the date too...
+                    attachment.setContent(getString(map, TestLinkResponseParams.CONTENT.toString()));
+                    // TBD: description not beign returned
+                    // attachment.setDescription( getString(map,
+                    // TestLinkResponseParams.description.toString() ) );
+                    // TBD: returning name instead of file_name
+                    // TBD: file size not beign returned
 
-		}
+                }
 
-	    }
-	}
-	return attachment;
+            }
+        }
+        return attachment;
     }
 
     /**
      * @param requirements
      * @return List with Maps of Requirements Grouped By ReSpec.
      */
-    public static final List<Map<String, Object>> getRequirementsGroupedByReqSpecMap(
-	    List<Requirement> requirements) {
-	List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<Map<String, Object>>();
+    public static final List<Map<String, Object>> getRequirementsGroupedByReqSpecMap(List<Requirement> requirements) {
+        List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<Map<String, Object>>();
 
-	Map<Integer, List<Integer>> tempMap = new HashMap<Integer, List<Integer>>();
-	for (Iterator<Requirement> iterator = requirements.iterator(); iterator
-		.hasNext();) {
-	    Requirement requirement = iterator.next();
-	    List<Integer> requirementsArray = tempMap.get(requirement
-		    .getReqSpecId());
-	    if (requirementsArray == null) {
-		requirementsArray = new ArrayList<Integer>();
-	    }
-	    requirementsArray.add(requirement.getId());
-	    tempMap.put(requirement.getReqSpecId(), requirementsArray);
-	}
+        Map<Integer, List<Integer>> tempMap = new HashMap<Integer, List<Integer>>();
+        for (Iterator<Requirement> iterator = requirements.iterator(); iterator.hasNext();) {
+            Requirement requirement = iterator.next();
+            List<Integer> requirementsArray = tempMap.get(requirement.getReqSpecId());
+            if (requirementsArray == null) {
+                requirementsArray = new ArrayList<Integer>();
+            }
+            requirementsArray.add(requirement.getId());
+            tempMap.put(requirement.getReqSpecId(), requirementsArray);
+        }
 
-	Set<Entry<Integer, List<Integer>>> entrySet = tempMap.entrySet();
+        Set<Entry<Integer, List<Integer>>> entrySet = tempMap.entrySet();
 
-	for (Entry<Integer, List<Integer>> entry : entrySet) {
-	    Map<String, Object> finalMap = new HashMap<String, Object>();
-	    finalMap.put("req_spec", entry.getKey());
-	    finalMap.put("requirements", entry.getValue());
-	    requirementsGroupedByReqSpecMap.add(finalMap);
-	}
+        for (Entry<Integer, List<Integer>> entry : entrySet) {
+            Map<String, Object> finalMap = new HashMap<String, Object>();
+            finalMap.put("req_spec", entry.getKey());
+            finalMap.put("requirements", entry.getValue());
+            requirementsGroupedByReqSpecMap.add(finalMap);
+        }
 
-	return requirementsGroupedByReqSpecMap;
+        return requirementsGroupedByReqSpecMap;
     }
 
     /**
@@ -925,45 +775,35 @@ public final class Util {
      * @return Execution.
      */
     public static final Execution getExecution(Map<String, Object> map) {
-	Execution execution = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        Execution execution = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    execution = new Execution();
-		    execution.setId(id);
+                if (id > 0) {
+                    execution = new Execution();
+                    execution.setId(id);
 
-		    execution.setBuildId(getInteger(map,
-			    TestLinkResponseParams.BUILD_ID.toString()));
-		    execution.setTesterId(getInteger(map,
-			    TestLinkResponseParams.TESTER_ID.toString()));
-		    String statusText = getString(map,
-			    TestLinkResponseParams.STATUS.toString());
-		    ExecutionStatus status = ExecutionStatus
-			    .getExecutionStatus(statusText.charAt(0));
-		    execution.setStatus(status);
-		    execution.setTestPlanId(getInteger(map,
-			    TestLinkResponseParams.TEST_PLAN_ID.toString()));
-		    execution.setTestCaseVersionId(getInteger(map,
-			    TestLinkResponseParams.TEST_CASE_VERSION_ID
-				    .toString()));
-		    execution.setTestCaseVersionNumber(getInteger(map,
-			    TestLinkResponseParams.TEST_CASE_VERSION_NUMBER
-				    .toString()));
-		    Integer executionTypeText = getInteger(map,
-			    TestLinkResponseParams.EXECUTION_TYPE.toString());
-		    ExecutionType executionType = ExecutionType
-			    .getExecutionType(executionTypeText);
-		    execution.setExecutionType(executionType);
-		    execution.setNotes(getString(map,
-			    TestLinkResponseParams.NOTES.toString()));
-		}
+                    execution.setBuildId(getInteger(map, TestLinkResponseParams.BUILD_ID.toString()));
+                    execution.setTesterId(getInteger(map, TestLinkResponseParams.TESTER_ID.toString()));
+                    String statusText = getString(map, TestLinkResponseParams.STATUS.toString());
+                    ExecutionStatus status = ExecutionStatus.getExecutionStatus(statusText.charAt(0));
+                    execution.setStatus(status);
+                    execution.setTestPlanId(getInteger(map, TestLinkResponseParams.TEST_PLAN_ID.toString()));
+                    execution.setTestCaseVersionId(getInteger(map,
+                            TestLinkResponseParams.TEST_CASE_VERSION_ID.toString()));
+                    execution.setTestCaseVersionNumber(getInteger(map,
+                            TestLinkResponseParams.TEST_CASE_VERSION_NUMBER.toString()));
+                    Integer executionTypeText = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
+                    ExecutionType executionType = ExecutionType.getExecutionType(executionTypeText);
+                    execution.setExecutionType(executionType);
+                    execution.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
+                }
 
-	    }
-	}
-	return execution;
+            }
+        }
+        return execution;
     }
 
     /**
@@ -971,67 +811,57 @@ public final class Util {
      * @return Build.
      */
     public static final Build getBuild(Map<String, Object> map) {
-	Build build = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+        Build build = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    build = new Build();
-		    build.setId(id);
+                if (id > 0) {
+                    build = new Build();
+                    build.setId(id);
 
-		    build.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    build.setNotes(getString(map,
-			    TestLinkResponseParams.NOTES.toString()));
-		    build.setTestPlanId(getInteger(map,
-			    TestLinkResponseParams.TEST_PLAN_ID.toString()));
-		    build.setName(getString(map,
-			    TestLinkResponseParams.NAME.toString()));
-		    // TBD: add is open, release date, closed on date and active
-		    // to Build entity
-		}
+                    build.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    build.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
+                    build.setTestPlanId(getInteger(map, TestLinkResponseParams.TEST_PLAN_ID.toString()));
+                    build.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    // TBD: add is open, release date, closed on date and active
+                    // to Build entity
+                }
 
-	    }
-	}
-	return build;
+            }
+        }
+        return build;
     }
 
     /**
      * @param map
      * @return ReportTCResultResponse object.
      */
-    public static final ReportTCResultResponse getReportTCResultResponse(
-	    Map<String, Object> map) {
-	ReportTCResultResponse reportTCResultResponse = null;
-	if (map != null && map.size() > 0) {
-	    Object o = map.get(TestLinkResponseParams.ID.toString());
-	    if (o != null) {
-		Integer id = Integer.parseInt(o.toString());
+    public static final ReportTCResultResponse getReportTCResultResponse(Map<String, Object> map) {
+        ReportTCResultResponse reportTCResultResponse = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.ID.toString());
+            if (o != null) {
+                Integer id = Integer.parseInt(o.toString());
 
-		if (id > 0) {
-		    reportTCResultResponse = new ReportTCResultResponse();
-		    reportTCResultResponse.setExecutionId(id);
+                if (id > 0) {
+                    reportTCResultResponse = new ReportTCResultResponse();
+                    reportTCResultResponse.setExecutionId(id);
 
-		    reportTCResultResponse.setOperation(getString(map,
-			    TestLinkResponseParams.OPERATIONS.toString()));
-		    reportTCResultResponse.setOverwrite(getBoolean(map,
-			    TestLinkResponseParams.OVERWRITE.toString()));
-		    reportTCResultResponse.setStatus(getBoolean(map,
-			    TestLinkResponseParams.STATUS.toString()));
-		    reportTCResultResponse.setMessage(getString(map,
-			    TestLinkResponseParams.MESSAGE.toString()));
-		    reportTCResultResponse.setBugIDStatus(getBoolean(map,
-			    TestLinkResponseParams.BUG_ID_STATUS.toString()));
-		    reportTCResultResponse.setCustomFieldStatus(getBoolean(map,
-			    TestLinkResponseParams.CUSTOM_FIELD_STATUS
-				    .toString()));
-		}
+                    reportTCResultResponse.setOperation(getString(map, TestLinkResponseParams.OPERATIONS.toString()));
+                    reportTCResultResponse.setOverwrite(getBoolean(map, TestLinkResponseParams.OVERWRITE.toString()));
+                    reportTCResultResponse.setStatus(getBoolean(map, TestLinkResponseParams.STATUS.toString()));
+                    reportTCResultResponse.setMessage(getString(map, TestLinkResponseParams.MESSAGE.toString()));
+                    reportTCResultResponse.setBugIDStatus(getBoolean(map,
+                            TestLinkResponseParams.BUG_ID_STATUS.toString()));
+                    reportTCResultResponse.setCustomFieldStatus(getBoolean(map,
+                            TestLinkResponseParams.CUSTOM_FIELD_STATUS.toString()));
+                }
 
-	    }
-	}
-	return reportTCResultResponse;
+            }
+        }
+        return reportTCResultResponse;
     }
 
     /**
@@ -1039,77 +869,54 @@ public final class Util {
      * @return Custom Field.
      */
     public static final CustomField getCustomField(Map<String, Object> map) {
-	CustomField customField = null;
-	if (map != null && map.size() > 0) {
-	    // Sometimes we are working with CFs without ID
-	    customField = new CustomField();
-	    customField.setId(getInteger(map,
-		    TestLinkResponseParams.ID.toString()));
-	    customField.setDefaultValue(getString(map,
-		    TestLinkResponseParams.DEFAULT_VALUE.toString()));
-	    customField.setDisplayOrder(getInteger(map,
-		    TestLinkResponseParams.DISPLAY_ORDER.toString()));
-	    customField.setEnableOnDesign(getBoolean(map,
-		    TestLinkResponseParams.ENABLE_ON_DESIGN.toString()));
-	    customField.setEnableOnExecution(getBoolean(map,
-		    TestLinkResponseParams.ENABLE_ON_EXECUTION.toString()));
-	    customField.setEnableOnTestPlanDesign(getBoolean(map,
-		    TestLinkResponseParams.ENABLE_ON_TEST_PLAN_DESIGN
-			    .toString()));
-	    customField.setLabel(getString(map,
-		    TestLinkResponseParams.LABEL.toString()));
-	    customField.setLengthMax(getInteger(map,
-		    TestLinkResponseParams.LENGTH_MAX.toString()));
-	    customField.setLengthMin(getInteger(map,
-		    TestLinkResponseParams.LENGTH_MIN.toString()));
-	    customField.setLocation(getInteger(map,
-		    TestLinkResponseParams.LOCATION.toString()));
-	    customField.setName(getString(map,
-		    TestLinkResponseParams.NAME.toString()));
-	    customField.setPossibleValues(getString(map,
-		    TestLinkResponseParams.POSSIBLE_VALUES.toString()));
-	    customField.setShowOnDesign(getBoolean(map,
-		    TestLinkResponseParams.SHOW_ON_DESIGN.toString()));
-	    customField.setShowOnExecution(getBoolean(map,
-		    TestLinkResponseParams.SHOW_ON_EXECUTION.toString()));
-	    customField
-		    .setShowOnTestPlanDesign(getBoolean(map,
-			    TestLinkResponseParams.SHOW_ON_TEST_PLAN_DESIGN
-				    .toString()));
-	    customField.setType(getInteger(map,
-		    TestLinkResponseParams.TYPE.toString()));
-	    customField.setValidRegexp(getString(map,
-		    TestLinkResponseParams.VALID_REGEXP.toString()));
-	    customField.setValue(getString(map,
-		    TestLinkResponseParams.VALUE.toString()));
+        CustomField customField = null;
+        if (map != null && map.size() > 0) {
+            // Sometimes we are working with CFs without ID
+            customField = new CustomField();
+            customField.setId(getInteger(map, TestLinkResponseParams.ID.toString()));
+            customField.setDefaultValue(getString(map, TestLinkResponseParams.DEFAULT_VALUE.toString()));
+            customField.setDisplayOrder(getInteger(map, TestLinkResponseParams.DISPLAY_ORDER.toString()));
+            customField.setEnableOnDesign(getBoolean(map, TestLinkResponseParams.ENABLE_ON_DESIGN.toString()));
+            customField.setEnableOnExecution(getBoolean(map, TestLinkResponseParams.ENABLE_ON_EXECUTION.toString()));
+            customField.setEnableOnTestPlanDesign(getBoolean(map,
+                    TestLinkResponseParams.ENABLE_ON_TEST_PLAN_DESIGN.toString()));
+            customField.setLabel(getString(map, TestLinkResponseParams.LABEL.toString()));
+            customField.setLengthMax(getInteger(map, TestLinkResponseParams.LENGTH_MAX.toString()));
+            customField.setLengthMin(getInteger(map, TestLinkResponseParams.LENGTH_MIN.toString()));
+            customField.setLocation(getInteger(map, TestLinkResponseParams.LOCATION.toString()));
+            customField.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+            customField.setPossibleValues(getString(map, TestLinkResponseParams.POSSIBLE_VALUES.toString()));
+            customField.setShowOnDesign(getBoolean(map, TestLinkResponseParams.SHOW_ON_DESIGN.toString()));
+            customField.setShowOnExecution(getBoolean(map, TestLinkResponseParams.SHOW_ON_EXECUTION.toString()));
+            customField.setShowOnTestPlanDesign(getBoolean(map,
+                    TestLinkResponseParams.SHOW_ON_TEST_PLAN_DESIGN.toString()));
+            customField.setType(getInteger(map, TestLinkResponseParams.TYPE.toString()));
+            customField.setValidRegexp(getString(map, TestLinkResponseParams.VALID_REGEXP.toString()));
+            customField.setValue(getString(map, TestLinkResponseParams.VALUE.toString()));
 
-	}
-	return customField;
+        }
+        return customField;
     }
 
     /**
      * Puts a boolean value into a map if the value is not null.
      * 
-     * @param map
-     *            Map.
-     * @param key
-     *            Key.
-     * @param boolValue
-     *            Boolean value.
+     * @param map Map.
+     * @param key Key.
+     * @param boolValue Boolean value.
      */
-    public static final void putIfNotNullAndTrue(Map<String, Object> map,
-	    String key, Boolean boolValue) {
-	if (Boolean.TRUE.equals(boolValue)) {
-	    map.put(key, 0);
-	}
+    public static final void putIfNotNullAndTrue(Map<String, Object> map, String key, Boolean boolValue) {
+        if (Boolean.TRUE.equals(boolValue)) {
+            map.put(key, 0);
+        }
     }
 
     public static final String getStringValueOrNull(Object o) {
-	String value = null;
-	if (o != null) {
-	    value = o.toString();
-	}
-	return value;
+        String value = null;
+        if (o != null) {
+            value = o.toString();
+        }
+        return value;
     }
 
 }

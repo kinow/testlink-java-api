@@ -24,14 +24,9 @@
 package br.eti.kinoshita.testlinkjavaapi.constants;
 
 /**
- * 
- * <p>
- * <ul>
- * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning
- * execution data</li>
- * </ul>
- * </p>
- * 
+ * Response params returned by TestLink. Since TestLink not always use names consistently, it's possible to 
+ * have multiple fields representing the same data (e.g. testcaseid, testcase_id, tcid, etc).
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -96,18 +91,21 @@ public enum TestLinkResponseParams {
     ACTIONS("actions"), 
     STEP_NUMBER("step_number"), 
     EXPECTED_RESULTS("expected_results"),
-    FULE__TEST_CASE_EXTERNAL_ID("full_tc_external_id"),
+    FULL_TEST_CASE_EXTERNAL_ID("full_tc_external_id"),
+    FULL_TEST_CASE_EXTERNAL_ID2("full_external_id"),
+    PLATFORM_ID("platform_id"),
+    PLATFORM_NAME("platform_name"),
     EXTERNAL_ID("external_id")
     ;
-    
+
     private String textValue;
 
     TestLinkResponseParams(String textValue) {
-	this.textValue = textValue;
+        this.textValue = textValue;
     }
 
     public String toString() {
-	return this.textValue;
+        return this.textValue;
     }
 
 }

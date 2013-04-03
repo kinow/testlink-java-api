@@ -39,7 +39,7 @@ import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 public class TestCase implements Serializable {
 
     private static final long serialVersionUID = 1191213146080628314L;
-    
+
     private Integer id;
     private String name;
     private Integer testSuiteId;
@@ -61,17 +61,21 @@ public class TestCase implements Serializable {
     private Integer parentId;
     private List<CustomField> customFields;
     private ExecutionStatus executionStatus;
+    private Platform platform;
+    private Integer featureId;
 
     /**
 	 * 
 	 */
     public TestCase() {
-	super();
-	this.steps = new ArrayList<TestCaseStep>();
-	this.customFields = new ArrayList<CustomField>();
+        super();
+        this.steps = new ArrayList<TestCaseStep>();
+        this.customFields = new ArrayList<CustomField>();
     }
 
     /**
+     * Constructor with args.
+     * 
      * @param id
      * @param name
      * @param testSuiteId
@@ -85,6 +89,7 @@ public class TestCase implements Serializable {
      * @param executionOrder
      * @param order
      * @param internalId
+     * @param fullExternalId
      * @param checkDuplicatedName
      * @param actionOnDuplicatedName
      * @param versionId
@@ -92,276 +97,263 @@ public class TestCase implements Serializable {
      * @param parentId
      * @param customFields
      * @param executionStatus
+     * @param plataform
+     * @param featureId
      */
-    public TestCase(Integer id, String name, Integer testSuiteId,
-	    Integer testProjectId, String authorLogin, String summary,
-	    List<TestCaseStep> steps, String preconditions,
-	    TestImportance testImportance, ExecutionType executionType,
-	    Integer executionOrder, Integer order, Integer internalId,
-	    Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName,
-	    Integer versionId, Integer version, Integer parentId,
-	    List<CustomField> customFields, ExecutionStatus executionStatus) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.testSuiteId = testSuiteId;
-	this.testProjectId = testProjectId;
-	this.authorLogin = authorLogin;
-	this.summary = summary;
-	this.steps = steps;
-	this.preconditions = preconditions;
-	this.testImportance = testImportance;
-	this.executionType = executionType;
-	this.executionOrder = executionOrder;
-	this.order = order;
-	this.internalId = internalId;
-	this.checkDuplicatedName = checkDuplicatedName;
-	this.actionOnDuplicatedName = actionOnDuplicatedName;
-	this.versionId = versionId;
-	this.version = version;
-	this.parentId = parentId;
-	this.customFields = customFields;
-	this.executionStatus = executionStatus;
+    public TestCase(Integer id, String name, Integer testSuiteId, Integer testProjectId, String authorLogin,
+            String summary, List<TestCaseStep> steps, String preconditions, TestImportance testImportance,
+            ExecutionType executionType, Integer executionOrder, Integer order, Integer internalId,
+            String fullExternalId, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName,
+            Integer versionId, Integer version, Integer parentId, List<CustomField> customFields,
+            ExecutionStatus executionStatus, Platform platform, Integer featureId) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.testSuiteId = testSuiteId;
+        this.testProjectId = testProjectId;
+        this.authorLogin = authorLogin;
+        this.summary = summary;
+        this.steps = steps;
+        this.preconditions = preconditions;
+        this.testImportance = testImportance;
+        this.executionType = executionType;
+        this.executionOrder = executionOrder;
+        this.order = order;
+        this.internalId = internalId;
+        this.fullExternalId = fullExternalId;
+        this.checkDuplicatedName = checkDuplicatedName;
+        this.actionOnDuplicatedName = actionOnDuplicatedName;
+        this.versionId = versionId;
+        this.version = version;
+        this.parentId = parentId;
+        this.customFields = customFields;
+        this.executionStatus = executionStatus;
+        this.platform = platform;
+        this.featureId = featureId;
     }
 
     /**
      * @return the parentId
      */
     public Integer getParentId() {
-	return parentId;
+        return parentId;
     }
 
     /**
-     * @param parentId
-     *            the parentId to set
+     * @param parentId the parentId to set
      */
     public void setParentId(Integer parentId) {
-	this.parentId = parentId;
+        this.parentId = parentId;
     }
 
     /**
      * @return the versionId
      */
     public Integer getVersionId() {
-	return versionId;
+        return versionId;
     }
 
     /**
-     * @param versionId
-     *            the versionId to set
+     * @param versionId the versionId to set
      */
     public void setVersionId(Integer versionId) {
-	this.versionId = versionId;
+        this.versionId = versionId;
     }
 
     /**
      * @return the version
      */
     public Integer getVersion() {
-	return version;
+        return version;
     }
 
     /**
-     * @param version
-     *            the version to set
+     * @param version the version to set
      */
     public void setVersion(Integer version) {
-	this.version = version;
+        this.version = version;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     /**
      * @return the testSuiteId
      */
     public Integer getTestSuiteId() {
-	return testSuiteId;
+        return testSuiteId;
     }
 
     /**
-     * @param testSuiteId
-     *            the testSuiteId to set
+     * @param testSuiteId the testSuiteId to set
      */
     public void setTestSuiteId(Integer testSuiteId) {
-	this.testSuiteId = testSuiteId;
+        this.testSuiteId = testSuiteId;
     }
 
     /**
      * @return the testProjectId
      */
     public Integer getTestProjectId() {
-	return testProjectId;
+        return testProjectId;
     }
 
     /**
-     * @param testProjectId
-     *            the testProjectId to set
+     * @param testProjectId the testProjectId to set
      */
     public void setTestProjectId(Integer testProjectId) {
-	this.testProjectId = testProjectId;
+        this.testProjectId = testProjectId;
     }
 
     /**
      * @return the authorLogin
      */
     public String getAuthorLogin() {
-	return authorLogin;
+        return authorLogin;
     }
 
     /**
-     * @param authorLogin
-     *            the authorLogin to set
+     * @param authorLogin the authorLogin to set
      */
     public void setAuthorLogin(String authorLogin) {
-	this.authorLogin = authorLogin;
+        this.authorLogin = authorLogin;
     }
 
     /**
      * @return the summary
      */
     public String getSummary() {
-	return summary;
+        return summary;
     }
 
     /**
-     * @param summary
-     *            the summary to set
+     * @param summary the summary to set
      */
     public void setSummary(String summary) {
-	this.summary = summary;
+        this.summary = summary;
     }
 
     /**
      * @return the steps
      */
     public List<TestCaseStep> getSteps() {
-	return steps;
+        return steps;
     }
 
     /**
-     * @param steps
-     *            the steps to set
+     * @param steps the steps to set
      */
     public void setSteps(List<TestCaseStep> steps) {
-	this.steps = steps;
+        this.steps = steps;
     }
 
     /**
      * @return the preconditions
      */
     public String getPreconditions() {
-	return preconditions;
+        return preconditions;
     }
 
     /**
-     * @param preconditions
-     *            the preconditions to set
+     * @param preconditions the preconditions to set
      */
     public void setPreconditions(String preconditions) {
-	this.preconditions = preconditions;
+        this.preconditions = preconditions;
     }
 
     /**
      * @return the testImportance
      */
     public TestImportance getTestImportance() {
-	return testImportance;
+        return testImportance;
     }
 
     /**
-     * @param testImportance
-     *            the testImportance to set
+     * @param testImportance the testImportance to set
      */
     public void setTestImportance(TestImportance testImportance) {
-	this.testImportance = testImportance;
+        this.testImportance = testImportance;
     }
 
     /**
      * @return the executionOrder
      */
     public Integer getExecutionOrder() {
-	return executionOrder;
+        return executionOrder;
     }
 
     /**
-     * @param executionOrder
-     *            the executionOrder to set
+     * @param executionOrder the executionOrder to set
      */
     public void setExecutionOrder(Integer executionOrder) {
-	this.executionOrder = executionOrder;
+        this.executionOrder = executionOrder;
     }
 
     /**
      * @return the executionType
      */
     public ExecutionType getExecutionType() {
-	return executionType;
+        return executionType;
     }
 
     /**
-     * @param executionType
-     *            the executionType to set
+     * @param executionType the executionType to set
      */
     public void setExecutionType(ExecutionType executionType) {
-	this.executionType = executionType;
+        this.executionType = executionType;
     }
 
     /**
      * @return the order
      */
     public Integer getOrder() {
-	return order;
+        return order;
     }
 
     /**
-     * @param order
-     *            the order to set
+     * @param order the order to set
      */
     public void setOrder(Integer order) {
-	this.order = order;
+        this.order = order;
     }
 
     /**
      * @return the internalId
      */
     public Integer getInternalId() {
-	return internalId;
+        return internalId;
     }
 
     /**
-     * @param internalId
-     *            the internalId to set
+     * @param internalId the internalId to set
      */
     public void setInternalId(Integer internalId) {
-	this.internalId = internalId;
+        this.internalId = internalId;
     }
 
     /**
@@ -369,96 +361,116 @@ public class TestCase implements Serializable {
      * @return the full external Id, composed by the prefix + externalId
      */
     public String getFullExternalId() {
-	return fullExternalId;
+        return fullExternalId;
     }
 
     /**
      * 
-     * @param fullExternalId
-     *            the full externalId to set
+     * @param fullExternalId the full externalId to set
      */
     public void setFullExternalId(String fullExternalId) {
-	this.fullExternalId = fullExternalId;
+        this.fullExternalId = fullExternalId;
     }
 
     /**
      * @return the checkDuplicatedName
      */
     public Boolean getCheckDuplicatedName() {
-	return checkDuplicatedName;
+        return checkDuplicatedName;
     }
 
     /**
-     * @param checkDuplicatedName
-     *            the checkDuplicatedName to set
+     * @param checkDuplicatedName the checkDuplicatedName to set
      */
     public void setCheckDuplicatedName(Boolean checkDuplicatedName) {
-	this.checkDuplicatedName = checkDuplicatedName;
+        this.checkDuplicatedName = checkDuplicatedName;
     }
 
     /**
      * @return the actionOnDuplicatedName
      */
     public ActionOnDuplicate getActionOnDuplicatedName() {
-	return actionOnDuplicatedName;
+        return actionOnDuplicatedName;
     }
 
     /**
-     * @param actionOnDuplicatedName
-     *            the actionOnDuplicatedName to set
+     * @param actionOnDuplicatedName the actionOnDuplicatedName to set
      */
     public void setActionOnDuplicatedName(ActionOnDuplicate actionOnDuplicatedName) {
-	this.actionOnDuplicatedName = actionOnDuplicatedName;
+        this.actionOnDuplicatedName = actionOnDuplicatedName;
     }
 
     /**
      * @return the customFields
      */
     public List<CustomField> getCustomFields() {
-	return customFields;
+        return customFields;
     }
 
     /**
-     * @param customFields
-     *            the customFields to set
+     * @param customFields the customFields to set
      */
     public void setCustomFields(List<CustomField> customFields) {
-	this.customFields = customFields;
+        this.customFields = customFields;
     }
 
     /**
      * @return the executionStatus
      */
     public ExecutionStatus getExecutionStatus() {
-	return executionStatus;
+        return executionStatus;
     }
 
     /**
-     * @param executionStatus
-     *            the executionStatus to set
+     * @param executionStatus the executionStatus to set
      */
     public void setExecutionStatus(ExecutionStatus executionStatus) {
-	this.executionStatus = executionStatus;
+        this.executionStatus = executionStatus;
     }
 
-    /* (non-Javadoc)
+    /**
+     * @return the platform
+     */
+    public Platform getPlatform() {
+        return platform;
+    }
+
+    /**
+     * @param platform the platform to set
+     */
+    public void setPlatform(Platform platform) {
+        this.platform = platform;
+    }
+
+    /**
+     * @return the featureId
+     */
+    public Integer getFeatureId() {
+        return featureId;
+    }
+
+    /**
+     * @param featureId the featureId to set
+     */
+    public void setFeatureId(Integer featureId) {
+        this.featureId = featureId;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-	return "TestCase [id=" + id + ", name=" + name + ", testSuiteId="
-		+ testSuiteId + ", testProjectId=" + testProjectId
-		+ ", authorLogin=" + authorLogin + ", summary=" + summary
-		+ ", steps=" + steps + ", preconditions=" + preconditions
-		+ ", testImportance=" + testImportance + ", executionType="
-		+ executionType + ", executionOrder=" + executionOrder
-		+ ", order=" + order + ", internalId=" + internalId
-		+ ", fullExternalId=" + fullExternalId
-		+ ", checkDuplicatedName=" + checkDuplicatedName
-		+ ", actionOnDuplicatedName=" + actionOnDuplicatedName
-		+ ", versionId=" + versionId + ", version=" + version
-		+ ", parentId=" + parentId + ", customFields=" + customFields
-		+ ", executionStatus=" + executionStatus + "]";
+        return "TestCase [id=" + id + ", name=" + name + ", testSuiteId=" + testSuiteId + ", testProjectId="
+                + testProjectId + ", authorLogin=" + authorLogin + ", summary=" + summary + ", steps=" + steps
+                + ", preconditions=" + preconditions + ", testImportance=" + testImportance + ", executionType="
+                + executionType + ", executionOrder=" + executionOrder + ", order=" + order + ", internalId="
+                + internalId + ", fullExternalId=" + fullExternalId + ", checkDuplicatedName=" + checkDuplicatedName
+                + ", actionOnDuplicatedName=" + actionOnDuplicatedName + ", versionId=" + versionId + ", version="
+                + version + ", parentId=" + parentId + ", customFields=" + customFields + ", executionStatus="
+                + executionStatus + ", platform=" + platform + ", featureId=" + featureId + "]";
     }
-    
+
 }

@@ -28,16 +28,16 @@ package br.eti.kinoshita.testlinkjavaapi.constants;
  * @since 1.9.3-2
  */
 public enum TestCaseStepAction {
-    
+
     CREATE("create"), UPDATE("update"), PUSH("push");
 
     private String value;
 
     TestCaseStepAction(String value) {
-	this.value = value;
+        this.value = value;
     }
 
     public String toString() {
-	return this.value;
+        return this.value;
     }
 }
