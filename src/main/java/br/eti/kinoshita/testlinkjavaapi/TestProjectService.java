@@ -108,8 +108,7 @@ class TestProjectService extends BaseService {
 	    Object response = this.executeXmlRpcCall(
 		    TestLinkMethods.GET_TEST_PROJECT_BY_NAME.toString(),
 		    executionData);
-	    Object[] responseArray = Util.castToArray(response);
-	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+	    Map<String, Object> responseMap = Util.castToMap(response);
 	    testProject = Util.getTestProject(responseMap);
 	} catch (XmlRpcException xmlrpcex) {
 	    throw new TestLinkAPIException("Error retrieving test project: "

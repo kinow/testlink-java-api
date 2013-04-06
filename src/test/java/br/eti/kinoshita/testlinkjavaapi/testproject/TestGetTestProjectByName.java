@@ -37,44 +37,44 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
  */
 public class TestGetTestProjectByName extends BaseTest {
 
-    @DataProvider(name = "getValidProjects")
-    public Object[][] createData() {
-	return new Object[][] { { "Sample project" } };
-    }
-
-    @DataProvider(name = "getInvalidProjects")
-    public Object[][] createInvalidData() {
-	return new Object[][] { { "Acai" }, { "Cupuacu" } };
-    }
-
-    @Test(dataProvider = "getValidProjects")
-    public void testGetTestProjectByName(String testProjectName) {
-	this.loadXMLRPCMockData("tl.getTestProjectByName.xml");
-
-	TestProject project = null;
-
-	try {
-	    project = api.getTestProjectByName(testProjectName);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
+	@DataProvider(name = "getValidProjects")
+	public Object[][] createData() {
+		return new Object[][] { { "Sample project" } };
 	}
 
-	Assert.assertNotNull(project);
-
-	Assert.assertTrue(project.getId() > 0);
-
-	Assert.assertTrue(project.isEnableAutomation());
-    }
-    
-    @Test(dataProvider = "getInvalidProjects")
-    public void testGetTestProjectByName_nonexistent(String testProjectName) {
-	this.loadXMLRPCMockData("tl.getTestProjectByName_nonexistent.xml");
-
-	try {
-	    api.getTestProjectByName(testProjectName);
-	    Assert.fail("Not supposed to get here");
-	} catch (TestLinkAPIException e) {
+	@DataProvider(name = "getInvalidProjects")
+	public Object[][] createInvalidData() {
+		return new Object[][] { { "Acai" }, { "Cupuacu" } };
 	}
-    }
+
+	@Test(dataProvider = "getValidProjects")
+	public void testGetTestProjectByName(String testProjectName) {
+		this.loadXMLRPCMockData("tl.getTestProjectByName.xml");
+
+		TestProject project = null;
+
+		try {
+			project = api.getTestProjectByName(testProjectName);
+		} catch (TestLinkAPIException e) {
+			Assert.fail(e.getMessage(), e);
+		}
+
+		Assert.assertNotNull(project);
+
+		Assert.assertTrue(project.getId() > 0);
+
+		Assert.assertTrue(project.isEnableAutomation());
+	}
+
+	@Test(dataProvider = "getInvalidProjects")
+	public void testGetTestProjectByName_nonexistent(String testProjectName) {
+		this.loadXMLRPCMockData("tl.getTestProjectByName_nonexistent.xml");
+
+		try {
+			api.getTestProjectByName(testProjectName);
+			Assert.fail("Not supposed to get here");
+		} catch (TestLinkAPIException e) {
+		}
+	}
 
 }

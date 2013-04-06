@@ -59,11 +59,11 @@ public class BaseTest {
      */
     @BeforeClass
     protected void setUp() throws Exception {
-        this.mocked = true; // TODO: read it from pom
+        this.mocked = "true".equals(System.getProperty("mocked", "true")); 
 
         if (!mocked) {
-            this.api = new TestLinkAPI(new URL("http://localhost:3300/testlink-1.9.4/lib/api/xmlrpc.php"),
-                    "667d7d4b89f235aadcf3881fe327a7b8");
+            this.api = new TestLinkAPI(new URL("http://localhost:3300/testlink-1.9.6/lib/api/xmlrpc.php"),
+                    "09b83b6813a55ef6f7e2d7d63cb6f65c");
         } else {
             this.server = new HttpTestServer();
             this.loadXMLRPCMockData("tl.checkDevKey.xml");

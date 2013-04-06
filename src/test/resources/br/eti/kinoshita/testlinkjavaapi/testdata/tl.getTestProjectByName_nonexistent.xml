@@ -3,12 +3,12 @@
   <params>
     <param>
       <value>
-        <array><data>
+        <data>
   <value><struct>
   <member><name>code</name><value><int>7011</int></value></member>
   <member><name>message</name><value><string>(getTestProjectByName) - Test Project (name:testlink-java-api2) does not exist.</string></value></member>
 </struct></value>
-</data></array>
+</data>
       </value>
     </param>
   </params>
