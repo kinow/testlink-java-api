@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>operation</name><value><string>link</string></value></member>
+  <member><name>msg</name><value><string>link done</string></value></member>
+  <member><name>linkStatus</name><value><boolean>0</boolean></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

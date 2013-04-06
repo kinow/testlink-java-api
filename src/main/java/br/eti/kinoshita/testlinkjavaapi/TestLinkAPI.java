@@ -532,10 +532,43 @@ public class TestLinkAPI {
         return this.testPlanService.getTestPlanPlatforms(planId);
     }
 
+    /**
+     * Gets stats for test plan.
+     * 
+     * @param testPlanId test plan ID
+     * @return stats
+     * @throws TestLinkAPIException
+     */
     public Map<String, Object> getTotalsForTestPlan(Integer testPlanId) throws TestLinkAPIException {
         return this.testPlanService.getTotalsForTestPlan(testPlanId);
     }
 
+    /**
+     * Removes a platform from a test plan.
+     * 
+     * @param testProjectId test project ID
+     * @param testPlanId test plan ID
+     * @param platformName platform name
+     * @return status message
+     * @throws TestLinkAPIException
+     */
+    public Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId, String platformName) throws TestLinkAPIException {
+        return this.testPlanService.removePlatformFromTestPlan(testProjectId, testPlanId, platformName);
+    }
+    
+    /**
+     * Adds a platform to a test plan.
+     * 
+     * @param testProjectId test project ID
+     * @param testPlanId test plan ID
+     * @param platformName platform name
+     * @return status message
+     * @throws TestLinkAPIException
+     */
+    public Map<String, Object> addPlatformToTestPlan(Integer testProjectId, Integer testPlanId, String platformName) throws TestLinkAPIException {
+        return this.testPlanService.addPlatformToTestPlan(testProjectId, testPlanId, platformName);
+    }
+    
     /* XX Build operations XX */
 
     /**

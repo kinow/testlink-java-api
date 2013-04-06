@@ -33,7 +33,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since
+ * @since 1.9.6-0
  */
 public class TestGetProjectPlatforms extends BaseTest {
 

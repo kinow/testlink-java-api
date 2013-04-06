@@ -77,7 +77,9 @@ public enum TestLinkMethods {
     GET_TOTALS_FOR_TEST_PLAN("tl.getTotalsForTestPlan"), 
     GET_EXEC_COUNTERS_BY_BUILD("tl.getExecCountersByBuild"), 
     SET_TEST_CASE_EXECUTION_TYPE("tl.setTestCaseExecutionType"),
-    GET_PROJECT_PLATFORMS("tl.getProjectPlatforms")
+    GET_PROJECT_PLATFORMS("tl.getProjectPlatforms"),
+    REMOVE_PLATFORM_FROM_TEST_PLAN("tl.removePlatformFromTestPlan"),
+    ADD_PLATFORM_TO_TEST_PLAN("tl.addPlatformToTestPlan")
     ;
 
     private String value;

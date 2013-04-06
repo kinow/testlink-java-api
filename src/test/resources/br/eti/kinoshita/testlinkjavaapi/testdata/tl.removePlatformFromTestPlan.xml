@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>operation</name><value><string>unlink</string></value></member>
+  <member><name>msg</name><value><string>unlink done</string></value></member>
+  <member><name>linkStatus</name><value><boolean>1</boolean></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
