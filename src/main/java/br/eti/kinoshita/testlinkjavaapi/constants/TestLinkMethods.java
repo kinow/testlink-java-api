@@ -76,17 +76,18 @@ public enum TestLinkMethods {
     GET_TEST_CASE_CUSTOM_FIELD_EXECUTION_VALUE("tl.getTestCaseCustomFieldExecutionValue"), 
     GET_TOTALS_FOR_TEST_PLAN("tl.getTotalsForTestPlan"), 
     GET_EXEC_COUNTERS_BY_BUILD("tl.getExecCountersByBuild"), 
-    SET_TEST_CASE_EXECUTION_TYPE("tl.setTestCaseExecutionType")
+    SET_TEST_CASE_EXECUTION_TYPE("tl.setTestCaseExecutionType"),
+    GET_PROJECT_PLATFORMS("tl.getProjectPlatforms")
     ;
 
     private String value;
 
-    TestLinkMethods(String value) {
-    this.value = value;
-    }
+	TestLinkMethods(String value) {
+		this.value = value;
+	}
 
-    public String toString() {
-    return this.value;
-    }
+	public String toString() {
+		return this.value;
+	}
 
 }

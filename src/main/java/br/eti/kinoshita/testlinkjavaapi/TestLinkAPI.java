@@ -437,6 +437,18 @@ public class TestLinkAPI {
     public TestProject getTestProjectByName(String projectName) throws TestLinkAPIException {
         return this.testProjectService.getTestProjectByName(projectName);
     }
+    
+    /**
+     * Retrieves the platforms of a test project.
+     * 
+     * @param projectId test project ID
+     * @return platforms array
+     * @throws TestLinkAPIException if an error occurs when retrieving the platforms
+     * @since 1.9.6-0
+     */
+    public Platform[] getProjectPlatforms(Integer projectId) throws TestLinkAPIException {
+    	return this.testProjectService.getProjectPlatforms(projectId);
+    }
 
     /**
      * Retrieves all Test Projects from TestLink.
