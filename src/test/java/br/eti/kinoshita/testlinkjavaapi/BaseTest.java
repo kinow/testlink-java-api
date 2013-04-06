@@ -62,7 +62,7 @@ public class BaseTest {
         this.mocked = "true".equals(System.getProperty("mocked", "true")); 
 
         if (!mocked) {
-            this.api = new TestLinkAPI(new URL("http://localhost:3300/testlink-1.9.6/lib/api/xmlrpc.php"),
+            this.api = new TestLinkAPI(new URL("http://localhost/testlink-1.9.6/lib/api/xmlrpc.php"),
                     "09b83b6813a55ef6f7e2d7d63cb6f65c");
         } else {
             this.server = new HttpTestServer();
