@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>3</name><value><array><data>
+  <value><struct>
+  <member><name>tcase_id</name><value><string>3</string></value></member>
+  <member><name>tc_id</name><value><string>3</string></value></member>
+  <member><name>tcversion_id</name><value><string>4</string></value></member>
+  <member><name>version</name><value><string>1</string></value></member>
+  <member><name>external_id</name><value><string>1</string></value></member>
+  <member><name>execution_type</name><value><string>2</string></value></member>
+  <member><name>feature_id</name><value><string>1</string></value></member>
+  <member><name>platform_id</name><value><string>0</string></value></member>
+  <member><name>platform_name</name><value><string></string></value></member>
+  <member><name>execution_order</name><value><string>1000</string></value></member>
+  <member><name>exec_status</name><value><string>p</string></value></member>
+  <member><name>full_external_id</name><value><string>p-1</string></value></member>
+</struct></value>
+</data></array></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

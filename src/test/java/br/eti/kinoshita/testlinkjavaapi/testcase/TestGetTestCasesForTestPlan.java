@@ -28,6 +28,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseDetails;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
@@ -41,6 +42,11 @@ public class TestGetTestCasesForTestPlan extends BaseTest {
     @DataProvider(name = "testPlanData")
     public Object[][] createTestPlanData() {
         return new Object[][] { { 12 } };
+    }
+    
+    @DataProvider(name = "testPlanDataFilterByExecutionStatus")
+    public Object[][] createTestPlanDataFilterByExecutionStatus() {
+        return new Object[][] { { 12, "p" } };
     }
 
     @Test(dataProvider = "testPlanData")
@@ -59,5 +65,25 @@ public class TestGetTestCasesForTestPlan extends BaseTest {
         Assert.assertNotNull(testCases);
 
         Assert.assertTrue(testCases.length == 1);
+    }
+    
+    @Test(dataProvider = "testPlanDataFilterByExecutionStatus")
+    public void testGetAutomatedTestCasesForTestPlanWithExecutionStatus(Integer testPlanId, String status) {
+        this.loadXMLRPCMockData("tl.getTestCasesForTestPlanWithExecutionStatus.xml");
+
+        TestCase[] testCases = null;
+
+        try {
+            testCases = this.api.getTestCasesForTestPlan(testPlanId, null, null, null, null, null, null, new String[]{status},
+                    ExecutionType.AUTOMATED, null, TestCaseDetails.FULL);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
+
+        Assert.assertNotNull(testCases);
+
+        Assert.assertTrue(testCases.length == 1);
+        
+        Assert.assertEquals(testCases[0].getExecutionStatus(), ExecutionStatus.getExecutionStatus(status.charAt(0)));
     }
 }

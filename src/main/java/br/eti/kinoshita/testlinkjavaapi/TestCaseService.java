@@ -244,7 +244,7 @@ class TestCaseService extends BaseService {
      */
     protected TestCase[] getTestCasesForTestPlan(Integer testPlanId, List<Integer> testCasesIds, Integer buildId,
             List<Integer> keywordsIds, String keywords, Boolean executed, List<Integer> assignedTo,
-            String executeStatus, ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail)
+            String[] executeStatus, ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail)
             throws TestLinkAPIException {
         TestCase[] testCases = null;
 
@@ -257,7 +257,7 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.KEYWORDS.toString(), keywords);
             executionData.put(TestLinkParams.EXECUTED.toString(), executed);
             executionData.put(TestLinkParams.ASSIGNED_TO.toString(), assignedTo);
-            executionData.put(TestLinkParams.EXECUTE_STATUS.toString(), Util.getStringValueOrNull(executeStatus));
+            executionData.put(TestLinkParams.EXECUTE_STATUS.toString(), executeStatus);
             executionData.put(TestLinkParams.EXECUTION_TYPE.toString(), Util.getStringValueOrNull(executionType));
             executionData.put(TestLinkParams.GET_STEP_INFO.toString(), getStepInfo);
             executionData.put(TestLinkParams.DETAILS.toString(), Util.getStringValueOrNull(detail));
