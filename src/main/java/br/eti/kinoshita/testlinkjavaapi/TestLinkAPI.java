@@ -437,6 +437,18 @@ public class TestLinkAPI {
     public TestProject getTestProjectByName(String projectName) throws TestLinkAPIException {
         return this.testProjectService.getTestProjectByName(projectName);
     }
+    
+    /**
+     * Retrieves the platforms of a test project.
+     * 
+     * @param projectId test project ID
+     * @return platforms array
+     * @throws TestLinkAPIException if an error occurs when retrieving the platforms
+     * @since 1.9.6-0
+     */
+    public Platform[] getProjectPlatforms(Integer projectId) throws TestLinkAPIException {
+    	return this.testProjectService.getProjectPlatforms(projectId);
+    }
 
     /**
      * Retrieves all Test Projects from TestLink.
@@ -520,10 +532,43 @@ public class TestLinkAPI {
         return this.testPlanService.getTestPlanPlatforms(planId);
     }
 
+    /**
+     * Gets stats for test plan.
+     * 
+     * @param testPlanId test plan ID
+     * @return stats
+     * @throws TestLinkAPIException
+     */
     public Map<String, Object> getTotalsForTestPlan(Integer testPlanId) throws TestLinkAPIException {
         return this.testPlanService.getTotalsForTestPlan(testPlanId);
     }
 
+    /**
+     * Removes a platform from a test plan.
+     * 
+     * @param testProjectId test project ID
+     * @param testPlanId test plan ID
+     * @param platformName platform name
+     * @return status message
+     * @throws TestLinkAPIException
+     */
+    public Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId, String platformName) throws TestLinkAPIException {
+        return this.testPlanService.removePlatformFromTestPlan(testProjectId, testPlanId, platformName);
+    }
+    
+    /**
+     * Adds a platform to a test plan.
+     * 
+     * @param testProjectId test project ID
+     * @param testPlanId test plan ID
+     * @param platformName platform name
+     * @return status message
+     * @throws TestLinkAPIException
+     */
+    public Map<String, Object> addPlatformToTestPlan(Integer testProjectId, Integer testPlanId, String platformName) throws TestLinkAPIException {
+        return this.testPlanService.addPlatformToTestPlan(testProjectId, testPlanId, platformName);
+    }
+    
     /* XX Build operations XX */
 
     /**

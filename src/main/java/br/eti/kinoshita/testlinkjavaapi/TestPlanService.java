@@ -23,11 +23,14 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
+import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkMethods;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkParams;
@@ -52,24 +55,29 @@ class TestPlanService extends BaseService {
         super(xmlRpcClient, devKey);
     }
 
-    protected TestPlan createTestPlan(String planName, String projectName, String notes, Boolean isActive,
-            Boolean isPublic) throws TestLinkAPIException {
+    protected TestPlan createTestPlan(String planName, String projectName,
+            String notes, Boolean isActive, Boolean isPublic)
+            throws TestLinkAPIException {
         TestPlan testPlan = null;
 
         Integer id = 0;
 
-        testPlan = new TestPlan(id, planName, projectName, notes, isActive, isPublic);
+        testPlan = new TestPlan(id, planName, projectName, notes, isActive,
+                isPublic);
 
         try {
             Map<String, Object> executionData = Util.getTestPlanMap(testPlan);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_PLAN.toString(), executionData);
+            Object response = this.executeXmlRpcCall(
+                    TestLinkMethods.CREATE_TEST_PLAN.toString(), executionData);
             Object[] responseArray = (Object[]) response;
             Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
 
-            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
+            id = Util.getInteger(responseMap,
+                    TestLinkResponseParams.ID.toString());
             testPlan.setId(id);
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error creating test plan: " + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException("Error creating test plan: "
+                    + xmlrpcex.getMessage(), xmlrpcex);
         }
 
         return testPlan;
@@ -83,18 +91,24 @@ class TestPlanService extends BaseService {
      * @return Test Plane.
      * @throws TestLinkAPIException
      */
-    protected TestPlan getTestPlanByName(String planName, String projectName) throws TestLinkAPIException {
+    protected TestPlan getTestPlanByName(String planName, String projectName)
+            throws TestLinkAPIException {
         TestPlan testPlan = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
-            executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), planName);
-            executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), projectName);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_BY_NAME.toString(), executionData);
+            executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(),
+                    planName);
+            executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(),
+                    projectName);
+            Object response = this.executeXmlRpcCall(
+                    TestLinkMethods.GET_TEST_PLAN_BY_NAME.toString(),
+                    executionData);
             Object[] responseArray = (Object[]) response;
             Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
             // TBD: check with TL team if we can change it there.
-            responseMap.put(TestLinkResponseParams.PROJECT_NAME.toString(), projectName);
+            responseMap.put(TestLinkResponseParams.PROJECT_NAME.toString(),
+                    projectName);
             testPlan = Util.getTestPlan(responseMap);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error creating test project: " + xmlrpcex.getMessage(), xmlrpcex);
@@ -107,13 +121,16 @@ class TestPlanService extends BaseService {
      * @param planId
      * @return
      */
-    protected Platform[] getTestPlanPlatforms(Integer planId) throws TestLinkAPIException {
+    protected Platform[] getTestPlanPlatforms(Integer planId)
+            throws TestLinkAPIException {
         Platform[] platforms = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), planId);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_PLATFORMS.toString(), executionData);
+            Object response = this.executeXmlRpcCall(
+                    TestLinkMethods.GET_TEST_PLAN_PLATFORMS.toString(),
+                    executionData);
             Object[] responseArray = (Object[]) response;
             platforms = new Platform[responseArray.length];
             for (int i = 0; i < responseArray.length; i++) {
@@ -133,15 +150,15 @@ class TestPlanService extends BaseService {
      * @param testPlanId
      * @return
      */
-    protected Map<String, Object> getTotalsForTestPlan(Integer testPlanId) throws TestLinkAPIException {
+    protected Map<String, Object> getTotalsForTestPlan(Integer testPlanId)
+            throws TestLinkAPIException {
 
         Map<String, Object> responseMap = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-            Object response = this
-                    .executeXmlRpcCall(TestLinkMethods.GET_TOTALS_FOR_TEST_PLAN.toString(), executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TOTALS_FOR_TEST_PLAN.toString(), executionData);
             if (response instanceof Object[]) {
                 Object[] responseArray = (Object[]) response;
                 responseMap = (Map<String, Object>) responseArray[0];
@@ -149,11 +166,47 @@ class TestPlanService extends BaseService {
                 responseMap = (Map<String, Object>) response;
             }
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException("Error retrieving totals for test plan: " + xmlrpcex.getMessage(), xmlrpcex);
         }
 
         return responseMap;
 
+    }
+
+    protected Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId, String platformName) {
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(), executionData);
+            return Util.castToMap(response);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
+    
+    protected Map<String, Object> addPlatformToTestPlan(Integer testProjectId, Integer testPlanId, String platformName) {
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(), executionData);
+            return Util.castToMap(response);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
+    
+    public static void main(String[] args) throws MalformedURLException {
+        XmlRpcClient xmlRpcClient = new XmlRpcClient();
+        XmlRpcClientConfigImpl pConfig = new XmlRpcClientConfigImpl();
+        pConfig.setServerURL(new URL("http://localhost:3300/testlink-1.9.6/lib/api/xmlrpc.php"));
+        xmlRpcClient.setConfig(pConfig);
+        TestPlanService service = new TestPlanService(xmlRpcClient, "09b83b6813a55ef6f7e2d7d63cb6f65c");
+        Map<?, ?> message = service.addPlatformToTestPlan(2, 8, "browser");
+        System.out.println(message);
     }
 
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>browser</name><value><struct>
+  <member><name>id</name><value><string>1</string></value></member>
+  <member><name>name</name><value><string>browser</string></value></member>
+</struct></value></member>
+  <member><name>cell</name><value><struct>
+  <member><name>id</name><value><string>2</string></value></member>
+  <member><name>name</name><value><string>cell</string></value></member>
+</struct></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
