@@ -6,6 +6,21 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="1.9.6-1" date="2013-04-06" description="1.9.6-1 release">
+            <action dev="kinow" type="update" issue="15">
+                Fixed parameter for filtering by execution type.
+            </action>
+        </release>
+        <release version="1.9.6-0" date="2013-04-04" description="1.9.6-0 release">
+            <action dev="kinow" type="update" issue="12">
+                Fixed ClassCastException due to change in TestLink code, in 
+                method getTestProjectByName.
+            </action>
+            <action dev="kinow" type="add" issue="14">
+                Added new methods getProjectPlatforms, removePlatformFromTestPlan 
+                and addPlatformToTestPlan that were included in TestLink 1.9.6.
+            </action>
+        </release>
         <release version="1.9.4-1" date="2013-04-03" description="1.9.4-1 release">
             <action dev="kinow" type="update">
                 Renamed method addTestCaseSteps to createTestCaseSteps in the the TL API.
