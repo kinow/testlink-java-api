@@ -21,6 +21,11 @@
                 and addPlatformToTestPlan that were included in TestLink 1.9.6.
             </action>
         </release>
+        <release version="1.9.5-0" date="2013-04-04" description="1.9.6-0 release">
+            <action dev="kinow" type="update">
+                Maintenance release.
+            </action>
+        </release>
         <release version="1.9.4-1" date="2013-04-03" description="1.9.4-1 release">
             <action dev="kinow" type="update">
                 Renamed method addTestCaseSteps to createTestCaseSteps in the the TL API.
