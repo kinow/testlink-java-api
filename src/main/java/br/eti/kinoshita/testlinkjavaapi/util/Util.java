@@ -467,7 +467,12 @@ public final class Util {
                     testCase.setParentId(getInteger(map, TestLinkResponseParams.PARENT_ID.toString()));
                     testCase.setOrder(getInteger(map, TestLinkResponseParams.ORDER.toString()));
                     testCase.setExecutionOrder(getInteger(map, TestLinkResponseParams.EXECUTION_ORDER.toString()));
-                    testCase.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    // the name of the test case is not always in the same parameter
+                    String testCaseName = getString(map, TestLinkResponseParams.TCASE_NAME.toString());
+                    if (testCaseName == null) {
+                        testCaseName = getString(map, TestLinkResponseParams.NAME.toString());
+                    }
+                    testCase.setName(testCaseName);
 
                     Platform platform = null;
                     String platformName = getString(map, TestLinkResponseParams.PLATFORM_NAME.toString());

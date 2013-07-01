@@ -55,6 +55,7 @@ public enum TestLinkResponseParams {
     EXECUTION_TYPE("execution_type"), 
     TC_ID("tc_id"), 
     TEST_CASE_ID("testcase_id"), 
+    TCASE_NAME("tcase_name"),
     CONTENT("content"), 
     FILE_TYPE("file_type"), 
     TITLE("title"), 
