@@ -180,7 +180,7 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.VERSION.toString(), version);
             executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformId);
             executionData.put(TestLinkParams.ORDER.toString(), order);
-            executionData.put(TestLinkParams.URGENCY.toString(), testCaseId);
+            executionData.put(TestLinkParams.URGENCY.toString(), urgency);
 
             Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_TEST_CASE_TO_TEST_PLAN.toString(),
                     executionData);
