@@ -58,6 +58,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
+import br.eti.kinoshita.testlinkjavaapi.model.User;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
@@ -304,6 +305,17 @@ public class TestLinkAPI {
      */
     public Boolean doesUserExist(String user) throws TestLinkAPIException {
         return this.miscService.doesUserExist(user);
+    }
+
+    /**
+     * Get user by login.
+     *
+     * @param login
+     * @return user
+     * @throws TestLinkAPIException
+     */
+    public User getUserByLogin(String login) throws TestLinkAPIException {
+        return this.miscService.getUserByLogin(login);
     }
 
     /**
