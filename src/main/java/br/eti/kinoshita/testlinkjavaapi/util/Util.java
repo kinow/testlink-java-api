@@ -50,11 +50,13 @@ import br.eti.kinoshita.testlinkjavaapi.model.Execution;
 import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
+import br.eti.kinoshita.testlinkjavaapi.model.Role;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
+import br.eti.kinoshita.testlinkjavaapi.model.User;
 
 /**
  * Utility class with methods to handle the response or prepare the request to the PHP XML-RPC API. This class is able
@@ -939,6 +941,51 @@ public final class Util {
             value = o.toString();
         }
         return value;
+    }
+
+    @SuppressWarnings("unchecked")
+	public static final User getUser(Map<String, Object> map) {
+    	User user = null;
+    	if (map != null && map.size() > 0) {
+    		Object o = map.get(TestLinkResponseParams.DB_ID.toString());
+    		if (o != null) {
+    			Integer dbID = Integer.parseInt(o.toString());
+    			if (dbID > 0) {
+    				user = new User(dbID);
+    				user.setLogin(getString(map, TestLinkResponseParams.LOGIN.toString()));
+    				user.setFirstName(getString(map, TestLinkResponseParams.FIRST_NAME.toString()));
+    				user.setLastName(getString(map, TestLinkResponseParams.LAST_NAME.toString()));
+    				user.setLocale(getString(map, TestLinkResponseParams.LOCALE.toString()));
+    				user.setEmailAddress(getString(map, TestLinkResponseParams.EMAIL_ADDRESS.toString()));
+    				user.setIsActive(getInteger(map, TestLinkResponseParams.IS_ACTIVE.toString()));
+    				user.setUserApiKey(getString(map, TestLinkResponseParams.USER_API_KEY.toString()));
+    				user.setLoginRegExp(getString(map, TestLinkResponseParams.LOGIN_REGEXP.toString()));
+    				user.setTprojectRoles(getInteger(map, TestLinkResponseParams.TPROJECT_ROLES.toString()));
+    				user.setTplanRoles(getInteger(map, TestLinkResponseParams.TPLAN_ROLES.toString()));
+    				user.setGlobalRole(getRole((Map<String, Object>) map.get(TestLinkResponseParams.GLOBAL_ROLE.toString())));
+    				user.setGlobalRoleID(getInteger(map, TestLinkResponseParams.GLOBAL_ROLE_ID.toString()));
+    				user.setDefaultTestprojectID(getInteger(map, TestLinkResponseParams.DEFAULT_TESTPROJECT_ID.toString()));
+    			}
+    		}
+    	}
+    	return user;
+    }
+
+    public static final Role getRole(Map<String, Object> map) {
+    	Role role = null;
+    	if (map != null && map.size() > 0) {
+    		Object o = map.get(TestLinkResponseParams.DB_ID.toString());
+    		if (o != null) {
+    			Integer dbID = Integer.parseInt(o.toString());
+    			if (dbID > 0) {
+    				role = new Role(dbID);
+    				role.setDescription(getString(map, TestLinkResponseParams.DESCRIPTION.toString()));
+    				role.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+    				role.setRights((Object[]) map.get(TestLinkResponseParams.RIGHTS.toString()));
+    			}
+    		}
+    	}
+    	return role;
     }
 
 }

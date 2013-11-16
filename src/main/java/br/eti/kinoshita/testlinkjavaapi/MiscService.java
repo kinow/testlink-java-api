@@ -34,6 +34,7 @@ import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkParams;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
 import br.eti.kinoshita.testlinkjavaapi.model.Execution;
+import br.eti.kinoshita.testlinkjavaapi.model.User;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
@@ -86,6 +87,31 @@ class MiscService extends BaseService {
         }
 
         return userExist;
+    }
+
+    /**
+     * Get user by login.
+     *
+     * @param login
+     * @return user
+     * @throws TestLinkAPIException
+     */
+	@SuppressWarnings("unchecked")
+	protected User getUserByLogin(String login) throws TestLinkAPIException {
+        User user = null;
+
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.USER.toString(), login);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_USER_BY_LOGIN.toString(), executionData);
+            Object[] responseArray = Util.castToArray(response);
+            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+            user = Util.getUser(responseMap);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error verifying if user exists: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+
+        return user;
     }
 
     /**
