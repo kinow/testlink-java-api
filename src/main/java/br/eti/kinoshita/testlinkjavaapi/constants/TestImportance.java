@@ -35,5 +35,19 @@ public enum TestImportance {
     public Integer getValue() {
 	return this.value;
     }
+    
+    public static TestImportance valueOf(Integer importanceTypeValue) {
+        if (importanceTypeValue != null) {
+            if (importanceTypeValue == 1) {
+                return LOW;
+            } else if (importanceTypeValue == 2) {
+                return MEDIUM;
+            } else if (importanceTypeValue == 3) {
+                return HIGH;
+           
+
+        }
+        return null;
+    }
 
 }
