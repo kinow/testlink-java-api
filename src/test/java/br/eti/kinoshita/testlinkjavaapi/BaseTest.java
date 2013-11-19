@@ -77,8 +77,7 @@ public class BaseTest {
     public void loadXMLRPCMockData(String xmlFile) {
         if (mocked) {
             URL url = getClass().getResource("/br/eti/kinoshita/testlinkjavaapi/testdata/" + xmlFile);
-            String filePath = url.getFile();
-            File file = new File(filePath);
+            File file = FileUtils.toFile(url);
             String mockXml;
             try {
                 mockXml = FileUtils.readFileToString(file);
