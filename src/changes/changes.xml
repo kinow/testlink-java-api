@@ -6,6 +6,22 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="1.9.8-0" date="2013-11-22" description="1.9.8-0 release">
+            <action dev="rsporny" type="add">
+                Pull request: add: getUserByLogin
+            </action>
+            <action dev="rsporny" type="update">
+                Pull request: fix: problem with running unit tests when path has special characters
+            </action>
+        </release>
+        <release version="1.9.7-0" date="2013-08-30" description="1.9.7-0 release">
+            <action dev="razalhague" type="update">
+                Pull request: Handle test case names from different parameters
+            </action>
+            <action dev="kinow" type="update" issue="16">
+                Check the value of urgency that is being used in TestCaseService
+            </action>
+        </release>
         <release version="1.9.6-1" date="2013-04-06" description="1.9.6-1 release">
             <action dev="kinow" type="update" issue="15">
                 Fixed parameter for filtering by execution type.
