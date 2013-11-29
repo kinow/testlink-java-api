@@ -1023,6 +1023,49 @@ public class TestLinkAPI {
                 versionNumber, executionType);
     }
 
+    /**
+     * Update the value of an existing custom field for a Test Case
+     * @param fullExternalId
+     * @param versionNumber optionnal, if null, latest version.
+     * @param customFieldName
+     * @param customFieldValue
+     * @return Map
+     * @throws TestLinkAPIException
+     */
+    public Map<String, Object> updateTestCaseCustomFieldDesignValue(String fullExternalId, Integer versionNumber, String customFieldName, String customFieldValue) throws TestLinkAPIException {
+        TestCase testCase = getTestCaseByExternalId(fullExternalId, versionNumber);
+
+        String prefix = fullExternalId.substring(0, fullExternalId.lastIndexOf("-"));
+
+        TestProject project = null;
+
+        for(TestProject p : getProjects())
+        {
+            System.out.println(p.getPrefix());
+            if(p.getPrefix().equals(prefix)) {
+                project = p;
+            }
+        }
+        if (project!=null) {
+            return testCaseService.updateTestCaseCustomFieldDesignValue(testCase.getId(), testCase.getVersion(), project.getId(), customFieldName, customFieldValue);
+        }
+        else
+            throw new TestLinkAPIException("Cannot find any project with prefix : " + prefix);
+    }
+
+    /**
+     * Update the value of an existing custom field for a Test Case
+     * @param testCaseId
+     * @param versionNumber
+     * @param testProjectId
+     * @param customFieldName
+     * @param customFieldValue
+     * @return Map
+     */
+    public Map<String, Object> updateTestCaseCustomFieldDesignValue(Integer testCaseId, Integer versionNumber, Integer testProjectId, String customFieldName, String customFieldValue) {
+        return this.testCaseService.updateTestCaseCustomFieldDesignValue(testCaseId, versionNumber, testProjectId, customFieldName, customFieldValue);
+    }
+
     /* XX Requirements Specification operations XX */
 
     /**
