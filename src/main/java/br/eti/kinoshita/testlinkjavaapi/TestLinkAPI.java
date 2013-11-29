@@ -1023,6 +1023,19 @@ public class TestLinkAPI {
                 versionNumber, executionType);
     }
 
+    /**
+     * Update the value of an existing custom field for a Test Case
+     * @param testCaseId
+     * @param versionNumber
+     * @param testProjectId
+     * @param customFieldName
+     * @param customFieldValue
+     * @return Map
+     */
+    public Map<String, Object> updateTestCaseCustomFieldDesignValue(Integer testCaseId, Integer versionNumber, Integer testProjectId, String customFieldName, String customFieldValue) {
+        return this.testCaseService.updateTestCaseCustomFieldDesignValue(testCaseId, versionNumber, testProjectId, customFieldName, customFieldValue);
+    }
+
     /* XX Requirements Specification operations XX */
 
     /**

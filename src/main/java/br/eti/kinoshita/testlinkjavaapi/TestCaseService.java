@@ -739,4 +739,42 @@ class TestCaseService extends BaseService {
 
         return responseMap;
     }
+
+    /**
+     *
+     * @param testCaseId
+     * @param versionNumber
+     * @param testProjectId
+     * @param customFieldName
+     * @param customFieldValue
+     */
+    protected Map<String, Object> updateTestCaseCustomFieldDesignValue(Integer testCaseId, Integer versionNumber, Integer testProjectId, String customFieldName, String customFieldValue) {
+
+        Map<String, Object> responseMap =null;
+
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String,String> cf = new HashMap<String, String>();
+            cf.put(customFieldName, customFieldValue);
+
+            executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
+            executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            executionData.put(TestLinkParams.CUSTOM_FIELDS.toString(), cf);
+
+            Object response = this.executeXmlRpcCall(TestLinkMethods.UPDATE_TEST_CASE_CUSTOM_FIELD_VALUE.toString(),
+                    executionData);
+            if (response instanceof Map<?, ?>) {
+                responseMap = Util.castToMap(response);
+            } else if (! (response instanceof String) ) {
+                responseMap = Util.castToMap(((Object[]) response)[0]);
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error updating test case custom field value. " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
+
+        return responseMap;
+
+    }
 }
