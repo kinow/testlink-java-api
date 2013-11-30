@@ -6,6 +6,11 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="1.9.8-1" date="2013-11-30" description="1.9.8-1 release">
+            <action dev="tlasnier" type="add">
+                Pull request: implemented method : updateTestCaseCustomFieldDesignValue
+            </action>
+        </release>
         <release version="1.9.8-0" date="2013-11-22" description="1.9.8-0 release">
             <action dev="rsporny" type="add">
                 Pull request: add: getUserByLogin
