@@ -981,7 +981,7 @@ public class TestLinkAPI {
      * @return
      * @throws TestLinkAPIException
      */
-    protected CustomField getTestCaseCustomFieldTestPlanDesignValue(Integer testCaseId, Integer testCaseExternalId,
+    public CustomField getTestCaseCustomFieldTestPlanDesignValue(Integer testCaseId, Integer testCaseExternalId,
             Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
             throws TestLinkAPIException {
         return this.testCaseService.getTestCaseCustomFieldTestPlanDesignValue(testCaseId, testCaseExternalId,
@@ -1001,7 +1001,7 @@ public class TestLinkAPI {
      * @return
      * @throws TestLinkAPIException
      */
-    protected CustomField getTestCaseCustomFieldExecutionValue(Integer testCaseId, Integer testCaseExternalId,
+    public CustomField getTestCaseCustomFieldExecutionValue(Integer testCaseId, Integer testCaseExternalId,
             Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
             ResponseDetails details) throws TestLinkAPIException {
         return this.testCaseService.getTestCaseCustomFieldExecutionValue(testCaseId, testCaseExternalId, versionNumber,
