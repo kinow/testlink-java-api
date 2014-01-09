@@ -163,7 +163,7 @@ public class TestPlan implements Serializable {
      */
     @Override
     public String toString() {
-	return "TestPlan [id=" + id + "name=" + name + ", projectName="
+	return "TestPlan [id=" + id + ", name=" + name + ", projectName="
 		+ projectName + ", notes=" + notes + ", isActive=" + isActive
 		+ ", isPublic=" + isPublic + "]";
     }
