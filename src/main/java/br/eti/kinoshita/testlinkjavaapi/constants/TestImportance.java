@@ -44,25 +44,9 @@ public enum TestImportance {
                 return MEDIUM;
             } else if (importanceTypeValue == 3) {
                 return HIGH;
-           
-
-        }
-        return null;
-    }
-
-    public static TestImportance valueOf(Integer importanceTypeValue) {
-        if (importanceTypeValue != null) {
-            if (importanceTypeValue == 1) {
-                return LOW;
-            } else if (importanceTypeValue == 2) {
-                return MEDIUM;
-            } else if (importanceTypeValue == 3) {
-                return HIGH;
 
             }
         }
-
         return null;
     }
-
 }
