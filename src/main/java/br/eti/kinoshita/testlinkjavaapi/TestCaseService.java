@@ -84,20 +84,21 @@ class TestCaseService extends BaseService {
      * @param internalId
      * @param checkDuplicatedName
      * @param actionOnDuplicatedName
+     * @param keywords 
      * @return Test Case.
      * @throws TestLinkAPIException
      */
     protected TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId,
             String authorLogin, String summary, List<TestCaseStep> steps, String preconditions,
             TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
-            Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
+            Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName, String keywords) throws TestLinkAPIException {
         TestCase testCase = null;
 
         Integer id = null;
 
         testCase = new TestCase(id, testCaseName, testSuiteId, testProjectId, authorLogin, summary, steps,
                 preconditions, importance, execution, null, order, internalId, null, checkDuplicatedName,
-                actionOnDuplicatedName, null, null, null, null, null, null, null);
+                actionOnDuplicatedName, null, null, null, null, null, null, null, keywords);
 
         try {
             Map<String, Object> executionData = Util.getTestCaseMap(testCase);
