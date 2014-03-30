@@ -25,6 +25,7 @@ package br.eti.kinoshita.testlinkjavaapi.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
@@ -63,6 +64,7 @@ public class TestCase implements Serializable {
     private ExecutionStatus executionStatus;
     private Platform platform;
     private Integer featureId;
+	private List<String> keywords;
 
     /**
 	 * 
@@ -456,6 +458,22 @@ public class TestCase implements Serializable {
         this.featureId = featureId;
     }
 
+	/**
+	 * @return
+	 */
+	public List<String> getKeywords() {
+		return keywords;
+	}
+
+	/**
+	 * @param keywords
+	 */
+	public void setKeywords(List<String> keywords) {
+	   // Sorted keywords (for performance)
+		Collections.sort(keywords);
+		this.keywords = keywords;
+	}
+	
     /*
      * (non-Javadoc)
      * 
@@ -470,7 +488,7 @@ public class TestCase implements Serializable {
                 + internalId + ", fullExternalId=" + fullExternalId + ", checkDuplicatedName=" + checkDuplicatedName
                 + ", actionOnDuplicatedName=" + actionOnDuplicatedName + ", versionId=" + versionId + ", version="
                 + version + ", parentId=" + parentId + ", customFields=" + customFields + ", executionStatus="
-                + executionStatus + ", platform=" + platform + ", featureId=" + featureId + "]";
+                + executionStatus + ", platform=" + platform + ", featureId=" + featureId + ", keywords= " + keywords + "]";
     }
 
 }

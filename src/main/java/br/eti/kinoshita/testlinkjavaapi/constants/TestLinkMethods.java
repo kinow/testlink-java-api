@@ -72,6 +72,7 @@ public enum TestLinkMethods {
     GET_LAST_EXECUTION_RESULT("tl.getLastExecutionResult"), 
     GET_BUILDS_FOR_TEST_PLAN("tl.getBuildsForTestPlan"), 
     GET_LATEST_BUILD_FOR_TEST_PLAN("tl.getLatestBuildForTestPlan"), 
+    GET_TEST_CASE_KEYWORDS("tl.getTestCaseKeywords"),
     GET_TEST_CASE_CUSTOM_FIELD_DESIGN_VALUE("tl.getTestCaseCustomFieldDesignValue"), 
     GET_TEST_CASE_CUSTOM_FIELD_TEST_PLAN_DESIGN_VALUE("tl.getTestCaseCustomFieldTestPlanDesignValue"), 
     GET_TEST_CASE_CUSTOM_FIELD_EXECUTION_VALUE("tl.getTestCaseCustomFieldExecutionValue"), 

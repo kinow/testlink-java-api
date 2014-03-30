@@ -1009,6 +1009,18 @@ public class TestLinkAPI {
     }
 
     /**
+     *  Gets list of keywords for a given Test case
+     *  
+     * @param testProjectId
+     * @param testCaseId
+     * @return
+     * @throws TestLinkAPIException
+     */
+    public List<String> getTestCaseKeywords(Integer testProjectId, Integer testCaseId) throws TestLinkAPIException {
+		return this.testCaseService.getTestCaseKeywords(testProjectId, testCaseId);
+	}
+    
+    /**
      * Sets the test case execution type.
      * 
      * @param testProjectId
