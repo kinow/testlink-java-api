@@ -777,4 +777,26 @@ class TestCaseService extends BaseService {
         return responseMap;
 
     }
+
+    /**
+     *
+     * @param testPlanId
+     * @param testCaseExternalId
+     * @param user
+     * @param buildName
+     * @throws TestLinkAPIException
+     */
+    protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user, String buildName) throws TestLinkAPIException {
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
+            executionData.put(TestLinkParams.USER.toString(), user);
+            executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
+            this.executeXmlRpcCall(TestLinkMethods.ASSIGN_TEST_CASE_EXECUTION_TASK.toString(), executionData);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error deleting execution: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
+
 }
