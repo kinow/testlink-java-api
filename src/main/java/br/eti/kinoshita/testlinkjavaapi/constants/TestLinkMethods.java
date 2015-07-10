@@ -29,6 +29,7 @@ package br.eti.kinoshita.testlinkjavaapi.constants;
  */
 public enum TestLinkMethods {
 
+    ASSIGN_TEST_CASE_EXECUTION_TASK("tl.assignTestCaseExecutionTask"),
     CREATE_TEST_PROJECT("tl.createTestProject"), 
     GET_TEST_PROJECT_BY_NAME("tl.getTestProjectByName"), 
     CHECK_DEV_KEY("tl.checkDevKey"), 

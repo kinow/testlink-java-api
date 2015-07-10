@@ -1036,6 +1036,20 @@ public class TestLinkAPI {
         return this.testCaseService.updateTestCaseCustomFieldDesignValue(testCaseId, versionNumber, testProjectId, customFieldName, customFieldValue);
     }
 
+    /**
+     * Assign user to execute Test Case in Test Plan
+     *
+     * @param testPlanId
+     * @param testCaseExternalId
+     * @param user
+     * @param buildName
+     * @throws TestLinkAPIException
+     */
+    public void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
+                 String buildName) throws TestLinkAPIException {
+        this.testCaseService.assignTestCaseExecutionTask(testPlanId, testCaseExternalId, user, buildName);
+    }
+
     /* XX Requirements Specification operations XX */
 
     /**
