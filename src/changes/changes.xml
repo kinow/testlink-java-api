@@ -6,6 +6,11 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+	<release version="1.9.13-0" date="2015-07-10" description="1.9.13-0 release">
+	    <action dev="pozharko" type="add">
+		Pull request: implemented method : assignTestCaseExecutionTask
+            </action>
+	</release>
 	<release version="1.9.8-2" date="2013-12-03" description="1.9.8-2 release">
 	    <action dev="kinow" type="fix">
 		Issue 27: getTestCaseCustomFieldExecutionValue method "protected
