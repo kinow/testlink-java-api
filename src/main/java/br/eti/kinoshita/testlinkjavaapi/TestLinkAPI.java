@@ -838,6 +838,17 @@ public class TestLinkAPI {
     }
 
     /**
+     * Retrieves Test Cases for Test Plans.
+     * 
+     * @param testPlanId
+     * @return Array of Test Cases of the Test Plan.
+     * @throws TestLinkAPIException
+     */
+    public TestCase[] getTestCasesForTestPlan(Integer testPlanId) throws TestLinkAPIException {
+        return this.testCaseService.getTestCasesForTestPlan(testPlanId);
+    }
+
+    /**
      * Get a test case ID by a test case Name
      * 
      * @param testCaseName

@@ -303,6 +303,58 @@ class TestCaseService extends BaseService {
     }
 
     /**
+     * @param testPlanId
+     * @return
+     * @throws TestLinkAPIException
+     */
+    protected TestCase[] getTestCasesForTestPlan(Integer testPlanId) throws TestLinkAPIException {
+        TestCase[] testCases = null;
+
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_CASES_FOR_TEST_PLAN.toString(),
+                    executionData);
+
+            /*
+             * // The Util.castToMap method will return an empty Map if ( response instanceof String ) { throw new
+             * TestLinkAPIException( "The test plan you requested does not contain Test Cases." ); }
+             */
+
+            Map<String, Object> responseMap = Util.castToMap(response);
+            Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+            testCases = new TestCase[entrySet.size()];
+            int index = 0;
+            for (Entry<String, Object> entry : entrySet) {
+                String key = entry.getKey();
+                Map<String, Object> testCaseMap = null;
+
+                if (entry.getValue() instanceof Object[]) {
+                    Object[] responseArray = (Object[]) entry.getValue();
+                    testCaseMap = (Map<String, Object>) responseArray[0];
+                } else if (entry.getValue() instanceof Map<?, ?>) {
+                    testCaseMap = (Map<String, Object>) entry.getValue();
+                    if (testCaseMap.size() > 0) {
+                        Set<String> keys = testCaseMap.keySet();
+                        Object o = testCaseMap.get(keys.iterator().next());
+                        if (o instanceof Map<?, ?>) {
+                            testCaseMap = (Map<String, Object>) o;
+                        }
+                    }
+                }
+                testCaseMap.put(TestLinkResponseParams.ID.toString(), key);
+                testCases[index] = Util.getTestCase(testCaseMap);
+                index += 1;
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test cases for test plan: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
+
+        return testCases;
+    }
+
+    /**
      * 
      * @param testCaseId
      * @param testCaseExternalId
