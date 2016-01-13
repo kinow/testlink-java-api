@@ -28,6 +28,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.eti.kinoshita.testlinkjavaapi.constants.ResponseDetails;
+import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -115,6 +117,44 @@ class TestPlanService extends BaseService {
         }
 
         return testPlan;
+    }
+
+    /**
+     *
+     * @param testPlanId
+     * @param testProjectId
+     * @param customFieldName
+     * @param details
+     * @return
+     * @throws TestLinkAPIException
+     */
+    protected CustomField getTestPlanCustomFieldDesignValue(Integer testPlanId, Integer testProjectId, String customFieldName, ResponseDetails details)
+            throws TestLinkAPIException {
+        CustomField customField = null;
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            executionData.put(TestLinkParams.CUSTOM_FIELD_NAME.toString(), customFieldName);
+            executionData.put(TestLinkParams.DETAILS.toString(), Util.getStringValueOrNull(details));
+
+            Object response = this.executeXmlRpcCall(
+                    TestLinkMethods.GET_TEST_PLAN_CUSTOM_FIELD_DESIGN_VALUE.toString(), executionData);
+
+            if (response instanceof String) {
+                customField = new CustomField();
+                customField.setValue(response.toString());
+            } else if (response instanceof Map<?, ?>) {
+                Map<String, Object> responseMap = Util.castToMap(response);
+                customField = Util.getCustomField(responseMap);
+            }
+        }
+        catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test case custom field value: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
+
+        return customField;
     }
 
     /**

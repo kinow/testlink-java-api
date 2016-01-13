@@ -53,7 +53,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
 /**
  * Class responsible for Test Case services.
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -70,7 +70,7 @@ class TestCaseService extends BaseService {
 
     /**
      * Creates a Test Case.
-     * 
+     *
      * @param testCaseName
      * @param testSuiteId
      * @param testProjectId
@@ -197,7 +197,6 @@ class TestCaseService extends BaseService {
     /**
      * @param testSuiteId
      * @param deep
-     * @param DETAILS
      * @return
      */
     protected TestCase[] getTestCasesForTestSuite(Integer testSuiteId, Boolean deep, TestCaseDetails detail)
@@ -303,7 +302,7 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     * 
+     *
      * @param testCaseId
      * @param testCaseExternalId
      * @param version
@@ -335,7 +334,7 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     * 
+     *
      * @param fullTestCaseExternalId Full external id: prefix-externalId
      * @param version
      * @return
@@ -365,8 +364,6 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     * 
-     * @param DEV_KEY
      * @param testCaseName
      * @param testSuiteName
      * @param testProjectName
@@ -536,7 +533,7 @@ class TestCaseService extends BaseService {
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
             ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, 
+            Integer platformId, String platformName, Map<String, String> customFields,
             Boolean overwrite) throws TestLinkAPIException {
         // TODO: Map<String, String> customFields => 
         // change for a list of custom fields. After implementing method getTestCaseCustomFieldDesignValue this
