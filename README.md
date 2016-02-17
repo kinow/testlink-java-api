@@ -1,7 +1,7 @@
 TestLink Java API
 =================
 
-Project homepage: http://testlinkjavaapi.sourceforge.net/
+Project homepage: http://kinow.github.io/testlink-java-api
 
 TestLink Java API is a Java API that interfaces TestLink XML-RPC API. This API lets you call TestLink internal methods such as createTestProject, uploadAttachment, getTestProjectByName among others.
 
