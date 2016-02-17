@@ -63,6 +63,7 @@ public class TestCase implements Serializable {
     private ExecutionStatus executionStatus;
     private Platform platform;
     private Integer featureId;
+    private String keywords;
 
     /**
 	 * 
@@ -99,13 +100,14 @@ public class TestCase implements Serializable {
      * @param executionStatus
      * @param plataform
      * @param featureId
+     * @param keywords
      */
     public TestCase(Integer id, String name, Integer testSuiteId, Integer testProjectId, String authorLogin,
             String summary, List<TestCaseStep> steps, String preconditions, TestImportance testImportance,
             ExecutionType executionType, Integer executionOrder, Integer order, Integer internalId,
             String fullExternalId, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName,
             Integer versionId, Integer version, Integer parentId, List<CustomField> customFields,
-            ExecutionStatus executionStatus, Platform platform, Integer featureId) {
+            ExecutionStatus executionStatus, Platform platform, Integer featureId, String keywords) {
         super();
         this.id = id;
         this.name = name;
@@ -130,6 +132,7 @@ public class TestCase implements Serializable {
         this.executionStatus = executionStatus;
         this.platform = platform;
         this.featureId = featureId;
+        this.keywords = keywords;
     }
 
     /**
@@ -456,6 +459,14 @@ public class TestCase implements Serializable {
         this.featureId = featureId;
     }
 
+    public String getKeywards() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
     /*
      * (non-Javadoc)
      * 
@@ -470,7 +481,7 @@ public class TestCase implements Serializable {
                 + internalId + ", fullExternalId=" + fullExternalId + ", checkDuplicatedName=" + checkDuplicatedName
                 + ", actionOnDuplicatedName=" + actionOnDuplicatedName + ", versionId=" + versionId + ", version="
                 + version + ", parentId=" + parentId + ", customFields=" + customFields + ", executionStatus="
-                + executionStatus + ", platform=" + platform + ", featureId=" + featureId + "]";
+                + executionStatus + ", platform=" + platform + ", featureId=" + featureId + ", keywords=" + keywords + "]";
     }
 
 }

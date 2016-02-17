@@ -714,16 +714,17 @@ public class TestLinkAPI {
      * @param internalId
      * @param checkDuplicatedName
      * @param actionOnDuplicatedName
+     * @param keywords 
      * @return TestCase.
      * @throws TestLinkAPIException
      */
     public TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId, String authorLogin,
             String summary, List<TestCaseStep> steps, String preconditions, TestImportance importance,
             ExecutionType execution, Integer order, Integer internalId, Boolean checkDuplicatedName,
-            ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
+            ActionOnDuplicate actionOnDuplicatedName, String keywords) throws TestLinkAPIException {
         return this.testCaseService.createTestCase(testCaseName, testSuiteId, testProjectId, authorLogin, summary,
                 steps, preconditions, importance, execution, order, internalId, checkDuplicatedName,
-                actionOnDuplicatedName);
+                actionOnDuplicatedName, keywords);
     }
 
     /**

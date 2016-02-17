@@ -285,6 +285,7 @@ public final class Util {
         executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testCase.getCheckDuplicatedName());
         executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
                 testCase.getActionOnDuplicatedName() != null ? testCase.getActionOnDuplicatedName().toString() : null);
+        executionData.put(TestLinkParams.KEYWORDS.toString(), testCase.getKeywards());
 
         return executionData;
     }
