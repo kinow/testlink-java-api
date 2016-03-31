@@ -104,9 +104,11 @@ class TestCaseService extends BaseService {
             Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_CASE.toString(), executionData);
             Object[] responseArray = Util.castToArray(response);
             Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
-
+            
+            Integer version = (Integer)((HashMap<String, Object>) responseMap.get("additionalInfo")).get("version_number");
             id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
             testCase.setId(id);
+            testCase.setVersion(version);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error creating test plan: " + xmlrpcex.getMessage(), xmlrpcex);
         }
