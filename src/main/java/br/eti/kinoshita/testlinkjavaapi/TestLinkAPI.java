@@ -44,6 +44,7 @@ import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.constants.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
@@ -708,6 +709,7 @@ public class TestLinkAPI {
      * @param summary
      * @param steps
      * @param preconditions
+     * @param status
      * @param importance
      * @param execution
      * @param order
@@ -718,12 +720,16 @@ public class TestLinkAPI {
      * @throws TestLinkAPIException
      */
     public TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId, String authorLogin,
-            String summary, List<TestCaseStep> steps, String preconditions, TestImportance importance,
+            String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status, TestImportance importance,
             ExecutionType execution, Integer order, Integer internalId, Boolean checkDuplicatedName,
             ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
         return this.testCaseService.createTestCase(testCaseName, testSuiteId, testProjectId, authorLogin, summary,
-                steps, preconditions, importance, execution, order, internalId, checkDuplicatedName,
+                steps, preconditions, status, importance, execution, order, internalId, checkDuplicatedName,
                 actionOnDuplicatedName);
+    }
+
+    public void updateTestCase(TestCase tc) throws TestLinkAPIException {
+        this.testCaseService.updateTestCase(tc);
     }
 
     /**

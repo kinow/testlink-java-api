@@ -37,6 +37,7 @@ import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.constants.ResponseDetails;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseDetails;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStepAction;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkMethods;
@@ -78,6 +79,7 @@ class TestCaseService extends BaseService {
      * @param summary
      * @param steps
      * @param preconditions
+     * @param status
      * @param importance
      * @param execution
      * @param order
@@ -88,7 +90,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId,
-            String authorLogin, String summary, List<TestCaseStep> steps, String preconditions,
+            String authorLogin, String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
             TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
             Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
         TestCase testCase = null;
@@ -96,7 +98,7 @@ class TestCaseService extends BaseService {
         Integer id = null;
 
         testCase = new TestCase(id, testCaseName, testSuiteId, testProjectId, authorLogin, summary, steps,
-                preconditions, importance, execution, null, order, internalId, null, checkDuplicatedName,
+                preconditions, status, importance, execution, null, order, internalId, null, checkDuplicatedName,
                 actionOnDuplicatedName, null, null, null, null, null, null, null);
 
         try {
@@ -113,6 +115,18 @@ class TestCaseService extends BaseService {
 
         return testCase;
     }
+
+    public void updateTestCase(TestCase tc) throws TestLinkAPIException {
+        try {
+            Map<String, Object> executionData = Util.getTestCaseMap(tc);
+            /* Object response = */ this.executeXmlRpcCall(TestLinkMethods.UPDATE_TEST_CASE.toString(), executionData);
+//            Object[] responseArray = Util.castToArray(response);
+//            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error updating test plan: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
+
 
     public Map<String, Object> createTestCaseSteps(Integer testCaseId, String testCaseExternalId, Integer version,
             TestCaseStepAction action, List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
