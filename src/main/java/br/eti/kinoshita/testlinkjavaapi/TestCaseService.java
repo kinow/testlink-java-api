@@ -23,11 +23,8 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
@@ -197,7 +194,6 @@ class TestCaseService extends BaseService {
     /**
      * @param testSuiteId
      * @param deep
-     * @param DETAILS
      * @return
      */
     protected TestCase[] getTestCasesForTestSuite(Integer testSuiteId, Boolean deep, TestCaseDetails detail)
@@ -366,7 +362,6 @@ class TestCaseService extends BaseService {
 
     /**
      * 
-     * @param DEV_KEY
      * @param testCaseName
      * @param testSuiteName
      * @param testProjectName
@@ -389,13 +384,18 @@ class TestCaseService extends BaseService {
             Object response = this
                     .executeXmlRpcCall(TestLinkMethods.GET_TEST_CASE_ID_BY_NAME.toString(), executionData);
 
-            Object[] responseArray = Util.castToArray(response);
-            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
-
+            Map<String, Object> responseMap;
+            if (response instanceof HashMap) {
+                HashMap hm = (HashMap<String, Object>)response;
+                responseMap = (Map<String, Object>)hm.get(hm.keySet().toArray()[0]);
+            } else {
+                Object[] responseArray = Util.castToArray(response);
+                responseMap = (Map<String, Object>) responseArray[0];
+            }
             testCaseID = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error getting test case ID : " + xmlrpcex.getMessage(), xmlrpcex);
-        }
+        } 
 
         return testCaseID;
     }
@@ -800,3 +800,4 @@ class TestCaseService extends BaseService {
     }
 
 }
+
