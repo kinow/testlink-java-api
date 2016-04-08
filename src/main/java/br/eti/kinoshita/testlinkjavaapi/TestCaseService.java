@@ -391,7 +391,7 @@ class TestCaseService extends BaseService {
 
             Map<String, Object> responseMap;
             if (response instanceof HashMap) {
-                HashMap hm = (HashMap<String, Object>)response;
+                Map<String, Object> hm = (HashMap<String, Object>)response;
                 responseMap = (Map<String, Object>)hm.get(hm.keySet().toArray()[0]);
             } else {
                 Object[] responseArray = Util.castToArray(response);
