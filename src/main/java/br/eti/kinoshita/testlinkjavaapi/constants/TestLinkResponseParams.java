@@ -113,7 +113,8 @@ public enum TestLinkResponseParams {
     PLATFORM_ID("platform_id"),
     PLATFORM_NAME("platform_name"),
     EXTERNAL_ID("external_id"),
-    EXECUTION_TS("execution_ts")
+    EXECUTION_TS("execution_ts"),
+    IMPORTANCE("importance")
     ;
 
     private String textValue;

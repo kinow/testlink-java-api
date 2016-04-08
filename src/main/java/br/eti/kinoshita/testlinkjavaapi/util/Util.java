@@ -1,25 +1,22 @@
 /*
  * The MIT License
- *
+ * 
  * Copyright (c) <2010> <Bruno P. Kinoshita>
  * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
  * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package br.eti.kinoshita.testlinkjavaapi.util;
 
@@ -38,6 +35,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
+
+import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
@@ -59,14 +58,14 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
 import br.eti.kinoshita.testlinkjavaapi.model.User;
 
 /**
- * Utility class with methods to handle the response or prepare the request to the PHP XML-RPC API. This class is able
- * to convert from a Map to an Object and vice-versa.
+ * Utility class with methods to handle the response or prepare the request to the PHP XML-RPC API.
+ * This class is able to convert from a Map to an Object and vice-versa.
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
 public final class Util {
-    
+
     private static final Logger LOG = Logger.getLogger(Util.class.getName());
 
     public static final Object[] EMPTY_ARRAY = new Object[0];
@@ -102,7 +101,8 @@ public final class Util {
     /**
      * Extracts a Test Project from a Map.
      * 
-     * @param map Map with properties of a Test Project.
+     * @param map
+     *            Map with properties of a Test Project.
      * @return Test Project.
      */
     @SuppressWarnings("unchecked")
@@ -134,7 +134,6 @@ public final class Util {
                     testProject.setActive(getBoolean(map, TestLinkResponseParams.ACTIVE.toString()));
                     testProject.setPublic(getBoolean(map, TestLinkResponseParams.IS_PUBLIC.toString()));
                 }
-
             }
         }
         return testProject;
@@ -339,7 +338,8 @@ public final class Util {
     }
 
     /**
-     * @param map Case Step map
+     * @param map
+     *            Case Step map
      * @return Test Case
      */
     public static TestCaseStep getTestCaseStep(Map<String, Object> map) {
@@ -377,7 +377,8 @@ public final class Util {
 
     /**
      * @param testCaseStep
-     * @param internal the API uses different names for the the same parameter in different methods.
+     * @param internal
+     *            the API uses different names for the the same parameter in different methods.
      * @return Map of Test Case Step.
      */
     public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
@@ -479,7 +480,8 @@ public final class Util {
                     Platform platform = null;
                     String platformName = getString(map, TestLinkResponseParams.PLATFORM_NAME.toString());
                     Integer platformId = getInteger(map, TestLinkResponseParams.PLATFORM_ID.toString());
-                    if (platformName != null || platformId != null) { // sometimes TL may return only one or the other
+                    if (platformName != null || platformId != null) { // sometimes TL may return
+                                                                      // only one or the other
                         platform = new Platform();
                         platform.setId(platformId);
                         platform.setName(platformName);
@@ -503,7 +505,9 @@ public final class Util {
                         }
                     }
                     testCase.setFullExternalId(fullExternalId);
-
+                    Integer testImportanceValue = getInteger(map, TestLinkResponseParams.IMPORTANCE.toString());
+                    TestImportance testImportance = TestImportance.valueOf(testImportanceValue);
+                    testCase.setTestImportance(testImportance);
                     Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
                     ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
                     testCase.setExecutionType(execution);
@@ -925,9 +929,12 @@ public final class Util {
     /**
      * Puts a boolean value into a map if the value is not null.
      * 
-     * @param map Map.
-     * @param key Key.
-     * @param boolValue Boolean value.
+     * @param map
+     *            Map.
+     * @param key
+     *            Key.
+     * @param boolValue
+     *            Boolean value.
      */
     public static final void putIfNotNullAndTrue(Map<String, Object> map, String key, Boolean boolValue) {
         if (Boolean.TRUE.equals(boolValue)) {
@@ -944,48 +951,50 @@ public final class Util {
     }
 
     @SuppressWarnings("unchecked")
-	public static final User getUser(Map<String, Object> map) {
-    	User user = null;
-    	if (map != null && map.size() > 0) {
-    		Object o = map.get(TestLinkResponseParams.DB_ID.toString());
-    		if (o != null) {
-    			Integer dbID = Integer.parseInt(o.toString());
-    			if (dbID > 0) {
-    				user = new User(dbID);
-    				user.setLogin(getString(map, TestLinkResponseParams.LOGIN.toString()));
-    				user.setFirstName(getString(map, TestLinkResponseParams.FIRST_NAME.toString()));
-    				user.setLastName(getString(map, TestLinkResponseParams.LAST_NAME.toString()));
-    				user.setLocale(getString(map, TestLinkResponseParams.LOCALE.toString()));
-    				user.setEmailAddress(getString(map, TestLinkResponseParams.EMAIL_ADDRESS.toString()));
-    				user.setIsActive(getInteger(map, TestLinkResponseParams.IS_ACTIVE.toString()));
-    				user.setUserApiKey(getString(map, TestLinkResponseParams.USER_API_KEY.toString()));
-    				user.setLoginRegExp(getString(map, TestLinkResponseParams.LOGIN_REGEXP.toString()));
-    				user.setTprojectRoles(getInteger(map, TestLinkResponseParams.TPROJECT_ROLES.toString()));
-    				user.setTplanRoles(getInteger(map, TestLinkResponseParams.TPLAN_ROLES.toString()));
-    				user.setGlobalRole(getRole((Map<String, Object>) map.get(TestLinkResponseParams.GLOBAL_ROLE.toString())));
-    				user.setGlobalRoleID(getInteger(map, TestLinkResponseParams.GLOBAL_ROLE_ID.toString()));
-    				user.setDefaultTestprojectID(getInteger(map, TestLinkResponseParams.DEFAULT_TESTPROJECT_ID.toString()));
-    			}
-    		}
-    	}
-    	return user;
+    public static final User getUser(Map<String, Object> map) {
+        User user = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.DB_ID.toString());
+            if (o != null) {
+                Integer dbID = Integer.parseInt(o.toString());
+                if (dbID > 0) {
+                    user = new User(dbID);
+                    user.setLogin(getString(map, TestLinkResponseParams.LOGIN.toString()));
+                    user.setFirstName(getString(map, TestLinkResponseParams.FIRST_NAME.toString()));
+                    user.setLastName(getString(map, TestLinkResponseParams.LAST_NAME.toString()));
+                    user.setLocale(getString(map, TestLinkResponseParams.LOCALE.toString()));
+                    user.setEmailAddress(getString(map, TestLinkResponseParams.EMAIL_ADDRESS.toString()));
+                    user.setIsActive(getInteger(map, TestLinkResponseParams.IS_ACTIVE.toString()));
+                    user.setUserApiKey(getString(map, TestLinkResponseParams.USER_API_KEY.toString()));
+                    user.setLoginRegExp(getString(map, TestLinkResponseParams.LOGIN_REGEXP.toString()));
+                    user.setTprojectRoles(getInteger(map, TestLinkResponseParams.TPROJECT_ROLES.toString()));
+                    user.setTplanRoles(getInteger(map, TestLinkResponseParams.TPLAN_ROLES.toString()));
+                    user.setGlobalRole(getRole((Map<String, Object>) map.get(TestLinkResponseParams.GLOBAL_ROLE
+                            .toString())));
+                    user.setGlobalRoleID(getInteger(map, TestLinkResponseParams.GLOBAL_ROLE_ID.toString()));
+                    user.setDefaultTestprojectID(getInteger(map,
+                            TestLinkResponseParams.DEFAULT_TESTPROJECT_ID.toString()));
+                }
+            }
+        }
+        return user;
     }
 
     public static final Role getRole(Map<String, Object> map) {
-    	Role role = null;
-    	if (map != null && map.size() > 0) {
-    		Object o = map.get(TestLinkResponseParams.DB_ID.toString());
-    		if (o != null) {
-    			Integer dbID = Integer.parseInt(o.toString());
-    			if (dbID > 0) {
-    				role = new Role(dbID);
-    				role.setDescription(getString(map, TestLinkResponseParams.DESCRIPTION.toString()));
-    				role.setName(getString(map, TestLinkResponseParams.NAME.toString()));
-    				role.setRights((Object[]) map.get(TestLinkResponseParams.RIGHTS.toString()));
-    			}
-    		}
-    	}
-    	return role;
+        Role role = null;
+        if (map != null && map.size() > 0) {
+            Object o = map.get(TestLinkResponseParams.DB_ID.toString());
+            if (o != null) {
+                Integer dbID = Integer.parseInt(o.toString());
+                if (dbID > 0) {
+                    role = new Role(dbID);
+                    role.setDescription(getString(map, TestLinkResponseParams.DESCRIPTION.toString()));
+                    role.setName(getString(map, TestLinkResponseParams.NAME.toString()));
+                    role.setRights((Object[]) map.get(TestLinkResponseParams.RIGHTS.toString()));
+                }
+            }
+        }
+        return role;
     }
 
 }
