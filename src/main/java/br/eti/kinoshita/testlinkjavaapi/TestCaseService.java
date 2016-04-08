@@ -116,14 +116,22 @@ class TestCaseService extends BaseService {
         return testCase;
     }
 
-    public void updateTestCase(TestCase tc) throws TestLinkAPIException {
+    public Map<String, Object> updateTestCase(TestCase tc) throws TestLinkAPIException {
         try {
+            Map<String, Object> responseMap = null;
             Map<String, Object> executionData = Util.getTestCaseMap(tc);
-            /* Object response = */ this.executeXmlRpcCall(TestLinkMethods.UPDATE_TEST_CASE.toString(), executionData);
-//            Object[] responseArray = Util.castToArray(response);
-//            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+            Object response = this.executeXmlRpcCall(TestLinkMethods.UPDATE_TEST_CASE.toString(), executionData);
+            if (response instanceof Object[]) {
+                Object[] arr = (Object[]) response;
+                if (arr.length > 0 && arr[0] instanceof Map<?, ?>) {
+                    responseMap = (Map<String, Object>) arr[0];
+                }
+            } else {
+                responseMap = (Map<String, Object>) response;
+            }
+            return responseMap;
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error updating test plan: " + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException("Error updating test case: " + xmlrpcex.getMessage(), xmlrpcex);
         }
     }
 
