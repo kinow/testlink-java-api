@@ -33,8 +33,8 @@ import java.util.List;
  */
 public class TestPlan implements Serializable {
 
-    private static final long serialVersionUID = 3030116951146834578L;
-    
+    private static final long serialVersionUID = -758553487485596180L;
+
     private Integer id;
     private String name;
     private String projectName;
