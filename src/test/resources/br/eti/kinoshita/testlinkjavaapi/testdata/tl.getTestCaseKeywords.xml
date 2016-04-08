@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<methodResponse>
+	<params>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value>
+							<struct>
+								<member>
+									<name>keyword</name>
+									<value>
+										<string>1</string>
+									</value>
+								</member>
+							</struct>
+						</value>
+					</data>
+				</array>
+			</value>
+		</param>
+	</params>
+</methodResponse>

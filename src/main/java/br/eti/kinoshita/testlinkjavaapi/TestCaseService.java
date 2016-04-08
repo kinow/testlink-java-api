@@ -23,8 +23,12 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
@@ -706,6 +710,39 @@ class TestCaseService extends BaseService {
         return customField;
     }
 
+	/**
+	 * Gets list of keywords for a given Test case
+	 * 
+	 * @param testCaseId
+	 * @param testCaseExternalId
+	 * @param version
+	 * @return
+	 * @throws TestLinkAPIException
+	 */
+	protected List<String> getTestCaseKeywords(Integer testProjectId, Integer testCaseId) throws TestLinkAPIException {
+		List<String> keywords = new ArrayList<String>();
+
+		try {
+			Map<String, Object> executionData = new HashMap<String, Object>();
+
+			executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+			executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
+
+			Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_CASE_KEYWORDS.toString(), executionData);
+			Object[] responseArray = (Object[]) response;
+			for (Object keywordObject : responseArray) {
+				Map<String, String> keywordMap = (Map<String, String>) keywordObject;
+				keywords.add(keywordMap.get("keyword"));
+			}
+
+			// testCase = Util.getTestCase(responseMap);
+		} catch (XmlRpcException xmlrpcex) {
+			throw new TestLinkAPIException("Error getting test case info : " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+
+		return keywords;
+	}
+	
     /**
      * @param testProjectId
      * @param testCaseExternalId
