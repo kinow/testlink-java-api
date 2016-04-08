@@ -24,6 +24,8 @@
 package br.eti.kinoshita.testlinkjavaapi.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
@@ -39,12 +41,27 @@ public class TestPlan implements Serializable {
     private String notes;
     private Boolean isActive;
     private Boolean isPublic;
-
+    private List<CustomField> customFields;
     /**
 	 * 
 	 */
     public TestPlan() {
-	super();
+	    super();
+        this.customFields = new ArrayList<CustomField>();
+    }
+
+    /**
+     *
+     * @param id
+     * @param name
+     * @param projectName
+     * @param notes
+     * @param isActive
+     * @param isPublic
+     */
+    public TestPlan(Integer id, String name, String projectName, String notes,
+                    Boolean isActive, Boolean isPublic){
+        this(id, name, projectName, notes, isActive, isPublic, new ArrayList<CustomField>());
     }
 
     /**
@@ -54,9 +71,10 @@ public class TestPlan implements Serializable {
      * @param notes
      * @param isActive
      * @param isPublic
+     * @param customFields
      */
     public TestPlan(Integer id, String name, String projectName, String notes,
-	    Boolean isActive, Boolean isPublic) {
+	    Boolean isActive, Boolean isPublic, List<CustomField> customFields) {
 	super();
 	this.id = id;
 	this.name = name;
@@ -64,6 +82,7 @@ public class TestPlan implements Serializable {
 	this.notes = notes;
 	this.isActive = isActive;
 	this.isPublic = isPublic;
+    this.customFields = customFields;
     }
 
     /**
@@ -154,6 +173,14 @@ public class TestPlan implements Serializable {
      */
     public void setPublic(Boolean isPublic) {
 	this.isPublic = isPublic;
+    }
+
+    public List<CustomField> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(List<CustomField> customFields) {
+        this.customFields = customFields;
     }
 
     /*
