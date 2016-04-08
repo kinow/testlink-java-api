@@ -728,8 +728,14 @@ public class TestLinkAPI {
                 actionOnDuplicatedName);
     }
 
-    public void updateTestCase(TestCase tc) throws TestLinkAPIException {
-        this.testCaseService.updateTestCase(tc);
+    /**
+     * Update an already existing test case with the data of the given test case as a new version.
+     * @param tc new version of the test case
+     * @return response map
+     * @throws TestLinkAPIException if updating the test case fails
+     */
+    public Map<String, Object> updateTestCase(TestCase tc) throws TestLinkAPIException {
+        return this.testCaseService.updateTestCase(tc);
     }
 
     /**
