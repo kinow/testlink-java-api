@@ -5,6 +5,21 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="1.9.14-0" date="2016-04-10" description="1.9.14-0 release">
+            <action dev="feixiang8418" type="fix">
+                Pull request 34: add casting fix
+            </action>
+            <action dev="dida43" type="add">
+                Pull request 65: updated to set version on creating test case
+            </action>
+            <action dev="maiksaray" type="add">
+                Pull request 60: implemented support for testplan custom fields values
+                obtaining
+            </action>
+            <action dev="s2oBCN" type="add">
+                Pull request 43: Added getTestCaseKeywords
+            </action>
+        </release>
         <release version="1.9.13-0" date="2015-07-10" description="1.9.13-0 release">
             <action dev="pozharko" type="add">
                 Pull request: implemented method : assignTestCaseExecutionTask
