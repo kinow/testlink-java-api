@@ -1,6 +1,5 @@
-.project
-.classpath
-.settings
-test-output
-target
-bin
+/bin/
+/target/
+/.settings/
+/.classpath
+/.project

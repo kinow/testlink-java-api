@@ -51,7 +51,7 @@ public class TestCreateTestCase extends BaseTest {
 
         try {
             testCase = api.createTestCase("Sample Test Case " + System.currentTimeMillis(), testSuiteId, testProjectId,
-                    authorLogin, summary, null, preconditions, null, null, null, null, null, null);
+                    authorLogin, summary, null, preconditions, null, null, null, null, null, null, null);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }

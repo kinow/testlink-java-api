@@ -39,6 +39,7 @@ public enum TestLinkMethods {
     GET_PROJECT_TEST_PLANS("tl.getProjectTestPlans"), 
     GET_TEST_PLAN_PLATFORMS("tl.getTestPlanPlatforms"), 
     CREATE_TEST_CASE("tl.createTestCase"), 
+    UPDATE_TEST_CASE("tl.updateTestCase"),     
     CREATE_TEST_CASE_STEPS("tl.createTestCaseSteps"), 
     DELETE_TEST_CASE_STEPS("tl.deleteTestCaseSteps"), 
     CREATE_TEST_SUITE("tl.createTestSuite"), 
