@@ -508,9 +508,11 @@ public final class Util {
                     testCase.setFullExternalId(fullExternalId);
 
                     TestCaseStatus status = TestCaseStatus.DRAFT;
-                    int testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
-                    status = TestCaseStatus.values()[TestCaseStatus.values().length - testCaseStatusId];
-                    testCase.setTestCaseStatus(status);
+                    Integer testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
+                    if (testCaseStatusId != null) {
+                        status = TestCaseStatus.values()[TestCaseStatus.values().length - testCaseStatusId];
+                        testCase.setTestCaseStatus(status);
+                    }
 
                     Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
                     ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
