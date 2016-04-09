@@ -41,6 +41,7 @@ import org.apache.commons.lang.StringUtils;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkParams;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
@@ -277,6 +278,8 @@ public final class Util {
 
         executionData.put(TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
         executionData
+                .put(TestLinkParams.STATUS.toString(), Util.getStringValueOrNull(testCase.getTestCaseStatus()));
+        executionData
                 .put(TestLinkParams.IMPORTANCE.toString(), Util.getStringValueOrNull(testCase.getTestImportance()));
         executionData.put(TestLinkParams.EXECUTION_TYPE.toString(),
                 Util.getStringValueOrNull(testCase.getExecutionType()));
@@ -503,6 +506,11 @@ public final class Util {
                         }
                     }
                     testCase.setFullExternalId(fullExternalId);
+
+                    TestCaseStatus status = TestCaseStatus.DRAFT;
+                    int testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
+                    status = TestCaseStatus.values()[TestCaseStatus.values().length - testCaseStatusId];
+                    testCase.setTestCaseStatus(status);
 
                     Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
                     ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
