@@ -19,6 +19,9 @@
             <action dev="s2oBCN" type="add">
                 Pull request 43: Added getTestCaseKeywords
             </action>
+            <action dev="eitzenbe" type="add">
+                Pull request 67: adding updatetestcase method
+            </action>
         </release>
         <release version="1.9.13-0" date="2015-07-10" description="1.9.13-0 release">
             <action dev="pozharko" type="add">
