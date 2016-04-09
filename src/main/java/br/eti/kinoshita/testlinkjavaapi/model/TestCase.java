@@ -63,6 +63,7 @@ public class TestCase implements Serializable {
     private Integer parentId;
     private List<CustomField> customFields;
     private ExecutionStatus executionStatus;
+    private Float estExecutionDuration;
     private Platform platform;
     private Integer featureId;
 
@@ -460,7 +461,18 @@ public class TestCase implements Serializable {
     public void setExecutionStatus(ExecutionStatus executionStatus) {
         this.executionStatus = executionStatus;
     }
+    
+    /**
+     * @return estimated execution duration
+     */
+    public Float getEstExecutionDuration() {
+            return estExecutionDuration;
+    }
 
+    public void setEstExecutionDuration(Float estExecutionDuration) {
+        this.estExecutionDuration = estExecutionDuration;
+    }
+    
     /**
      * @return the platform
      */

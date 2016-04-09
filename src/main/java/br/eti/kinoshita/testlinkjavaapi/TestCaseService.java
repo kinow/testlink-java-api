@@ -543,7 +543,8 @@ class TestCaseService extends BaseService {
      * @param testCaseId
      * @param testCaseExternalId
      * @param testPlanId
-     * @param status
+     * @param execStatus
+     * @param estExecutionDuration
      * @param buildId
      * @param buildName
      * @param notes
@@ -557,7 +558,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+            ExecutionStatus execStatus, Float estExecutionDuration, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
             Integer platformId, String platformName, Map<String, String> customFields, 
             Boolean overwrite) throws TestLinkAPIException {
         // TODO: Map<String, String> customFields => 
@@ -570,7 +571,8 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-            executionData.put(TestLinkParams.STATUS.toString(), status.toString());
+            executionData.put(TestLinkParams.STATUS.toString(), execStatus.toString()); //TODO verify this, as i would assume that EXECUTE_STATUS should be used
+            executionData.put(TestLinkParams.EXECUTION_DURATION.toString(), estExecutionDuration);
             executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
             executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
             executionData.put(TestLinkParams.NOTES.toString(), notes);

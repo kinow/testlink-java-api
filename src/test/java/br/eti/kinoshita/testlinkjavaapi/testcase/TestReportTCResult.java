@@ -60,7 +60,7 @@ public class TestReportTCResult extends BaseTest {
 	ReportTCResultResponse response = null;
 	try {
 	    response = this.api.reportTCResult(testCaseId, null, testPlanId,
-		    ExecutionStatus.FAILED, buildId, buildName, notes, true,
+		    ExecutionStatus.FAILED, null, buildId, buildName, notes, true,
 		    null, platformId, platformName, null, // TODO: Test custom
 							  // fields!
 		    true);
@@ -82,7 +82,7 @@ public class TestReportTCResult extends BaseTest {
 	ReportTCResultResponse response = null;
 	try {
 	    response = this.api.setTestCaseExecutionResult(testCaseId, null,
-		    testPlanId, ExecutionStatus.PASSED, buildId, buildName,
+		    testPlanId, ExecutionStatus.PASSED, null, buildId, buildName,
 		    notes, true, null, platformId, platformName, null, // TODO:
 								       // Test
 								       // custom

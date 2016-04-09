@@ -918,6 +918,7 @@ public class TestLinkAPI {
      * @param testCaseExternalId
      * @param testPlanId
      * @param status
+     * @param execDuration
      * @param buildId
      * @param buildName
      * @param notes
@@ -930,10 +931,10 @@ public class TestLinkAPI {
      * @throws TestLinkAPIException
      */
     public ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+            ExecutionStatus status, Float execDuration, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
             Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, buildId,
+        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, execDuration, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
     }
 
@@ -943,7 +944,8 @@ public class TestLinkAPI {
      * @param testCaseId
      * @param testCaseExternalId
      * @param testPlanId
-     * @param status
+     * @param execStatus
+     * @param execDuration
      * @param buildId
      * @param buildName
      * @param notes
@@ -956,10 +958,10 @@ public class TestLinkAPI {
      * @throws TestLinkAPIException
      */
     public ReportTCResultResponse setTestCaseExecutionResult(Integer testCaseId, Integer testCaseExternalId,
-            Integer testPlanId, ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess,
+            Integer testPlanId, ExecutionStatus execStatus, Float execDuration, Integer buildId, String buildName, String notes, Boolean guess,
             String bugId, Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, buildId,
+        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, execStatus, execDuration, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
     }
 

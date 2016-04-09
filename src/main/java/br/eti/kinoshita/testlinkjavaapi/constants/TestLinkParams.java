@@ -62,7 +62,7 @@ public enum TestLinkParams {
     ENABLE_INVENTORY("inventoryEnabled "), 
     ENABLE_REQUIREMENTS("requirementsEnabled"), 
     ENABLE_TEST_PRIORITY("testPriorityEnabled"), 
-    ESTIMATED_EXECUTION_DURATION("estimated_execution_duration"), 
+    EXECUTION_DURATION("execduration"), 
     EXECUTED("executed"), 
     EXECUTE_STATUS("executestatus"),
     EXECUTION("execution"), 
