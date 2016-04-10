@@ -25,6 +25,7 @@ package br.eti.kinoshita.testlinkjavaapi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -295,8 +296,11 @@ class TestCaseService extends BaseService {
 
             Map<String, Object> responseMap = Util.castToMap(response);
             Set<Entry<String, Object>> entrySet = responseMap.entrySet();
-            testCases = new TestCase[entrySet.size()];
-            int index = 0;
+            
+            List<TestCase> testCasesList = new ArrayList<TestCase>();
+            
+            
+            
             for (Entry<String, Object> entry : entrySet) {
                 String key = entry.getKey();
                 Map<String, Object> testCaseMap = null;
@@ -304,20 +308,41 @@ class TestCaseService extends BaseService {
                 if (entry.getValue() instanceof Object[]) {
                     Object[] responseArray = (Object[]) entry.getValue();
                     testCaseMap = (Map<String, Object>) responseArray[0];
+                    
+                    testCaseMap.put(TestLinkResponseParams.ID.toString(), key);
+                    testCasesList.add( Util.getTestCase(testCaseMap));
+                   
+                    
                 } else if (entry.getValue() instanceof Map<?, ?>) {
                     testCaseMap = (Map<String, Object>) entry.getValue();
                     if (testCaseMap.size() > 0) {
                         Set<String> keys = testCaseMap.keySet();
-                        Object o = testCaseMap.get(keys.iterator().next());
-                        if (o instanceof Map<?, ?>) {
-                            testCaseMap = (Map<String, Object>) o;
+                        Iterator it = keys.iterator();
+                        while (it.hasNext()){
+                        	Object o = testCaseMap.get(it.next());
+                        
+	                        if (o instanceof Map<?, ?>) {
+	                        	Map<String, Object> testCaseMapTmp = (Map<String, Object>) o;	                        
+	                        	testCaseMapTmp.put(TestLinkResponseParams.ID.toString(), key);
+	                        	testCasesList.add( Util.getTestCase(testCaseMapTmp) );
+	                            
+	                        }
+	                        
                         }
+                    } else {
+                        testCaseMap.put(TestLinkResponseParams.ID.toString(), key);
+                        testCasesList.add( Util.getTestCase(testCaseMap) );
+                        
                     }
-                }
-                testCaseMap.put(TestLinkResponseParams.ID.toString(), key);
-                testCases[index] = Util.getTestCase(testCaseMap);
-                index += 1;
+                }    
             }
+            
+
+            testCases = new TestCase[testCasesList.size()];
+            for (int i = 0 ; i <  testCasesList.size() ; i++ ){
+            	testCases[i] = testCasesList.get(i);
+            }
+            
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error retrieving test cases for test plan: " + xmlrpcex.getMessage(),
                     xmlrpcex);
@@ -326,6 +351,7 @@ class TestCaseService extends BaseService {
         return testCases;
     }
 
+    
     /**
      *
      * @param testCaseId
