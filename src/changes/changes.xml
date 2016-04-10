@@ -22,6 +22,9 @@
             <action dev="eitzenbe" type="add">
                 Pull request 67: adding updatetestcase method
             </action>
+            <action dev="davidrova" type="add">
+                Pull request 39: Retrieve the full test plan - testcase-platform.
+            </action>
         </release>
         <release version="1.9.13-0" date="2015-07-10" description="1.9.13-0 release">
             <action dev="pozharko" type="add">
