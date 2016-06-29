@@ -485,13 +485,13 @@ public final class Util {
                     if (importanceInt != null) {
                         switch (importanceInt) {
                         case 1:
-                            testCase.setTestImportance(TestImportance.HIGH);
+                            testCase.setTestImportance(TestImportance.LOW);
                             break;
                         case 2:
                             testCase.setTestImportance(TestImportance.MEDIUM);
                             break;
                         case 3:
-                            testCase.setTestImportance(TestImportance.LOW);
+                            testCase.setTestImportance(TestImportance.HIGH);
                             break;
                         }
                     } else {
@@ -556,14 +556,13 @@ public final class Util {
                     }
                     testCase.setExecutionStatus(executionStatus);
 
-                    try {
-                        Float duration = Float
-                                .valueOf(getString(map, TestLinkResponseParams.EXECUTION_DURATION.toString()));
-                        testCase.setEstExecutionDuration(duration);
-                    } catch (Exception e) {
-                        LOG.warning(
-                                "Non float '" + getString(map, TestLinkResponseParams.EXECUTION_DURATION.toString())
-                                        + " received for est. exec duration!");
+                    String durationstr = getString(map, TestLinkResponseParams.EXECUTION_DURATION.toString());
+                    if (durationstr != null) {
+                        try {
+                            testCase.setEstExecutionDuration(Float.valueOf(durationstr));
+                        } catch (Exception e) {
+                            LOG.warning("Non float '" + durationstr + " received for est. exec duration, got " + e.getMessage());
+                        }
                     }
 
                     testCase.setTestProjectId(getInteger(map, TestLinkParams.TEST_PROJECT_ID.toString()));
