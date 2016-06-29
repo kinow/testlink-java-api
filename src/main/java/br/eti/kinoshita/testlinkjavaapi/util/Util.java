@@ -42,6 +42,7 @@ import org.apache.commons.lang.StringUtils;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
+import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkParams;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkResponseParams;
 import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
@@ -480,6 +481,23 @@ public final class Util {
                     testCase.setParentId(getInteger(map, TestLinkResponseParams.PARENT_ID.toString()));
                     testCase.setOrder(getInteger(map, TestLinkResponseParams.ORDER.toString()));
                     testCase.setExecutionOrder(getInteger(map, TestLinkResponseParams.EXECUTION_ORDER.toString()));
+                    Integer importanceInt = getInteger(map, TestLinkResponseParams.IMPORTANCE.toString());
+                    if (importanceInt != null) {
+                        switch (importanceInt) {
+                        case 1:
+                            testCase.setTestImportance(TestImportance.HIGH);
+                            break;
+                        case 2:
+                            testCase.setTestImportance(TestImportance.MEDIUM);
+                            break;
+                        case 3:
+                            testCase.setTestImportance(TestImportance.LOW);
+                            break;
+                        }
+                    } else {
+                        // Response didn't contain the importance field of the test case
+                    }
+
                     // the name of the test case is not always in the same
                     // parameter
                     String testCaseName = getString(map, TestLinkResponseParams.TCASE_NAME.toString());
