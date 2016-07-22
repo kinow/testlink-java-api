@@ -587,6 +587,19 @@ public class TestLinkAPI {
     /**
      * Creates a Build.
      * 
+     * @param buildId
+     * @param testProjectId
+     * @param customFields
+     * @return Response
+     * @throws TestLinkAPIException
+     */
+    public Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) throws TestLinkAPIException {
+        return this.buildService.updateBuildCustomFields(buildId, testProjectId, testPlanId, customFields);
+    }
+
+    /**
+     * Creates a Build.
+     *
      * @param testPlanId
      * @param buildName
      * @param buildNotes
