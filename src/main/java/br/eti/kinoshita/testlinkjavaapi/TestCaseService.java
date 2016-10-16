@@ -317,7 +317,7 @@ class TestCaseService extends BaseService {
                     testCaseMap = (Map<String, Object>) entry.getValue();
                     if (testCaseMap.size() > 0) {
                         Set<String> keys = testCaseMap.keySet();
-                        Iterator it = keys.iterator();
+                        Iterator<String> it = keys.iterator();
                         while (it.hasNext()){
                         	Object o = testCaseMap.get(it.next());
                         
