@@ -8,9 +8,9 @@
 	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
 
 	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>5</version>
+	    <groupId>com.tupilabs</groupId>
+	    <artifactId>parent-oss</artifactId>
+	    <version>0.1</version>
 	</parent>
 
 	<inceptionYear>2010-2011 the testlink-java-api team</inceptionYear>
