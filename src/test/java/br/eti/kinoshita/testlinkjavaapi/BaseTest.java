@@ -51,8 +51,7 @@ public class BaseTest {
     protected HttpTestServer server;
 
     /**
-     * Whether the tests are being mocked, and XML with the prepared response
-     * are being used.
+     * Whether the tests are being mocked, and XML with the prepared response are being used.
      */
     protected boolean mocked = true;
 

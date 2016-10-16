@@ -62,8 +62,7 @@ abstract class BaseService {
     }
 
     /**
-     * Executes the XML-RPC call to the method in the server, passing the
-     * execution data map.
+     * Executes the XML-RPC call to the method in the server, passing the execution data map.
      * 
      * @param methodName name of the method.
      * @param executionData execution data map.

@@ -290,9 +290,8 @@ class TestCaseService extends BaseService {
                     executionData);
 
             /*
-             * // The Util.castToMap method will return an empty Map if (
-             * response instanceof String ) { throw new TestLinkAPIException(
-             * "The test plan you requested does not contain Test Cases." ); }
+             * // The Util.castToMap method will return an empty Map if ( response instanceof String ) { throw new
+             * TestLinkAPIException( "The test plan you requested does not contain Test Cases." ); }
              */
 
             Map<String, Object> responseMap = Util.castToMap(response);
