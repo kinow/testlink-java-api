@@ -1,16 +1,7 @@
-package br.eti.kinoshita.testlinkjavaapi.testcase;
-
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
-
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +21,15 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package br.eti.kinoshita.testlinkjavaapi.testcase;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import br.eti.kinoshita.testlinkjavaapi.BaseTest;
+import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
+
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
