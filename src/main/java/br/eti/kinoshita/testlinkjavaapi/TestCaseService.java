@@ -296,11 +296,10 @@ class TestCaseService extends BaseService {
              */
 
             Map<String, Object> responseMap = Util.castToMap(response);
-            Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 
             List<TestCase> testCasesList = new ArrayList<TestCase>();
 
-            for (Entry<String, Object> entry : entrySet) {
+            for (Entry<String, Object> entry : responseMap.entrySet()) {
                 String key = entry.getKey();
                 Map<String, Object> testCaseMap = null;
 
@@ -335,10 +334,7 @@ class TestCaseService extends BaseService {
                 }
             }
 
-            testCases = new TestCase[testCasesList.size()];
-            for (int i = 0; i < testCasesList.size(); i++) {
-                testCases[i] = testCasesList.get(i);
-            }
+            testCases = testCasesList.toArray(new TestCase[0]);
 
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error retrieving test cases for test plan: " + xmlrpcex.getMessage(),
