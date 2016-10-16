@@ -349,8 +349,8 @@
             </activation>
             <distributionManagement>
                 <site>
-                    <id>testlinkjavaapi.sf.net</id>
-                    <url>scp://shell.sourceforge.net/home/project-web/testlinkjavaapi/htdocs/</url>
+                    <id>tap4j-github-site</id>
+                    <url>gitsite:git@github.com/tupilabs/tap4j.git</url>
                 </site>
             </distributionManagement>
         </profile>
