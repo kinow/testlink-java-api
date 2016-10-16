@@ -26,6 +26,7 @@ package br.eti.kinoshita.testlinkjavaapi;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.Charset;
 
 import org.apache.commons.io.FileUtils;
 import org.testng.annotations.AfterClass;
@@ -80,7 +81,7 @@ public class BaseTest {
             File file = FileUtils.toFile(url);
             String mockXml;
             try {
-                mockXml = FileUtils.readFileToString(file);
+                mockXml = FileUtils.readFileToString(file, Charset.defaultCharset());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

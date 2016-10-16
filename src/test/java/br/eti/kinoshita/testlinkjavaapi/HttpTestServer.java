@@ -24,6 +24,7 @@
 package br.eti.kinoshita.testlinkjavaapi;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -83,7 +84,7 @@ public class HttpTestServer {
 				Request baseRequest = HttpConnection.getCurrentConnection()
 						.getRequest();
 				setResponseBody(getMockResponseBody());
-				setRequestBody(IOUtils.toString(baseRequest.getInputStream()));
+				setRequestBody(IOUtils.toString(baseRequest.getInputStream(), Charset.defaultCharset()));
 				httpResponse.setStatus(HttpServletResponse.SC_OK);
 				httpResponse.setContentType("text/xml;charset=utf-8");
 				httpResponse.getWriter().write(getResponseBody());
