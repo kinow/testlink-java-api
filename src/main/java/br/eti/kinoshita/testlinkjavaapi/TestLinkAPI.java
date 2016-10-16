@@ -967,6 +967,7 @@ public class TestLinkAPI {
      * @param customFields custom fields
      * @param overwrite flag to overwrite or not
      * @throws TestLinkAPIException if the service returns an error
+     * @return report test case result server response
      */
     public ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
             ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
