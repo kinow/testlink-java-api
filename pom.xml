@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <!-- 
   The MIT License
   
@@ -23,16 +24,20 @@
   THE SOFTWARE.
  -->
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>br.eti.kinoshita</groupId>
 	<artifactId>testlink-java-api</artifactId>
 	<version>1.9.14-1-SNAPSHOT</version>
+
 	<name>TestLink Java API</name>
-	<description>TestLink Java API interfaces TestLink PHP xml-rpc API.</description>
+	<description>TestLink Java API to interface with TestLink PHP XML-RPC API.</description>
+
+	<url>http://sourceforge.net/projects/testlinkjavaapi</url>
 
 	<parent>
-	    <groupId>com.tupilabs</groupId>
-	    <artifactId>parent-oss</artifactId>
-	    <version>0.1</version>
+		<groupId>com.tupilabs</groupId>
+		<artifactId>parent-oss</artifactId>
+		<version>0.1</version>
 	</parent>
 
 	<inceptionYear>2010</inceptionYear>
@@ -73,8 +78,6 @@
 		</developer>
 	</developers>
 
-	<url>http://sourceforge.net/projects/testlinkjavaapi</url>
-
 	<licenses>
 		<license>
 			<name>MIT</name>
@@ -87,8 +90,8 @@
 		<connection>scm:git:git@github.com:kinow/testlink-java-api.git</connection>
 		<developerConnection>scm:git:git@github.com:kinow/testlink-java-api.git</developerConnection>
 		<url>http://github.com/kinow/testlink-java-api</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -234,9 +237,9 @@
 							<version>2.5.1</version>
 						</plugin>
 						<plugin>
-						    <groupId>org.apache.maven.plugins</groupId>
-						    <artifactId>maven-changes-plugin</artifactId>
-						    <version>2.9</version>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-changes-plugin</artifactId>
+							<version>2.9</version>
 						</plugin>
 					</reportPlugins>
 				</configuration>
