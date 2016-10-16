@@ -28,11 +28,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.configuration.CompositeConfiguration;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.ConversionException;
-import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.commons.configuration.SystemConfiguration;
+import org.apache.commons.configuration2.CompositeConfiguration;
+import org.apache.commons.configuration2.PropertiesConfiguration;
+import org.apache.commons.configuration2.SystemConfiguration;
+import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Parameters;
+import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+import org.apache.commons.configuration2.ex.ConversionException;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -155,7 +158,15 @@ public class TestLinkAPI {
         CompositeConfiguration appConfig = new CompositeConfiguration();
         appConfig.addConfiguration(new SystemConfiguration());
         try {
-            appConfig.addConfiguration(new PropertiesConfiguration("testlinkjavaapi.properties"));
+            FileBasedConfigurationBuilder<PropertiesConfiguration> builder =
+                    new FileBasedConfigurationBuilder<PropertiesConfiguration>(PropertiesConfiguration.class)
+                    .configure(new Parameters().properties()
+                            .setFileName("testlinkjavaapi.properties")
+                            .setThrowExceptionOnMissing(true)
+                            .setListDelimiterHandler(new DefaultListDelimiterHandler(';'))
+                            .setIncludesAllowed(false));
+            PropertiesConfiguration propertiesConfiguration = builder.getConfiguration();
+            appConfig.addConfiguration(propertiesConfiguration);
         } catch (ConfigurationException ce) {
             this.debug(ce);
         }
