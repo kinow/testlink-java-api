@@ -44,17 +44,17 @@ import java.io.Serializable;
 public class Build implements Serializable {
 
     private static final long serialVersionUID = 139468407361322252L;
-    
+
     private Integer id;
     private Integer testPlanId;
     private String buildName;
     private String buildNotes;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public Build() {
-	super();
+        super();
     }
 
     /**
@@ -64,71 +64,67 @@ public class Build implements Serializable {
      * @param notes
      */
     public Build(Integer id, Integer testPlanId, String name, String notes) {
-	super();
-	this.id = id;
-	this.testPlanId = testPlanId;
-	this.buildName = name;
-	this.buildNotes = notes;
+        super();
+        this.id = id;
+        this.testPlanId = testPlanId;
+        this.buildName = name;
+        this.buildNotes = notes;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the testPlanId
      */
     public Integer getTestPlanId() {
-	return testPlanId;
+        return testPlanId;
     }
 
     /**
-     * @param testPlanId
-     *            the testPlanId to set
+     * @param testPlanId the testPlanId to set
      */
     public void setTestPlanId(Integer testPlanId) {
-	this.testPlanId = testPlanId;
+        this.testPlanId = testPlanId;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return buildName;
+        return buildName;
     }
 
     /**
-     * @param name
-     *            the buildName to set
+     * @param name the buildName to set
      */
     public void setName(String name) {
-	this.buildName = name;
+        this.buildName = name;
     }
 
     /**
      * @return the buildNotes
      */
     public String getNotes() {
-	return buildNotes;
+        return buildNotes;
     }
 
     /**
-     * @param buildNotes
-     *            the buildNotes to set
+     * @param buildNotes the buildNotes to set
      */
     public void setNotes(String buildNotes) {
-	this.buildNotes = buildNotes;
+        this.buildNotes = buildNotes;
     }
 
     /*
@@ -138,8 +134,7 @@ public class Build implements Serializable {
      */
     @Override
     public String toString() {
-	return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name="
-		+ buildName + ", notes=" + buildNotes + "]";
+        return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name=" + buildName + ", notes=" + buildNotes + "]";
     }
 
 }

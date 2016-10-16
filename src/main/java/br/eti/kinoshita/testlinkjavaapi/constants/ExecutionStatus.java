@@ -34,29 +34,29 @@ public enum ExecutionStatus {
     private char value;
 
     ExecutionStatus(char value) {
-	this.value = value;
+        this.value = value;
     }
 
     public String toString() {
-	return Character.toString(this.value);
+        return Character.toString(this.value);
     }
 
     public static ExecutionStatus getExecutionStatus(char c) {
-	switch (c) {
-	case 'n':
-	case 'N':
-	    return NOT_RUN;
-	case 'p':
-	case 'P':
-	    return PASSED;
-	case 'f':
-	case 'F':
-	    return FAILED;
-	case 'b':
-	case 'B':
-	    return BLOCKED;
-	}
-	return null;
+        switch (c) {
+        case 'n':
+        case 'N':
+            return NOT_RUN;
+        case 'p':
+        case 'P':
+            return PASSED;
+        case 'f':
+        case 'F':
+            return FAILED;
+        case 'b':
+        case 'B':
+            return BLOCKED;
+        }
+        return null;
     }
 
 }

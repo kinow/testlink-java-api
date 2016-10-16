@@ -34,7 +34,7 @@ public enum ResponseDetails {
     private String value;
 
     ResponseDetails(String value) {
-	this.value = value;
+        this.value = value;
     }
 
     /*
@@ -44,7 +44,7 @@ public enum ResponseDetails {
      */
     @Override
     public String toString() {
-	return this.value;
+        return this.value;
     }
 
 }

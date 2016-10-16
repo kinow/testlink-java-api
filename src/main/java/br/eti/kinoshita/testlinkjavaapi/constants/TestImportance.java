@@ -34,7 +34,7 @@ public enum TestImportance {
     private Integer value;
 
     TestImportance(Integer value) {
-	this.value = value;
+        this.value = value;
     }
 
     /*
@@ -44,7 +44,7 @@ public enum TestImportance {
      */
     @Override
     public String toString() {
-	return Integer.toString(this.value);
+        return Integer.toString(this.value);
     }
 
     /*
@@ -53,7 +53,7 @@ public enum TestImportance {
      * @see br.eti.kinoshita.testlinkjavaapi.model.IntegerValueEnum#getValue()
      */
     public Integer getValue() {
-	return this.value;
+        return this.value;
     }
 
 }

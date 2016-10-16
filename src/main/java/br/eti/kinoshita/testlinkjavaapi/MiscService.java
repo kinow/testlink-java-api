@@ -96,8 +96,8 @@ class MiscService extends BaseService {
      * @return user
      * @throws TestLinkAPIException
      */
-	@SuppressWarnings("unchecked")
-	protected User getUserByLogin(String login) throws TestLinkAPIException {
+    @SuppressWarnings("unchecked")
+    protected User getUserByLogin(String login) throws TestLinkAPIException {
         User user = null;
 
         try {
@@ -283,7 +283,8 @@ class MiscService extends BaseService {
             }
 
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error retrieving last execution result: " + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException("Error retrieving last execution result: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
         }
 
         return execution;

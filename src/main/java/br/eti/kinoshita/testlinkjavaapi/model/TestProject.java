@@ -32,7 +32,7 @@ import java.io.Serializable;
 public class TestProject implements Serializable {
 
     private static final long serialVersionUID = 3803980396536967693L;
-    
+
     private Integer id;
     private String name;
     private String prefix;
@@ -45,10 +45,10 @@ public class TestProject implements Serializable {
     private Boolean isPublic = Boolean.TRUE;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public TestProject() {
-	super();
+        super();
     }
 
     /**
@@ -63,171 +63,160 @@ public class TestProject implements Serializable {
      * @param isActive
      * @param isPublic
      */
-    public TestProject(Integer id, String name, String prefix, String notes,
-	    Boolean enableRequirements, Boolean enableTestPriority,
-	    Boolean enableAutomation, Boolean enableInventory,
-	    Boolean isActive, Boolean isPublic) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.prefix = prefix;
-	this.notes = notes;
-	this.enableRequirements = enableRequirements;
-	this.enableTestPriority = enableTestPriority;
-	this.enableAutomation = enableAutomation;
-	this.enableInventory = enableInventory;
-	this.isActive = isActive;
-	this.isPublic = isPublic;
+    public TestProject(Integer id, String name, String prefix, String notes, Boolean enableRequirements,
+            Boolean enableTestPriority, Boolean enableAutomation, Boolean enableInventory, Boolean isActive,
+            Boolean isPublic) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.prefix = prefix;
+        this.notes = notes;
+        this.enableRequirements = enableRequirements;
+        this.enableTestPriority = enableTestPriority;
+        this.enableAutomation = enableAutomation;
+        this.enableInventory = enableInventory;
+        this.isActive = isActive;
+        this.isPublic = isPublic;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the projectName
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
-     * @param name
-     *            the projectName to set
+     * @param name the projectName to set
      */
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     /**
      * @return the prefix
      */
     public String getPrefix() {
-	return prefix;
+        return prefix;
     }
 
     /**
-     * @param prefix
-     *            the prefix to set
+     * @param prefix the prefix to set
      */
     public void setPrefix(String prefix) {
-	this.prefix = prefix;
+        this.prefix = prefix;
     }
 
     /**
      * @return the notes
      */
     public String getNotes() {
-	return notes;
+        return notes;
     }
 
     /**
-     * @param notes
-     *            the notes to set
+     * @param notes the notes to set
      */
     public void setNotes(String notes) {
-	this.notes = notes;
+        this.notes = notes;
     }
 
     /**
      * @return the enableRequirements
      */
     public Boolean isEnableRequirements() {
-	return enableRequirements;
+        return enableRequirements;
     }
 
     /**
-     * @param enableRequirements
-     *            the enableRequirements to set
+     * @param enableRequirements the enableRequirements to set
      */
     public void setEnableRequirements(Boolean enableRequirements) {
-	this.enableRequirements = enableRequirements;
+        this.enableRequirements = enableRequirements;
     }
 
     /**
      * @return the enableTestPriority
      */
     public Boolean isEnableTestPriority() {
-	return enableTestPriority;
+        return enableTestPriority;
     }
 
     /**
-     * @param enableTestPriority
-     *            the enableTestPriority to set
+     * @param enableTestPriority the enableTestPriority to set
      */
     public void setEnableTestPriority(Boolean enableTestPriority) {
-	this.enableTestPriority = enableTestPriority;
+        this.enableTestPriority = enableTestPriority;
     }
 
     /**
      * @return the enableAutomation
      */
     public Boolean isEnableAutomation() {
-	return enableAutomation;
+        return enableAutomation;
     }
 
     /**
-     * @param enableAutomation
-     *            the enableAutomation to set
+     * @param enableAutomation the enableAutomation to set
      */
     public void setEnableAutomation(Boolean enableAutomation) {
-	this.enableAutomation = enableAutomation;
+        this.enableAutomation = enableAutomation;
     }
 
     /**
      * @return the enableInventory
      */
     public Boolean isEnableInventory() {
-	return enableInventory;
+        return enableInventory;
     }
 
     /**
-     * @param enableInventory
-     *            the enableInventory to set
+     * @param enableInventory the enableInventory to set
      */
     public void setEnableInventory(Boolean enableInventory) {
-	this.enableInventory = enableInventory;
+        this.enableInventory = enableInventory;
     }
 
     /**
      * @return the isActive
      */
     public Boolean isActive() {
-	return isActive;
+        return isActive;
     }
 
     /**
-     * @param isActive
-     *            the isActive to set
+     * @param isActive the isActive to set
      */
     public void setActive(Boolean isActive) {
-	this.isActive = isActive;
+        this.isActive = isActive;
     }
 
     /**
      * @return the isPublic
      */
     public Boolean isPublic() {
-	return isPublic;
+        return isPublic;
     }
 
     /**
-     * @param isPublic
-     *            the isPublic to set
+     * @param isPublic the isPublic to set
      */
     public void setPublic(Boolean isPublic) {
-	this.isPublic = isPublic;
+        this.isPublic = isPublic;
     }
 
     /*
@@ -236,12 +225,10 @@ public class TestProject implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-	return "TestProject [id=" + id + ", name=" + name + ", prefix="
-		+ prefix + ", notes=" + notes + ", enableRequirements="
-		+ enableRequirements + ", enableTestPriority="
-		+ enableTestPriority + ", enableAutomation=" + enableAutomation
-		+ ", enableInventory=" + enableInventory + ", isActive="
-		+ isActive + ", isPublic=" + isPublic + "]";
+        return "TestProject [id=" + id + ", name=" + name + ", prefix=" + prefix + ", notes=" + notes
+                + ", enableRequirements=" + enableRequirements + ", enableTestPriority=" + enableTestPriority
+                + ", enableAutomation=" + enableAutomation + ", enableInventory=" + enableInventory + ", isActive="
+                + isActive + ", isPublic=" + isPublic + "]";
     }
 
 }

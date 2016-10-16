@@ -46,13 +46,11 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
 class RequirementService extends BaseService {
 
     /**
-     * @param xmlRpcClient
-     *            XML RPC Client.
-     * @param devKey
-     *            TestLink User DevKey.
+     * @param xmlRpcClient XML RPC Client.
+     * @param devKey TestLink User DevKey.
      */
     public RequirementService(XmlRpcClient xmlRpcClient, String devKey) {
-	super(xmlRpcClient, devKey);
+        super(xmlRpcClient, devKey);
     }
 
     /**
@@ -65,34 +63,28 @@ class RequirementService extends BaseService {
      * @return
      */
     @SuppressWarnings("unchecked")
-    protected Attachment uploadRequirementAttachment(Integer requirementId,
-	    String title, String description, String fileName, String fileType,
-	    String content) throws TestLinkAPIException {
-	Attachment attachment = null;
+    protected Attachment uploadRequirementAttachment(Integer requirementId, String title, String description,
+            String fileName, String fileType, String content) throws TestLinkAPIException {
+        Attachment attachment = null;
 
-	Integer id = 0;
+        Integer id = 0;
 
-	attachment = new Attachment(id, requirementId,
-		TestLinkTables.REQUIREMENTS.toString(), title, description,
-		fileName, null, fileType, content);
+        attachment = new Attachment(id, requirementId, TestLinkTables.REQUIREMENTS.toString(), title, description,
+                fileName, null, fileType, content);
 
-	try {
-	    Map<String, Object> executionData = Util
-		    .getRequirementAttachmentMap(attachment);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.UPLOAD_REQUIREMENT_ATTACHMENT.toString(),
-		    executionData);
-	    Map<String, Object> responseMap = (Map<String, Object>) response;
-	    id = Util.getInteger(responseMap,
-		    TestLinkResponseParams.ID.toString());
-	    attachment.setId(id);
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error uploading attachment for requirement: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = Util.getRequirementAttachmentMap(attachment);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_REQUIREMENT_ATTACHMENT.toString(),
+                    executionData);
+            Map<String, Object> responseMap = (Map<String, Object>) response;
+            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
+            attachment.setId(id);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error uploading attachment for requirement: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
 
-	return attachment;
+        return attachment;
     }
 
     /**
@@ -100,26 +92,21 @@ class RequirementService extends BaseService {
      * @param testProjectId
      * @param requirements
      */
-    protected void assignRequirements(Integer testCaseId,
-	    Integer testProjectId, List<Requirement> requirements)
-	    throws TestLinkAPIException {
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
-	    executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(),
-		    testProjectId);
-	    executionData.put(TestLinkParams.REQUIREMENTS.toString(),
-		    Util.getRequirementsGroupedByReqSpecMap(requirements));
-	    this.executeXmlRpcCall(
-		    TestLinkMethods.ASSIGN_REQUIREMENTS.toString(),
-		    executionData);
+    protected void assignRequirements(Integer testCaseId, Integer testProjectId, List<Requirement> requirements)
+            throws TestLinkAPIException {
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            executionData.put(TestLinkParams.REQUIREMENTS.toString(),
+                    Util.getRequirementsGroupedByReqSpecMap(requirements));
+            this.executeXmlRpcCall(TestLinkMethods.ASSIGN_REQUIREMENTS.toString(), executionData);
 
-	    // the verification is done inside super.executeXml...
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error assigning requirement for test case: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+            // the verification is done inside super.executeXml...
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error assigning requirement for test case: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
 
     }
 

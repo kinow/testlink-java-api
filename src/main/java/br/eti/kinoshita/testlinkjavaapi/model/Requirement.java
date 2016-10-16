@@ -32,16 +32,16 @@ import java.io.Serializable;
 public class Requirement implements Serializable {
 
     private static final long serialVersionUID = -972032974806459521L;
-    
+
     private Integer id;
     private Integer reqSpecId;
     private String reqDocId;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public Requirement() {
-	super();
+        super();
     }
 
     /**
@@ -50,55 +50,52 @@ public class Requirement implements Serializable {
      * @param reqDocId
      */
     public Requirement(Integer id, Integer reqSpecId, String reqDocId) {
-	super();
-	this.id = id;
-	this.reqSpecId = reqSpecId;
-	this.reqDocId = reqDocId;
+        super();
+        this.id = id;
+        this.reqSpecId = reqSpecId;
+        this.reqDocId = reqDocId;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the reqSpecId
      */
     public Integer getReqSpecId() {
-	return reqSpecId;
+        return reqSpecId;
     }
 
     /**
-     * @param reqSpecId
-     *            the reqSpecId to set
+     * @param reqSpecId the reqSpecId to set
      */
     public void setReqSpecId(Integer reqSpecId) {
-	this.reqSpecId = reqSpecId;
+        this.reqSpecId = reqSpecId;
     }
 
     /**
      * @return the reqDocId
      */
     public String getReqDocId() {
-	return reqDocId;
+        return reqDocId;
     }
 
     /**
-     * @param reqDocId
-     *            the reqDocId to set
+     * @param reqDocId the reqDocId to set
      */
     public void setReqDocId(String reqDocId) {
-	this.reqDocId = reqDocId;
+        this.reqDocId = reqDocId;
     }
 
     /*
@@ -108,8 +105,7 @@ public class Requirement implements Serializable {
      */
     @Override
     public String toString() {
-	return "Requirement [id=" + id + ", reqSpecId=" + reqSpecId
-		+ ", reqDocId=" + reqDocId + "]";
+        return "Requirement [id=" + id + ", reqSpecId=" + reqSpecId + ", reqDocId=" + reqDocId + "]";
     }
 
 }

@@ -253,7 +253,8 @@ class TestSuiteService extends BaseService {
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException(
                     "Error retrieving test suites which are DIRECT children of a given TestSuite: "
-                            + xmlrpcex.getMessage(), xmlrpcex);
+                            + xmlrpcex.getMessage(),
+                    xmlrpcex);
         }
 
         return testSuites;
@@ -282,8 +283,9 @@ class TestSuiteService extends BaseService {
                 testSuites[i] = Util.getTestSuite(responseMap);
             }
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error retrieving test suites AT TOP LEVEL of tree on a Test Project: "
-                    + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException(
+                    "Error retrieving test suites AT TOP LEVEL of tree on a Test Project: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
         }
 
         return testSuites;

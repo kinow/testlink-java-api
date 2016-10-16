@@ -40,7 +40,7 @@ import java.io.Serializable;
 public class ReportTCResultResponse implements Serializable {
 
     private static final long serialVersionUID = -5742000858317187375L;
-    
+
     private String operation;
     private Boolean overwrite;
     private Boolean status;
@@ -50,10 +50,10 @@ public class ReportTCResultResponse implements Serializable {
     private Boolean customFieldStatus;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public ReportTCResultResponse() {
-	super();
+        super();
     }
 
     /**
@@ -65,122 +65,114 @@ public class ReportTCResultResponse implements Serializable {
      * @param bugIDStatus
      * @param customFieldStatus
      */
-    public ReportTCResultResponse(String operation, Boolean overwrite,
-	    Boolean status, String message, Integer executionId,
-	    Boolean bugIDStatus, Boolean customFieldStatus) {
-	super();
-	this.operation = operation;
-	this.overwrite = overwrite;
-	this.status = status;
-	this.message = message;
-	this.executionId = executionId;
-	this.bugIDStatus = bugIDStatus;
-	this.customFieldStatus = customFieldStatus;
+    public ReportTCResultResponse(String operation, Boolean overwrite, Boolean status, String message,
+            Integer executionId, Boolean bugIDStatus, Boolean customFieldStatus) {
+        super();
+        this.operation = operation;
+        this.overwrite = overwrite;
+        this.status = status;
+        this.message = message;
+        this.executionId = executionId;
+        this.bugIDStatus = bugIDStatus;
+        this.customFieldStatus = customFieldStatus;
     }
 
     /**
      * @return the operation
      */
     public String getOperation() {
-	return operation;
+        return operation;
     }
 
     /**
-     * @param operation
-     *            the operation to set
+     * @param operation the operation to set
      */
     public void setOperation(String operation) {
-	this.operation = operation;
+        this.operation = operation;
     }
 
     /**
      * @return the overwrite
      */
     public Boolean getOverwrite() {
-	return overwrite;
+        return overwrite;
     }
 
     /**
-     * @param overwrite
-     *            the overwrite to set
+     * @param overwrite the overwrite to set
      */
     public void setOverwrite(Boolean overwrite) {
-	this.overwrite = overwrite;
+        this.overwrite = overwrite;
     }
 
     /**
      * @return the status
      */
     public Boolean getStatus() {
-	return status;
+        return status;
     }
 
     /**
-     * @param status
-     *            the status to set
+     * @param status the status to set
      */
     public void setStatus(Boolean status) {
-	this.status = status;
+        this.status = status;
     }
 
     /**
      * @return the message
      */
     public String getMessage() {
-	return message;
+        return message;
     }
 
     /**
-     * @param message
-     *            the message to set
+     * @param message the message to set
      */
     public void setMessage(String message) {
-	this.message = message;
+        this.message = message;
     }
 
     /**
      * @return the executionId
      */
     public Integer getExecutionId() {
-	return executionId;
+        return executionId;
     }
 
     /**
-     * @param executionId
-     *            the executionId to set
+     * @param executionId the executionId to set
      */
     public void setExecutionId(Integer executionId) {
-	this.executionId = executionId;
+        this.executionId = executionId;
     }
 
     /**
      * @return the bugIDStatus
      */
     public Boolean getBugIDStatus() {
-	return bugIDStatus;
+        return bugIDStatus;
     }
 
     /**
-     * @param bugIDStatus
-     *            the bugIDStatus to set
+     * @param bugIDStatus the bugIDStatus to set
      */
     public void setBugIDStatus(Boolean bugIDStatus) {
-	this.bugIDStatus = bugIDStatus;
+        this.bugIDStatus = bugIDStatus;
     }
 
     /**
      * @return the customFieldStatus
      */
     public Boolean getCustomFieldStatus() {
-	return customFieldStatus;
+        return customFieldStatus;
     }
 
     /**
-     * @param customFieldStatus
-     *            the customFieldStatus to set
+     * @param customFieldStatus the customFieldStatus to set
      */
     public void setCustomFieldStatus(Boolean customFieldStatus) {
-	this.customFieldStatus = customFieldStatus;
+        this.customFieldStatus = customFieldStatus;
     }
 
     /*
@@ -190,11 +182,9 @@ public class ReportTCResultResponse implements Serializable {
      */
     @Override
     public String toString() {
-	return "ReportTCResultResponse [operation=" + operation
-		+ ", overwrite=" + overwrite + ", status=" + status
-		+ ", message=" + message + ", executionId=" + executionId
-		+ ", bugIDStatus=" + bugIDStatus + ", customFieldStatus="
-		+ customFieldStatus + "]";
+        return "ReportTCResultResponse [operation=" + operation + ", overwrite=" + overwrite + ", status=" + status
+                + ", message=" + message + ", executionId=" + executionId + ", bugIDStatus=" + bugIDStatus
+                + ", customFieldStatus=" + customFieldStatus + "]";
     }
 
 }

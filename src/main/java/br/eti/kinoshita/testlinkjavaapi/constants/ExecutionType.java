@@ -34,22 +34,22 @@ public enum ExecutionType {
     private Integer value;
 
     ExecutionType(Integer value) {
-	this.value = value;
+        this.value = value;
     }
 
     public static ExecutionType getExecutionType(Integer integer) {
-	if (integer != null) {
-	    if (integer == 1) {
-		return MANUAL;
-	    } else if (integer == 2) {
-		return AUTOMATED;
-	    }
-	}
-	return null;
+        if (integer != null) {
+            if (integer == 1) {
+                return MANUAL;
+            } else if (integer == 2) {
+                return AUTOMATED;
+            }
+        }
+        return null;
     }
 
     public Integer getValue() {
-	return value;
+        return value;
     }
 
     /*
@@ -59,7 +59,7 @@ public enum ExecutionType {
      */
     @Override
     public String toString() {
-	return this.value.toString();
+        return this.value.toString();
     }
 
 }

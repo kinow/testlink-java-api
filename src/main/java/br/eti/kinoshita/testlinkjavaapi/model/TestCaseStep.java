@@ -34,7 +34,7 @@ import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
 public class TestCaseStep implements Serializable {
 
     private static final long serialVersionUID = -2964599381390137202L;
-    
+
     private Integer id;
     private Integer testCaseVersionId;
     private Integer number;
@@ -44,10 +44,10 @@ public class TestCaseStep implements Serializable {
     private ExecutionType executionType;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public TestCaseStep() {
-	super();
+        super();
     }
 
     /**
@@ -59,122 +59,114 @@ public class TestCaseStep implements Serializable {
      * @param active
      * @param executionType
      */
-    public TestCaseStep(Integer id, Integer testCaseVersionId, Integer number,
-	    String actions, String expectedResults, Boolean active,
-	    ExecutionType executionType) {
-	super();
-	this.id = id;
-	this.testCaseVersionId = testCaseVersionId;
-	this.number = number;
-	this.actions = actions;
-	this.expectedResults = expectedResults;
-	this.active = active;
-	this.executionType = executionType;
+    public TestCaseStep(Integer id, Integer testCaseVersionId, Integer number, String actions, String expectedResults,
+            Boolean active, ExecutionType executionType) {
+        super();
+        this.id = id;
+        this.testCaseVersionId = testCaseVersionId;
+        this.number = number;
+        this.actions = actions;
+        this.expectedResults = expectedResults;
+        this.active = active;
+        this.executionType = executionType;
     }
 
     /**
      * @return the testCaseVersionId
      */
     public Integer getTestCaseVersionId() {
-	return testCaseVersionId;
+        return testCaseVersionId;
     }
 
     /**
-     * @param testCaseVersionId
-     *            the testCaseVersionId to set
+     * @param testCaseVersionId the testCaseVersionId to set
      */
     public void setTestCaseVersionId(Integer testCaseVersionId) {
-	this.testCaseVersionId = testCaseVersionId;
+        this.testCaseVersionId = testCaseVersionId;
     }
 
     /**
      * @return the number
      */
     public Integer getNumber() {
-	return number;
+        return number;
     }
 
     /**
-     * @param number
-     *            the number to set
+     * @param number the number to set
      */
     public void setNumber(Integer number) {
-	this.number = number;
+        this.number = number;
     }
 
     /**
      * @return the actions
      */
     public String getActions() {
-	return actions;
+        return actions;
     }
 
     /**
-     * @param actions
-     *            the actions to set
+     * @param actions the actions to set
      */
     public void setActions(String actions) {
-	this.actions = actions;
+        this.actions = actions;
     }
 
     /**
      * @return the expectedResults
      */
     public String getExpectedResults() {
-	return expectedResults;
+        return expectedResults;
     }
 
     /**
-     * @param expectedResults
-     *            the expectedResults to set
+     * @param expectedResults the expectedResults to set
      */
     public void setExpectedResults(String expectedResults) {
-	this.expectedResults = expectedResults;
+        this.expectedResults = expectedResults;
     }
 
     /**
      * @return the executionType
      */
     public ExecutionType getExecutionType() {
-	return executionType;
+        return executionType;
     }
 
     /**
-     * @param executionType
-     *            the executionType to set
+     * @param executionType the executionType to set
      */
     public void setExecutionType(ExecutionType executionType) {
-	this.executionType = executionType;
+        this.executionType = executionType;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the active
      */
     public Boolean getActive() {
-	return active;
+        return active;
     }
 
     /**
-     * @param active
-     *            the active to set
+     * @param active the active to set
      */
     public void setActive(Boolean active) {
-	this.active = active;
+        this.active = active;
     }
 
     /*
@@ -184,11 +176,9 @@ public class TestCaseStep implements Serializable {
      */
     @Override
     public String toString() {
-	return "TestCaseStep [id=" + id + ", testCaseVersionId="
-		+ testCaseVersionId + ", number=" + number + ", actions="
-		+ actions + ", expectedResults=" + expectedResults
-		+ ", active=" + active + ", executionType=" + executionType
-		+ "]";
+        return "TestCaseStep [id=" + id + ", testCaseVersionId=" + testCaseVersionId + ", number=" + number
+                + ", actions=" + actions + ", expectedResults=" + expectedResults + ", active=" + active
+                + ", executionType=" + executionType + "]";
     }
 
 }

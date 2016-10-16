@@ -34,11 +34,11 @@ public enum TestCaseDetails {
     private String value;
 
     private TestCaseDetails(String value) {
-	this.value = value;
+        this.value = value;
     }
 
     @Override
     public String toString() {
-	return this.value;
+        return this.value;
     }
 }

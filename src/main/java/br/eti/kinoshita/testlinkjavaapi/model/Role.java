@@ -31,105 +31,100 @@ import java.util.Arrays;
  */
 public class Role implements Serializable {
 
-	private static final long serialVersionUID = 3833871921749071877L;
+    private static final long serialVersionUID = 3833871921749071877L;
 
-	private Integer dbID;
-	private String description;
-	private String name;
-	// TODO add new model 'Rights'
-	private Object[] rights;
+    private Integer dbID;
+    private String description;
+    private String name;
+    // TODO add new model 'Rights'
+    private Object[] rights;
 
-	public Role(Integer dbID) {
-		super();
-		this.dbID = dbID;
-	}
+    public Role(Integer dbID) {
+        super();
+        this.dbID = dbID;
+    }
 
-	/**
-	 * Constructor with args.
-	 * 
-	 * @param dbID
-	 * @param description
-	 * @param name
-	 * @param rights
-	 */
-	public Role(Integer dbID, String description, String name, Object[] rights) {
-		super();
-		this.dbID = dbID;
-		this.description = description;
-		this.name = name;
-		this.rights = rights;
-	}
+    /**
+     * Constructor with args.
+     * 
+     * @param dbID
+     * @param description
+     * @param name
+     * @param rights
+     */
+    public Role(Integer dbID, String description, String name, Object[] rights) {
+        super();
+        this.dbID = dbID;
+        this.description = description;
+        this.name = name;
+        this.rights = rights;
+    }
 
-	/**
-	 * @return the dbID
-	 */
-	public Integer getDbID() {
-		return dbID;
-	}
+    /**
+     * @return the dbID
+     */
+    public Integer getDbID() {
+        return dbID;
+    }
 
-	/**
-	 * @param dbID
-	 *            the dbID to set
-	 */
-	public void setDbID(Integer dbID) {
-		this.dbID = dbID;
-	}
+    /**
+     * @param dbID the dbID to set
+     */
+    public void setDbID(Integer dbID) {
+        this.dbID = dbID;
+    }
 
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
 
-	/**
-	 * @param description
-	 *            the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @return the rights
-	 */
-	public Object[] getRights() {
-		return rights;
-	}
+    /**
+     * @return the rights
+     */
+    public Object[] getRights() {
+        return rights;
+    }
 
-	/**
-	 * @param rights
-	 *            the rights to set
-	 */
-	public void setRights(Object[] rights) {
-		this.rights = rights;
-	}
+    /**
+     * @param rights the rights to set
+     */
+    public void setRights(Object[] rights) {
+        this.rights = rights;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Role [dbID=" + dbID + ", description=" + description
-				+ ", name=" + name + ", rights=" + Arrays.toString(rights)
-				+ "]";
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Role [dbID=" + dbID + ", description=" + description + ", name=" + name + ", rights="
+                + Arrays.toString(rights) + "]";
+    }
 
 }

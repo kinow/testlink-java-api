@@ -34,23 +34,23 @@ public enum TestLinkUser {
     private Integer value;
 
     TestLinkUser(Integer value) {
-	this.value = value;
+        this.value = value;
     }
 
     public String toString() {
-	return Integer.toString(this.value);
+        return Integer.toString(this.value);
     }
 
     public static TestLinkUser getTestLinkUser(Integer value) {
-	switch (value) {
-	case -1:
-	    return NOBODY;
-	case -2:
-	    return SOMEBODY;
-	case 0:
-	    return ANYBODY;
-	}
-	return null;
+        switch (value) {
+        case -1:
+            return NOBODY;
+        case -2:
+            return SOMEBODY;
+        case 0:
+            return ANYBODY;
+        }
+        return null;
     }
 
 }

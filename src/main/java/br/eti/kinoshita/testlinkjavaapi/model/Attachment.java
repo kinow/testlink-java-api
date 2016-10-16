@@ -32,7 +32,7 @@ import java.io.Serializable;
 public class Attachment implements Serializable {
 
     private static final long serialVersionUID = 4313427460619111314L;
-    
+
     private Integer id;
     private Integer fkId;
     private String fkTable;
@@ -46,10 +46,10 @@ public class Attachment implements Serializable {
     // TODO: implement date and date handling in the java api
     // private Date dateAdded;
     /**
-	 * 
-	 */
+     * 
+     */
     public Attachment() {
-	super();
+        super();
     }
 
     /**
@@ -63,154 +63,144 @@ public class Attachment implements Serializable {
      * @param fileType
      * @param content
      */
-    public Attachment(Integer id, Integer fkId, String fkTable, String title,
-	    String description, String fileName, Long fileSize,
-	    String fileType, String content) {
-	super();
-	this.id = id;
-	this.fkId = fkId;
-	this.fkTable = fkTable;
-	this.title = title;
-	this.description = description;
-	this.fileName = fileName;
-	this.fileSize = fileSize;
-	this.fileType = fileType;
-	this.content = content;
+    public Attachment(Integer id, Integer fkId, String fkTable, String title, String description, String fileName,
+            Long fileSize, String fileType, String content) {
+        super();
+        this.id = id;
+        this.fkId = fkId;
+        this.fkTable = fkTable;
+        this.title = title;
+        this.description = description;
+        this.fileName = fileName;
+        this.fileSize = fileSize;
+        this.fileType = fileType;
+        this.content = content;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the fkId
      */
     public Integer getFkId() {
-	return fkId;
+        return fkId;
     }
 
     /**
-     * @param fkId
-     *            the fkId to set
+     * @param fkId the fkId to set
      */
     public void setFkId(Integer fkId) {
-	this.fkId = fkId;
+        this.fkId = fkId;
     }
 
     /**
      * @return the fkTable
      */
     public String getFkTable() {
-	return fkTable;
+        return fkTable;
     }
 
     /**
-     * @param fkTable
-     *            the fkTable to set
+     * @param fkTable the fkTable to set
      */
     public void setFkTable(String fkTable) {
-	this.fkTable = fkTable;
+        this.fkTable = fkTable;
     }
 
     /**
      * @return the title
      */
     public String getTitle() {
-	return title;
+        return title;
     }
 
     /**
-     * @param title
-     *            the title to set
+     * @param title the title to set
      */
     public void setTitle(String title) {
-	this.title = title;
+        this.title = title;
     }
 
     /**
      * @return the description
      */
     public String getDescription() {
-	return description;
+        return description;
     }
 
     /**
-     * @param description
-     *            the description to set
+     * @param description the description to set
      */
     public void setDescription(String description) {
-	this.description = description;
+        this.description = description;
     }
 
     /**
      * @return the fileName
      */
     public String getFileName() {
-	return fileName;
+        return fileName;
     }
 
     /**
-     * @param fileName
-     *            the fileName to set
+     * @param fileName the fileName to set
      */
     public void setFileName(String fileName) {
-	this.fileName = fileName;
+        this.fileName = fileName;
     }
 
     /**
      * @return the fileSize
      */
     public Long getFileSize() {
-	return fileSize;
+        return fileSize;
     }
 
     /**
-     * @param fileSize
-     *            the fileSize to set
+     * @param fileSize the fileSize to set
      */
     public void setFileSize(Long fileSize) {
-	this.fileSize = fileSize;
+        this.fileSize = fileSize;
     }
 
     /**
      * @return the fileType
      */
     public String getFileType() {
-	return fileType;
+        return fileType;
     }
 
     /**
-     * @param fileType
-     *            the fileType to set
+     * @param fileType the fileType to set
      */
     public void setFileType(String fileType) {
-	this.fileType = fileType;
+        this.fileType = fileType;
     }
 
     /**
      * @return the content
      */
     public String getContent() {
-	return content;
+        return content;
     }
 
     /**
-     * @param content
-     *            the content to set
+     * @param content the content to set
      */
     public void setContent(String content) {
-	this.content = content;
+        this.content = content;
     }
 
     /*
@@ -220,10 +210,9 @@ public class Attachment implements Serializable {
      */
     @Override
     public String toString() {
-	return "Attachment [id=" + id + ", fkId=" + fkId + ", fkTable="
-		+ fkTable + ", title=" + title + ", description=" + description
-		+ ", fileName=" + fileName + ", fileSize=" + fileSize
-		+ ", fileType=" + fileType + ", content=" + content + "]";
+        return "Attachment [id=" + id + ", fkId=" + fkId + ", fkTable=" + fkTable + ", title=" + title
+                + ", description=" + description + ", fileName=" + fileName + ", fileSize=" + fileSize + ", fileType="
+                + fileType + ", content=" + content + "]";
     }
 
 }

@@ -43,40 +43,34 @@ import br.eti.kinoshita.testlinkjavaapi.util.Util;
 class BuildService extends BaseService {
 
     /**
-     * @param xmlRpcClient
-     *            XML RPC Client.
-     * @param devKey
-     *            TestLink User DevKey.
+     * @param xmlRpcClient XML RPC Client.
+     * @param devKey TestLink User DevKey.
      */
     public BuildService(XmlRpcClient xmlRpcClient, String devKey) {
-	super(xmlRpcClient, devKey);
+        super(xmlRpcClient, devKey);
     }
 
     @SuppressWarnings("unchecked")
-    protected Build createBuild(Integer testPlanId, String buildName,
-	    String buildNotes) throws TestLinkAPIException {
-	Build build = null;
+    protected Build createBuild(Integer testPlanId, String buildName, String buildNotes) throws TestLinkAPIException {
+        Build build = null;
 
-	Integer id = 0;
+        Integer id = 0;
 
-	build = new Build(id, testPlanId, buildName, buildNotes);
+        build = new Build(id, testPlanId, buildName, buildNotes);
 
-	try {
-	    Map<String, Object> executionData = Util.getBuildMap(build);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.CREATE_BUILD.toString(), executionData);
-	    Object[] responseArray = Util.castToArray(response);
-	    Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+        try {
+            Map<String, Object> executionData = Util.getBuildMap(build);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_BUILD.toString(), executionData);
+            Object[] responseArray = Util.castToArray(response);
+            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
 
-	    id = Util.getInteger(responseMap,
-		    TestLinkResponseParams.ID.toString());
-	    build.setId(id);
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException("Error creating build: "
-		    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
+            build.setId(id);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error creating build: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return build;
+        return build;
     }
 
     /**
@@ -84,32 +78,28 @@ class BuildService extends BaseService {
      * @return
      */
     @SuppressWarnings("unchecked")
-    protected Build[] getBuildsForTestPlan(Integer testPlanId)
-	    throws TestLinkAPIException {
-	Build[] builds = null;
+    protected Build[] getBuildsForTestPlan(Integer testPlanId) throws TestLinkAPIException {
+        Build[] builds = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_BUILDS_FOR_TEST_PLAN.toString(),
-		    executionData);
-	    if (response instanceof Object[]) {
-		Object[] responseArray = Util.castToArray(response);
-		builds = new Build[responseArray.length];
-		for (int i = 0; i < responseArray.length; i++) {
-		    Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
-		    builds[i] = Util.getBuild(responseMap);
-		}
-	    }
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_BUILDS_FOR_TEST_PLAN.toString(),
+                    executionData);
+            if (response instanceof Object[]) {
+                Object[] responseArray = Util.castToArray(response);
+                builds = new Build[responseArray.length];
+                for (int i = 0; i < responseArray.length; i++) {
+                    Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                    builds[i] = Util.getBuild(responseMap);
+                }
+            }
 
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving test plan's builds: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test plan's builds: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
 
-	return builds;
+        return builds;
     }
 
     /**
@@ -118,51 +108,45 @@ class BuildService extends BaseService {
      * @throws TestLinkAPIException
      */
     @SuppressWarnings("unchecked")
-    protected Build getLatestBuildForTestPlan(Integer testPlanId)
-	    throws TestLinkAPIException {
-	Build build = null;
+    protected Build getLatestBuildForTestPlan(Integer testPlanId) throws TestLinkAPIException {
+        Build build = null;
 
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_LATEST_BUILD_FOR_TEST_PLAN.toString(),
-		    executionData);
-	    if (response instanceof Map<?, ?>) {
-		Map<String, Object> responseMap = (Map<String, Object>) response;
-		build = Util.getBuild(responseMap);
-	    }
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error retrieving latest build for test plan: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_LATEST_BUILD_FOR_TEST_PLAN.toString(),
+                    executionData);
+            if (response instanceof Map<?, ?>) {
+                Map<String, Object> responseMap = (Map<String, Object>) response;
+                build = Util.getBuild(responseMap);
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving latest build for test plan: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
 
-	return build;
+        return build;
     }
-    
+
     /**
      * @param testPlanId
      * @return
      */
     @SuppressWarnings("unchecked")
     protected Map<String, Object> getExecCountersByBuild(Integer testPlanId) {
-	Map<String, Object> responseMap = null;
-	try {
-	    Map<String, Object> executionData = new HashMap<String, Object>();
-	    executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-	    Object response = this.executeXmlRpcCall(
-		    TestLinkMethods.GET_EXEC_COUNTERS_BY_BUILD.toString(),
-		    executionData);
-	    if (response instanceof Map<?, ?>) {
-		responseMap = (Map<String, Object>) response;
-	    }
-	} catch (XmlRpcException xmlrpcex) {
-	    throw new TestLinkAPIException(
-		    "Error getting exec counters by build: "
-			    + xmlrpcex.getMessage(), xmlrpcex);
-	}
-	return responseMap;
+        Map<String, Object> responseMap = null;
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_EXEC_COUNTERS_BY_BUILD.toString(),
+                    executionData);
+            if (response instanceof Map<?, ?>) {
+                responseMap = (Map<String, Object>) response;
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error getting exec counters by build: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+        return responseMap;
     }
 
 }

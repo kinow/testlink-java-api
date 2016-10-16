@@ -45,19 +45,19 @@ public class TestLinkAPIException extends RuntimeException {
      * @param message
      */
     public TestLinkAPIException(String message) {
-	super(message);
+        super(message);
     }
 
     public TestLinkAPIException(Integer code, String message) {
-	super(message);
-	this.code = code;
+        super(message);
+        this.code = code;
     }
 
     /**
      * @param cause
      */
     public TestLinkAPIException(Throwable cause) {
-	super(cause);
+        super(cause);
     }
 
     /**
@@ -65,14 +65,14 @@ public class TestLinkAPIException extends RuntimeException {
      * @param cause
      */
     public TestLinkAPIException(String message, Throwable cause) {
-	super(message, cause);
+        super(message, cause);
     }
 
     /**
      * @return Error Code
      */
     public Integer getCode() {
-	return this.code;
+        return this.code;
     }
 
 }

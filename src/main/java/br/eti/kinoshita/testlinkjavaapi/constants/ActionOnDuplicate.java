@@ -31,23 +31,25 @@ package br.eti.kinoshita.testlinkjavaapi.constants;
 public enum ActionOnDuplicate {
 
     BLOCK("block"), GENERATE_NEW("generate_new"), CREATE_NEW_VERSION("create_new_version");
-    
+
     private String value;
-    
+
     ActionOnDuplicate(String value) {
-	this.value = value;
+        this.value = value;
     }
-    
+
     public String getValue() {
-	return this.value;
+        return this.value;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Enum#toString()
      */
     @Override
     public String toString() {
         return getValue();
     }
-    
+
 }
