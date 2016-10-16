@@ -53,15 +53,15 @@ public class Attachment implements Serializable {
     }
 
     /**
-     * @param id
-     * @param fkId
-     * @param fkTable
-     * @param title
-     * @param description
-     * @param fileName
-     * @param fileSize
-     * @param fileType
-     * @param content
+     * @param id ID
+     * @param fkId FK
+     * @param fkTable FK table name
+     * @param title title
+     * @param description description
+     * @param fileName file name
+     * @param fileSize file size
+     * @param fileType file type
+     * @param content content
      */
     public Attachment(Integer id, Integer fkId, String fkTable, String title, String description, String fileName,
             Long fileSize, String fileType, String content) {

@@ -35,6 +35,8 @@ import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 
 /**
+ * Represents a Test Case in TesLink.
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -69,7 +71,7 @@ public class TestCase implements Serializable {
     private List<String> keywords;
 
     /**
-     * 
+     * Constructor.
      */
     public TestCase() {
         super();
@@ -80,30 +82,30 @@ public class TestCase implements Serializable {
     /**
      * Constructor with args.
      * 
-     * @param id
-     * @param name
-     * @param testSuiteId
-     * @param testProjectId
-     * @param authorLogin
-     * @param summary
-     * @param steps
-     * @param preconditions
-     * @param testcaseStatus
-     * @param testImportance
-     * @param executionType
-     * @param executionOrder
-     * @param order
-     * @param internalId
-     * @param fullExternalId
-     * @param checkDuplicatedName
-     * @param actionOnDuplicatedName
-     * @param versionId
-     * @param version
-     * @param parentId
-     * @param customFields
-     * @param executionStatus
-     * @param plataform
-     * @param featureId
+     * @param id ID
+     * @param name name
+     * @param testSuiteId test suite ID
+     * @param testProjectId test project ID
+     * @param authorLogin author login
+     * @param summary summary
+     * @param steps steps
+     * @param preconditions preconditions
+     * @param testcaseStatus test case status
+     * @param testImportance test importance
+     * @param executionType execution type
+     * @param executionOrder execution order
+     * @param order order
+     * @param internalId internal ID
+     * @param fullExternalId full external ID
+     * @param checkDuplicatedName check for duplicated name
+     * @param actionOnDuplicatedName action to take when a duplicated name is found
+     * @param versionId version ID
+     * @param version version
+     * @param parentId parent ID
+     * @param customFields custom fields
+     * @param executionStatus execution status
+     * @param platform platform
+     * @param featureId feature ID
      */
     public TestCase(Integer id, String name, Integer testSuiteId, Integer testProjectId, String authorLogin,
             String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus testcaseStatus,
@@ -471,14 +473,14 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @return
+     * @return keywords
      */
     public List<String> getKeywords() {
         return keywords;
     }
 
     /**
-     * @param keywords
+     * @param keywords keywords
      */
     public void setKeywords(List<String> keywords) {
         // Sorted keywords (for performance)

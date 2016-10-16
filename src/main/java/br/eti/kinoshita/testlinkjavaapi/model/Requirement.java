@@ -45,9 +45,9 @@ public class Requirement implements Serializable {
     }
 
     /**
-     * @param id
-     * @param reqSpecId
-     * @param reqDocId
+     * @param id ID
+     * @param reqSpecId requirement specification ID
+     * @param reqDocId requirement document ID
      */
     public Requirement(Integer id, Integer reqSpecId, String reqDocId) {
         super();

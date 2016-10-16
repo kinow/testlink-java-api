@@ -51,13 +51,13 @@ public class TestCaseStep implements Serializable {
     }
 
     /**
-     * @param id
-     * @param testCaseVersionId
-     * @param number
-     * @param actions
-     * @param expectedResults
-     * @param active
-     * @param executionType
+     * @param id ID
+     * @param testCaseVersionId test case version ID
+     * @param number number
+     * @param actions actions
+     * @param expectedResults expected results
+     * @param active active flag
+     * @param executionType execution type
      */
     public TestCaseStep(Integer id, Integer testCaseVersionId, Integer number, String actions, String expectedResults,
             Boolean active, ExecutionType executionType) {

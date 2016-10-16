@@ -27,12 +27,9 @@ import java.io.Serializable;
 
 /**
  * 
- * <p>
  * <ul>
- * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning
- * execution data</li>
+ * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning execution data</li>
  * </ul>
- * </p>
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-4
@@ -57,13 +54,13 @@ public class ReportTCResultResponse implements Serializable {
     }
 
     /**
-     * @param operation
-     * @param overwrite
-     * @param status
-     * @param message
-     * @param executionId
-     * @param bugIDStatus
-     * @param customFieldStatus
+     * @param operation operation
+     * @param overwrite flag to overwrite it or not
+     * @param status status
+     * @param message message
+     * @param executionId execution ID
+     * @param bugIDStatus bug ID status
+     * @param customFieldStatus custom field status
      */
     public ReportTCResultResponse(String operation, Boolean overwrite, Boolean status, String message,
             Integer executionId, Boolean bugIDStatus, Boolean customFieldStatus) {

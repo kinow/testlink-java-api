@@ -31,12 +31,10 @@ import java.io.Serializable;
  * basically, an instance of a Test Plan.
  * </p>
  * 
- * <p>
  * <ul>
  * <li>20101129 - BUGID: 3122320 - kinow - Modify Build methods to follow
  * standard naming</li>
  * </ul>
- * </p>
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
@@ -58,10 +56,10 @@ public class Build implements Serializable {
     }
 
     /**
-     * @param id
-     * @param testPlanId
-     * @param name
-     * @param notes
+     * @param id ID
+     * @param testPlanId test plan ID
+     * @param name name
+     * @param notes notes
      */
     public Build(Integer id, Integer testPlanId, String name, String notes) {
         super();

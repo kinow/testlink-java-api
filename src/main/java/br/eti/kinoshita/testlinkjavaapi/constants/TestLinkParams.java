@@ -29,12 +29,10 @@ package br.eti.kinoshita.testlinkjavaapi.constants;
  * This enum contains a list of the parameters passed to TestLink.
  * </p>
  * 
- * <p>
  * <ul>
  * <li>20101129 - BUGID: 3122360 - kinow - Wrong execution type parameter
  * name</li>
  * </ul>
- * </p>
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1

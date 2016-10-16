@@ -45,9 +45,9 @@ public class Platform implements Serializable {
     }
 
     /**
-     * @param id
-     * @param name
-     * @param notes
+     * @param id ID
+     * @param name name
+     * @param notes notes
      */
     public Platform(Integer id, String name, String notes) {
         super();

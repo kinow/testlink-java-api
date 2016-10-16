@@ -55,20 +55,20 @@ public class User implements Serializable {
     /**
      * Constructor with args.
      * 
-     * @param dbID
-     * @param login
-     * @param firstName
-     * @param lastName
-     * @param locale
-     * @param emailAddress
-     * @param isActive
-     * @param userApiKey
-     * @param loginRegExp
-     * @param tprojectRoles
-     * @param tplanRoles
-     * @param globalRole
-     * @param globalRoleID
-     * @param defaultTestprojectID
+     * @param dbID database ID
+     * @param login login
+     * @param firstName first name
+     * @param lastName last name
+     * @param locale locale
+     * @param emailAddress email address
+     * @param isActive is active flag
+     * @param userApiKey user API key
+     * @param loginRegExp login regular expression
+     * @param tprojectRoles test project roles
+     * @param tplanRoles test plan roles
+     * @param globalRole global role
+     * @param globalRoleID global role ID
+     * @param defaultTestprojectID default test project ID
      */
     public User(Integer dbID, String login, String firstName, String lastName, String locale, String emailAddress,
             Integer isActive, String userApiKey, String loginRegExp, Integer tprojectRoles, Integer tplanRoles,

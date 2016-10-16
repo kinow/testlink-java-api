@@ -52,14 +52,14 @@ public class TestSuite implements Serializable {
     }
 
     /**
-     * @param id
-     * @param testProjectId
-     * @param name
-     * @param details
-     * @param parentId
-     * @param order
-     * @param checkDuplicatedName
-     * @param actionOnDuplicatedName
+     * @param id ID
+     * @param testProjectId test project ID
+     * @param name name
+     * @param details details
+     * @param parentId parent ID
+     * @param order order
+     * @param checkDuplicatedName check for duplicated name flag
+     * @param actionOnDuplicatedName what action to take if a duplicated name is found
      */
     public TestSuite(Integer id, Integer testProjectId, String name, String details, Integer parentId, Integer order,
             Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) {

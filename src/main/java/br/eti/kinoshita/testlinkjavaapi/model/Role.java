@@ -47,10 +47,10 @@ public class Role implements Serializable {
     /**
      * Constructor with args.
      * 
-     * @param dbID
-     * @param description
-     * @param name
-     * @param rights
+     * @param dbID database ID
+     * @param description description
+     * @param name name
+     * @param rights rights
      */
     public Role(Integer dbID, String description, String name, Object[] rights) {
         super();

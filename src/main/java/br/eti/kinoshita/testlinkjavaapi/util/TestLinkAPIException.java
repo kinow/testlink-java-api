@@ -42,27 +42,33 @@ public class TestLinkAPIException extends RuntimeException {
     }
 
     /**
-     * @param message
+     * @param message the message
      */
     public TestLinkAPIException(String message) {
         super(message);
     }
 
+    /**
+     * Constructor with args.
+     *
+     * @param code code
+     * @param message message
+     */
     public TestLinkAPIException(Integer code, String message) {
         super(message);
         this.code = code;
     }
 
     /**
-     * @param cause
+     * @param cause cause
      */
     public TestLinkAPIException(Throwable cause) {
         super(cause);
     }
 
     /**
-     * @param message
-     * @param cause
+     * @param message message
+     * @param cause cause
      */
     public TestLinkAPIException(String message, Throwable cause) {
         super(message, cause);

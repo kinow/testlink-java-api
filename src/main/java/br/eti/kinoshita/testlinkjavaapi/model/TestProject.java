@@ -52,16 +52,16 @@ public class TestProject implements Serializable {
     }
 
     /**
-     * @param id
-     * @param name
-     * @param prefix
-     * @param notes
-     * @param enableRequirements
-     * @param enableTestPriority
-     * @param enableAutomation
-     * @param enableInventory
-     * @param isActive
-     * @param isPublic
+     * @param id ID
+     * @param name name
+     * @param prefix prefix
+     * @param notes notes
+     * @param enableRequirements enable requirements flag
+     * @param enableTestPriority enable test priority flag
+     * @param enableAutomation enable automation flag
+     * @param enableInventory enable inventory flag
+     * @param isActive is active flag
+     * @param isPublic is public flag
      */
     public TestProject(Integer id, String name, String prefix, String notes, Boolean enableRequirements,
             Boolean enableTestPriority, Boolean enableAutomation, Boolean enableInventory, Boolean isActive,

@@ -60,24 +60,24 @@ public class CustomField implements Serializable {
     }
 
     /**
-     * @param id
-     * @param name
-     * @param label
-     * @param type
-     * @param possibleValues
-     * @param defaultValue
-     * @param validRegexp
-     * @param lengthMin
-     * @param lengthMax
-     * @param showOnDesign
-     * @param enableOnDesign
-     * @param showOnExecution
-     * @param enableOnExecution
-     * @param showOnTestPlanDesign
-     * @param enableOnTestPlanDesign
-     * @param displayOrder
-     * @param location
-     * @param value
+     * @param id ID
+     * @param name name
+     * @param label label
+     * @param type type
+     * @param possibleValues possible values
+     * @param defaultValue default value
+     * @param validRegexp valid regular expression
+     * @param lengthMin minimum length
+     * @param lengthMax maximum length
+     * @param showOnDesign show on design flag
+     * @param enableOnDesign enable on design flag
+     * @param showOnExecution show on execution flag
+     * @param enableOnExecution enable on execution flag
+     * @param showOnTestPlanDesign show on test plan design flag
+     * @param enableOnTestPlanDesign enable on test plan design flag
+     * @param displayOrder display order
+     * @param location location
+     * @param value value
      */
     public CustomField(Integer id, String name, String label, Integer type, String possibleValues, String defaultValue,
             String validRegexp, Integer lengthMin, Integer lengthMax, Boolean showOnDesign, Boolean enableOnDesign,

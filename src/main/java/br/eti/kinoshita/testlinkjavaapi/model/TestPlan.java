@@ -53,25 +53,25 @@ public class TestPlan implements Serializable {
 
     /**
      *
-     * @param id
-     * @param name
-     * @param projectName
-     * @param notes
-     * @param isActive
-     * @param isPublic
+     * @param id ID
+     * @param name name
+     * @param projectName project name
+     * @param notes notes
+     * @param isActive is active flag
+     * @param isPublic is public flag
      */
     public TestPlan(Integer id, String name, String projectName, String notes, Boolean isActive, Boolean isPublic) {
         this(id, name, projectName, notes, isActive, isPublic, new ArrayList<CustomField>());
     }
 
     /**
-     * @param id
-     * @param name
-     * @param projectName
-     * @param notes
-     * @param isActive
-     * @param isPublic
-     * @param customFields
+     * @param id ID
+     * @param name name
+     * @param projectName project name
+     * @param notes notes
+     * @param isActive is active flag
+     * @param isPublic is public flag
+     * @param customFields custom fields
      */
     public TestPlan(Integer id, String name, String projectName, String notes, Boolean isActive, Boolean isPublic,
             List<CustomField> customFields) {
