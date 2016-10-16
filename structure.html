@@ -73,10 +73,12 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Reference</li>
                                 
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>Introduction</a>
-          </li>
+                          <a href="index.html" title="Introduction">
+          <i class="none"></i>
+        Introduction</a>
+            </li>
                   
       <li>
     
@@ -114,12 +116,10 @@
             </li>
                               <li class="nav-header">API Architecture</li>
                                 
-      <li>
+      <li class="active">
     
-                          <a href="structure.html" title="Internal Structure">
-          <i class="none"></i>
-        Internal Structure</a>
-            </li>
+            <a href="#"><i class="none"></i>Internal Structure</a>
+          </li>
                   
       <li>
     
@@ -164,97 +164,13 @@
         Creating a test case with steps</a>
             </li>
                               <li class="nav-header">Project Documentation</li>
-                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                        
       <li>
     
                           <a href="project-info.html" title="Project Information">
-          <i class="icon-chevron-down"></i>
+          <i class="icon-chevron-right"></i>
         Project Information</a>
-                    <ul class="nav nav-list">
-                      
-      <li class="active">
-    
-            <a href="#"><i class="none"></i>About</a>
-          </li>
-                      
-      <li>
-    
-                          <a href="source-repository.html" title="Source Repository">
-          <i class="none"></i>
-        Source Repository</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="plugin-management.html" title="Plugin Management">
-          <i class="none"></i>
-        Plugin Management</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="mail-lists.html" title="Mailing Lists">
-          <i class="none"></i>
-        Mailing Lists</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="issue-tracking.html" title="Issue Tracking">
-          <i class="none"></i>
-        Issue Tracking</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="plugins.html" title="Project Plugins">
-          <i class="none"></i>
-        Project Plugins</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="project-summary.html" title="Project Summary">
-          <i class="none"></i>
-        Project Summary</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="dependency-management.html" title="Dependency Management">
-          <i class="none"></i>
-        Dependency Management</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="dependencies.html" title="Dependencies">
-          <i class="none"></i>
-        Dependencies</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="license.html" title="Project License">
-          <i class="none"></i>
-        Project License</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="team-list.html" title="Project Team">
-          <i class="none"></i>
-        Project Team</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="integration.html" title="Continuous Integration">
-          <i class="none"></i>
-        Continuous Integration</a>
-            </li>
-              </ul>
-        </li>
+                  </li>
                                                                     
       <li>
     
@@ -283,16 +199,7 @@
         <div id="bodyColumn"  class="span9" >
                                   
             <div class="section">
-<h2>TestLink Java API<a name="TestLink_Java_API"></a></h2>
-<p>TestLink Java API is a Java API that interfaces TestLink XML-RPC API. This API lets you call TestLink internal methods such as createTestProject, uploadAttachment, getTestProjectByName and others.</p>
-<p><b>This project is developed separately from TestLink. Issues should be reported here <a class="externalLink" href="http://sourceforge.net/tracker/?group_id=372361">here</a></b>.</p>
-<p>Our aim with this project is always release one version of this API after a new version of TestLink has been released. Let's say TestLink releases version 2.0, we will release testlink-java-api-2.0-1. Where -1 reprensents the internal version, for control of bug fixes and enhancements in the Java API. </p>
-<p>One fact to keep in mind is that TestLink Java API can't assure you Backward Compabitility among its versions. It occurs because TestLink XML-RPC API is constantly changing. Even some methods are renamed. So trying to keep Backward Compatibility would be really cumbersome. </p>
-<p>Another important thing is that behind the scenes we are using XML-RPC to communicate with TestLink. The Java API abstracts the calls, providing objects that represent the entities in TestLink. This way you build your objects and retrieve objects from TestLink. You can still use low level XML-RPC, with a Hashmap with the parameters.</p>
-<p>If you call the method getTestPlanPlatforms it will return an array of Platform (an object in TestLink Java API). This way you won't need handle Maps. In case of any error, the message will come to you wrapped in a TestLinkAPIException. This is the basic concepts to get the gist of the TestLink Java API.</p>
-<div class="section">
-<h3>Open source licenses donated for this project<a name="Open_source_licenses_donated_for_this_project"></a></h3><img src="./images/stan4j-88x31-o1.png" alt="" />
-<p><a class="externalLink" href="http://stan4j.com">Stan4J</a> </p></div></div>
+<h2>API Structure<a name="API_Structure"></a></h2><img src="./images/structure.png" alt="Generated with Stan4J" /></div>
                   </div>
             </div>
           </div>

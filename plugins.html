@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Revision-yyyymmdd" content="20161016" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>TestLink Java API - </title>
+    <title>TestLink Java API - Project Build Plugins</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -45,7 +45,7 @@
         TestLink</a>
         </li>
       <li class="divider ">/</li>
-        <li class=""></li>
+        <li class="">Project Build Plugins</li>
                 
                 
                     
@@ -73,10 +73,12 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Reference</li>
                                 
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>Introduction</a>
-          </li>
+                          <a href="index.html" title="Introduction">
+          <i class="none"></i>
+        Introduction</a>
+            </li>
                   
       <li>
     
@@ -172,10 +174,12 @@
         Project Information</a>
                     <ul class="nav nav-list">
                       
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>About</a>
-          </li>
+                          <a href="index.html" title="About">
+          <i class="none"></i>
+        About</a>
+            </li>
                       
       <li>
     
@@ -205,12 +209,10 @@
         Issue Tracking</a>
             </li>
                       
-      <li>
+      <li class="active">
     
-                          <a href="plugins.html" title="Project Plugins">
-          <i class="none"></i>
-        Project Plugins</a>
-            </li>
+            <a href="#"><i class="none"></i>Project Plugins</a>
+          </li>
                       
       <li>
     
@@ -283,16 +285,67 @@
         <div id="bodyColumn"  class="span9" >
                                   
             <div class="section">
-<h2>TestLink Java API<a name="TestLink_Java_API"></a></h2>
-<p>TestLink Java API is a Java API that interfaces TestLink XML-RPC API. This API lets you call TestLink internal methods such as createTestProject, uploadAttachment, getTestProjectByName and others.</p>
-<p><b>This project is developed separately from TestLink. Issues should be reported here <a class="externalLink" href="http://sourceforge.net/tracker/?group_id=372361">here</a></b>.</p>
-<p>Our aim with this project is always release one version of this API after a new version of TestLink has been released. Let's say TestLink releases version 2.0, we will release testlink-java-api-2.0-1. Where -1 reprensents the internal version, for control of bug fixes and enhancements in the Java API. </p>
-<p>One fact to keep in mind is that TestLink Java API can't assure you Backward Compabitility among its versions. It occurs because TestLink XML-RPC API is constantly changing. Even some methods are renamed. So trying to keep Backward Compatibility would be really cumbersome. </p>
-<p>Another important thing is that behind the scenes we are using XML-RPC to communicate with TestLink. The Java API abstracts the calls, providing objects that represent the entities in TestLink. This way you build your objects and retrieve objects from TestLink. You can still use low level XML-RPC, with a Hashmap with the parameters.</p>
-<p>If you call the method getTestPlanPlatforms it will return an array of Platform (an object in TestLink Java API). This way you won't need handle Maps. In case of any error, the message will come to you wrapped in a TestLinkAPIException. This is the basic concepts to get the gist of the TestLink Java API.</p>
+<h2>Project Build Plugins<a name="Project_Build_Plugins"></a></h2><a name="Project_Build_Plugins"></a>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>GroupId</th>
+<th>ArtifactId</th>
+<th>Version</th></tr>
+<tr class="b">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-clean-plugin/">maven-clean-plugin</a></td>
+<td>2.4.1</td></tr>
+<tr class="a">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-compiler-plugin/">maven-compiler-plugin</a></td>
+<td>2.3.2</td></tr>
+<tr class="b">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-deploy-plugin/">maven-deploy-plugin</a></td>
+<td>2.7</td></tr>
+<tr class="a">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-gpg-plugin/">maven-gpg-plugin</a></td>
+<td>1.5</td></tr>
+<tr class="b">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-install-plugin/">maven-install-plugin</a></td>
+<td>2.4</td></tr>
+<tr class="a">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-jar-plugin/">maven-jar-plugin</a></td>
+<td>2.4</td></tr>
+<tr class="b">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-javadoc-plugin/">maven-javadoc-plugin</a></td>
+<td>2.9.1</td></tr>
+<tr class="a">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/maven-release/maven-release-plugin/">maven-release-plugin</a></td>
+<td>2.4.2</td></tr>
+<tr class="b">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-resources-plugin/">maven-resources-plugin</a></td>
+<td>2.6</td></tr>
+<tr class="a">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-site-plugin/">maven-site-plugin</a></td>
+<td>3.3</td></tr>
+<tr class="b">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/plugins/maven-source-plugin/">maven-source-plugin</a></td>
+<td>2.2.1</td></tr>
+<tr class="a">
+<td>org.apache.maven.plugins</td>
+<td><a class="externalLink" href="http://maven.apache.org/surefire/maven-surefire-plugin">maven-surefire-plugin</a></td>
+<td>2.12.4</td></tr>
+<tr class="b">
+<td>org.codehaus.mojo</td>
+<td><a class="externalLink" href="http://mojo.codehaus.org/cobertura-maven-plugin/">cobertura-maven-plugin</a></td>
+<td>2.4</td></tr></table></div>
 <div class="section">
-<h3>Open source licenses donated for this project<a name="Open_source_licenses_donated_for_this_project"></a></h3><img src="./images/stan4j-88x31-o1.png" alt="" />
-<p><a class="externalLink" href="http://stan4j.com">Stan4J</a> </p></div></div>
+<h2>Project Report Plugins<a name="Project_Report_Plugins"></a></h2><a name="Project_Report_Plugins"></a>
+<p>There are no plugins reports defined in the Reporting part of this project.</p></div>
                   </div>
             </div>
           </div>

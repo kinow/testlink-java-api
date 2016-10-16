@@ -73,10 +73,12 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Reference</li>
                                 
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>Introduction</a>
-          </li>
+                          <a href="index.html" title="Introduction">
+          <i class="none"></i>
+        Introduction</a>
+            </li>
                   
       <li>
     
@@ -92,12 +94,10 @@
         Download</a>
             </li>
                   
-      <li>
+      <li class="active">
     
-                          <a href="release_notes.html" title="Release Notes">
-          <i class="none"></i>
-        Release Notes</a>
-            </li>
+            <a href="#"><i class="none"></i>Release Notes</a>
+          </li>
                   
       <li>
     
@@ -164,97 +164,13 @@
         Creating a test case with steps</a>
             </li>
                               <li class="nav-header">Project Documentation</li>
-                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                        
       <li>
     
                           <a href="project-info.html" title="Project Information">
-          <i class="icon-chevron-down"></i>
+          <i class="icon-chevron-right"></i>
         Project Information</a>
-                    <ul class="nav nav-list">
-                      
-      <li class="active">
-    
-            <a href="#"><i class="none"></i>About</a>
-          </li>
-                      
-      <li>
-    
-                          <a href="source-repository.html" title="Source Repository">
-          <i class="none"></i>
-        Source Repository</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="plugin-management.html" title="Plugin Management">
-          <i class="none"></i>
-        Plugin Management</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="mail-lists.html" title="Mailing Lists">
-          <i class="none"></i>
-        Mailing Lists</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="issue-tracking.html" title="Issue Tracking">
-          <i class="none"></i>
-        Issue Tracking</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="plugins.html" title="Project Plugins">
-          <i class="none"></i>
-        Project Plugins</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="project-summary.html" title="Project Summary">
-          <i class="none"></i>
-        Project Summary</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="dependency-management.html" title="Dependency Management">
-          <i class="none"></i>
-        Dependency Management</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="dependencies.html" title="Dependencies">
-          <i class="none"></i>
-        Dependencies</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="license.html" title="Project License">
-          <i class="none"></i>
-        Project License</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="team-list.html" title="Project Team">
-          <i class="none"></i>
-        Project Team</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="integration.html" title="Continuous Integration">
-          <i class="none"></i>
-        Continuous Integration</a>
-            </li>
-              </ul>
-        </li>
+                  </li>
                                                                     
       <li>
     
@@ -283,16 +199,111 @@
         <div id="bodyColumn"  class="span9" >
                                   
             <div class="section">
-<h2>TestLink Java API<a name="TestLink_Java_API"></a></h2>
-<p>TestLink Java API is a Java API that interfaces TestLink XML-RPC API. This API lets you call TestLink internal methods such as createTestProject, uploadAttachment, getTestProjectByName and others.</p>
-<p><b>This project is developed separately from TestLink. Issues should be reported here <a class="externalLink" href="http://sourceforge.net/tracker/?group_id=372361">here</a></b>.</p>
-<p>Our aim with this project is always release one version of this API after a new version of TestLink has been released. Let's say TestLink releases version 2.0, we will release testlink-java-api-2.0-1. Where -1 reprensents the internal version, for control of bug fixes and enhancements in the Java API. </p>
-<p>One fact to keep in mind is that TestLink Java API can't assure you Backward Compabitility among its versions. It occurs because TestLink XML-RPC API is constantly changing. Even some methods are renamed. So trying to keep Backward Compatibility would be really cumbersome. </p>
-<p>Another important thing is that behind the scenes we are using XML-RPC to communicate with TestLink. The Java API abstracts the calls, providing objects that represent the entities in TestLink. This way you build your objects and retrieve objects from TestLink. You can still use low level XML-RPC, with a Hashmap with the parameters.</p>
-<p>If you call the method getTestPlanPlatforms it will return an array of Platform (an object in TestLink Java API). This way you won't need handle Maps. In case of any error, the message will come to you wrapped in a TestLinkAPIException. This is the basic concepts to get the gist of the TestLink Java API.</p>
+<h2>Release Notes<a name="Release_Notes"></a></h2>
 <div class="section">
-<h3>Open source licenses donated for this project<a name="Open_source_licenses_donated_for_this_project"></a></h3><img src="./images/stan4j-88x31-o1.png" alt="" />
-<p><a class="externalLink" href="http://stan4j.com">Stan4J</a> </p></div></div>
+<h3>Version 1.9.4-0<a name="Version_1.9.4-0"></a></h3>
+<ul>
+<li>Updated XML-RPC samples for testing</li>
+<li>Removed method updateTestCase (not implemented in TL XML-RPC yet)</li>
+<li>Added method getExecCountersByBuild</li>
+<li>Added method setTestCaseExecutionType</li></ul></div>
+<div class="section">
+<h3>Version 1.9.3-5<a name="Version_1.9.3-5"></a></h3>
+<ul>
+<li>Fixed wrong parameter name in getTestCasesForTestPlan. The getstepsinfo parameter was getstepinfo</li></ul></div>
+<div class="section">
+<h3>Version 1.9.3-4<a name="Version_1.9.3-4"></a></h3>
+<ul>
+<li>Fixing code conventions and format</li>
+<li>Fixed Javadoc warnings</li>
+<li>Fixed issues found in Sonar (most major warnings)</li>
+<li>Included license header in files that were without it</li>
+<li>Moved enum and constant classes to constants package</li>
+<li>Moved exceptions to util packages</li>
+<li>Included example of how to create a test case with steps in the web site</li>
+<li>Updated example of how to include attachments with Base64 commons class</li>
+<li>Bug fix: 3515280 - 1.9.3-2 should have constants/actions eg:ACTION_BLOCK_ON_DUP</li></ul></div>
+<div class="section">
+<h3>Version 1.9.3-3<a name="Version_1.9.3-3"></a></h3>
+<ul>
+<li>Fixing parameters with wrong names (for checking duplicated)</li></ul></div>
+<div class="section">
+<h3>Version 1.9.3-2<a name="Version_1.9.3-2"></a></h3>
+<ul>
+<li>Fixing minor issues after code review, merging pull requests</li></ul></div>
+<div class="section">
+<h3>Version 1.9.3-1<a name="Version_1.9.3-1"></a></h3>
+<ul>
+<li>Pull Requests GitHub to enhance the API, specially how it handles java.util.Map</li></ul></div>
+<div class="section">
+<h3>Version 1.9.2-2<a name="Version_1.9.2-2"></a></h3>
+<ul>
+<li>Added support to Execution Order in Test Cases</li></ul></div>
+<div class="section">
+<h3>Version 1.9.2-1<a name="Version_1.9.2-1"></a></h3>
+<ul>
+<li>Simplified the Services. Before it was creating one XML-RPC API for each service. Now it creates only one for the API. </li>
+<li>Instead of creating an API with two Strings (one for the URL and other for the devKey) now you create the API with a java.net.URL and a String. It removed the need to catch the MalformedURLException during construction of the API.</li></ul></div>
+<div class="section">
+<h3>Version 1.9.2-0<a name="Version_1.9.2-0"></a></h3>
+<ul>
+<li>Compatibility version for TestLink 1.9.2</li>
+<li>Added generic method to call XML-RPC API directly</li>
+<li>Fixed minor BUG with Test Case Mapping and execution status from Builds (found out during tests)</li>
+<li>Added java.util.logging and custom RPC transport with logging enabled.</li></ul></div>
+<div class="section">
+<h3>Version 1.9.1-0<a name="Version_1.9.1-0"></a></h3>
+<ul>
+<li>FIXED-3131322</li>
+<li>FIXED-3176067</li>
+<li>Tested with TestLink 1.9.1</li>
+<li>uploadExecutionAttachment is implemented however there is a BUG in TestLink regarding it (TL Mantis ID: 4311)</li></ul></div>
+<div class="section">
+<h3>Version 1.9.0-2<a name="Version_1.9.0-2"></a></h3>
+<ul>
+<li>reportTCResult</li>
+<li>setTestCaseExecutionResult</li>
+<li>createBuild</li>
+<li>createTestCase</li>
+<li>createTestPlan</li>
+<li>createTestProject</li>
+<li>createTestSuite</li>
+<li>uploadRequirementSpecificationAttachment</li>
+<li>uploadRequirementAttachment</li>
+<li>uploadTestProjectAttachment</li>
+<li>uploadTestSuiteAttachment</li>
+<li>uploadTestCaseAttachment</li>
+<li>uploadAttachment</li>
+<li>assignRequirements</li>
+<li>addTestCaseToTestPlan</li>
+<li>getProjects</li>
+<li>getTestProjectByName</li>
+<li>getTestPlanByName</li>
+<li>getProjectTestPlans</li>
+<li>getTestPlanPlatforms</li>
+<li>getTotalsForTestPlan</li>
+<li>getBuildsForTestPlan</li>
+<li>getLatestBuildForTestPlan</li>
+<li>getLastExecutionResult</li>
+<li>getTestSuitesForTestPlan</li>
+<li>getTestSuitesForTestSuite</li>
+<li>getTestCasesForTestSuite</li>
+<li>getTestCasesForTestPlan</li>
+<li>getTestCaseIDByName</li>
+<li>getTestCaseCustomFieldDesignValue</li>
+<li>getFirstLevelTestSuitesForTestProject</li>
+<li>getTestCaseAttachments</li>
+<li>getTestCase</li>
+<li>getFullPath</li>
+<li>getTestSuiteByID</li>
+<li>deleteExecution</li>
+<li>doesUserExist</li>
+<li>checkDevKey</li>
+<li>about</li>
+<li>setTestMode</li>
+<li>ping</li>
+<li>sayHello</li>
+<li>repeat</li></ul></div></div>
                   </div>
             </div>
           </div>
