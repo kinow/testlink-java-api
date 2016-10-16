@@ -266,6 +266,7 @@
         <profile>
             <id>release-sign-artifacts</id>
             <activation>
+                <activeByDefault>false</activeByDefault>
                 <property>
                     <name>performRelease</name>
                     <value>true</value>
