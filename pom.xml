@@ -298,7 +298,7 @@
             <distributionManagement>
                 <site>
                     <id>testlink-java-api-github-site</id>
-                    <url>gitsite:git@github.com:kinow/testlink-java-api.git</url>
+                    <url>gitsite:git@github.com/kinow/testlink-java-api.git</url>
                 </site>
             </distributionManagement>
         </profile>
