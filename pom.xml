@@ -95,6 +95,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.5</java.version>
     </properties>
 
     <build>
@@ -102,12 +103,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>${java.versoin}</source>
+                    <target>${java.versoin}</target>
                 </configuration>
-                <version>2.3.2</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -155,7 +156,36 @@
                     </reportPlugins>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.scm</groupId>
+                <artifactId>maven-scm-provider-gitexe</artifactId>
+                <version>1.9.1</version>
+            </extension>
+            <extension>
+                <groupId>org.apache.maven.scm</groupId>
+                <artifactId>maven-scm-manager-plexus</artifactId>
+                <version>1.9</version>
+            </extension>
+            <extension>
+                <groupId>com.github.stephenc.wagon</groupId>
+                <artifactId>wagon-gitsite</artifactId>
+                <version>0.4</version>
+            </extension>
+        </extensions>
     </build>
 
     <dependencies>
