@@ -57,7 +57,7 @@ public class TestGetLastExecutionResult extends BaseTest {
         Assert.assertNotNull(execution);
 
         Assert.assertTrue(execution.getId() > 0);
-        
+
         System.out.println(execution);
 
     }

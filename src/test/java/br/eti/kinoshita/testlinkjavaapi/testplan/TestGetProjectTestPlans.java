@@ -38,24 +38,24 @@ public class TestGetProjectTestPlans extends BaseTest {
 
     @DataProvider(name = "testProjectData")
     public Object[][] createData() {
-	return new Object[][] { { 1 } };
+        return new Object[][] { { 1 } };
     }
 
     @Test(dataProvider = "testProjectData")
     public void testGetProjectTestPlans(Integer projectId) {
-	this.loadXMLRPCMockData("tl.getProjectTestPlans.xml");
+        this.loadXMLRPCMockData("tl.getProjectTestPlans.xml");
 
-	TestPlan[] testPlans = null;
+        TestPlan[] testPlans = null;
 
-	try {
-	    testPlans = this.api.getProjectTestPlans(projectId);
-	} catch (Exception e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testPlans = this.api.getProjectTestPlans(projectId);
+        } catch (Exception e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testPlans);
+        Assert.assertNotNull(testPlans);
 
-	Assert.assertTrue(testPlans.length > 0);
+        Assert.assertTrue(testPlans.length > 0);
     }
 
 }

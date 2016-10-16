@@ -51,7 +51,8 @@ public class BaseTest {
     protected HttpTestServer server;
 
     /**
-     * Whether the tests are being mocked, and XML with the prepared response are being used.
+     * Whether the tests are being mocked, and XML with the prepared response
+     * are being used.
      */
     protected boolean mocked = true;
 
@@ -60,7 +61,7 @@ public class BaseTest {
      */
     @BeforeClass
     protected void setUp() throws Exception {
-        this.mocked = "true".equals(System.getProperty("mocked", "true")); 
+        this.mocked = "true".equals(System.getProperty("mocked", "true"));
 
         if (!mocked) {
             this.api = new TestLinkAPI(new URL("http://localhost/testlink-1.9.6/lib/api/xmlrpc.php"),
@@ -70,8 +71,8 @@ public class BaseTest {
             this.loadXMLRPCMockData("tl.checkDevKey.xml");
             this.server.start();
 
-            this.api = new TestLinkAPI(new URL("http://localhost:" + this.server.getPort()
-                    + "/testlink/lib/api/xmlrpc.php"), "devKey");
+            this.api = new TestLinkAPI(
+                    new URL("http://localhost:" + this.server.getPort() + "/testlink/lib/api/xmlrpc.php"), "devKey");
         }
     }
 

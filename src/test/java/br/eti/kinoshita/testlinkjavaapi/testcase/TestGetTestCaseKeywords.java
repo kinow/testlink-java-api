@@ -40,7 +40,7 @@ public class TestGetTestCaseKeywords extends BaseTest {
 
     @DataProvider(name = "testGetTestCaseKeywords")
     public Object[][] createData() {
-        return new Object[][] { { 1,1 } };
+        return new Object[][] { { 1, 1 } };
     }
 
     @Test(dataProvider = "testGetTestCaseKeywords")
@@ -50,7 +50,7 @@ public class TestGetTestCaseKeywords extends BaseTest {
         List<String> keywords = null;
 
         try {
-        	keywords = this.api.getTestCaseKeywords(testProjectId, testCaseId);
+            keywords = this.api.getTestCaseKeywords(testProjectId, testCaseId);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }
@@ -60,6 +60,6 @@ public class TestGetTestCaseKeywords extends BaseTest {
         Assert.assertTrue(keywords.size() > 0);
 
         Assert.assertNotNull(keywords.get(0));
-        
-    }   
+
+    }
 }

@@ -39,25 +39,24 @@ public class TestGetFirstLevelTestSuiteForTestProject extends BaseTest {
 
     @DataProvider(name = "validTestProjects")
     public Object[][] createData() {
-	return new Object[][] { { 1 } };
+        return new Object[][] { { 1 } };
     }
 
     @Test(dataProvider = "validTestProjects")
     public void testGetFirstLevelTestSuitesForTestProject(Integer testProjectId) {
-	this.loadXMLRPCMockData("tl.createTestSuite.xml");
+        this.loadXMLRPCMockData("tl.createTestSuite.xml");
 
-	TestSuite[] testSuites = null;
+        TestSuite[] testSuites = null;
 
-	try {
-	    testSuites = api
-		    .getFirstLevelTestSuitesForTestProject(testProjectId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testSuites = api.getFirstLevelTestSuitesForTestProject(testProjectId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testSuites);
+        Assert.assertNotNull(testSuites);
 
-	Assert.assertTrue(testSuites.length > 0);
+        Assert.assertTrue(testSuites.length > 0);
     }
 
 }

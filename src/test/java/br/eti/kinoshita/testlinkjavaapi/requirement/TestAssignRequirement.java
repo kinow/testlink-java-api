@@ -41,27 +41,27 @@ public class TestAssignRequirement extends BaseTest {
 
     @Test
     public void testAssignRequirement() {
-	this.loadXMLRPCMockData("tl.assignRequirements.xml");
+        this.loadXMLRPCMockData("tl.assignRequirements.xml");
 
-	List<Requirement> requirements = new ArrayList<Requirement>();
+        List<Requirement> requirements = new ArrayList<Requirement>();
 
-	Requirement requirement = new Requirement();
-	requirement.setId(12);
-	requirement.setReqSpecId(11);
+        Requirement requirement = new Requirement();
+        requirement.setId(12);
+        requirement.setReqSpecId(11);
 
-	requirements.add(requirement);
+        requirements.add(requirement);
 
-	requirement = new Requirement();
-	requirement.setId(14);
-	requirement.setReqSpecId(11);
+        requirement = new Requirement();
+        requirement.setId(14);
+        requirement.setReqSpecId(11);
 
-	requirements.add(requirement);
+        requirements.add(requirement);
 
-	try {
-	    this.api.assignRequirements(4, 1, requirements);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            this.api.assignRequirements(4, 1, requirements);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
     }
 
 }

@@ -42,33 +42,30 @@ public class TestIssue3224421 extends BaseTest {
 
     @Test
     public void testRetrieveTestCaseForBuild() {
-	try {
-	    this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
-	    TestPlan plan = this.api.getTestPlanByName("Sample plan",
-		    "Sample project");
+        try {
+            this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
+            TestPlan plan = this.api.getTestPlanByName("Sample plan", "Sample project");
 
-	    this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
-	    Build build = this.api.getLatestBuildForTestPlan(plan.getId());
+            this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
+            Build build = this.api.getLatestBuildForTestPlan(plan.getId());
 
-	    Assert.assertNotNull(build);
+            Assert.assertNotNull(build);
 
-	    this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
-	    TestCase[] tcs = this.api.getTestCasesForTestPlan(plan.getId(),
-		    null, null, null, null, Boolean.TRUE, null, null, null,
-		    null, null);
+            this.loadXMLRPCMockData("tl.getTestCasesForTestPlan.xml");
+            TestCase[] tcs = this.api.getTestCasesForTestPlan(plan.getId(), null, null, null, null, Boolean.TRUE, null,
+                    null, null, null, null);
 
-	    for (TestCase tc : tcs) {
-		Assert.assertNotNull(tc.getExecutionStatus());
-		if (tc.getExecutionStatus() != ExecutionStatus.NOT_RUN) {
-		    this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
-		    Execution execution = this.api.getLastExecutionResult(
-			    plan.getId(), tc.getId(), null);
-		    Assert.assertNotNull(execution);
-		}
-	    }
-	} catch (TestLinkAPIException e) {
-	    Assert.fail("" + e.getMessage(), e);
-	}
+            for (TestCase tc : tcs) {
+                Assert.assertNotNull(tc.getExecutionStatus());
+                if (tc.getExecutionStatus() != ExecutionStatus.NOT_RUN) {
+                    this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
+                    Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null);
+                    Assert.assertNotNull(execution);
+                }
+            }
+        } catch (TestLinkAPIException e) {
+            Assert.fail("" + e.getMessage(), e);
+        }
     }
 
 }

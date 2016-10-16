@@ -20,7 +20,7 @@ public class TestRemovePlatformFromTestPlan extends BaseTest {
     public Object[][] createData() {
         return new Object[][] { { 1, 10, "browser" } };
     }
-    
+
     @Test(dataProvider = "removePlatformFromTestPlan")
     public void testGetProjectPlatforms(Integer testProjectId, Integer testPlanId, String platformName) {
         this.loadXMLRPCMockData("tl.removePlatformFromTestPlan.xml");

@@ -40,25 +40,24 @@ public class TestGetTestCasesForTestSuite extends BaseTest {
 
     @DataProvider(name = "testCaseData")
     public Object[][] createData() {
-	return new Object[][] { { 2 } };
+        return new Object[][] { { 2 } };
     }
 
     @Test(dataProvider = "testCaseData")
     public void testGetTestCasesForTestSuite(Integer testSuiteId) {
-	this.loadXMLRPCMockData("tl.getTestCasesForTestSuite.xml");
+        this.loadXMLRPCMockData("tl.getTestCasesForTestSuite.xml");
 
-	TestCase[] testCases = null;
+        TestCase[] testCases = null;
 
-	try {
-	    testCases = this.api.getTestCasesForTestSuite(testSuiteId, true,
-		    TestCaseDetails.FULL);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, TestCaseDetails.FULL);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testCases);
+        Assert.assertNotNull(testCases);
 
-	Assert.assertTrue(testCases.length > 0);
+        Assert.assertTrue(testCases.length > 0);
     }
 
 }

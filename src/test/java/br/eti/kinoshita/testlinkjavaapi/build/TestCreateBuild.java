@@ -39,25 +39,24 @@ public class TestCreateBuild extends BaseTest {
 
     @DataProvider(name = "buildData")
     public Object[][] createData() {
-	return new Object[][] { { 10, "Build Notes" } };
+        return new Object[][] { { 10, "Build Notes" } };
     }
 
     @Test(dataProvider = "buildData")
     public void testCreateBuild(Integer testPlanId, String buildNotes) {
-	this.loadXMLRPCMockData("tl.createBuild.xml");
+        this.loadXMLRPCMockData("tl.createBuild.xml");
 
-	Build build = null;
+        Build build = null;
 
-	try {
-	    build = api.createBuild(testPlanId,
-		    "Sample build " + System.currentTimeMillis(), buildNotes);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            build = api.createBuild(testPlanId, "Sample build " + System.currentTimeMillis(), buildNotes);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(build);
+        Assert.assertNotNull(build);
 
-	Assert.assertTrue(build.getId() > 0);
+        Assert.assertTrue(build.getId() > 0);
     }
 
 }

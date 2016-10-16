@@ -37,25 +37,25 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
  */
 public class TestGetProjectPlatforms extends BaseTest {
 
-	@DataProvider(name = "getProjectPlatforms")
-	public Object[][] createData() {
-		return new Object[][] { { 1 } };
-	}
-	
-	@Test(dataProvider = "getProjectPlatforms")
-	public void testGetProjectPlatforms(Integer projectId) {
-		this.loadXMLRPCMockData("tl.getProjectPlatforms.xml");
-		Platform[] platforms= null;
+    @DataProvider(name = "getProjectPlatforms")
+    public Object[][] createData() {
+        return new Object[][] { { 1 } };
+    }
 
-		try {
-			platforms = api.getProjectPlatforms(projectId);
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+    @Test(dataProvider = "getProjectPlatforms")
+    public void testGetProjectPlatforms(Integer projectId) {
+        this.loadXMLRPCMockData("tl.getProjectPlatforms.xml");
+        Platform[] platforms = null;
 
-		Assert.assertNotNull(platforms);
+        try {
+            platforms = api.getProjectPlatforms(projectId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertTrue(platforms.length > 0);
-	}
+        Assert.assertNotNull(platforms);
+
+        Assert.assertTrue(platforms.length > 0);
+    }
 
 }

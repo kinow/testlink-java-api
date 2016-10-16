@@ -41,35 +41,31 @@ public class TestCreateTestProject extends BaseTest {
 
     @DataProvider(name = "createTestProjectDataProvider")
     public Object[][] createData() {
-	return new Object[][] { { "Test Project created with TestNG", true,
-		true, true, false, false, true } };
+        return new Object[][] { { "Test Project created with TestNG", true, true, true, false, false, true } };
     }
 
     @Test(dataProvider = "createTestProjectDataProvider")
-    public void testCreateProject(String notes, Boolean enableRequirements,
-	    Boolean enableTestPriority, Boolean enableAutomation,
-	    Boolean enableInventory, Boolean isActive, Boolean isPublic) {
-	this.loadXMLRPCMockData("tl.createTestProject.xml");
+    public void testCreateProject(String notes, Boolean enableRequirements, Boolean enableTestPriority,
+            Boolean enableAutomation, Boolean enableInventory, Boolean isActive, Boolean isPublic) {
+        this.loadXMLRPCMockData("tl.createTestProject.xml");
 
-	TestProject project = null;
+        TestProject project = null;
 
-	try {
-	    Random random = new Random(System.currentTimeMillis());
+        try {
+            Random random = new Random(System.currentTimeMillis());
 
-	    project = api.createTestProject(
-		    "Sample project " + System.currentTimeMillis(),
-		    "" + random.nextInt(9999), notes, enableRequirements,
-		    enableTestPriority, enableAutomation, enableInventory,
-		    isActive, isPublic);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+            project = api.createTestProject("Sample project " + System.currentTimeMillis(), "" + random.nextInt(9999),
+                    notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive,
+                    isPublic);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(project);
+        Assert.assertNotNull(project);
 
-	Assert.assertTrue(project.getId() > 0);
+        Assert.assertTrue(project.getId() > 0);
 
-	Assert.assertFalse(project.isActive());
+        Assert.assertFalse(project.isActive());
 
     }
 

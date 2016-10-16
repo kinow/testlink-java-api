@@ -42,25 +42,26 @@ public class TestSetTestCaseExecutionType extends BaseTest {
 
     @DataProvider(name = "testCaseData")
     public Object[][] createData() {
-	return new Object[][] { { 1, 4, null, 1, ExecutionType.AUTOMATED } };
+        return new Object[][] { { 1, 4, null, 1, ExecutionType.AUTOMATED } };
     }
 
     @Test(dataProvider = "testCaseData")
     public void testSetTestCaseExecutionType(Integer testProjectId, Integer testCaseId, Integer testCaseExternalId,
-	    Integer versionNumber, ExecutionType executionType) {
-	this.loadXMLRPCMockData("tl.setTestCaseExecutionType.xml");
+            Integer versionNumber, ExecutionType executionType) {
+        this.loadXMLRPCMockData("tl.setTestCaseExecutionType.xml");
 
-	Map<String, Object> response = null;
-	try {
-	    response = this.api.setTestCaseExecutionType(testProjectId, testCaseId, testCaseExternalId, versionNumber, executionType);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        Map<String, Object> response = null;
+        try {
+            response = this.api.setTestCaseExecutionType(testProjectId, testCaseId, testCaseExternalId, versionNumber,
+                    executionType);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(response);
+        Assert.assertNotNull(response);
 
-	Assert.assertTrue(Integer.parseInt(response.get("testprojectid").toString()) > 0);
-	Assert.assertTrue(Integer.parseInt(response.get("testcaseid").toString()) > 0);
+        Assert.assertTrue(Integer.parseInt(response.get("testprojectid").toString()) > 0);
+        Assert.assertTrue(Integer.parseInt(response.get("testcaseid").toString()) > 0);
     }
-    
+
 }

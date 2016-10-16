@@ -39,24 +39,24 @@ public class TestGetTestSuitesForTestSuite extends BaseTest {
 
     @DataProvider(name = "testSuitesWithChildren")
     public Object[][] createData() {
-	return new Object[][] { { 2 } };
+        return new Object[][] { { 2 } };
     }
 
     @Test(dataProvider = "testSuitesWithChildren")
     public void testGetTestSuitesForTestSuite(Integer testSuiteId) {
-	this.loadXMLRPCMockData("tl.getTestSuitesForTestSuite.xml");
+        this.loadXMLRPCMockData("tl.getTestSuitesForTestSuite.xml");
 
-	TestSuite[] testSuites = null;
+        TestSuite[] testSuites = null;
 
-	try {
-	    testSuites = api.getTestSuitesForTestSuite(testSuiteId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testSuites = api.getTestSuitesForTestSuite(testSuiteId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testSuites);
+        Assert.assertNotNull(testSuites);
 
-	Assert.assertTrue(testSuites.length > 0);
+        Assert.assertTrue(testSuites.length > 0);
 
     }
 

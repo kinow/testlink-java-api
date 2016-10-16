@@ -38,26 +38,24 @@ public class TestAddTestCaseToTestPlan extends BaseTest {
 
     @DataProvider(name = "testCaseAndTestPlanData")
     public Object[][] createData() {
-	return new Object[][] { { 1, 10, 4, 1, 2 } };
+        return new Object[][] { { 1, 10, 4, 1, 2 } };
     }
 
     @Test(dataProvider = "testCaseAndTestPlanData")
-    public void testAddTestCaseToTestPlan(Integer testProjectId,
-	    Integer testPlanId, Integer testCaseId, Integer version,
-	    Integer platformId) {
-	this.loadXMLRPCMockData("tl.addTestCaseToTestPlan.xml");
-	Integer featureId = 0;
+    public void testAddTestCaseToTestPlan(Integer testProjectId, Integer testPlanId, Integer testCaseId,
+            Integer version, Integer platformId) {
+        this.loadXMLRPCMockData("tl.addTestCaseToTestPlan.xml");
+        Integer featureId = 0;
 
-	try {
-	    featureId = api.addTestCaseToTestPlan(testProjectId, testPlanId,
-		    testCaseId, version, platformId, null, null);
+        try {
+            featureId = api.addTestCaseToTestPlan(testProjectId, testPlanId, testCaseId, version, platformId, null,
+                    null);
 
-	    Assert.assertTrue(featureId > 0);
-	} catch (TestLinkAPIException e) {
-	    String message = e.getMessage();
-	    Assert.assertTrue(message
-		    .contains("Test Case version is already linked to Test Plan"));
-	}
+            Assert.assertTrue(featureId > 0);
+        } catch (TestLinkAPIException e) {
+            String message = e.getMessage();
+            Assert.assertTrue(message.contains("Test Case version is already linked to Test Plan"));
+        }
 
     }
 

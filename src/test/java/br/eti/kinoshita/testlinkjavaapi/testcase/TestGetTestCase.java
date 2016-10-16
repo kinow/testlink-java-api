@@ -59,7 +59,7 @@ public class TestGetTestCase extends BaseTest {
         Assert.assertTrue(testCase.getId() > 0);
 
         Assert.assertNotNull(testCase.getSteps());
-        
+
     }
 
 }

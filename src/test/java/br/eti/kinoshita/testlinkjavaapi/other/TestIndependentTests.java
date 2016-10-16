@@ -36,113 +36,113 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
  */
 public class TestIndependentTests extends BaseTest {
 
-	@DataProvider(name = "validUsers")
-	public Object[][] createData() {
-		return new Object[][] { { "admin" } };
-	}
+    @DataProvider(name = "validUsers")
+    public Object[][] createData() {
+        return new Object[][] { { "admin" } };
+    }
 
-	@Test
-	public void testCheckValidDevKey() {
-		this.loadXMLRPCMockData("tl.checkDevKey.xml");
+    @Test
+    public void testCheckValidDevKey() {
+        this.loadXMLRPCMockData("tl.checkDevKey.xml");
 
-		boolean isValidKey = false;
-		try {
-			isValidKey = api.checkDevKey("someValue");
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        boolean isValidKey = false;
+        try {
+            isValidKey = api.checkDevKey("someValue");
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertTrue(isValidKey);
-	}
+        Assert.assertTrue(isValidKey);
+    }
 
-	@Test(expectedExceptions = { TestLinkAPIException.class })
-	public void testCheckInvalidDevKey() throws TestLinkAPIException {
-		this.loadXMLRPCMockData("tl.checkDevKey_invalid.xml");
+    @Test(expectedExceptions = { TestLinkAPIException.class })
+    public void testCheckInvalidDevKey() throws TestLinkAPIException {
+        this.loadXMLRPCMockData("tl.checkDevKey_invalid.xml");
 
-		api.checkDevKey("" + System.currentTimeMillis());
-	}
+        api.checkDevKey("" + System.currentTimeMillis());
+    }
 
-	@Test(dataProvider = "validUsers")
-	public void testDoesUserExist(String user) {
-		Boolean exists = false;
+    @Test(dataProvider = "validUsers")
+    public void testDoesUserExist(String user) {
+        Boolean exists = false;
 
-		try {
-			exists = api.doesUserExist(user);
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        try {
+            exists = api.doesUserExist(user);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertTrue(exists);
-	}
+        Assert.assertTrue(exists);
+    }
 
-	@Test()
-	public void testPingAndSayHello() {
-		this.loadXMLRPCMockData("tl.ping.xml");
+    @Test()
+    public void testPingAndSayHello() {
+        this.loadXMLRPCMockData("tl.ping.xml");
 
-		String pingMessage = null;
-		String sayHelloMessage = null;
+        String pingMessage = null;
+        String sayHelloMessage = null;
 
-		try {
-			pingMessage = this.api.ping();
-			sayHelloMessage = this.api.sayHello();
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        try {
+            pingMessage = this.api.ping();
+            sayHelloMessage = this.api.sayHello();
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertNotNull(pingMessage);
-		Assert.assertNotNull(sayHelloMessage);
+        Assert.assertNotNull(pingMessage);
+        Assert.assertNotNull(sayHelloMessage);
 
-		Assert.assertEquals(pingMessage, sayHelloMessage);
+        Assert.assertEquals(pingMessage, sayHelloMessage);
 
-		Assert.assertTrue(pingMessage.equals("Hello!"));
-	}
+        Assert.assertTrue(pingMessage.equals("Hello!"));
+    }
 
-	@Test
-	public void testAbout() {
-		this.loadXMLRPCMockData("tl.about.xml");
+    @Test
+    public void testAbout() {
+        this.loadXMLRPCMockData("tl.about.xml");
 
-		String aboutMessage = null;
+        String aboutMessage = null;
 
-		try {
-			aboutMessage = this.api.about();
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        try {
+            aboutMessage = this.api.about();
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertNotNull(aboutMessage);
+        Assert.assertNotNull(aboutMessage);
 
-		Assert.assertTrue(aboutMessage.contains("Testlink API Version:"));
-	}
+        Assert.assertTrue(aboutMessage.contains("Testlink API Version:"));
+    }
 
-	@Test
-	public void testSetTestMode() {
-		this.loadXMLRPCMockData("tl.setTestMode.xml");
+    @Test
+    public void testSetTestMode() {
+        this.loadXMLRPCMockData("tl.setTestMode.xml");
 
-		Boolean expectedToBeTrue = false;
+        Boolean expectedToBeTrue = false;
 
-		try {
-			expectedToBeTrue = this.api.setTestMode(Boolean.TRUE);
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        try {
+            expectedToBeTrue = this.api.setTestMode(Boolean.TRUE);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertTrue(expectedToBeTrue);
-	}
+        Assert.assertTrue(expectedToBeTrue);
+    }
 
-	@Test
-	public void testRepeat() {
-		this.loadXMLRPCMockData("tl.repeat.xml");
+    @Test
+    public void testRepeat() {
+        this.loadXMLRPCMockData("tl.repeat.xml");
 
-		String strRepeated = null;
-		try {
-			strRepeated = this.api.repeat("B");
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        String strRepeated = null;
+        try {
+            strRepeated = this.api.repeat("B");
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertNotNull(strRepeated);
+        Assert.assertNotNull(strRepeated);
 
-		Assert.assertEquals(strRepeated, "You said: B");
-	}
+        Assert.assertEquals(strRepeated, "You said: B");
+    }
 
 }

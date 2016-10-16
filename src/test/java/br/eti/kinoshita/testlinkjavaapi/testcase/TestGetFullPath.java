@@ -30,7 +30,6 @@ import org.testng.annotations.Test;
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
-
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since
@@ -39,23 +38,23 @@ public class TestGetFullPath extends BaseTest {
 
     @DataProvider(name = "simpleChildrenTestCases")
     public Object[][] createData() {
-	return new Object[][] { { 4 } };
+        return new Object[][] { { 4 } };
     }
 
     @Test(dataProvider = "simpleChildrenTestCases")
     public void testGetFullPath(Integer nodeId) {
-	this.loadXMLRPCMockData("tl.getFullPath.xml");
-	String[] nodes = null;
+        this.loadXMLRPCMockData("tl.getFullPath.xml");
+        String[] nodes = null;
 
-	try {
-	    nodes = this.api.getFullPath(nodeId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            nodes = this.api.getFullPath(nodeId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(nodes);
+        Assert.assertNotNull(nodes);
 
-	Assert.assertTrue(nodes.length > 0);
+        Assert.assertTrue(nodes.length > 0);
 
     }
 

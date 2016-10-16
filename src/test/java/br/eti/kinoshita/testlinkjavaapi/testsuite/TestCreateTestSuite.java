@@ -39,29 +39,27 @@ public class TestCreateTestSuite extends BaseTest {
 
     @DataProvider(name = "validTestSuite")
     public Object[][] createData() {
-	return new Object[][] { { 1, "Sample test suite 2" },
-		{ 1, "Sample test suite 3" } };
+        return new Object[][] { { 1, "Sample test suite 2" }, { 1, "Sample test suite 3" } };
     }
 
     @Test(dataProvider = "validTestSuite")
     public void testCreateTestSuite(Integer testProjectId, String details) {
-	this.loadXMLRPCMockData("tl.createTestSuite.xml");
+        this.loadXMLRPCMockData("tl.createTestSuite.xml");
 
-	TestSuite testSuite = null;
+        TestSuite testSuite = null;
 
-	try {
-	    testSuite = api.createTestSuite(testProjectId, "Sample suite "
-		    + System.currentTimeMillis(), details, null, null, null,
-		    null);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testSuite = api.createTestSuite(testProjectId, "Sample suite " + System.currentTimeMillis(), details, null,
+                    null, null, null);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testSuite);
+        Assert.assertNotNull(testSuite);
 
-	Assert.assertNotNull(testSuite.getName());
-	
-	Assert.assertTrue(testSuite.getId() > 0);
+        Assert.assertNotNull(testSuite.getName());
+
+        Assert.assertTrue(testSuite.getId() > 0);
     }
 
 }

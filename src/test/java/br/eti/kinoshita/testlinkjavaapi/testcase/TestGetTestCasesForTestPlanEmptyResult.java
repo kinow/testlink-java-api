@@ -40,24 +40,24 @@ public class TestGetTestCasesForTestPlanEmptyResult extends BaseTest {
 
     @DataProvider(name = "testPlanEmptyData")
     public Object[][] createTestPlanData() {
-	return new Object[][] { { 10 } };
+        return new Object[][] { { 10 } };
     }
 
     @Test(dataProvider = "testPlanEmptyData")
     public void testGetTestCasesForTestPlan(Integer testPlanId) {
-	this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
+        this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
 
-	TestCase[] testCases = null;
+        TestCase[] testCases = null;
 
-	try {
-	    testCases = this.api.getTestCasesForTestPlan(testPlanId, null,
-		    null, null, null, null, null, null, null, null, null);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testCases = this.api.getTestCasesForTestPlan(testPlanId, null, null, null, null, null, null, null, null,
+                    null, null);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testCases);
+        Assert.assertNotNull(testCases);
 
-	Assert.assertTrue(testCases.length == 0);
+        Assert.assertTrue(testCases.length == 0);
     }
 }

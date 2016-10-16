@@ -39,28 +39,26 @@ public class TestGetBuildsForTestPlan extends BaseTest {
 
     @DataProvider(name = "testPlanData")
     public Object[][] createData() {
-	return new Object[][] { { 5, 7, "tdc-1.0",
-		"Build creado automaticamente con TestLink Jenkins Plug-in." } };
+        return new Object[][] { { 5, 7, "tdc-1.0", "Build creado automaticamente con TestLink Jenkins Plug-in." } };
     }
 
     @Test(dataProvider = "testPlanData")
-    public void testGetBuildsForTestPlan(Integer testPlanId, Integer buildId,
-	    String buildName, String buildNotes) {
-	this.loadXMLRPCMockData("tl.getBuildsForTestPlan.xml");
+    public void testGetBuildsForTestPlan(Integer testPlanId, Integer buildId, String buildName, String buildNotes) {
+        this.loadXMLRPCMockData("tl.getBuildsForTestPlan.xml");
 
-	Build[] builds = null;
+        Build[] builds = null;
 
-	try {
-	    builds = api.getBuildsForTestPlan(testPlanId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            builds = api.getBuildsForTestPlan(testPlanId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(builds);
+        Assert.assertNotNull(builds);
 
-	Assert.assertTrue(builds.length > 0);
+        Assert.assertTrue(builds.length > 0);
 
-	Assert.assertTrue(builds.length == 1);
+        Assert.assertTrue(builds.length == 1);
 
     }
 }
