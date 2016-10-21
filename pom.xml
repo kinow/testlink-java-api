@@ -203,6 +203,12 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+        <!-- TODO: not really sure why it is necessary now -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
         <!-- Logging APIs -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -252,12 +258,6 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>8.0.1.v20110908</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
