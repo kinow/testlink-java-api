@@ -36,29 +36,26 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since
  */
-public class TestGetFirstLevelTestSuiteForTestProjectEmptyResult extends
-	BaseTest {
+public class TestGetFirstLevelTestSuiteForTestProjectEmptyResult extends BaseTest {
 
     @DataProvider(name = "validTestProjects")
     public Object[][] createData() {
-	return new Object[][] { { 1 } };
+        return new Object[][] { { 1 } };
     }
 
     @Test(dataProvider = "validTestProjects")
     public void testGetFirstLevelTestSuitesForTestProject(Integer testProjectId) {
-	this.loadXMLRPCMockData("tl.getFirstLevelTestSuitesForTestProjectEmptyResult.xml");
+        this.loadXMLRPCMockData("tl.getFirstLevelTestSuitesForTestProjectEmptyResult.xml");
 
-	TestSuite[] testSuites = null;
+        TestSuite[] testSuites = null;
 
-	try {
-	    testSuites = api
-		    .getFirstLevelTestSuitesForTestProject(testProjectId);
-	} catch (TestLinkAPIException e) {
-	    Assert.assertTrue(TestLinkAPIErrors.TEST_PROJECT_IS_EMPTY.isCode(e
-		    .getCode()));
+        try {
+            testSuites = api.getFirstLevelTestSuitesForTestProject(testProjectId);
+        } catch (TestLinkAPIException e) {
+            Assert.assertTrue(TestLinkAPIErrors.TEST_PROJECT_IS_EMPTY.isCode(e.getCode()));
 
-	}
+        }
 
-	Assert.assertTrue(testSuites == null);
+        Assert.assertTrue(testSuites == null);
     }
 }

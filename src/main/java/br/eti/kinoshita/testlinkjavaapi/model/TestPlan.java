@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,137 +42,131 @@ public class TestPlan implements Serializable {
     private Boolean isActive;
     private Boolean isPublic;
     private List<CustomField> customFields;
+
     /**
-	 * 
-	 */
+     * 
+     */
     public TestPlan() {
-	    super();
+        super();
         this.customFields = new ArrayList<CustomField>();
     }
 
     /**
      *
-     * @param id
-     * @param name
-     * @param projectName
-     * @param notes
-     * @param isActive
-     * @param isPublic
+     * @param id ID
+     * @param name name
+     * @param projectName project name
+     * @param notes notes
+     * @param isActive is active flag
+     * @param isPublic is public flag
      */
-    public TestPlan(Integer id, String name, String projectName, String notes,
-                    Boolean isActive, Boolean isPublic){
+    public TestPlan(Integer id, String name, String projectName, String notes, Boolean isActive, Boolean isPublic) {
         this(id, name, projectName, notes, isActive, isPublic, new ArrayList<CustomField>());
     }
 
     /**
-     * @param id
-     * @param name
-     * @param projectName
-     * @param notes
-     * @param isActive
-     * @param isPublic
-     * @param customFields
+     * @param id ID
+     * @param name name
+     * @param projectName project name
+     * @param notes notes
+     * @param isActive is active flag
+     * @param isPublic is public flag
+     * @param customFields custom fields
      */
-    public TestPlan(Integer id, String name, String projectName, String notes,
-	    Boolean isActive, Boolean isPublic, List<CustomField> customFields) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.projectName = projectName;
-	this.notes = notes;
-	this.isActive = isActive;
-	this.isPublic = isPublic;
-    this.customFields = customFields;
+    public TestPlan(Integer id, String name, String projectName, String notes, Boolean isActive, Boolean isPublic,
+            List<CustomField> customFields) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.projectName = projectName;
+        this.notes = notes;
+        this.isActive = isActive;
+        this.isPublic = isPublic;
+        this.customFields = customFields;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     /**
      * @return the projectName
      */
     public String getProjectName() {
-	return projectName;
+        return projectName;
     }
 
     /**
-     * @param projectName
-     *            the projectName to set
+     * @param projectName the projectName to set
      */
     public void setProjectName(String projectName) {
-	this.projectName = projectName;
+        this.projectName = projectName;
     }
 
     /**
      * @return the notes
      */
     public String getNotes() {
-	return notes;
+        return notes;
     }
 
     /**
-     * @param notes
-     *            the notes to set
+     * @param notes the notes to set
      */
     public void setNotes(String notes) {
-	this.notes = notes;
+        this.notes = notes;
     }
 
     /**
      * @return the isActive
      */
     public Boolean isActive() {
-	return isActive;
+        return isActive;
     }
 
     /**
-     * @param isActive
-     *            the isActive to set
+     * @param isActive the isActive to set
      */
     public void setActive(Boolean isActive) {
-	this.isActive = isActive;
+        this.isActive = isActive;
     }
 
     /**
      * @return the isPublic
      */
     public Boolean isPublic() {
-	return isPublic;
+        return isPublic;
     }
 
     /**
-     * @param isPublic
-     *            the isPublic to set
+     * @param isPublic the isPublic to set
      */
     public void setPublic(Boolean isPublic) {
-	this.isPublic = isPublic;
+        this.isPublic = isPublic;
     }
 
     public List<CustomField> getCustomFields() {
@@ -190,9 +184,8 @@ public class TestPlan implements Serializable {
      */
     @Override
     public String toString() {
-	return "TestPlan [id=" + id + ", name=" + name + ", projectName="
-		+ projectName + ", notes=" + notes + ", isActive=" + isActive
-		+ ", isPublic=" + isPublic + "]";
+        return "TestPlan [id=" + id + ", name=" + name + ", projectName=" + projectName + ", notes=" + notes
+                + ", isActive=" + isActive + ", isPublic=" + isPublic + "]";
     }
 
 }

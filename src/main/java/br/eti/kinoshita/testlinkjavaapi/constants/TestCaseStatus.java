@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2011> <Mario Fuentes>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,21 +28,20 @@ package br.eti.kinoshita.testlinkjavaapi.constants;
  * @since 1.9.3-4
  */
 public enum TestCaseStatus {
-    
-    FINAL(7), FUTURE(6), OBSOLETE(5), REWORK(4), REVIEW_IN_PROGRESS(3), READY_FOR_REVIEW(
-	    2), DRAFT(1);
+
+    FINAL(7), FUTURE(6), OBSOLETE(5), REWORK(4), REVIEW_IN_PROGRESS(3), READY_FOR_REVIEW(2), DRAFT(1);
 
     private Integer value;
 
     private TestCaseStatus(Integer value) {
-	this.value = value;
+        this.value = value;
     }
 
     public Integer getValue() {
-	return value;
+        return value;
     }
 
     public String toString() {
-	return this.value.toString();
+        return this.value.toString();
     }
 }

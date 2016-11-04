@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
 public class TestSuite implements Serializable {
 
     private static final long serialVersionUID = 1808991369379189571L;
-    
+
     private Integer id;
     private Integer testProjectId;
     private String name;
@@ -45,154 +45,145 @@ public class TestSuite implements Serializable {
     private ActionOnDuplicate actionOnDuplicatedName;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public TestSuite() {
-	super();
+        super();
     }
 
     /**
-     * @param id
-     * @param testProjectId
-     * @param name
-     * @param details
-     * @param parentId
-     * @param order
-     * @param checkDuplicatedName
-     * @param actionOnDuplicatedName
+     * @param id ID
+     * @param testProjectId test project ID
+     * @param name name
+     * @param details details
+     * @param parentId parent ID
+     * @param order order
+     * @param checkDuplicatedName check for duplicated name flag
+     * @param actionOnDuplicatedName what action to take if a duplicated name is found
      */
-    public TestSuite(Integer id, Integer testProjectId, String name,
-	    String details, Integer parentId, Integer order,
-	    Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) {
-	super();
-	this.id = id;
-	this.testProjectId = testProjectId;
-	this.name = name;
-	this.details = details;
-	this.parentId = parentId;
-	this.order = order;
-	this.checkDuplicatedName = checkDuplicatedName;
-	this.actionOnDuplicatedName = actionOnDuplicatedName;
+    public TestSuite(Integer id, Integer testProjectId, String name, String details, Integer parentId, Integer order,
+            Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) {
+        super();
+        this.id = id;
+        this.testProjectId = testProjectId;
+        this.name = name;
+        this.details = details;
+        this.parentId = parentId;
+        this.order = order;
+        this.checkDuplicatedName = checkDuplicatedName;
+        this.actionOnDuplicatedName = actionOnDuplicatedName;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the testProjectId
      */
     public Integer getTestProjectId() {
-	return testProjectId;
+        return testProjectId;
     }
 
     /**
-     * @param testProjectId
-     *            the testProjectId to set
+     * @param testProjectId the testProjectId to set
      */
     public void setTestProjectId(Integer testProjectId) {
-	this.testProjectId = testProjectId;
+        this.testProjectId = testProjectId;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     /**
      * @return the details
      */
     public String getDetails() {
-	return details;
+        return details;
     }
 
     /**
-     * @param details
-     *            the details to set
+     * @param details the details to set
      */
     public void setDetails(String details) {
-	this.details = details;
+        this.details = details;
     }
 
     /**
      * @return the parentId
      */
     public Integer getParentId() {
-	return parentId;
+        return parentId;
     }
 
     /**
-     * @param parentId
-     *            the parentId to set
+     * @param parentId the parentId to set
      */
     public void setParentId(Integer parentId) {
-	this.parentId = parentId;
+        this.parentId = parentId;
     }
 
     /**
      * @return the order
      */
     public Integer getOrder() {
-	return order;
+        return order;
     }
 
     /**
-     * @param order
-     *            the order to set
+     * @param order the order to set
      */
     public void setOrder(Integer order) {
-	this.order = order;
+        this.order = order;
     }
 
     /**
      * @return the checkDuplicatedName
      */
     public Boolean getCheckDuplicatedName() {
-	return checkDuplicatedName;
+        return checkDuplicatedName;
     }
 
     /**
-     * @param checkDuplicatedName
-     *            the checkDuplicatedName to set
+     * @param checkDuplicatedName the checkDuplicatedName to set
      */
     public void setCheckDuplicatedName(Boolean checkDuplicatedName) {
-	this.checkDuplicatedName = checkDuplicatedName;
+        this.checkDuplicatedName = checkDuplicatedName;
     }
 
     /**
      * @return the actionOnDuplicatedName
      */
     public ActionOnDuplicate getActionOnDuplicatedName() {
-	return actionOnDuplicatedName;
+        return actionOnDuplicatedName;
     }
 
     /**
-     * @param actionOnDuplicatedName
-     *            the actionOnDuplicatedName to set
+     * @param actionOnDuplicatedName the actionOnDuplicatedName to set
      */
     public void setActionOnDuplicatedName(ActionOnDuplicate actionOnDuplicatedName) {
-	this.actionOnDuplicatedName = actionOnDuplicatedName;
+        this.actionOnDuplicatedName = actionOnDuplicatedName;
     }
 
     /*
@@ -202,11 +193,9 @@ public class TestSuite implements Serializable {
      */
     @Override
     public String toString() {
-	return "TestSuite [id=" + id + ", testProjectId=" + testProjectId
-		+ ", name=" + name + ", details=" + details + ", parentId="
-		+ parentId + ", order=" + order + ", checkDuplicatedName="
-		+ checkDuplicatedName + ", actionOnDuplicatedName="
-		+ actionOnDuplicatedName + "]";
+        return "TestSuite [id=" + id + ", testProjectId=" + testProjectId + ", name=" + name + ", details=" + details
+                + ", parentId=" + parentId + ", order=" + order + ", checkDuplicatedName=" + checkDuplicatedName
+                + ", actionOnDuplicatedName=" + actionOnDuplicatedName + "]";
     }
 
 }

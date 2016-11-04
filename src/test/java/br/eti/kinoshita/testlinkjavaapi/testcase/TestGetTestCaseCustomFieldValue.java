@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,68 +40,64 @@ public class TestGetTestCaseCustomFieldValue extends BaseTest {
 
     @DataProvider(name = "testCaseWithCustomField")
     public Object[][] createData() {
-	return new Object[][] { { 4, 1, 1, "SampleCustomField" },
-		{ 6, 1, 1, "SampleCustomField" } };
+        return new Object[][] { { 4, 1, 1, "SampleCustomField" }, { 6, 1, 1, "SampleCustomField" } };
     }
 
     @Test(dataProvider = "testCaseWithCustomField")
-    public void testGetTestCaseCustomFieldDesignValueFull(Integer testCaseId,
-	    Integer versionNumber, Integer testProjectId, String customFieldName) {
-	this.loadXMLRPCMockData("tl.getTestCaseCustomFieldDesignValue.xml");
+    public void testGetTestCaseCustomFieldDesignValueFull(Integer testCaseId, Integer versionNumber,
+            Integer testProjectId, String customFieldName) {
+        this.loadXMLRPCMockData("tl.getTestCaseCustomFieldDesignValue.xml");
 
-	CustomField customField = null;
-	try {
-	    customField = this.api.getTestCaseCustomFieldDesignValue(
-		    testCaseId, null, versionNumber, testProjectId,
-		    customFieldName, ResponseDetails.FULL);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
-	Assert.assertNotNull(customField);
+        CustomField customField = null;
+        try {
+            customField = this.api.getTestCaseCustomFieldDesignValue(testCaseId, null, versionNumber, testProjectId,
+                    customFieldName, ResponseDetails.FULL);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
+        Assert.assertNotNull(customField);
 
-	Assert.assertNotNull(customField.getValue());
+        Assert.assertNotNull(customField.getValue());
 
-	Assert.assertTrue(customField.getValue().length() > 0);
+        Assert.assertTrue(customField.getValue().length() > 0);
     }
 
     @Test(dataProvider = "testCaseWithCustomField")
-    public void testGetTestCaseCustomFieldDesignValueSimple(Integer testCaseId,
-	    Integer versionNumber, Integer testProjectId, String customFieldName) {
-	this.loadXMLRPCMockData("tl.getTestCaseCustomFieldDesignValue.xml");
+    public void testGetTestCaseCustomFieldDesignValueSimple(Integer testCaseId, Integer versionNumber,
+            Integer testProjectId, String customFieldName) {
+        this.loadXMLRPCMockData("tl.getTestCaseCustomFieldDesignValue.xml");
 
-	CustomField customField = null;
-	try {
-	    customField = this.api.getTestCaseCustomFieldDesignValue(
-		    testCaseId, null, versionNumber, testProjectId,
-		    customFieldName, ResponseDetails.SIMPLE);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
-	Assert.assertNotNull(customField);
+        CustomField customField = null;
+        try {
+            customField = this.api.getTestCaseCustomFieldDesignValue(testCaseId, null, versionNumber, testProjectId,
+                    customFieldName, ResponseDetails.SIMPLE);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
+        Assert.assertNotNull(customField);
 
-	Assert.assertNotNull(customField.getValue());
+        Assert.assertNotNull(customField.getValue());
 
-	Assert.assertTrue(customField.getValue().length() > 0);
+        Assert.assertTrue(customField.getValue().length() > 0);
     }
 
     @Test(dataProvider = "testCaseWithCustomField")
-    public void testGetTestCaseCustomFieldDesignValueValue(Integer testCaseId,
-	    Integer versionNumber, Integer testProjectId, String customFieldName) {
-	this.loadXMLRPCMockData("tl.getTestCaseCustomFieldDesignValue.xml");
+    public void testGetTestCaseCustomFieldDesignValueValue(Integer testCaseId, Integer versionNumber,
+            Integer testProjectId, String customFieldName) {
+        this.loadXMLRPCMockData("tl.getTestCaseCustomFieldDesignValue.xml");
 
-	CustomField customField = null;
-	try {
-	    customField = this.api.getTestCaseCustomFieldDesignValue(
-		    testCaseId, null, versionNumber, testProjectId,
-		    customFieldName, ResponseDetails.VALUE);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
-	Assert.assertNotNull(customField);
+        CustomField customField = null;
+        try {
+            customField = this.api.getTestCaseCustomFieldDesignValue(testCaseId, null, versionNumber, testProjectId,
+                    customFieldName, ResponseDetails.VALUE);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
+        Assert.assertNotNull(customField);
 
-	Assert.assertNotNull(customField.getValue());
+        Assert.assertNotNull(customField.getValue());
 
-	Assert.assertTrue(customField.getValue().length() > 0);
+        Assert.assertTrue(customField.getValue().length() > 0);
     }
 
 }

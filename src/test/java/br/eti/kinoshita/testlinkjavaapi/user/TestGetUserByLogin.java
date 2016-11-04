@@ -37,28 +37,28 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
  */
 public class TestGetUserByLogin extends BaseTest {
 
-	@DataProvider(name = "userData")
-	public Object[][] createData() {
-		return new Object[][] { { "jan.kowalski" } };
-	}
+    @DataProvider(name = "userData")
+    public Object[][] createData() {
+        return new Object[][] { { "jan.kowalski" } };
+    }
 
-	@Test(dataProvider = "userData")
-	public void testGetUserByLogin(String login) {
-		this.loadXMLRPCMockData("tl.getUserByLogin.xml");
+    @Test(dataProvider = "userData")
+    public void testGetUserByLogin(String login) {
+        this.loadXMLRPCMockData("tl.getUserByLogin.xml");
 
-		User user = null;
+        User user = null;
 
-		try {
-			user = api.getUserByLogin(login);
-		} catch (TestLinkAPIException e) {
-			Assert.fail(e.getMessage(), e);
-		}
+        try {
+            user = api.getUserByLogin(login);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-		Assert.assertNotNull(user);
+        Assert.assertNotNull(user);
 
-		Assert.assertTrue(user.getDbID() > 0);
+        Assert.assertTrue(user.getDbID() > 0);
 
-		Assert.assertTrue(user.getUserApiKey().isEmpty());
-	}
+        Assert.assertTrue(user.getUserApiKey().isEmpty());
+    }
 
 }

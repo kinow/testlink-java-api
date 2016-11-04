@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,29 +57,24 @@ class TestPlanService extends BaseService {
         super(xmlRpcClient, devKey);
     }
 
-    protected TestPlan createTestPlan(String planName, String projectName,
-            String notes, Boolean isActive, Boolean isPublic)
-            throws TestLinkAPIException {
+    protected TestPlan createTestPlan(String planName, String projectName, String notes, Boolean isActive,
+            Boolean isPublic) throws TestLinkAPIException {
         TestPlan testPlan = null;
 
         Integer id = 0;
 
-        testPlan = new TestPlan(id, planName, projectName, notes, isActive,
-                isPublic);
+        testPlan = new TestPlan(id, planName, projectName, notes, isActive, isPublic);
 
         try {
             Map<String, Object> executionData = Util.getTestPlanMap(testPlan);
-            Object response = this.executeXmlRpcCall(
-                    TestLinkMethods.CREATE_TEST_PLAN.toString(), executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_PLAN.toString(), executionData);
             Object[] responseArray = (Object[]) response;
             Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
 
-            id = Util.getInteger(responseMap,
-                    TestLinkResponseParams.ID.toString());
+            id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
             testPlan.setId(id);
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error creating test plan: "
-                    + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException("Error creating test plan: " + xmlrpcex.getMessage(), xmlrpcex);
         }
 
         return testPlan;
@@ -93,24 +88,18 @@ class TestPlanService extends BaseService {
      * @return Test Plane.
      * @throws TestLinkAPIException
      */
-    protected TestPlan getTestPlanByName(String planName, String projectName)
-            throws TestLinkAPIException {
+    protected TestPlan getTestPlanByName(String planName, String projectName) throws TestLinkAPIException {
         TestPlan testPlan = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
-            executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(),
-                    planName);
-            executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(),
-                    projectName);
-            Object response = this.executeXmlRpcCall(
-                    TestLinkMethods.GET_TEST_PLAN_BY_NAME.toString(),
-                    executionData);
+            executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), planName);
+            executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), projectName);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_BY_NAME.toString(), executionData);
             Object[] responseArray = (Object[]) response;
             Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
             // TBD: check with TL team if we can change it there.
-            responseMap.put(TestLinkResponseParams.PROJECT_NAME.toString(),
-                    projectName);
+            responseMap.put(TestLinkResponseParams.PROJECT_NAME.toString(), projectName);
             testPlan = Util.getTestPlan(responseMap);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error creating test project: " + xmlrpcex.getMessage(), xmlrpcex);
@@ -128,8 +117,8 @@ class TestPlanService extends BaseService {
      * @return
      * @throws TestLinkAPIException
      */
-    protected CustomField getTestPlanCustomFieldDesignValue(Integer testPlanId, Integer testProjectId, String customFieldName, ResponseDetails details)
-            throws TestLinkAPIException {
+    protected CustomField getTestPlanCustomFieldDesignValue(Integer testPlanId, Integer testProjectId,
+            String customFieldName, ResponseDetails details) throws TestLinkAPIException {
         CustomField customField = null;
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -138,8 +127,8 @@ class TestPlanService extends BaseService {
             executionData.put(TestLinkParams.CUSTOM_FIELD_NAME.toString(), customFieldName);
             executionData.put(TestLinkParams.DETAILS.toString(), Util.getStringValueOrNull(details));
 
-            Object response = this.executeXmlRpcCall(
-                    TestLinkMethods.GET_TEST_PLAN_CUSTOM_FIELD_DESIGN_VALUE.toString(), executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_CUSTOM_FIELD_DESIGN_VALUE.toString(),
+                    executionData);
 
             if (response instanceof String) {
                 customField = new CustomField();
@@ -148,8 +137,7 @@ class TestPlanService extends BaseService {
                 Map<String, Object> responseMap = Util.castToMap(response);
                 customField = Util.getCustomField(responseMap);
             }
-        }
-        catch (XmlRpcException xmlrpcex) {
+        } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error retrieving test case custom field value: " + xmlrpcex.getMessage(),
                     xmlrpcex);
         }
@@ -161,16 +149,13 @@ class TestPlanService extends BaseService {
      * @param planId
      * @return
      */
-    protected Platform[] getTestPlanPlatforms(Integer planId)
-            throws TestLinkAPIException {
+    protected Platform[] getTestPlanPlatforms(Integer planId) throws TestLinkAPIException {
         Platform[] platforms = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), planId);
-            Object response = this.executeXmlRpcCall(
-                    TestLinkMethods.GET_TEST_PLAN_PLATFORMS.toString(),
-                    executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_PLATFORMS.toString(), executionData);
             Object[] responseArray = (Object[]) response;
             platforms = new Platform[responseArray.length];
             for (int i = 0; i < responseArray.length; i++) {
@@ -190,15 +175,15 @@ class TestPlanService extends BaseService {
      * @param testPlanId
      * @return
      */
-    protected Map<String, Object> getTotalsForTestPlan(Integer testPlanId)
-            throws TestLinkAPIException {
+    protected Map<String, Object> getTotalsForTestPlan(Integer testPlanId) throws TestLinkAPIException {
 
         Map<String, Object> responseMap = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TOTALS_FOR_TEST_PLAN.toString(), executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TOTALS_FOR_TEST_PLAN.toString(),
+                    executionData);
             if (response instanceof Object[]) {
                 Object[] responseArray = (Object[]) response;
                 responseMap = (Map<String, Object>) responseArray[0];
@@ -213,32 +198,36 @@ class TestPlanService extends BaseService {
 
     }
 
-    protected Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId, String platformName) {
+    protected Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId,
+            String platformName) {
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(), executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(),
+                    executionData);
             return Util.castToMap(response);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
         }
     }
-    
-    protected Map<String, Object> addPlatformToTestPlan(Integer testProjectId, Integer testPlanId, String platformName) {
+
+    protected Map<String, Object> addPlatformToTestPlan(Integer testProjectId, Integer testPlanId,
+            String platformName) {
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(), executionData);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(),
+                    executionData);
             return Util.castToMap(response);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error retrieving platforms: " + xmlrpcex.getMessage(), xmlrpcex);
         }
     }
-    
+
     public static void main(String[] args) throws MalformedURLException {
         XmlRpcClient xmlRpcClient = new XmlRpcClient();
         XmlRpcClientConfigImpl pConfig = new XmlRpcClientConfigImpl();

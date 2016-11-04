@@ -38,24 +38,24 @@ public class TestGetTestPlanPlatforms extends BaseTest {
 
     @DataProvider(name = "testPlanWithPlatforms")
     public Object[][] createData() {
-	return new Object[][] { { 10, "TC1" } };
+        return new Object[][] { { 10, "TC1" } };
     }
 
     @Test(dataProvider = "testPlanWithPlatforms")
     public void testGetTestPlanPlatforms(Integer planId, String expectedPlatform) {
-	this.loadXMLRPCMockData("tl.getTestPlanPlatforms.xml");
+        this.loadXMLRPCMockData("tl.getTestPlanPlatforms.xml");
 
-	Platform[] platforms = null;
+        Platform[] platforms = null;
 
-	try {
-	    platforms = this.api.getTestPlanPlatforms(planId);
-	} catch (Exception e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            platforms = this.api.getTestPlanPlatforms(planId);
+        } catch (Exception e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(platforms);
+        Assert.assertNotNull(platforms);
 
-	Assert.assertTrue(platforms.length > 0);
+        Assert.assertTrue(platforms.length > 0);
     }
 
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,18 +38,18 @@ public class TestDeleteExecution extends BaseTest {
 
     @DataProvider(name = "executionData")
     public Object[][] createData() {
-	return new Object[][] { { 1 } };
+        return new Object[][] { { 1 } };
     }
 
     @Test(dataProvider = "executionData")
     public void testDeleteExecution(Integer executionId) {
-	this.loadXMLRPCMockData("tl.deleteExecution.xml");
+        this.loadXMLRPCMockData("tl.deleteExecution.xml");
 
-	try {
-	    this.api.deleteExecution(executionId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            this.api.deleteExecution(executionId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
     }
 
 }

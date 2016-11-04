@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,8 +35,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 /**
  * <p>
  * <ul>
- * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning
- * execution data</li>
+ * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning execution data</li>
  * </ul>
  * </p>
  * 
@@ -47,54 +46,51 @@ public class TestReportTCResult extends BaseTest {
 
     @DataProvider(name = "buildData")
     public Object[][] createData() {
-	return new Object[][] { { 4, 10, 1, "Sample build", "Build notes.", 2,
-		"Post" } };
+        return new Object[][] { { 4, 10, 1, "Sample build", "Build notes.", 2, "Post" } };
     }
 
     @Test(dataProvider = "buildData")
-    public void testReportTCResult(Integer testCaseId, Integer testPlanId,
-	    Integer buildId, String buildName, String notes,
-	    Integer platformId, String platformName) {
-	this.loadXMLRPCMockData("tl.reportTCResult.xml");
+    public void testReportTCResult(Integer testCaseId, Integer testPlanId, Integer buildId, String buildName,
+            String notes, Integer platformId, String platformName) {
+        this.loadXMLRPCMockData("tl.reportTCResult.xml");
 
-	ReportTCResultResponse response = null;
-	try {
-	    response = this.api.reportTCResult(testCaseId, null, testPlanId,
-		    ExecutionStatus.FAILED, buildId, buildName, notes, true,
-		    null, platformId, platformName, null, // TODO: Test custom
-							  // fields!
-		    true);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        ReportTCResultResponse response = null;
+        try {
+            response = this.api.reportTCResult(testCaseId, null, testPlanId, ExecutionStatus.FAILED, buildId, buildName,
+                    notes, true, null, platformId, platformName, null, // TODO:
+                                                                       // Test
+                                                                       // custom
+                    // fields!
+                    true);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(response);
+        Assert.assertNotNull(response);
 
-	Assert.assertTrue(response.getExecutionId() > 0);
+        Assert.assertTrue(response.getExecutionId() > 0);
     }
 
     @Test(dataProvider = "buildData")
-    public void testSetTestCaseExecutionResult(Integer testCaseId,
-	    Integer testPlanId, Integer buildId, String buildName,
-	    String notes, Integer platformId, String platformName) {
-	this.loadXMLRPCMockData("tl.reportTCResult.xml");
+    public void testSetTestCaseExecutionResult(Integer testCaseId, Integer testPlanId, Integer buildId,
+            String buildName, String notes, Integer platformId, String platformName) {
+        this.loadXMLRPCMockData("tl.reportTCResult.xml");
 
-	ReportTCResultResponse response = null;
-	try {
-	    response = this.api.setTestCaseExecutionResult(testCaseId, null,
-		    testPlanId, ExecutionStatus.PASSED, buildId, buildName,
-		    notes, true, null, platformId, platformName, null, // TODO:
-								       // Test
-								       // custom
-								       // fields!
-		    true);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        ReportTCResultResponse response = null;
+        try {
+            response = this.api.setTestCaseExecutionResult(testCaseId, null, testPlanId, ExecutionStatus.PASSED,
+                    buildId, buildName, notes, true, null, platformId, platformName, null, // TODO:
+                    // Test
+                    // custom
+                    // fields!
+                    true);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(response);
+        Assert.assertNotNull(response);
 
-	Assert.assertTrue(response.getExecutionId() > 0);
+        Assert.assertTrue(response.getExecutionId() > 0);
     }
 
 }

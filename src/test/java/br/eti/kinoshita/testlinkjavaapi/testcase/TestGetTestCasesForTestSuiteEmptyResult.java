@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,25 +41,24 @@ public class TestGetTestCasesForTestSuiteEmptyResult extends BaseTest {
 
     @DataProvider(name = "testCaseData")
     public Object[][] createData() {
-	return new Object[][] { { 2 } };
+        return new Object[][] { { 2 } };
     }
 
     @Test(dataProvider = "testCaseData")
     public void testGetTestCasesForTestSuiteEmptyResult(Integer testSuiteId) {
-	this.loadXMLRPCMockData("tl.getTestCasesForTestSuiteEmptyResult.xml");
+        this.loadXMLRPCMockData("tl.getTestCasesForTestSuiteEmptyResult.xml");
 
-	TestCase[] testCases = null;
+        TestCase[] testCases = null;
 
-	try {
-	    testCases = this.api.getTestCasesForTestSuite(testSuiteId, true,
-		    TestCaseDetails.FULL);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testCases = this.api.getTestCasesForTestSuite(testSuiteId, true, TestCaseDetails.FULL);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testCases);
+        Assert.assertNotNull(testCases);
 
-	Assert.assertTrue(testCases.length == 0);
+        Assert.assertTrue(testCases.length == 0);
     }
 
 }

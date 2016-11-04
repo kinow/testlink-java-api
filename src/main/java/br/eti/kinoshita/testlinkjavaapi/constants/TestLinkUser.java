@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,23 +34,23 @@ public enum TestLinkUser {
     private Integer value;
 
     TestLinkUser(Integer value) {
-	this.value = value;
+        this.value = value;
     }
 
     public String toString() {
-	return Integer.toString(this.value);
+        return Integer.toString(this.value);
     }
 
     public static TestLinkUser getTestLinkUser(Integer value) {
-	switch (value) {
-	case -1:
-	    return NOBODY;
-	case -2:
-	    return SOMEBODY;
-	case 0:
-	    return ANYBODY;
-	}
-	return null;
+        switch (value) {
+        case -1:
+            return NOBODY;
+        case -2:
+            return SOMEBODY;
+        case 0:
+            return ANYBODY;
+        }
+        return null;
     }
 
 }

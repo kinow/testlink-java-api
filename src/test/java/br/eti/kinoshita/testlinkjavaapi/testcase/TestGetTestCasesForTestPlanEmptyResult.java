@@ -1,8 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
- * Copyright (c) <2011> <Mario Fuentes>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,24 +40,24 @@ public class TestGetTestCasesForTestPlanEmptyResult extends BaseTest {
 
     @DataProvider(name = "testPlanEmptyData")
     public Object[][] createTestPlanData() {
-	return new Object[][] { { 10 } };
+        return new Object[][] { { 10 } };
     }
 
     @Test(dataProvider = "testPlanEmptyData")
     public void testGetTestCasesForTestPlan(Integer testPlanId) {
-	this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
+        this.loadXMLRPCMockData("tl.getTestCasesForTestPlanEmptyResult.xml");
 
-	TestCase[] testCases = null;
+        TestCase[] testCases = null;
 
-	try {
-	    testCases = this.api.getTestCasesForTestPlan(testPlanId, null,
-		    null, null, null, null, null, null, null, null, null);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testCases = this.api.getTestCasesForTestPlan(testPlanId, null, null, null, null, null, null, null, null,
+                    null, null);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testCases);
+        Assert.assertNotNull(testCases);
 
-	Assert.assertTrue(testCases.length == 0);
+        Assert.assertTrue(testCases.length == 0);
     }
 }

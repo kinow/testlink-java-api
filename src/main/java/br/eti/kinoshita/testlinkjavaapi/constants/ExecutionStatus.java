@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,29 +34,29 @@ public enum ExecutionStatus {
     private char value;
 
     ExecutionStatus(char value) {
-	this.value = value;
+        this.value = value;
     }
 
     public String toString() {
-	return Character.toString(this.value);
+        return Character.toString(this.value);
     }
 
     public static ExecutionStatus getExecutionStatus(char c) {
-	switch (c) {
-	case 'n':
-	case 'N':
-	    return NOT_RUN;
-	case 'p':
-	case 'P':
-	    return PASSED;
-	case 'f':
-	case 'F':
-	    return FAILED;
-	case 'b':
-	case 'B':
-	    return BLOCKED;
-	}
-	return null;
+        switch (c) {
+        case 'n':
+        case 'N':
+            return NOT_RUN;
+        case 'p':
+        case 'P':
+            return PASSED;
+        case 'f':
+        case 'F':
+            return FAILED;
+        case 'b':
+        case 'B':
+            return BLOCKED;
+        }
+        return null;
     }
 
 }

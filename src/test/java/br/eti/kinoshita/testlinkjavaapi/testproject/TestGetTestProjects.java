@@ -38,18 +38,18 @@ public class TestGetTestProjects extends BaseTest {
 
     @Test
     public void testGetProjects() {
-	this.loadXMLRPCMockData("tl.getProjects.xml");
-	TestProject[] projects = null;
+        this.loadXMLRPCMockData("tl.getProjects.xml");
+        TestProject[] projects = null;
 
-	try {
-	    projects = api.getProjects();
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            projects = api.getProjects();
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(projects);
+        Assert.assertNotNull(projects);
 
-	Assert.assertTrue(projects.length > 0);
+        Assert.assertTrue(projects.length > 0);
     }
 
 }

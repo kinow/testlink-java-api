@@ -39,22 +39,22 @@ public class TestGetTotalsForTestPlan extends BaseTest {
 
     @DataProvider(name = "testPlanData")
     public Object[][] createData() {
-	return new Object[][] { { 10 } };
+        return new Object[][] { { 10 } };
     }
 
     @Test(dataProvider = "testPlanData")
     public void testGetTotalsForTestPlan(Integer testPlanId) {
-	this.loadXMLRPCMockData("tl.getTotalsForTestPlan.xml");
+        this.loadXMLRPCMockData("tl.getTotalsForTestPlan.xml");
 
-	Map<String, Object> responseMap = null;
+        Map<String, Object> responseMap = null;
 
-	try {
-	    responseMap = this.api.getTotalsForTestPlan(testPlanId);
-	} catch (Exception e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            responseMap = this.api.getTotalsForTestPlan(testPlanId);
+        } catch (Exception e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(responseMap);
+        Assert.assertNotNull(responseMap);
 
     }
 

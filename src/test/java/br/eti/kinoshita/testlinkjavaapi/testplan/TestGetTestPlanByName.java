@@ -38,29 +38,26 @@ public class TestGetTestPlanByName extends BaseTest {
 
     @DataProvider(name = "testPlanData")
     public Object[][] createData() {
-	return new Object[][] { { "Sample plan", "Sample project" } };
+        return new Object[][] { { "Sample plan", "Sample project" } };
     }
 
     @Test(dataProvider = "testPlanData")
-    public void testGetTestPlanByName(String testPlanName,
-	    String testProjectName) {
-	this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
+    public void testGetTestPlanByName(String testPlanName, String testProjectName) {
+        this.loadXMLRPCMockData("tl.getTestPlanByName.xml");
 
-	TestPlan testPlan = null;
+        TestPlan testPlan = null;
 
-	try {
-	    testPlan = this.api
-		    .getTestPlanByName(testPlanName, testProjectName);
-	} catch (Exception e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testPlan = this.api.getTestPlanByName(testPlanName, testProjectName);
+        } catch (Exception e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testPlan);
+        Assert.assertNotNull(testPlan);
 
-	Assert.assertTrue(testPlan.getId() > 0);
+        Assert.assertTrue(testPlan.getId() > 0);
 
-	Assert.assertTrue(testPlan.getName() != null
-		&& testPlan.getName().length() > 0);
+        Assert.assertTrue(testPlan.getName() != null && testPlan.getName().length() > 0);
 
     }
 

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,23 +40,23 @@ public class TestGetExecCountersByBuild extends BaseTest {
 
     @DataProvider(name = "testPlanData")
     public Object[][] createData() {
-	return new Object[][] { { 5 } };
+        return new Object[][] { { 5 } };
     }
 
     @Test(dataProvider = "testPlanData")
     public void testGetExecCountersByBuild(Integer testPlanId) {
-	this.loadXMLRPCMockData("tl.getExecCountersByBuild.xml");
+        this.loadXMLRPCMockData("tl.getExecCountersByBuild.xml");
 
-	Map<String, Object> response = null;
+        Map<String, Object> response = null;
 
-	try {
-	    response = api.getExecCountersByBuild(testPlanId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            response = api.getExecCountersByBuild(testPlanId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(response);
-	
-	Assert.assertNotNull(response.get("raw"));
+        Assert.assertNotNull(response);
+
+        Assert.assertNotNull(response.get("raw"));
     }
 }

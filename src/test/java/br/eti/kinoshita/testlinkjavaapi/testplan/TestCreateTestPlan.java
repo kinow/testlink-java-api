@@ -39,27 +39,25 @@ public class TestCreateTestPlan extends BaseTest {
 
     @DataProvider(name = "testPlanData")
     public Object[][] createData() {
-	return new Object[][] { { "Sample project", "Sample notes.", true, true } };
+        return new Object[][] { { "Sample project", "Sample notes.", true, true } };
     }
 
     @Test(dataProvider = "testPlanData")
-    public void testCreateTestPlan(String testProjectName, String notes,
-	    Boolean isActive, Boolean isPublic) {
-	this.loadXMLRPCMockData("tl.createTestPlan.xml");
+    public void testCreateTestPlan(String testProjectName, String notes, Boolean isActive, Boolean isPublic) {
+        this.loadXMLRPCMockData("tl.createTestPlan.xml");
 
-	TestPlan testPlan = null;
+        TestPlan testPlan = null;
 
-	try {
-	    testPlan = api.createTestPlan(
-		    "Sample plan " + System.currentTimeMillis(),
-		    testProjectName, notes, isActive, isPublic);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            testPlan = api.createTestPlan("Sample plan " + System.currentTimeMillis(), testProjectName, notes, isActive,
+                    isPublic);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(testPlan);
+        Assert.assertNotNull(testPlan);
 
-	Assert.assertTrue(testPlan.getId() > 0);
+        Assert.assertTrue(testPlan.getId() > 0);
     }
 
 }

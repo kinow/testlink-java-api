@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,37 +42,43 @@ public class TestLinkAPIException extends RuntimeException {
     }
 
     /**
-     * @param message
+     * @param message the message
      */
     public TestLinkAPIException(String message) {
-	super(message);
-    }
-
-    public TestLinkAPIException(Integer code, String message) {
-	super(message);
-	this.code = code;
+        super(message);
     }
 
     /**
-     * @param cause
+     * Constructor with args.
+     *
+     * @param code code
+     * @param message message
+     */
+    public TestLinkAPIException(Integer code, String message) {
+        super(message);
+        this.code = code;
+    }
+
+    /**
+     * @param cause cause
      */
     public TestLinkAPIException(Throwable cause) {
-	super(cause);
+        super(cause);
     }
 
     /**
-     * @param message
-     * @param cause
+     * @param message message
+     * @param cause cause
      */
     public TestLinkAPIException(String message, Throwable cause) {
-	super(message, cause);
+        super(message, cause);
     }
 
     /**
      * @return Error Code
      */
     public Integer getCode() {
-	return this.code;
+        return this.code;
     }
 
 }

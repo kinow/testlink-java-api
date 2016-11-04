@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,7 +59,7 @@ public class TestGetTestCase extends BaseTest {
         Assert.assertTrue(testCase.getId() > 0);
 
         Assert.assertNotNull(testCase.getSteps());
-        
+
     }
 
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 
@@ -253,7 +253,8 @@ class TestSuiteService extends BaseService {
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException(
                     "Error retrieving test suites which are DIRECT children of a given TestSuite: "
-                            + xmlrpcex.getMessage(), xmlrpcex);
+                            + xmlrpcex.getMessage(),
+                    xmlrpcex);
         }
 
         return testSuites;
@@ -282,8 +283,9 @@ class TestSuiteService extends BaseService {
                 testSuites[i] = Util.getTestSuite(responseMap);
             }
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error retrieving test suites AT TOP LEVEL of tree on a Test Project: "
-                    + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException(
+                    "Error retrieving test suites AT TOP LEVEL of tree on a Test Project: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
         }
 
         return testSuites;

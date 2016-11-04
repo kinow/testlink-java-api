@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2012> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,23 +31,25 @@ package br.eti.kinoshita.testlinkjavaapi.constants;
 public enum ActionOnDuplicate {
 
     BLOCK("block"), GENERATE_NEW("generate_new"), CREATE_NEW_VERSION("create_new_version");
-    
+
     private String value;
-    
+
     ActionOnDuplicate(String value) {
-	this.value = value;
+        this.value = value;
     }
-    
+
     public String getValue() {
-	return this.value;
+        return this.value;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Enum#toString()
      */
     @Override
     public String toString() {
         return getValue();
     }
-    
+
 }

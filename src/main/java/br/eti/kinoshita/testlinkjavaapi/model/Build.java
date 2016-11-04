@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,10 @@ import java.io.Serializable;
  * basically, an instance of a Test Plan.
  * </p>
  * 
- * <p>
  * <ul>
  * <li>20101129 - BUGID: 3122320 - kinow - Modify Build methods to follow
  * standard naming</li>
  * </ul>
- * </p>
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
@@ -44,91 +42,87 @@ import java.io.Serializable;
 public class Build implements Serializable {
 
     private static final long serialVersionUID = 139468407361322252L;
-    
+
     private Integer id;
     private Integer testPlanId;
     private String buildName;
     private String buildNotes;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public Build() {
-	super();
+        super();
     }
 
     /**
-     * @param id
-     * @param testPlanId
-     * @param name
-     * @param notes
+     * @param id ID
+     * @param testPlanId test plan ID
+     * @param name name
+     * @param notes notes
      */
     public Build(Integer id, Integer testPlanId, String name, String notes) {
-	super();
-	this.id = id;
-	this.testPlanId = testPlanId;
-	this.buildName = name;
-	this.buildNotes = notes;
+        super();
+        this.id = id;
+        this.testPlanId = testPlanId;
+        this.buildName = name;
+        this.buildNotes = notes;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the testPlanId
      */
     public Integer getTestPlanId() {
-	return testPlanId;
+        return testPlanId;
     }
 
     /**
-     * @param testPlanId
-     *            the testPlanId to set
+     * @param testPlanId the testPlanId to set
      */
     public void setTestPlanId(Integer testPlanId) {
-	this.testPlanId = testPlanId;
+        this.testPlanId = testPlanId;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return buildName;
+        return buildName;
     }
 
     /**
-     * @param name
-     *            the buildName to set
+     * @param name the buildName to set
      */
     public void setName(String name) {
-	this.buildName = name;
+        this.buildName = name;
     }
 
     /**
      * @return the buildNotes
      */
     public String getNotes() {
-	return buildNotes;
+        return buildNotes;
     }
 
     /**
-     * @param buildNotes
-     *            the buildNotes to set
+     * @param buildNotes the buildNotes to set
      */
     public void setNotes(String buildNotes) {
-	this.buildNotes = buildNotes;
+        this.buildNotes = buildNotes;
     }
 
     /*
@@ -138,8 +132,7 @@ public class Build implements Serializable {
      */
     @Override
     public String toString() {
-	return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name="
-		+ buildName + ", notes=" + buildNotes + "]";
+        return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name=" + buildName + ", notes=" + buildNotes + "]";
     }
 
 }

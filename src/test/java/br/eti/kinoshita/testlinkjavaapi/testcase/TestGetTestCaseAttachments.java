@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,24 +39,24 @@ public class TestGetTestCaseAttachments extends BaseTest {
 
     @DataProvider(name = "tcsWithASingleAttachment")
     public Object[][] createData() {
-	return new Object[][] { { 4 } };
+        return new Object[][] { { 4 } };
     }
 
     @Test(dataProvider = "tcsWithASingleAttachment")
     public void testGetTestCaseAttachments(Integer testCaseId) {
-	this.loadXMLRPCMockData("tl.getTestCaseAttachments.xml");
+        this.loadXMLRPCMockData("tl.getTestCaseAttachments.xml");
 
-	Attachment[] attachments = null;
+        Attachment[] attachments = null;
 
-	try {
-	    attachments = this.api.getTestCaseAttachments(testCaseId, null);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            attachments = this.api.getTestCaseAttachments(testCaseId, null);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(attachments);
+        Assert.assertNotNull(attachments);
 
-	Assert.assertTrue(attachments.length > 0);
+        Assert.assertTrue(attachments.length > 0);
     }
 
 }

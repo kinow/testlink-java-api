@@ -39,30 +39,28 @@ public class TestUploadTestProjectAttachment extends BaseTest {
 
     @DataProvider(name = "testProjectAttachmentData")
     public Object[][] createData() {
-	return new Object[][] { { 1, "Attachment title",
-		"Attachment description", "attachmentFileName.txt",
-		"text/plain", "QnJ1bm8=" } };
+        return new Object[][] { { 1, "Attachment title", "Attachment description", "attachmentFileName.txt",
+                "text/plain", "QnJ1bm8=" } };
     }
 
     @Test(dataProvider = "testProjectAttachmentData")
-    public void testUploadTestProjectAttachment(Integer testProjectId,
-	    String title, String description, String fileName, String fileType,
-	    String content) {
-	this.loadXMLRPCMockData("tl.uploadTestProjectAttachment.xml");
+    public void testUploadTestProjectAttachment(Integer testProjectId, String title, String description,
+            String fileName, String fileType, String content) {
+        this.loadXMLRPCMockData("tl.uploadTestProjectAttachment.xml");
 
-	Attachment attachment = null;
+        Attachment attachment = null;
 
-	try {
-	    attachment = this.api.uploadTestProjectAttachment(testProjectId,
-		    title, description, fileName, fileType, content);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            attachment = this.api.uploadTestProjectAttachment(testProjectId, title, description, fileName, fileType,
+                    content);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(attachment);
+        Assert.assertNotNull(attachment);
 
-	// TBD: open an issue because php XMLRPC API is not returning the ID.
-	// assertTrue( attachment.getId() > 0);
+        // TBD: open an issue because php XMLRPC API is not returning the ID.
+        // assertTrue( attachment.getId() > 0);
     }
 
 }

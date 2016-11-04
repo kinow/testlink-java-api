@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@ package br.eti.kinoshita.testlinkjavaapi;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.Charset;
 
 import org.apache.commons.io.FileUtils;
 import org.testng.annotations.AfterClass;
@@ -59,7 +60,7 @@ public class BaseTest {
      */
     @BeforeClass
     protected void setUp() throws Exception {
-        this.mocked = "true".equals(System.getProperty("mocked", "true")); 
+        this.mocked = "true".equals(System.getProperty("mocked", "true"));
 
         if (!mocked) {
             this.api = new TestLinkAPI(new URL("http://localhost/testlink-1.9.6/lib/api/xmlrpc.php"),
@@ -69,8 +70,8 @@ public class BaseTest {
             this.loadXMLRPCMockData("tl.checkDevKey.xml");
             this.server.start();
 
-            this.api = new TestLinkAPI(new URL("http://localhost:" + this.server.getPort()
-                    + "/testlink/lib/api/xmlrpc.php"), "devKey");
+            this.api = new TestLinkAPI(
+                    new URL("http://localhost:" + this.server.getPort() + "/testlink/lib/api/xmlrpc.php"), "devKey");
         }
     }
 
@@ -80,7 +81,7 @@ public class BaseTest {
             File file = FileUtils.toFile(url);
             String mockXml;
             try {
-                mockXml = FileUtils.readFileToString(file);
+                mockXml = FileUtils.readFileToString(file, Charset.defaultCharset());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ public enum ResponseDetails {
     private String value;
 
     ResponseDetails(String value) {
-	this.value = value;
+        this.value = value;
     }
 
     /*
@@ -44,7 +44,7 @@ public enum ResponseDetails {
      */
     @Override
     public String toString() {
-	return this.value;
+        return this.value;
     }
 
 }

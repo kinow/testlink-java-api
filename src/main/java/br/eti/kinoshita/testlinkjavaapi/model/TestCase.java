@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,8 @@ import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
 import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 
 /**
+ * Represents a Test Case in TesLink.
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -66,10 +68,10 @@ public class TestCase implements Serializable {
     private ExecutionStatus executionStatus;
     private Platform platform;
     private Integer featureId;
-	private List<String> keywords;
+    private List<String> keywords;
 
     /**
-     * 
+     * Constructor.
      */
     public TestCase() {
         super();
@@ -80,30 +82,30 @@ public class TestCase implements Serializable {
     /**
      * Constructor with args.
      * 
-     * @param id
-     * @param name
-     * @param testSuiteId
-     * @param testProjectId
-     * @param authorLogin
-     * @param summary
-     * @param steps
-     * @param preconditions
-     * @param testcaseStatus
-     * @param testImportance
-     * @param executionType
-     * @param executionOrder
-     * @param order
-     * @param internalId
-     * @param fullExternalId
-     * @param checkDuplicatedName
-     * @param actionOnDuplicatedName
-     * @param versionId
-     * @param version
-     * @param parentId
-     * @param customFields
-     * @param executionStatus
-     * @param plataform
-     * @param featureId
+     * @param id ID
+     * @param name name
+     * @param testSuiteId test suite ID
+     * @param testProjectId test project ID
+     * @param authorLogin author login
+     * @param summary summary
+     * @param steps steps
+     * @param preconditions preconditions
+     * @param testcaseStatus test case status
+     * @param testImportance test importance
+     * @param executionType execution type
+     * @param executionOrder execution order
+     * @param order order
+     * @param internalId internal ID
+     * @param fullExternalId full external ID
+     * @param checkDuplicatedName check for duplicated name
+     * @param actionOnDuplicatedName action to take when a duplicated name is found
+     * @param versionId version ID
+     * @param version version
+     * @param parentId parent ID
+     * @param customFields custom fields
+     * @param executionStatus execution status
+     * @param platform platform
+     * @param featureId feature ID
      */
     public TestCase(Integer id, String name, Integer testSuiteId, Integer testProjectId, String authorLogin,
             String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus testcaseStatus,
@@ -146,8 +148,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param parentId
-     *            the parentId to set
+     * @param parentId the parentId to set
      */
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
@@ -161,8 +162,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param versionId
-     *            the versionId to set
+     * @param versionId the versionId to set
      */
     public void setVersionId(Integer versionId) {
         this.versionId = versionId;
@@ -176,8 +176,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param version
-     *            the version to set
+     * @param version the version to set
      */
     public void setVersion(Integer version) {
         this.version = version;
@@ -191,8 +190,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
         this.id = id;
@@ -206,8 +204,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
@@ -221,8 +218,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param testSuiteId
-     *            the testSuiteId to set
+     * @param testSuiteId the testSuiteId to set
      */
     public void setTestSuiteId(Integer testSuiteId) {
         this.testSuiteId = testSuiteId;
@@ -236,8 +232,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param testProjectId
-     *            the testProjectId to set
+     * @param testProjectId the testProjectId to set
      */
     public void setTestProjectId(Integer testProjectId) {
         this.testProjectId = testProjectId;
@@ -251,8 +246,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param authorLogin
-     *            the authorLogin to set
+     * @param authorLogin the authorLogin to set
      */
     public void setAuthorLogin(String authorLogin) {
         this.authorLogin = authorLogin;
@@ -266,8 +260,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param summary
-     *            the summary to set
+     * @param summary the summary to set
      */
     public void setSummary(String summary) {
         this.summary = summary;
@@ -281,8 +274,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param steps
-     *            the steps to set
+     * @param steps the steps to set
      */
     public void setSteps(List<TestCaseStep> steps) {
         this.steps = steps;
@@ -296,8 +288,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param preconditions
-     *            the preconditions to set
+     * @param preconditions the preconditions to set
      */
     public void setPreconditions(String preconditions) {
         this.preconditions = preconditions;
@@ -319,8 +310,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param testImportance
-     *            the testImportance to set
+     * @param testImportance the testImportance to set
      */
     public void setTestImportance(TestImportance testImportance) {
         this.testImportance = testImportance;
@@ -334,8 +324,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param executionOrder
-     *            the executionOrder to set
+     * @param executionOrder the executionOrder to set
      */
     public void setExecutionOrder(Integer executionOrder) {
         this.executionOrder = executionOrder;
@@ -349,8 +338,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param executionType
-     *            the executionType to set
+     * @param executionType the executionType to set
      */
     public void setExecutionType(ExecutionType executionType) {
         this.executionType = executionType;
@@ -364,8 +352,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param order
-     *            the order to set
+     * @param order the order to set
      */
     public void setOrder(Integer order) {
         this.order = order;
@@ -379,8 +366,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param internalId
-     *            the internalId to set
+     * @param internalId the internalId to set
      */
     public void setInternalId(Integer internalId) {
         this.internalId = internalId;
@@ -396,8 +382,7 @@ public class TestCase implements Serializable {
 
     /**
      * 
-     * @param fullExternalId
-     *            the full externalId to set
+     * @param fullExternalId the full externalId to set
      */
     public void setFullExternalId(String fullExternalId) {
         this.fullExternalId = fullExternalId;
@@ -411,8 +396,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param checkDuplicatedName
-     *            the checkDuplicatedName to set
+     * @param checkDuplicatedName the checkDuplicatedName to set
      */
     public void setCheckDuplicatedName(Boolean checkDuplicatedName) {
         this.checkDuplicatedName = checkDuplicatedName;
@@ -426,8 +410,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param actionOnDuplicatedName
-     *            the actionOnDuplicatedName to set
+     * @param actionOnDuplicatedName the actionOnDuplicatedName to set
      */
     public void setActionOnDuplicatedName(ActionOnDuplicate actionOnDuplicatedName) {
         this.actionOnDuplicatedName = actionOnDuplicatedName;
@@ -441,8 +424,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param customFields
-     *            the customFields to set
+     * @param customFields the customFields to set
      */
     public void setCustomFields(List<CustomField> customFields) {
         this.customFields = customFields;
@@ -456,8 +438,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param executionStatus
-     *            the executionStatus to set
+     * @param executionStatus the executionStatus to set
      */
     public void setExecutionStatus(ExecutionStatus executionStatus) {
         this.executionStatus = executionStatus;
@@ -471,8 +452,7 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param platform
-     *            the platform to set
+     * @param platform the platform to set
      */
     public void setPlatform(Platform platform) {
         this.platform = platform;
@@ -486,29 +466,28 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * @param featureId
-     *            the featureId to set
+     * @param featureId the featureId to set
      */
     public void setFeatureId(Integer featureId) {
         this.featureId = featureId;
     }
 
-	/**
-	 * @return
-	 */
-	public List<String> getKeywords() {
-		return keywords;
-	}
+    /**
+     * @return keywords
+     */
+    public List<String> getKeywords() {
+        return keywords;
+    }
 
-	/**
-	 * @param keywords
-	 */
-	public void setKeywords(List<String> keywords) {
-	   // Sorted keywords (for performance)
-		Collections.sort(keywords);
-		this.keywords = keywords;
-	}
-	
+    /**
+     * @param keywords keywords
+     */
+    public void setKeywords(List<String> keywords) {
+        // Sorted keywords (for performance)
+        Collections.sort(keywords);
+        this.keywords = keywords;
+    }
+
     /*
      * (non-Javadoc)
      * 

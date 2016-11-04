@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,18 +38,18 @@ public class TestDevKeyIssue3216884 extends BaseTest {
 
     @Test()
     public void testCheckValidKey() {
-	this.loadXMLRPCMockData("tl.checkDevKey.xml");
-	try {
-	    Assert.assertTrue(this.api.checkDevKey(api.getDevKey()));
-	} catch (TestLinkAPIException e) {
-	    Assert.fail("Error checking devKey: " + e.getMessage(), e);
-	}
+        this.loadXMLRPCMockData("tl.checkDevKey.xml");
+        try {
+            Assert.assertTrue(this.api.checkDevKey(api.getDevKey()));
+        } catch (TestLinkAPIException e) {
+            Assert.fail("Error checking devKey: " + e.getMessage(), e);
+        }
     }
 
     @Test(expectedExceptions = { TestLinkAPIException.class })
     public void testCheckInvalidKey() {
-	this.loadXMLRPCMockData("tl.checkDevKey_invalid.xml");
-	this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
+        this.loadXMLRPCMockData("tl.checkDevKey_invalid.xml");
+        this.api = new TestLinkAPI(this.api.getUrl(), "Haruki Murakami");
     }
 
 }

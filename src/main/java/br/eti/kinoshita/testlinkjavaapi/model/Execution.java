@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,8 +49,8 @@ public class Execution implements Serializable {
     private String notes;
 
     /**
-	 * 
-	 */
+     * 
+     */
     public Execution() {
         super();
     }
@@ -58,16 +58,16 @@ public class Execution implements Serializable {
     /**
      * Constructor with args.
      * 
-     * @param id
-     * @param buildId
-     * @param testerId
-     * @param executionTimeStamp
-     * @param status
-     * @param testPlanId
-     * @param testCaseVersionId
-     * @param testCaseVersionNumber
-     * @param executionType
-     * @param notes
+     * @param id ID
+     * @param buildId build ID
+     * @param testerId tester ID
+     * @param executionTimeStamp execution time stamp
+     * @param status status
+     * @param testPlanId test plan ID
+     * @param testCaseVersionId test case version ID
+     * @param testCaseVersionNumber test case version number
+     * @param executionType execution type
+     * @param notes notes
      */
     public Execution(Integer id, Integer buildId, Integer testerId, Date executionTimeStamp, ExecutionStatus status,
             Integer testPlanId, Integer testCaseVersionId, Integer testCaseVersionNumber, ExecutionType executionType,

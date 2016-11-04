@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) <2010> <Bruno P. Kinoshita>
+ * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,25 +39,24 @@ public class TestGetLatestBuildForTestPlan extends BaseTest {
 
     @DataProvider(name = "buildData")
     public Object[][] createData() {
-	return new Object[][] { { 5, 7, "tdc-1.0",
-		"Build creado automaticamente con TestLink Jenkins Plug-in." } };
+        return new Object[][] { { 5, 7, "tdc-1.0", "Build creado automaticamente con TestLink Jenkins Plug-in." } };
     }
 
     @Test(dataProvider = "buildData")
-    public void testGetLatestBuildForTestPlan(Integer testPlanId,
-	    Integer buildId, String buildName, String buildNotes) {
-	this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
-	Build build = null;
+    public void testGetLatestBuildForTestPlan(Integer testPlanId, Integer buildId, String buildName,
+            String buildNotes) {
+        this.loadXMLRPCMockData("tl.getLatestBuildForTestPlan.xml");
+        Build build = null;
 
-	try {
-	    build = api.getLatestBuildForTestPlan(testPlanId);
-	} catch (TestLinkAPIException e) {
-	    Assert.fail(e.getMessage(), e);
-	}
+        try {
+            build = api.getLatestBuildForTestPlan(testPlanId);
+        } catch (TestLinkAPIException e) {
+            Assert.fail(e.getMessage(), e);
+        }
 
-	Assert.assertNotNull(build);
+        Assert.assertNotNull(build);
 
-	Assert.assertTrue(build.getId() > 0);
+        Assert.assertTrue(build.getId() > 0);
 
     }
 
