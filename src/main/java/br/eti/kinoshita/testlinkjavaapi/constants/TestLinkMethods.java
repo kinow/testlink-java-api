@@ -2,6 +2,7 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
+<<<<<<< HEAD
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,7 +64,8 @@ public enum TestLinkMethods {
     UPLOAD_TEST_PROJECT_ATTACHMENT("tl.uploadTestProjectAttachment"), 
     UPLOAD_REQUIREMENT_ATTACHMENT("tl.uploadRequirementAttachment"), 
     UPLOAD_REQUIREMENT_SPECIFICATION_ATTACHMENT("tl.uploadRequirementSpecificationAttachment"), 
-    GET_TEST_CASE_ATTACHMENTS("tl.getTestCaseAttachments"), 
+    GET_TEST_CASE_ATTACHMENTS("tl.getTestCaseAttachments"),
+    GET_TEST_SUITE_ATTACHMENTS("tl.getTestSuiteAttachments"),
     UPLOAD_EXECUTION_ATTACHMENT("tl.uploadExecutionAttachment"),
     DELETE_EXECUTION("tl.deleteExecution"), 
     GET_FULL_PATH("tl.getFullPath"), 
