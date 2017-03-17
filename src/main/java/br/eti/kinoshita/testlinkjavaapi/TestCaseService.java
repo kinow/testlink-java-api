@@ -858,25 +858,31 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     *
-     * @param testPlanId
-     * @param testCaseExternalId
-     * @param user
-     * @param buildName
-     * @throws TestLinkAPIException
-     */
-    protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
-            String buildName) throws TestLinkAPIException {
-        try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
-            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
-            executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
-            executionData.put(TestLinkParams.USER.toString(), user);
-            executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
-            this.executeXmlRpcCall(TestLinkMethods.ASSIGN_TEST_CASE_EXECUTION_TASK.toString(), executionData);
-        } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error deleting execution: " + xmlrpcex.getMessage(), xmlrpcex);
-        }
-    }
+	 *
+	 * @param testPlanId
+	 * @param testCaseExternalId
+	 * @param user
+	 * @param buildName
+	 * @param buildId
+	 * @param platformName
+	 * @param platformID
+	 * @throws TestLinkAPIException
+	 */
+	protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
+			Integer buildId, String buildName, Integer platformID, String platformName) throws TestLinkAPIException {
+		try {
+			Map<String, Object> executionData = new HashMap<String, Object>();
+			executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+			executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
+			executionData.put(TestLinkParams.USER.toString(), user);
+			executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
+			executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
+			executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformID);
+			executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
+			this.executeXmlRpcCall(TestLinkMethods.ASSIGN_TEST_CASE_EXECUTION_TASK.toString(), executionData);
+		} catch (XmlRpcException xmlrpcex) {
+			throw new TestLinkAPIException("Error deleting execution: " + xmlrpcex.getMessage(), xmlrpcex);
+		}
+	}
 
 }
