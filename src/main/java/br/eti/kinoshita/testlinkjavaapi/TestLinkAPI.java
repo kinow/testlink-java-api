@@ -603,6 +603,20 @@ public class TestLinkAPI {
     /**
      * Creates a Build.
      * 
+     * @param buildId Build ID
+     * @param testProjectId Test Project ID
+     * @param testPlanId Test Plan ID
+     * @param customFields Custom Fields name,value pairs
+     * @return Response XML-RPC Response
+     * @throws TestLinkAPIException if the service returns as error
+     */
+    public Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) throws TestLinkAPIException {
+        return this.buildService.updateBuildCustomFields(buildId, testProjectId, testPlanId, customFields);
+    }
+
+    /**
+     * Creates a Build.
+     *
      * @param testPlanId test plan ID
      * @param buildName build name
      * @param buildNotes build notes
