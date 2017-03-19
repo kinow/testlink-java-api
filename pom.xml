@@ -43,8 +43,8 @@
     <inceptionYear>2010</inceptionYear>
 
     <issueManagement>
-        <system>SourceForge.net</system>
-        <url>http://sourceforge.net/tracker/?group_id=372361</url>
+        <system>GitHub</system>
+        <url>https://github.com/kinow/testlink-java-api/issues</url>
     </issueManagement>
 
     <developers>
