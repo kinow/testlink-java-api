@@ -36,11 +36,11 @@ import org.apache.commons.configuration2.builder.fluent.Parameters;
 import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.ex.ConversionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
@@ -92,7 +92,7 @@ public class TestLinkAPI {
     private final RequirementService requirementService;
     private final ReqSpecService reqSpecService;
 
-    private static final Logger LOG = LoggerFactory.getLogger(TestLinkAPI.class);
+    private static final Logger LOG = LogManager.getLogger(TestLinkAPI.class);
 
     /**
      * XML-RPC client.
