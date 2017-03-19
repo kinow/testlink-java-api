@@ -95,6 +95,10 @@ public enum TestLinkMethods {
         this.value = value;
     }
 
+    /**
+     * Print the method value.
+     * @return the method value
+     */
     public String toString() {
         return this.value;
     }
