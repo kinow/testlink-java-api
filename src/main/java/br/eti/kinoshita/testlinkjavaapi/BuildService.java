@@ -153,9 +153,11 @@ class BuildService extends BaseService {
 	 * Update build custom fields.
 	 *
 	 * @since 1.9.16-0
-	 * @param buildId build ID
-	 * @param testProjectId test project ID
-	 * @param customFields a Map with custom fields
+	 * @param buildId Build ID
+	 * @param testProjectId Test Project ID
+	 * @param customFields Custom Fields name,value pairs
+	 * @return Response XML-RPC Response
+	 * @throws TestLinkAPIException if the service returns as error
 	 */
 	protected Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) {
 
