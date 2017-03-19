@@ -23,16 +23,14 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.build;
 
+import java.util.HashMap;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
-import org.testng.mustache.Value;
-
-import java.util.HashMap;
 
 /**
  * @author Mohammad Azim Khan - https://github.com/mazimkhan
