@@ -39,6 +39,10 @@ public class Role implements Serializable {
     // TODO add new model 'Rights'
     private Object[] rights;
 
+    /**
+     * Constructor.
+     * @param dbID database ID
+     */
     public Role(Integer dbID) {
         super();
         this.dbID = dbID;

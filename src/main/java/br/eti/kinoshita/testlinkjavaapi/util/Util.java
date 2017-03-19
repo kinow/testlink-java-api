@@ -953,6 +953,11 @@ public final class Util {
         }
     }
 
+    /**
+     * Get the object string value, if not null.
+     * @param o object
+     * @return {@code null} if object is null, otherwise value of the toString method
+     */
     public static final String getStringValueOrNull(Object o) {
         String value = null;
         if (o != null) {
@@ -961,6 +966,11 @@ public final class Util {
         return value;
     }
 
+    /**
+     * Get a {@link User} from a map with properties.
+     * @param map map with properties
+     * @return a {@link User}
+     */
     @SuppressWarnings("unchecked")
     public static final User getUser(Map<String, Object> map) {
         User user = null;
@@ -991,6 +1001,11 @@ public final class Util {
         return user;
     }
 
+    /**
+     * Get a {@link Role} from a map with properties.
+     * @param map map with properties
+     * @return a {@link Role}
+     */
     public static final Role getRole(Map<String, Object> map) {
         Role role = null;
         if (map != null && map.size() > 0) {

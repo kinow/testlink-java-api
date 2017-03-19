@@ -122,6 +122,10 @@ public enum TestLinkResponseParams {
         this.textValue = textValue;
     }
 
+    /**
+     * Print response params value.
+     * @return response params value
+     */
     public String toString() {
         return this.textValue;
     }
