@@ -34,7 +34,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Mohammad Azim Khan - https://github.com/mazimkhan
- * @since 1.0
+ * @since 1.9.16-0
  */
 public class TestUpdateBuildCustomFields extends BaseTest {
 
