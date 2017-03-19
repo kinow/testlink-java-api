@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
 
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
 <rss version="0.91">
   <channel>
     <title>TestLink Java API - Checkstyle report</title>
     <link>http://sourceforge.net/projects/testlinkjavaapi</link>
     <description>TestLink Java API - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2010 - 2016</copyright>
+    <copyright>&#169;2010 - 2017</copyright>
     <item>
       <title>File: 40,
-             Errors: 3803,
+             Errors: 0,
              Warnings: 0,
              Infos: 0
       </title>
@@ -38,7 +55,7 @@
                   0
                 </td>
                 <td>
-                  84
+                  0
                 </td>
               </tr>
                           <tr>
@@ -52,7 +69,7 @@
                   0
                 </td>
                 <td>
-                  29
+                  0
                 </td>
               </tr>
                           <tr>
@@ -66,7 +83,7 @@
                   0
                 </td>
                 <td>
-                  11
+                  0
                 </td>
               </tr>
                           <tr>
@@ -80,7 +97,7 @@
                   0
                 </td>
                 <td>
-                  16
+                  0
                 </td>
               </tr>
                           <tr>
@@ -94,7 +111,7 @@
                   0
                 </td>
                 <td>
-                  604
+                  0
                 </td>
               </tr>
                           <tr>
@@ -108,7 +125,7 @@
                   0
                 </td>
                 <td>
-                  75
+                  0
                 </td>
               </tr>
                           <tr>
@@ -122,7 +139,7 @@
                   0
                 </td>
                 <td>
-                  35
+                  0
                 </td>
               </tr>
                           <tr>
@@ -136,7 +153,7 @@
                   0
                 </td>
                 <td>
-                  15
+                  0
                 </td>
               </tr>
                           <tr>
@@ -150,7 +167,7 @@
                   0
                 </td>
                 <td>
-                  14
+                  0
                 </td>
               </tr>
                           <tr>
@@ -164,7 +181,7 @@
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
               </tr>
                           <tr>
@@ -178,7 +195,7 @@
                   0
                 </td>
                 <td>
-                  29
+                  0
                 </td>
               </tr>
                           <tr>
@@ -192,7 +209,7 @@
                   0
                 </td>
                 <td>
-                  74
+                  0
                 </td>
               </tr>
                           <tr>
@@ -206,7 +223,7 @@
                   0
                 </td>
                 <td>
-                  84
+                  0
                 </td>
               </tr>
                           <tr>
@@ -220,7 +237,7 @@
                   0
                 </td>
                 <td>
-                  144
+                  0
                 </td>
               </tr>
                           <tr>
@@ -234,7 +251,7 @@
                   0
                 </td>
                 <td>
-                  43
+                  0
                 </td>
               </tr>
                           <tr>
@@ -248,7 +265,7 @@
                   0
                 </td>
                 <td>
-                  25
+                  0
                 </td>
               </tr>
                           <tr>
@@ -262,7 +279,7 @@
                   0
                 </td>
                 <td>
-                  101
+                  0
                 </td>
               </tr>
                           <tr>
@@ -276,7 +293,7 @@
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
               </tr>
                           <tr>
@@ -290,7 +307,7 @@
                   0
                 </td>
                 <td>
-                  11
+                  0
                 </td>
               </tr>
                           <tr>
@@ -304,7 +321,7 @@
                   0
                 </td>
                 <td>
-                  95
+                  0
                 </td>
               </tr>
                           <tr>
@@ -318,7 +335,7 @@
                   0
                 </td>
                 <td>
-                  27
+                  0
                 </td>
               </tr>
                           <tr>
@@ -332,7 +349,7 @@
                   0
                 </td>
                 <td>
-                  41
+                  0
                 </td>
               </tr>
                           <tr>
@@ -346,7 +363,7 @@
                   0
                 </td>
                 <td>
-                  64
+                  0
                 </td>
               </tr>
                           <tr>
@@ -360,7 +377,7 @@
                   0
                 </td>
                 <td>
-                  17
+                  0
                 </td>
               </tr>
                           <tr>
@@ -374,7 +391,7 @@
                   0
                 </td>
                 <td>
-                  158
+                  0
                 </td>
               </tr>
                           <tr>
@@ -388,7 +405,7 @@
                   0
                 </td>
                 <td>
-                  319
+                  0
                 </td>
               </tr>
                           <tr>
@@ -402,7 +419,7 @@
                   0
                 </td>
                 <td>
-                  199
+                  0
                 </td>
               </tr>
                           <tr>
@@ -416,7 +433,7 @@
                   0
                 </td>
                 <td>
-                  103
+                  0
                 </td>
               </tr>
                           <tr>
@@ -430,7 +447,7 @@
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
               </tr>
                           <tr>
@@ -444,7 +461,7 @@
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
               </tr>
                           <tr>
@@ -458,7 +475,7 @@
                   0
                 </td>
                 <td>
-                  444
+                  0
                 </td>
               </tr>
                           <tr>
@@ -472,7 +489,7 @@
                   0
                 </td>
                 <td>
-                  92
+                  0
                 </td>
               </tr>
                           <tr>
@@ -486,7 +503,7 @@
                   0
                 </td>
                 <td>
-                  59
+                  0
                 </td>
               </tr>
                           <tr>
@@ -500,7 +517,7 @@
                   0
                 </td>
                 <td>
-                  116
+                  0
                 </td>
               </tr>
                           <tr>
@@ -514,7 +531,7 @@
                   0
                 </td>
                 <td>
-                  237
+                  0
                 </td>
               </tr>
                           <tr>
@@ -528,7 +545,7 @@
                   0
                 </td>
                 <td>
-                  119
+                  0
                 </td>
               </tr>
                           <tr>
@@ -542,7 +559,7 @@
                   0
                 </td>
                 <td>
-                  40
+                  0
                 </td>
               </tr>
                           <tr>
@@ -556,7 +573,7 @@
                   0
                 </td>
                 <td>
-                  70
+                  0
                 </td>
               </tr>
                           <tr>
@@ -570,7 +587,7 @@
                   0
                 </td>
                 <td>
-                  146
+                  0
                 </td>
               </tr>
                           <tr>
@@ -584,7 +601,7 @@
                   0
                 </td>
                 <td>
-                  11
+                  0
                 </td>
               </tr>
                       </tbody>
