@@ -122,6 +122,10 @@ public enum TestLinkParams {
         this.value = value;
     }
 
+    /**
+     * Print param value.
+     * @return param value
+     */
     public String toString() {
         return this.value;
     }
