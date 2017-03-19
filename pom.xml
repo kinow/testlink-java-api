@@ -98,6 +98,7 @@
         <java.version>1.5</java.version>
         <log4j2.version>2.8.1</log4j2.version>
         <xmlrpc.version>3.1.3</xmlrpc.version>
+        <checkstyle.rules>${project.basedir}/checkstyle.xml</checkstyle.rules>
     </properties>
 
     <build>
