@@ -15,8 +15,14 @@
             <action dev="kinow" type="add" issue="75">
                 Replace sl4j by log4j
             </action>
+            <action dev="kinow" type="add" issue="73">
+                Add Travis CI
+            </action>
             <action dev="kinow" type="fix">
                 Added a checkstyle rule file, and fixed all checkstyle issues
+            </action>
+            <action dev="kinow" type="add">
+                Added more reports to the project web site
             </action>
         </release>
         <release version="1.9.14-0" date="2016-04-10" description="1.9.14-0 release">
