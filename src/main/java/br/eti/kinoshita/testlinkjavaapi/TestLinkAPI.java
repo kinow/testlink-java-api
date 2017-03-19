@@ -601,11 +601,11 @@ public class TestLinkAPI {
     /* XX Build operations XX */
 
     /**
-     * Creates a Build.
-     * 
+     * Update build custom fields.
+     *
+     * @since 1.9.16-0
      * @param buildId Build ID
      * @param testProjectId Test Project ID
-     * @param testPlanId Test Plan ID
      * @param customFields Custom Fields name,value pairs
      * @return Response XML-RPC Response
      * @throws TestLinkAPIException if the service returns as error
