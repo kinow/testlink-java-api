@@ -108,8 +108,8 @@
                 <version>2.3.2</version>
                 <configuration>
                     <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-                    <source>${java.versoin}</source>
-                    <target>${java.versoin}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
