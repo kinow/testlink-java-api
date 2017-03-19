@@ -150,10 +150,12 @@ class BuildService extends BaseService {
     }
 
 	/**
+	 * Update build custom fields.
 	 *
-	 * @param buildId
-	 * @param testProjectId
-	 * @param customFields
+	 * @since 1.9.16-0
+	 * @param buildId build ID
+	 * @param testProjectId test project ID
+	 * @param customFields a Map with custom fields
 	 */
 	protected Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) {
 
