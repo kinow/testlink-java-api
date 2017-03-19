@@ -33,7 +33,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Cesar Fernandes de Almeida
- * @since
+
  */
 public class TestUploadExecutionAttachment extends BaseTest {
 
