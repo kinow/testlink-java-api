@@ -1,0 +1,13 @@
+language: java
+sudo: false
+
+jdk:
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
+
+script:
+  - mvn test checkstyle:check javadoc:javadoc -B
+
+after_success:
+- mvn clean cobertura:cobertura coveralls:report
