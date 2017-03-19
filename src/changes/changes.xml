@@ -24,6 +24,10 @@
             <action dev="kinow" type="add">
                 Added more reports to the project web site
             </action>
+            <action dev="kinow" type="fix" issue="72">
+                FATAL: Error verifying developer key: Failed to parse server's response: Content is not allowed in
+                prolog.
+            </action>
         </release>
         <release version="1.9.14-0" date="2016-04-10" description="1.9.14-0 release">
             <action dev="feixiang8418" type="fix">
