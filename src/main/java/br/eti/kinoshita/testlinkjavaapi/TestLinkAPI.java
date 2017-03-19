@@ -542,7 +542,6 @@ public class TestLinkAPI {
      * @return Test Plan.
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
-     * @return Test plan
      */
     public TestPlan getTestPlanByName(String planName, String projectName) throws TestLinkAPIException {
         return this.testPlanService.getTestPlanByName(planName, projectName);
@@ -606,6 +605,7 @@ public class TestLinkAPI {
      * @since 1.9.16-0
      * @param buildId Build ID
      * @param testProjectId Test Project ID
+     * @param testPlanId test plan ID
      * @param customFields Custom Fields name,value pairs
      * @return Response XML-RPC Response
      * @throws TestLinkAPIException if the service returns as error
@@ -661,6 +661,19 @@ public class TestLinkAPI {
 
     /* XX Test Suite operations XX */
 
+    /**
+     * Create a test suite.
+     *
+     * @param testProjectId Test project ID
+     * @param name Test suite name
+     * @param details details
+     * @param parentId Parent ID
+     * @param order order
+     * @param checkDuplicatedName whether to check for duplicated names or not
+     * @param actionOnDuplicatedName action when there is a duplicated name
+     * @return {@link TestSuite}
+     * @throws TestLinkAPIException if it fails to create a test suite
+     */
     public TestSuite createTestSuite(Integer testProjectId, String name, String details, Integer parentId,
             Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
             throws TestLinkAPIException {
