@@ -125,15 +125,28 @@ public enum TestLinkAPIErrors {
         this.message = message;
     }
 
+    /**
+     * Get API error code.
+     * @return API error code
+     */
     public Integer getCode() {
         return this.code;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Enum#toString()
+     */
     @Override
     public String toString() {
         return this.code.toString() + ": " + this.message;
     }
 
+    /**
+     * Check whether another code is equal to this code.
+     * @param code another code
+     * @return {@code true} iff the two values are equal
+     */
     public boolean isCode(Integer code) {
         return this.code.equals(code);
     }
