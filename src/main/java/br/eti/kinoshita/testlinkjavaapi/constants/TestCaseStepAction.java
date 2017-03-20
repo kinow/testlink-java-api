@@ -37,6 +37,10 @@ public enum TestCaseStepAction {
         this.value = value;
     }
 
+    /**
+     * Print value of test case step action.
+     * @return value of test case step action
+     */
     public String toString() {
         return this.value;
     }

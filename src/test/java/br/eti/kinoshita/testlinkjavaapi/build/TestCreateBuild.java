@@ -33,7 +33,6 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since
  */
 public class TestCreateBuild extends BaseTest {
 

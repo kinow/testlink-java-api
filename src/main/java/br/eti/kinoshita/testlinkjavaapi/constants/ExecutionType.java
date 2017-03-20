@@ -37,6 +37,11 @@ public enum ExecutionType {
         this.value = value;
     }
 
+    /**
+     * Get an ExecutionType for a given integer.
+     * @param integer a given integer
+     * @return an ExecutionType
+     */
     public static ExecutionType getExecutionType(Integer integer) {
         if (integer != null) {
             if (integer == 1) {
@@ -48,6 +53,10 @@ public enum ExecutionType {
         return null;
     }
 
+    /**
+     * Get value of execution type.
+     * @return value of execution type
+     */
     public Integer getValue() {
         return value;
     }

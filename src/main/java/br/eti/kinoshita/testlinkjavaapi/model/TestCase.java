@@ -81,7 +81,7 @@ public class TestCase implements Serializable {
 
     /**
      * Constructor with args.
-     * 
+     *
      * @param id ID
      * @param name name
      * @param testSuiteId test suite ID
@@ -294,10 +294,16 @@ public class TestCase implements Serializable {
         this.preconditions = preconditions;
     }
 
+    /**
+     * @return the test case status
+     */
     public TestCaseStatus getTestCaseStatus() {
         return testCaseStatus;
     }
 
+    /**
+     * @param testcaseStatus the test case status
+     */
     public void setTestCaseStatus(TestCaseStatus testcaseStatus) {
         this.testCaseStatus = testcaseStatus;
     }

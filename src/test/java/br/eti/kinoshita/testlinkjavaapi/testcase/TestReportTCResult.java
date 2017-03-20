@@ -33,14 +33,11 @@ import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
- * <p>
  * <ul>
  * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning execution data</li>
  * </ul>
- * </p>
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since
  */
 public class TestReportTCResult extends BaseTest {
 

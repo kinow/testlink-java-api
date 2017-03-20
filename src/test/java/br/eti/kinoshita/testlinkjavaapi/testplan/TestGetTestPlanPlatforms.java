@@ -32,7 +32,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Platform;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since
+
  */
 public class TestGetTestPlanPlatforms extends BaseTest {
 

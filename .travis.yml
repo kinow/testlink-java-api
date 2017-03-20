@@ -1,0 +1,11 @@
+language: java
+sudo: false
+
+jdk:
+  - oraclejdk8
+
+script:
+  - mvn test checkstyle:check javadoc:javadoc -B
+
+after_success:
+- mvn clean cobertura:cobertura coveralls:report

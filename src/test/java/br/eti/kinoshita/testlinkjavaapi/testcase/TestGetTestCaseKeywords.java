@@ -34,7 +34,6 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * @author s2o
- * @since
  */
 public class TestGetTestCaseKeywords extends BaseTest {
 

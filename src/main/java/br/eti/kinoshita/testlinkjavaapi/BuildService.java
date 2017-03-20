@@ -149,4 +149,41 @@ class BuildService extends BaseService {
         return responseMap;
     }
 
+    /**
+     * Update build custom fields.
+     *
+     * @since 1.9.16-0
+     * @param buildId Build ID
+     * @param testProjectId Test Project ID
+     * @param customFields Custom Fields name,value pairs
+     * @return Response XML-RPC Response
+     * @throws TestLinkAPIException if the service returns as error
+     */
+    protected Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) {
+
+        Map<String, Object> responseMap =null;
+
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+
+            executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
+            executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.CUSTOM_FIELDS.toString(), customFields);
+
+            Object response = this.executeXmlRpcCall(TestLinkMethods.UPDATE_BUILD_CUSTOM_FIELDS.toString(),
+                    executionData);
+            if (response instanceof Map<?, ?>) {
+                responseMap = Util.castToMap(response);
+            } else if (! (response instanceof String) ) {
+                responseMap = Util.castToMap(((Object[]) response)[0]);
+            }
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error updating Build custom fields. " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
+
+        return responseMap;
+
+    }
 }

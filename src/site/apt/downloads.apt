@@ -21,7 +21,6 @@ Download
 * TestLink Java API jar
 
   Download TestLink Java API's jar directly from 
-  {{{http://sourceforge.net/projects/testlinkjavaapi/files/}SourceForge}} and 
-  add it to your project 
-  build path.
+  {{{http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22br.eti.kinoshita%22%20AND%20a%3A%22testlink-java-api%22}Maven Central Repository}}
+  and add it to your project build path.
   

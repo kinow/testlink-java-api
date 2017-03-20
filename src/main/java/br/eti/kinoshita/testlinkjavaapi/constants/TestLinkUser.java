@@ -37,10 +37,19 @@ public enum TestLinkUser {
         this.value = value;
     }
 
+    /**
+     * Print user.
+     * @return user
+     */
     public String toString() {
         return Integer.toString(this.value);
     }
 
+    /**
+     * Get user type from a given value.
+     * @param value a given value
+     * @return a TestLinkUser
+     */
     public static TestLinkUser getTestLinkUser(Integer value) {
         switch (value) {
         case -1:

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>buildid</name><value><int>2</int></value></member>
+  <member><name>testplanid</name><value><int>3</int></value></member>
+  <member><name>testprojectid</name><value><int>1</int></value></member>
+  <member><name>devKey</name><value><string>f3230e0850876097abdfef4e3cd01145</string></value></member>
+</struct></value>
+  <value><array><data>
+  <value><string>2</string></value>
+  <value><int>2</int></value>
+  <value><string>/* Class:testcase - Method: setExecutionType */  UPDATE tcversions  SET execution_type=2 WHERE id = 5</string></value>
+</data></array></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

@@ -37,10 +37,19 @@ public enum ExecutionStatus {
         this.value = value;
     }
 
+    /**
+     * Print the character.
+     * @return character
+     */
     public String toString() {
         return Character.toString(this.value);
     }
 
+    /**
+     * Get the ExecutionStatus for a given character.
+     * @param c a given character
+     * @return an ExecutionStatus
+     */
     public static ExecutionStatus getExecutionStatus(char c) {
         switch (c) {
         case 'n':

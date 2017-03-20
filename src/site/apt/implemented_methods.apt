@@ -1,5 +1,7 @@
 List of methods from TestLink XML-RPC API implemented in TestLink Java API
 
+ * tl.assignTestCaseExecutionTask
+
  * tl.createTestProject
 
  * tl.getTestProjectByName
@@ -18,6 +20,8 @@ List of methods from TestLink XML-RPC API implemented in TestLink Java API
 
  * tl.createTestCase
 
+ * tl.updateTestCase
+
  * tl.createTestCaseSteps
 
  * tl.deleteTestCaseSteps
@@ -27,6 +31,8 @@ List of methods from TestLink XML-RPC API implemented in TestLink Java API
  * tl.addTestCaseToTestPlan
 
  * tl.doesUserExist
+
+ * tl.getUserByLogin
 
  * tl.sayHello
 
@@ -84,14 +90,28 @@ List of methods from TestLink XML-RPC API implemented in TestLink Java API
 
  * tl.getLatestBuildForTestPlan
 
+ * tl.getTestCaseKeywords
+
  * tl.getTestCaseCustomFieldDesignValue
 
  * tl.getTestCaseCustomFieldTestPlanDesignValue
 
  * tl.getTestCaseCustomFieldExecutionValue
 
+ * tl.getTestPlanCustomFieldDesignValue
+
  * tl.getTotalsForTestPlan
 
  * tl.getExecCountersByBuild
 
+ * tl.updateTestCaseCustomFieldDesignValue
+
  * tl.setTestCaseExecutionType
+
+ * tl.getProjectPlatforms
+
+ * tl.removePlatformFromTestPlan
+
+ * tl.addPlatformToTestPlan
+
+ * tl.updateBuildCustomFieldsValues
