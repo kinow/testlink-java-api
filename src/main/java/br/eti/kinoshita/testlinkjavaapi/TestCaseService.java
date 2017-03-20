@@ -575,12 +575,13 @@ class TestCaseService extends BaseService {
      * @param platformName
      * @param customFields
      * @param overwrite
+     * @param execduration
      * @return Response object of reportTCResult method
      * @throws TestLinkAPIException
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
             ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite, Integer execduration)
             throws TestLinkAPIException {
         // TODO: Map<String, String> customFields =>
         // change for a list of custom fields. After implementing method
