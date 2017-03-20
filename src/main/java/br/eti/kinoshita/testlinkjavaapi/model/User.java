@@ -47,6 +47,10 @@ public class User implements Serializable {
     private Integer globalRoleID;
     private Integer defaultTestprojectID;
 
+    /**
+     * Create a new user.
+     * @param dbID Database ID
+     */
     public User(Integer dbID) {
         super();
         this.dbID = dbID;

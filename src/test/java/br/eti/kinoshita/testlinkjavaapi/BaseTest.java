@@ -57,6 +57,7 @@ public class BaseTest {
 
     /**
      * Set up method that creates the instance of the TestLink API.
+     * @throws Exception for convenience
      */
     @BeforeClass
     protected void setUp() throws Exception {

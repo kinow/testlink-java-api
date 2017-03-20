@@ -71,8 +71,8 @@ public final class Util {
 
     private static final Logger LOG = Logger.getLogger(Util.class.getName());
 
-    public static final Object[] EMPTY_ARRAY = new Object[0];
-    public static final Map<String, Object> EMPTY_MAP = new HashMap<String, Object>();
+    public static Object[] EMPTY_ARRAY = new Object[0];
+    public static Map<String, Object> EMPTY_MAP = new HashMap<String, Object>();
 
     private Util() {
     }
@@ -81,7 +81,7 @@ public final class Util {
      * @param project test project
      * @return Map of Test Project
      */
-    public static final Map<String, Object> getTestProjectMap(TestProject project) {
+    public static Map<String, Object> getTestProjectMap(TestProject project) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), project.getName());
         executionData.put(TestLinkParams.TEST_CASE_PREFIX.toString(), project.getPrefix());
@@ -108,7 +108,7 @@ public final class Util {
      * @return Test Project.
      */
     @SuppressWarnings("unchecked")
-    public static final TestProject getTestProject(Map<String, Object> map) {
+    public static TestProject getTestProject(Map<String, Object> map) {
         TestProject testProject = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -165,7 +165,7 @@ public final class Util {
      * @param key the desired key
      * @return String value.
      */
-    public static final String getString(Map<String, Object> map, String key) {
+    public static String getString(Map<String, Object> map, String key) {
         String string = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(key);
@@ -181,7 +181,7 @@ public final class Util {
      * @param key the desired key
      * @return Integer value.
      */
-    public static final Integer getInteger(Map<String, Object> map, String key) {
+    public static Integer getInteger(Map<String, Object> map, String key) {
         Integer integer = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(key);
@@ -200,7 +200,7 @@ public final class Util {
      * @param plan test plan
      * @return Map of Test Plan.
      */
-    public static final Map<String, Object> getTestPlanMap(TestPlan plan) {
+    public static Map<String, Object> getTestPlanMap(TestPlan plan) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), plan.getName());
         executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), plan.getProjectName());
@@ -214,7 +214,7 @@ public final class Util {
      * @param map a map
      * @return Test Plan.
      */
-    public static final TestPlan getTestPlan(Map<String, Object> map) {
+    public static TestPlan getTestPlan(Map<String, Object> map) {
         TestPlan testPlan = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -242,7 +242,7 @@ public final class Util {
      * @param map a map
      * @return Platform.
      */
-    public static final Platform getPlatform(Map<String, Object> map) {
+    public static Platform getPlatform(Map<String, Object> map) {
         Platform platform = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -266,7 +266,7 @@ public final class Util {
      * @param testCase test case
      * @return Map of Test Case.
      */
-    public static final Map<String, Object> getTestCaseMap(TestCase testCase) {
+    public static Map<String, Object> getTestCaseMap(TestCase testCase) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
         executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
@@ -298,7 +298,7 @@ public final class Util {
      * @return A list whit one Map for each TestCaseStep
      * @since 1.9.4-1
      */
-    public static final List<Map<String, Object>> getTestCaseStepsMap(List<TestCaseStep> testCaseSteps) {
+    public static List<Map<String, Object>> getTestCaseStepsMap(List<TestCaseStep> testCaseSteps) {
         List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
 
         if (testCaseSteps != null && testCaseSteps.size() > 0) {
@@ -324,7 +324,7 @@ public final class Util {
      * @return A list with the step's id
      * @since 1.9.4-1
      */
-    public static final List<Integer> getTestCaseStepsIdList(List<TestCaseStep> testCaseSteps) {
+    public static List<Integer> getTestCaseStepsIdList(List<TestCaseStep> testCaseSteps) {
         List<Integer> steps = new ArrayList<Integer>();
 
         if (testCaseSteps != null && testCaseSteps.size() > 0) {
@@ -374,7 +374,7 @@ public final class Util {
      * @param testCaseStep test case step
      * @return Map of Test Case Step.
      */
-    public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) {
+    public static Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep) {
         return getTestCaseStepMap(testCaseStep, false);
     }
 
@@ -384,7 +384,7 @@ public final class Util {
      *            in different methods.
      * @return Map of Test Case Step.
      */
-    public static final Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
+    public static Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.STEP_NUMBER.toString(), testCaseStep.getNumber());
         executionData.put(TestLinkParams.ACTIONS.toString(), testCaseStep.getActions());
@@ -403,7 +403,7 @@ public final class Util {
      * @param testSuite test suite
      * @return Map of Test Suite Map.
      */
-    public static final Map<String, Object> getTestSuiteMap(TestSuite testSuite) {
+    public static Map<String, Object> getTestSuiteMap(TestSuite testSuite) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_SUITE_NAME.toString(), testSuite.getName());
         executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testSuite.getTestProjectId());
@@ -421,7 +421,7 @@ public final class Util {
      * @param map a map
      * @return Test Suite.
      */
-    public static final TestSuite getTestSuite(Map<String, Object> map) {
+    public static TestSuite getTestSuite(Map<String, Object> map) {
         TestSuite testSuite = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -448,7 +448,7 @@ public final class Util {
      * @return Test Case.
      */
     @SuppressWarnings("unchecked")
-    public static final TestCase getTestCase(Map<String, Object> map) {
+    public static TestCase getTestCase(Map<String, Object> map) {
         TestCase testCase = null;
         if (map != null && map.size() > 0) {
             // IMPORTANT: http://mantis.testlink.org/view.php?id=4784
@@ -619,7 +619,7 @@ public final class Util {
      * @param build a build
      * @return Map of Build.
      */
-    public static final Map<String, Object> getBuildMap(Build build) {
+    public static Map<String, Object> getBuildMap(Build build) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), build.getTestPlanId());
         executionData.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
@@ -631,7 +631,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Attachment.
      */
-    public static final Map<String, Object> getAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -647,7 +647,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Test Case Attachment.
      */
-    public static final Map<String, Object> getTestCaseAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getTestCaseAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_CASE_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -663,7 +663,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Test Suite Attachment.
      */
-    public static final Map<String, Object> getTestSuiteAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getTestSuiteAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -679,7 +679,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Test Project Attachment.
      */
-    public static final Map<String, Object> getTestProjectAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getTestProjectAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -695,7 +695,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Requirement Attachment.
      */
-    public static final Map<String, Object> getRequirementAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getRequirementAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.REQUIREMENT_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -711,7 +711,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Requirement Specification Attachment.
      */
-    public static final Map<String, Object> getRequirementSpecificationAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getRequirementSpecificationAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -727,7 +727,7 @@ public final class Util {
      * @param attachment an attachment
      * @return Map of Execution Attachment
      */
-    public static final Map<String, Object> getExecutionAttachmentMap(Attachment attachment) {
+    public static Map<String, Object> getExecutionAttachmentMap(Attachment attachment) {
         Map<String, Object> executionData = new HashMap<String, Object>();
         executionData.put(TestLinkParams.EXECUTION_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
@@ -743,7 +743,7 @@ public final class Util {
      * @param map a map
      * @return Attachment.
      */
-    public static final Attachment getAttachment(Map<String, Object> map) {
+    public static Attachment getAttachment(Map<String, Object> map) {
         Attachment attachment = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -776,7 +776,7 @@ public final class Util {
      * @param requirements list of requirements
      * @return List with Maps of Requirements Grouped By ReSpec.
      */
-    public static final List<Map<String, Object>> getRequirementsGroupedByReqSpecMap(List<Requirement> requirements) {
+    public static List<Map<String, Object>> getRequirementsGroupedByReqSpecMap(List<Requirement> requirements) {
         List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<Map<String, Object>>();
 
         Map<Integer, List<Integer>> tempMap = new HashMap<Integer, List<Integer>>();
@@ -806,7 +806,7 @@ public final class Util {
      * @param map a map
      * @return Execution.
      */
-    public static final Execution getExecution(Map<String, Object> map) {
+    public static Execution getExecution(Map<String, Object> map) {
         Execution execution = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -852,7 +852,7 @@ public final class Util {
      * @param map a map
      * @return Build.
      */
-    public static final Build getBuild(Map<String, Object> map) {
+    public static Build getBuild(Map<String, Object> map) {
         Build build = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -880,7 +880,7 @@ public final class Util {
      * @param map a map
      * @return ReportTCResultResponse object.
      */
-    public static final ReportTCResultResponse getReportTCResultResponse(Map<String, Object> map) {
+    public static ReportTCResultResponse getReportTCResultResponse(Map<String, Object> map) {
         ReportTCResultResponse reportTCResultResponse = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
@@ -910,7 +910,7 @@ public final class Util {
      * @param map a map
      * @return Custom Field.
      */
-    public static final CustomField getCustomField(Map<String, Object> map) {
+    public static CustomField getCustomField(Map<String, Object> map) {
         CustomField customField = null;
         if (map != null && map.size() > 0) {
             // Sometimes we are working with CFs without ID
@@ -947,13 +947,18 @@ public final class Util {
      * @param key Key.
      * @param boolValue Boolean value.
      */
-    public static final void putIfNotNullAndTrue(Map<String, Object> map, String key, Boolean boolValue) {
+    public static void putIfNotNullAndTrue(Map<String, Object> map, String key, Boolean boolValue) {
         if (Boolean.TRUE.equals(boolValue)) {
             map.put(key, 0);
         }
     }
 
-    public static final String getStringValueOrNull(Object o) {
+    /**
+     * Get the object string value, if not null.
+     * @param o object
+     * @return {@code null} if object is null, otherwise value of the toString method
+     */
+    public static String getStringValueOrNull(Object o) {
         String value = null;
         if (o != null) {
             value = o.toString();
@@ -961,8 +966,13 @@ public final class Util {
         return value;
     }
 
+    /**
+     * Get a {@link User} from a map with properties.
+     * @param map map with properties
+     * @return a {@link User}
+     */
     @SuppressWarnings("unchecked")
-    public static final User getUser(Map<String, Object> map) {
+    public static User getUser(Map<String, Object> map) {
         User user = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.DB_ID.toString());
@@ -991,7 +1001,12 @@ public final class Util {
         return user;
     }
 
-    public static final Role getRole(Map<String, Object> map) {
+    /**
+     * Get a {@link Role} from a map with properties.
+     * @param map map with properties
+     * @return a {@link Role}
+     */
+    public static Role getRole(Map<String, Object> map) {
         Role role = null;
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.DB_ID.toString());

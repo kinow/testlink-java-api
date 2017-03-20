@@ -44,7 +44,7 @@ public class TestPlan implements Serializable {
     private List<CustomField> customFields;
 
     /**
-     * 
+     * Constructor.
      */
     public TestPlan() {
         super();
@@ -52,7 +52,7 @@ public class TestPlan implements Serializable {
     }
 
     /**
-     *
+     * Constructor with parameters.
      * @param id ID
      * @param name name
      * @param projectName project name
@@ -65,6 +65,7 @@ public class TestPlan implements Serializable {
     }
 
     /**
+     * Constructor with parameters.
      * @param id ID
      * @param name name
      * @param projectName project name
@@ -169,10 +170,16 @@ public class TestPlan implements Serializable {
         this.isPublic = isPublic;
     }
 
+    /**
+     * @return list of custom fields
+     */
     public List<CustomField> getCustomFields() {
         return customFields;
     }
 
+    /**
+     * @param customFields list of custom fields
+     */
     public void setCustomFields(List<CustomField> customFields) {
         this.customFields = customFields;
     }

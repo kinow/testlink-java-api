@@ -36,11 +36,11 @@ import org.apache.commons.configuration2.builder.fluent.Parameters;
 import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.ex.ConversionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
@@ -92,7 +92,7 @@ public class TestLinkAPI {
     private final RequirementService requirementService;
     private final ReqSpecService reqSpecService;
 
-    private static final Logger LOG = LoggerFactory.getLogger(TestLinkAPI.class);
+    private static final Logger LOG = LogManager.getLogger(TestLinkAPI.class);
 
     /**
      * XML-RPC client.
@@ -542,7 +542,6 @@ public class TestLinkAPI {
      * @return Test Plan.
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
-     * @return Test plan
      */
     public TestPlan getTestPlanByName(String planName, String projectName) throws TestLinkAPIException {
         return this.testPlanService.getTestPlanByName(planName, projectName);
@@ -601,8 +600,23 @@ public class TestLinkAPI {
     /* XX Build operations XX */
 
     /**
+     * Update build custom fields.
+     *
+     * @since 1.9.16-0
+     * @param buildId Build ID
+     * @param testProjectId Test Project ID
+     * @param testPlanId test plan ID
+     * @param customFields Custom Fields name,value pairs
+     * @return Response XML-RPC Response
+     * @throws TestLinkAPIException if the service returns as error
+     */
+    public Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) throws TestLinkAPIException {
+        return this.buildService.updateBuildCustomFields(buildId, testProjectId, testPlanId, customFields);
+    }
+
+    /**
      * Creates a Build.
-     * 
+     *
      * @param testPlanId test plan ID
      * @param buildName build name
      * @param buildNotes build notes
@@ -647,6 +661,19 @@ public class TestLinkAPI {
 
     /* XX Test Suite operations XX */
 
+    /**
+     * Create a test suite.
+     *
+     * @param testProjectId Test project ID
+     * @param name Test suite name
+     * @param details details
+     * @param parentId Parent ID
+     * @param order order
+     * @param checkDuplicatedName whether to check for duplicated names or not
+     * @param actionOnDuplicatedName action when there is a duplicated name
+     * @return {@link TestSuite}
+     * @throws TestLinkAPIException if it fails to create a test suite
+     */
     public TestSuite createTestSuite(Integer testProjectId, String name, String details, Integer parentId,
             Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
             throws TestLinkAPIException {

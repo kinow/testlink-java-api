@@ -64,7 +64,6 @@ public enum TestLinkMethods {
     UPLOAD_REQUIREMENT_ATTACHMENT("tl.uploadRequirementAttachment"), 
     UPLOAD_REQUIREMENT_SPECIFICATION_ATTACHMENT("tl.uploadRequirementSpecificationAttachment"), 
     GET_TEST_CASE_ATTACHMENTS("tl.getTestCaseAttachments"), 
-    GET_TEST_SUITE_ATTACHMENTS("tl.getTestSuiteAttachments"), 
     UPLOAD_EXECUTION_ATTACHMENT("tl.uploadExecutionAttachment"),
     DELETE_EXECUTION("tl.deleteExecution"), 
     GET_FULL_PATH("tl.getFullPath"), 
@@ -86,17 +85,22 @@ public enum TestLinkMethods {
     SET_TEST_CASE_EXECUTION_TYPE("tl.setTestCaseExecutionType"),
     GET_PROJECT_PLATFORMS("tl.getProjectPlatforms"),
     REMOVE_PLATFORM_FROM_TEST_PLAN("tl.removePlatformFromTestPlan"),
-    ADD_PLATFORM_TO_TEST_PLAN("tl.addPlatformToTestPlan")
+    ADD_PLATFORM_TO_TEST_PLAN("tl.addPlatformToTestPlan"),
+    UPDATE_BUILD_CUSTOM_FIELDS("tl.updateBuildCustomFieldsValues")
     ;
 
     private String value;
 
-	TestLinkMethods(String value) {
-		this.value = value;
-	}
+    TestLinkMethods(String value) {
+        this.value = value;
+    }
 
-	public String toString() {
-		return this.value;
-	}
+    /**
+     * Print the method value.
+     * @return the method value
+     */
+    public String toString() {
+        return this.value;
+    }
 
 }

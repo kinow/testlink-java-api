@@ -37,10 +37,18 @@ public enum TestCaseStatus {
         this.value = value;
     }
 
+    /**
+     * Get value of test case status.
+     * @return value of test case status
+     */
     public Integer getValue() {
         return value;
     }
 
+    /**
+     * Print value of test case status.
+     * @return value of test case status
+     */
     public String toString() {
         return this.value.toString();
     }

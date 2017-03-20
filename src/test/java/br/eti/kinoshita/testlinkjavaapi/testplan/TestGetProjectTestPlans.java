@@ -32,7 +32,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since
+
  */
 public class TestGetProjectTestPlans extends BaseTest {
 

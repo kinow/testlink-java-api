@@ -24,82 +24,97 @@
 package br.eti.kinoshita.testlinkjavaapi.constants;
 
 /**
- * Response params returned by TestLink. Since TestLink not always use names
- * consistently, it's possible to have multiple fields representing the same
- * data (e.g. testcaseid, testcase_id, tcid, etc).
+ * Response params returned by TestLink. Since TestLink not always use names consistently, it's possible to have
+ * multiple fields representing the same data (e.g. testcaseid, testcase_id, tcid, etc).
  *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
 public enum TestLinkResponseParams {
 
-    ID("id"), DB_ID("dbID"), NAME("name"), LOGIN("login"), FIRST_NAME("firstName"), LAST_NAME("lastName"), LOCALE(
-            "locale"), EMAIL_ADDRESS("emailAddress"), IS_ACTIVE("isActive"), USER_API_KEY("userApiKey"), LOGIN_REGEXP(
-                    "loginRegExp"), TPROJECT_ROLES("tprojectRoles"), TPLAN_ROLES("tplanRoles"), GLOBAL_ROLE(
-                            "globalRole"), GLOBAL_ROLE_ID("globalRoleID"), DESCRIPTION("description"), RIGHTS(
-                                    "rights"), DEFAULT_TESTPROJECT_ID("defaultTestprojectID"), PREFIX("prefix"), NOTES(
-                                            "notes"), ACTIVE("active"), IS_PUBLIC("is_public"), OPT(
-                                                    "opt"), REQUIREMENTS_ENABLED(
-                                                            "requirementsEnabled"), TEST_PRIORITY_ENABLED(
-                                                                    "testPriorityEnabled"), AUTOMATION_ENABLED(
-                                                                            "automationEnabled"), INVENTORY_ENABLED(
-                                                                                    "inventoryEnabled"), PROJECT_NAME(
-                                                                                            "projectname"), FEATURE_ID(
-                                                                                                    "feature_id"), DETAILS(
-                                                                                                            "details"), PARENT_ID(
-                                                                                                                    "parent_id"), ORDER(
-                                                                                                                            "node_order"), VERSION(
-                                                                                                                                    "version"), PRECONDITIONS(
-                                                                                                                                            "preconditions"), TEST_CASE_VERSION_ID(
-                                                                                                                                                    "tcversion_id"), SUMMARY(
-                                                                                                                                                            "summary"), EXECUTION_TYPE(
-                                                                                                                                                                    "execution_type"), TC_ID(
-                                                                                                                                                                            "tc_id"), TEST_CASE_ID(
-                                                                                                                                                                                    "testcase_id"), TCASE_NAME(
-                                                                                                                                                                                            "tcase_name"), CONTENT(
-                                                                                                                                                                                                    "content"), FILE_TYPE(
-                                                                                                                                                                                                            "file_type"), TITLE(
-                                                                                                                                                                                                                    "title"), BUILD_ID(
-                                                                                                                                                                                                                            "build_id"), TESTER_ID(
-                                                                                                                                                                                                                                    "tester_id"), STATUS(
-                                                                                                                                                                                                                                            "status"), TEST_PLAN_ID(
-                                                                                                                                                                                                                                                    "testplan_id"), TEST_CASE_VERSION_NUMBER(
-                                                                                                                                                                                                                                                            "tcversion_number"), DEFAULT_VALUE(
-                                                                                                                                                                                                                                                                    "default_value"), DISPLAY_ORDER(
-                                                                                                                                                                                                                                                                            "display_order"), ENABLE_ON_DESIGN(
-                                                                                                                                                                                                                                                                                    "enable_on_design"), ENABLE_ON_EXECUTION(
-                                                                                                                                                                                                                                                                                            "enable_on_execution"), ENABLE_ON_TEST_PLAN_DESIGN(
-                                                                                                                                                                                                                                                                                                    "enable_on_testplan_design"), LABEL(
-                                                                                                                                                                                                                                                                                                            "label"), LENGTH_MAX(
-                                                                                                                                                                                                                                                                                                                    "length_max"), LENGTH_MIN(
-                                                                                                                                                                                                                                                                                                                            "length_min"), LOCATION(
-                                                                                                                                                                                                                                                                                                                                    "location"), POSSIBLE_VALUES(
-                                                                                                                                                                                                                                                                                                                                            "possible_values"), SHOW_ON_DESIGN(
-                                                                                                                                                                                                                                                                                                                                                    "show_on_design"), SHOW_ON_EXECUTION(
-                                                                                                                                                                                                                                                                                                                                                            "show_on_execution"), SHOW_ON_TEST_PLAN_DESIGN(
-                                                                                                                                                                                                                                                                                                                                                                    "show_on_testplan_design"), STEPS(
-                                                                                                                                                                                                                                                                                                                                                                            "steps"), TYPE(
-                                                                                                                                                                                                                                                                                                                                                                                    "type"), VALID_REGEXP(
-                                                                                                                                                                                                                                                                                                                                                                                            "valid_regexp"), VALUE(
-                                                                                                                                                                                                                                                                                                                                                                                                    "value"), CUSTOM_FIELDS(
-                                                                                                                                                                                                                                                                                                                                                                                                            "custom_fields"), OPERATIONS(
-                                                                                                                                                                                                                                                                                                                                                                                                                    "operation"), OVERWRITE(
-                                                                                                                                                                                                                                                                                                                                                                                                                            "overwrite"), MESSAGE(
-                                                                                                                                                                                                                                                                                                                                                                                                                                    "message"), BUG_ID_STATUS(
-                                                                                                                                                                                                                                                                                                                                                                                                                                            "bugidstatus"), CUSTOM_FIELD_STATUS(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    "customfieldstatus"), EXEC_STATUS(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            "exec_status"), EXECUTION_ORDER(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "execution_order"), ACTIONS(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "actions"), STEP_NUMBER(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "step_number"), EXPECTED_RESULTS(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "expected_results"), FULL_TEST_CASE_EXTERNAL_ID(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "full_tc_external_id"), FULL_TEST_CASE_EXTERNAL_ID2(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "full_external_id"), PLATFORM_ID(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "platform_id"), PLATFORM_NAME(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "platform_name"), EXTERNAL_ID(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "external_id"), EXECUTION_TS(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "execution_ts"), EST_EXECUTION_DURATION(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "estimated_exec_duration");
+    ID("id"),
+    DB_ID("dbID"),
+    NAME("name"),
+    LOGIN("login"),
+    FIRST_NAME("firstName"),
+    LAST_NAME("lastName"),
+    LOCALE("locale"),
+    EMAIL_ADDRESS("emailAddress"),
+    IS_ACTIVE("isActive"),
+    USER_API_KEY("userApiKey"),
+    LOGIN_REGEXP("loginRegExp"),
+    TPROJECT_ROLES("tprojectRoles"),
+    TPLAN_ROLES("tplanRoles"),
+    GLOBAL_ROLE("globalRole"),
+    GLOBAL_ROLE_ID("globalRoleID"),
+    DESCRIPTION("description"),
+    RIGHTS("rights"),
+    DEFAULT_TESTPROJECT_ID("defaultTestprojectID"),
+    PREFIX("prefix"),
+    NOTES("notes"),
+    ACTIVE("active"),
+    IS_PUBLIC("is_public"),
+    OPT("opt"),
+    REQUIREMENTS_ENABLED("requirementsEnabled"),
+    TEST_PRIORITY_ENABLED("testPriorityEnabled"),
+    AUTOMATION_ENABLED("automationEnabled"),
+    INVENTORY_ENABLED("inventoryEnabled"),
+    PROJECT_NAME("projectname"),
+    FEATURE_ID("feature_id"),
+    DETAILS("details"),
+    PARENT_ID("parent_id"),
+    ORDER("node_order"),
+    VERSION("version"),
+    PRECONDITIONS("preconditions"),
+    TEST_CASE_VERSION_ID("tcversion_id"),
+    SUMMARY("summary"),
+    EXECUTION_TYPE("execution_type"),
+    TC_ID("tc_id"),
+    TEST_CASE_ID("testcase_id"),
+    TCASE_NAME("tcase_name"),
+    CONTENT("content"),
+    FILE_TYPE("file_type"),
+    TITLE("title"),
+    BUILD_ID("build_id"),
+    TESTER_ID("tester_id"),
+    STATUS("status"),
+    TEST_PLAN_ID("testplan_id"),
+    TEST_CASE_VERSION_NUMBER("tcversion_number"),
+    DEFAULT_VALUE("default_value"),
+    DISPLAY_ORDER("display_order"),
+    ENABLE_ON_DESIGN("enable_on_design"),
+    ENABLE_ON_EXECUTION("enable_on_execution"),
+    ENABLE_ON_TEST_PLAN_DESIGN("enable_on_testplan_design"),
+    LABEL("label"),
+    LENGTH_MAX("length_max"),
+    LENGTH_MIN("length_min"),
+    LOCATION("location"),
+    POSSIBLE_VALUES("possible_values"),
+    SHOW_ON_DESIGN("show_on_design"),
+    SHOW_ON_EXECUTION("show_on_execution"),
+    SHOW_ON_TEST_PLAN_DESIGN("show_on_testplan_design"),
+    STEPS("steps"),
+    TYPE("type"),
+    VALID_REGEXP("valid_regexp"),
+    VALUE("value"),
+    CUSTOM_FIELDS("custom_fields"),
+    OPERATIONS("operation"),
+    OVERWRITE("overwrite"),
+    MESSAGE("message"),
+    BUG_ID_STATUS("bugidstatus"),
+    CUSTOM_FIELD_STATUS("customfieldstatus"),
+    EXEC_STATUS("exec_status"),
+    EXECUTION_ORDER("execution_order"),
+    ACTIONS("actions"),
+    STEP_NUMBER("step_number"),
+    EXPECTED_RESULTS("expected_results"),
+    FULL_TEST_CASE_EXTERNAL_ID("full_tc_external_id"),
+    FULL_TEST_CASE_EXTERNAL_ID2("full_external_id"),
+    PLATFORM_ID("platform_id"),
+    PLATFORM_NAME("platform_name"),
+    EXTERNAL_ID("external_id"),
+    EXECUTION_TS("execution_ts"),
+    EST_EXECUTION_DURATION("estimated_exec_duration");
 
     private String textValue;
 
@@ -107,6 +122,10 @@ public enum TestLinkResponseParams {
         this.textValue = textValue;
     }
 
+    /**
+     * Print response params value.
+     * @return response params value
+     */
     public String toString() {
         return this.textValue;
     }

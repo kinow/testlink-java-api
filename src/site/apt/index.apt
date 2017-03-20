@@ -5,7 +5,7 @@ TestLink Java API
  uploadAttachment, getTestProjectByName and others.
  
  <<This project is developed separately from TestLink. Issues should be 
- reported here {{{http://sourceforge.net/tracker/?group_id=372361}here}}>>.
+ reported here {{{https://github.com/kinow/testlink-java-api/issues}here}}>>.
 
  Our aim with this project is always release one version of this API after a new 
  version of TestLink has been released. Let's say TestLink releases 

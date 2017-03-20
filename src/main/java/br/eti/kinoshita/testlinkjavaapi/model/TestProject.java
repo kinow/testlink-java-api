@@ -219,10 +219,9 @@ public class TestProject implements Serializable {
         this.isPublic = isPublic;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
+    /**
+     * Print the test project properties.
+     * @return test project properties
      */
     public String toString() {
         return "TestProject [id=" + id + ", name=" + name + ", prefix=" + prefix + ", notes=" + notes

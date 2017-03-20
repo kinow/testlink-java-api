@@ -79,7 +79,7 @@ public class HttpTestServer {
         Handler mockHandler = new AbstractHandler() {
             public void handle(String target, Request request, HttpServletRequest httpRequest,
                     HttpServletResponse httpResponse) throws IOException, ServletException {
-                Request baseRequest = HttpConnection.getCurrentConnection().getRequest();
+                Request baseRequest = HttpConnection.getCurrentConnection().getHttpChannel().getRequest();
                 setResponseBody(getMockResponseBody());
                 setRequestBody(IOUtils.toString(baseRequest.getInputStream(), Charset.defaultCharset()));
                 httpResponse.setStatus(HttpServletResponse.SC_OK);

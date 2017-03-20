@@ -33,7 +33,7 @@ import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 
 /**
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since
+
  */
 public class TestGetTotalsForTestPlan extends BaseTest {
 
