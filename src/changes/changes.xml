@@ -5,6 +5,11 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="" date="" description="">
+            <action dev="kinow" type="fix" issue="90">
+                Issue #90: Replace httpclient
+            </action>
+        </release>
         <release version="1.9.16-0" date="2017-03-19" description="1.9.16-0 release">
             <action dev="mazimkhan" type="add">
                 Pull request 71: Introduced API for updating Build custom fields values
