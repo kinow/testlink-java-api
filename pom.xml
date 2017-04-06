@@ -26,7 +26,7 @@
 
     <groupId>br.eti.kinoshita</groupId>
     <artifactId>testlink-java-api</artifactId>
-    <version>1.9.16-1-SNAPSHOT</version>
+    <version>1.9.16-1</version>
 
     <name>TestLink Java API</name>
     <description>TestLink Java API to interface with TestLink PHP XML-RPC API.</description>
@@ -89,7 +89,7 @@
         <connection>scm:git:git@github.com:kinow/testlink-java-api.git</connection>
         <developerConnection>scm:git:git@github.com:kinow/testlink-java-api.git</developerConnection>
         <url>http://github.com/kinow/testlink-java-api</url>
-        <tag>HEAD</tag>
+        <tag>testlink-java-api-1.9.16-1</tag>
     </scm>
 
     <properties>
