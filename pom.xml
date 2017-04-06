@@ -245,17 +245,17 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j2.version}</version>
         </dependency>
-        <!-- Configuration APIs -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-configuration2</artifactId>
-            <version>2.1.1</version>
-        </dependency>
         <!-- commons-configuration2 runtime dependency for Configuration builders -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
+        </dependency>
+        <!-- Configuration APIs -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>2.1.1</version>
         </dependency>
         <!-- XML-RPC related APIs -->
         <dependency>
