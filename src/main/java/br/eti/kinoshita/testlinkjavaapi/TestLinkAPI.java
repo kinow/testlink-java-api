@@ -33,11 +33,10 @@ import java.util.logging.Logger;
 import org.apache.commons.configuration2.CompositeConfiguration;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.SystemConfiguration;
-import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
-import org.apache.commons.configuration2.builder.fluent.Parameters;
 import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.ex.ConversionException;
+import org.apache.commons.configuration2.io.FileLocator;
+import org.apache.commons.configuration2.io.FileLocatorUtils;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -155,21 +154,22 @@ public class TestLinkAPI {
      * @return Application composite configuration.
      */
     private CompositeConfiguration createApplicationConfiguration() {
-        CompositeConfiguration appConfig = new CompositeConfiguration();
-        appConfig.addConfiguration(new SystemConfiguration());
-        try {
-            FileBasedConfigurationBuilder<PropertiesConfiguration> builder = new FileBasedConfigurationBuilder<PropertiesConfiguration>(
-                    PropertiesConfiguration.class)
-                            .configure(new Parameters().properties().setFileName("testlinkjavaapi.properties")
-                                    .setThrowExceptionOnMissing(true)
-                                    .setListDelimiterHandler(new DefaultListDelimiterHandler(';'))
-                                    .setIncludesAllowed(false));
-            PropertiesConfiguration propertiesConfiguration = builder.getConfiguration();
-            appConfig.addConfiguration(propertiesConfiguration);
-        } catch (ConfigurationException ce) {
-            this.debug(ce);
-        }
-        return appConfig;
+        CompositeConfiguration cc = new CompositeConfiguration();
+
+        SystemConfiguration systemConfiguration = new SystemConfiguration();
+        PropertiesConfiguration propertiesConfiguration = new PropertiesConfiguration();
+        propertiesConfiguration.setThrowExceptionOnMissing(true);
+        propertiesConfiguration.setListDelimiterHandler(new DefaultListDelimiterHandler(';'));
+        propertiesConfiguration.setIncludesAllowed(false);
+        FileLocator locator = FileLocatorUtils.fileLocator()
+                     .fileName("testlinkjavaapi.propertiesxml")
+                     .create();
+        propertiesConfiguration.initFileLocator(locator);
+
+        cc.addConfiguration(systemConfiguration);
+        cc.addConfiguration(propertiesConfiguration);
+
+        return cc;
     }
 
     /**
