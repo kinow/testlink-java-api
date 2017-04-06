@@ -27,6 +27,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.configuration2.CompositeConfiguration;
 import org.apache.commons.configuration2.PropertiesConfiguration;
@@ -36,8 +38,6 @@ import org.apache.commons.configuration2.builder.fluent.Parameters;
 import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.ex.ConversionException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -92,7 +92,7 @@ public class TestLinkAPI {
     private final RequirementService requirementService;
     private final ReqSpecService reqSpecService;
 
-    private static final Logger LOG = LogManager.getLogger(TestLinkAPI.class);
+    private static final Logger LOG = Logger.getLogger(TestLinkAPI.class.getName());
 
     /**
      * XML-RPC client.
@@ -253,8 +253,8 @@ public class TestLinkAPI {
      * @param throwable Throwable object.
      */
     private void debug(Throwable throwable) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug(throwable.getMessage(), throwable);
+        if (LOG.isLoggable(Level.FINEST)) {
+            LOG.log(Level.FINEST, throwable.getMessage(), throwable);
         }
     }
 
