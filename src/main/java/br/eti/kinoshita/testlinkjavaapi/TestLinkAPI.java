@@ -1248,4 +1248,15 @@ public class TestLinkAPI {
         return miscService.executeXmlRpcCall(methodName, executionData);
     }
 
+    /**
+     * Add keywords to existing test cases.
+     *
+     * @param testCaseKeywordsMap - Map of testcase externalId to list of keywords
+     * @return Object returned from the server.
+     * @throws XmlRpcException if the XML-RPC call is invalid
+     * @throws TestLinkAPIException if the service returns an error
+     */
+    public Map<String, Object> addTestCaseKeywords(Map<String, List<String>> testCaseKeywordsMap) {
+        return this.testCaseService.addTestCaseKeyWords(testCaseKeywordsMap);
+    }
 }
