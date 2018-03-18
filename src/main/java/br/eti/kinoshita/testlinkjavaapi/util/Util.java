@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,47 +23,23 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.util;
 
+import br.eti.kinoshita.testlinkjavaapi.constants.*;
+import br.eti.kinoshita.testlinkjavaapi.model.*;
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.apache.commons.lang3.StringUtils;
-
-import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
-import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
-import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkParams;
-import br.eti.kinoshita.testlinkjavaapi.constants.TestLinkResponseParams;
-import br.eti.kinoshita.testlinkjavaapi.model.Attachment;
-import br.eti.kinoshita.testlinkjavaapi.model.Build;
-import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
-import br.eti.kinoshita.testlinkjavaapi.model.Execution;
-import br.eti.kinoshita.testlinkjavaapi.model.Platform;
-import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
-import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
-import br.eti.kinoshita.testlinkjavaapi.model.Role;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
-import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
-import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
-import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
-import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
-import br.eti.kinoshita.testlinkjavaapi.model.User;
 
 /**
  * Utility class with methods to handle the response or prepare the request to
  * the PHP XML-RPC API. This class is able to convert from a Map to an Object
  * and vice-versa.
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -103,7 +79,7 @@ public final class Util {
 
     /**
      * Extracts a Test Project from a Map.
-     * 
+     *
      * @param map Map with properties of a Test Project.
      * @return Test Project.
      */
@@ -293,7 +269,6 @@ public final class Util {
     }
 
     /**
-     * 
      * @param testCaseSteps test case steps
      * @return A list whit one Map for each TestCaseStep
      * @since 1.9.4-1
@@ -308,7 +283,7 @@ public final class Util {
              */
 
             // Why uses an iterator over a foreach?
-            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext();) {
+            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext(); ) {
                 TestCaseStep testCaseStep = iterator.next();
                 Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep, true);
                 steps.add(testCaseStepMap);
@@ -319,7 +294,6 @@ public final class Util {
     }
 
     /**
-     * 
      * @param testCaseSteps test case steps
      * @return A list with the step's id
      * @since 1.9.4-1
@@ -333,7 +307,7 @@ public final class Util {
              */
 
             // Why uses an iterator over a foreach?
-            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext();) {
+            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext(); ) {
                 TestCaseStep testCaseStep = iterator.next();
                 steps.add(testCaseStep.getNumber());
             }
@@ -380,8 +354,8 @@ public final class Util {
 
     /**
      * @param testCaseStep test case step
-     * @param internal the API uses different names for the the same parameter
-     *            in different methods.
+     * @param internal     the API uses different names for the the same parameter
+     *                     in different methods.
      * @return Map of Test Case Step.
      */
     public static Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
@@ -472,6 +446,8 @@ public final class Util {
                     testCase.setParentId(getInteger(map, TestLinkResponseParams.PARENT_ID.toString()));
                     testCase.setOrder(getInteger(map, TestLinkResponseParams.ORDER.toString()));
                     testCase.setExecutionOrder(getInteger(map, TestLinkResponseParams.EXECUTION_ORDER.toString()));
+                    testCase.setAuthorLogin(getString(map, TestLinkResponseParams.AUTHOR_LOGIN.toString()));
+                    testCase.setUpdaterLogin(getString(map, TestLinkResponseParams.AUTHOR_LOGIN.toString()));
                     // the name of the test case is not always in the same
                     // parameter
                     String testCaseName = getString(map, TestLinkResponseParams.TCASE_NAME.toString());
@@ -484,12 +460,12 @@ public final class Util {
                     String platformName = getString(map, TestLinkResponseParams.PLATFORM_NAME.toString());
                     Integer platformId = getInteger(map, TestLinkResponseParams.PLATFORM_ID.toString());
                     if (platformName != null || platformId != null) { // sometimes
-                                                                      // TL may
-                                                                      // return
-                                                                      // only
-                                                                      // one or
-                                                                      // the
-                                                                      // other
+                        // TL may
+                        // return
+                        // only
+                        // one or
+                        // the
+                        // other
                         platform = new Platform();
                         platform.setId(platformId);
                         platform.setName(platformName);
@@ -514,6 +490,7 @@ public final class Util {
                         }
                     }
                     testCase.setFullExternalId(fullExternalId);
+                    testCase.setExternalId(getString(map, TestLinkResponseParams.EXTERNAL_ID.toString()));
 
                     TestCaseStatus status = TestCaseStatus.DRAFT;
                     Integer testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
@@ -577,7 +554,6 @@ public final class Util {
     }
 
     /**
-     * 
      * @param object an object
      * @return Array of objects
      */
@@ -596,7 +572,6 @@ public final class Util {
     }
 
     /**
-     * 
      * @param object an object
      * @return Map of objects
      */
@@ -780,7 +755,7 @@ public final class Util {
         List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<Map<String, Object>>();
 
         Map<Integer, List<Integer>> tempMap = new HashMap<Integer, List<Integer>>();
-        for (Iterator<Requirement> iterator = requirements.iterator(); iterator.hasNext();) {
+        for (Iterator<Requirement> iterator = requirements.iterator(); iterator.hasNext(); ) {
             Requirement requirement = iterator.next();
             List<Integer> requirementsArray = tempMap.get(requirement.getReqSpecId());
             if (requirementsArray == null) {
@@ -942,9 +917,9 @@ public final class Util {
 
     /**
      * Puts a boolean value into a map if the value is not null.
-     * 
-     * @param map Map.
-     * @param key Key.
+     *
+     * @param map       Map.
+     * @param key       Key.
      * @param boolValue Boolean value.
      */
     public static void putIfNotNullAndTrue(Map<String, Object> map, String key, Boolean boolValue) {
@@ -955,6 +930,7 @@ public final class Util {
 
     /**
      * Get the object string value, if not null.
+     *
      * @param o object
      * @return {@code null} if object is null, otherwise value of the toString method
      */
@@ -968,6 +944,7 @@ public final class Util {
 
     /**
      * Get a {@link User} from a map with properties.
+     *
      * @param map map with properties
      * @return a {@link User}
      */
@@ -1003,6 +980,7 @@ public final class Util {
 
     /**
      * Get a {@link Role} from a map with properties.
+     *
      * @param map map with properties
      * @return a {@link Role}
      */

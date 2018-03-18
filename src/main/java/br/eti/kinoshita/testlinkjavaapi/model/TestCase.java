@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,16 +23,12 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.model;
 
+import br.eti.kinoshita.testlinkjavaapi.constants.*;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
-import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
-import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionType;
-import br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus;
-import br.eti.kinoshita.testlinkjavaapi.constants.TestImportance;
 
 /**
  * Represents a Test Case in TesLink.
@@ -49,6 +45,7 @@ public class TestCase implements Serializable {
     private Integer testSuiteId;
     private Integer testProjectId;
     private String authorLogin;
+    private String updaterLogin;
     private String summary;
     private List<TestCaseStep> steps;
     private String preconditions;
@@ -58,6 +55,7 @@ public class TestCase implements Serializable {
     private Integer executionOrder;
     private Integer order;
     private Integer internalId;
+    private String externalId;
     private String fullExternalId;
     private Boolean checkDuplicatedName;
     private ActionOnDuplicate actionOnDuplicatedName;
@@ -82,37 +80,37 @@ public class TestCase implements Serializable {
     /**
      * Constructor with args.
      *
-     * @param id ID
-     * @param name name
-     * @param testSuiteId test suite ID
-     * @param testProjectId test project ID
-     * @param authorLogin author login
-     * @param summary summary
-     * @param steps steps
-     * @param preconditions preconditions
-     * @param testcaseStatus test case status
-     * @param testImportance test importance
-     * @param executionType execution type
-     * @param executionOrder execution order
-     * @param order order
-     * @param internalId internal ID
-     * @param fullExternalId full external ID
-     * @param checkDuplicatedName check for duplicated name
+     * @param id                     ID
+     * @param name                   name
+     * @param testSuiteId            test suite ID
+     * @param testProjectId          test project ID
+     * @param authorLogin            author login
+     * @param summary                summary
+     * @param steps                  steps
+     * @param preconditions          preconditions
+     * @param testcaseStatus         test case status
+     * @param testImportance         test importance
+     * @param executionType          execution type
+     * @param executionOrder         execution order
+     * @param order                  order
+     * @param internalId             internal ID
+     * @param fullExternalId         full external ID
+     * @param checkDuplicatedName    check for duplicated name
      * @param actionOnDuplicatedName action to take when a duplicated name is found
-     * @param versionId version ID
-     * @param version version
-     * @param parentId parent ID
-     * @param customFields custom fields
-     * @param executionStatus execution status
-     * @param platform platform
-     * @param featureId feature ID
+     * @param versionId              version ID
+     * @param version                version
+     * @param parentId               parent ID
+     * @param customFields           custom fields
+     * @param executionStatus        execution status
+     * @param platform               platform
+     * @param featureId              feature ID
      */
     public TestCase(Integer id, String name, Integer testSuiteId, Integer testProjectId, String authorLogin,
-            String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus testcaseStatus,
-            TestImportance testImportance, ExecutionType executionType, Integer executionOrder, Integer order,
-            Integer internalId, String fullExternalId, Boolean checkDuplicatedName,
-            ActionOnDuplicate actionOnDuplicatedName, Integer versionId, Integer version, Integer parentId,
-            List<CustomField> customFields, ExecutionStatus executionStatus, Platform platform, Integer featureId) {
+                    String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus testcaseStatus,
+                    TestImportance testImportance, ExecutionType executionType, Integer executionOrder, Integer order,
+                    Integer internalId, String fullExternalId, Boolean checkDuplicatedName,
+                    ActionOnDuplicate actionOnDuplicatedName, Integer versionId, Integer version, Integer parentId,
+                    List<CustomField> customFields, ExecutionStatus executionStatus, Platform platform, Integer featureId) {
         super();
         this.id = id;
         this.name = name;
@@ -253,6 +251,20 @@ public class TestCase implements Serializable {
     }
 
     /**
+     * @return the authorLogin
+     */
+    public String getUpdaterLogin() {
+        return updaterLogin;
+    }
+
+    /**
+     * @param updaterLogin the authorLogin to set
+     */
+    public void setUpdaterLogin(String updaterLogin) {
+        this.updaterLogin = updaterLogin;
+    }
+
+    /**
      * @return the summary
      */
     public String getSummary() {
@@ -379,7 +391,20 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * 
+     * @return the external Id
+     */
+    public String getExternalId() {
+        return externalId;
+    }
+
+    /**
+     * @param externalId the full externalId to set
+     */
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    /**
      * @return the full external Id, composed by the prefix + externalId
      */
     public String getFullExternalId() {
@@ -387,7 +412,6 @@ public class TestCase implements Serializable {
     }
 
     /**
-     * 
      * @param fullExternalId the full externalId to set
      */
     public void setFullExternalId(String fullExternalId) {
@@ -496,7 +520,7 @@ public class TestCase implements Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override

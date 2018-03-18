@@ -752,10 +752,8 @@ class TestCaseService extends BaseService {
 
     /**
      * Gets list of keywords for a given Test case
-     * 
+     * @param testProjectId
      * @param testCaseId
-     * @param testCaseExternalId
-     * @param version
      * @return
      * @throws TestLinkAPIException
      */
