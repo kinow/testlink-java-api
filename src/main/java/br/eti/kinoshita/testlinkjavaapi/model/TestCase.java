@@ -55,7 +55,7 @@ public class TestCase implements Serializable {
     private Integer executionOrder;
     private Integer order;
     private Integer internalId;
-    private String externalId;
+    private Integer externalId;
     private String fullExternalId;
     private Boolean checkDuplicatedName;
     private ActionOnDuplicate actionOnDuplicatedName;
@@ -393,14 +393,14 @@ public class TestCase implements Serializable {
     /**
      * @return the external Id
      */
-    public String getExternalId() {
+    public Integer getExternalId() {
         return externalId;
     }
 
     /**
-     * @param externalId the full externalId to set
+     * @param externalId the externalId to set
      */
-    public void setExternalId(String externalId) {
+    public void setExternalId(Integer externalId) {
         this.externalId = externalId;
     }
 

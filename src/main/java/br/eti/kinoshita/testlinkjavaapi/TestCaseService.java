@@ -759,7 +759,6 @@ class TestCaseService extends BaseService {
      */
     protected List<String> getTestCaseKeywords(Integer testProjectId, Integer testCaseId) throws TestLinkAPIException {
         List<String> keywords = new ArrayList<String>();
-
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
 
@@ -767,13 +766,10 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
 
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_CASE_KEYWORDS.toString(), executionData);
-            Object[] responseArray = (Object[]) response;
-            for (Object keywordObject : responseArray) {
+            for (Object keywordObject : ((HashMap) response).values().toArray()) {
                 Map<String, String> keywordMap = (Map<String, String>) keywordObject;
-                keywords.add(keywordMap.get("keyword"));
+                keywords.addAll(keywordMap.values());
             }
-
-            // testCase = Util.getTestCase(responseMap);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error getting test case info : " + xmlrpcex.getMessage(), xmlrpcex);
         }

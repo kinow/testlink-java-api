@@ -490,7 +490,7 @@ public final class Util {
                         }
                     }
                     testCase.setFullExternalId(fullExternalId);
-                    testCase.setExternalId(getString(map, TestLinkResponseParams.EXTERNAL_ID.toString()));
+                    testCase.setExternalId(getInteger(map, TestLinkResponseParams.TEST_CASE_EXTERNAL_ID.toString()));
 
                     TestCaseStatus status = TestCaseStatus.DRAFT;
                     Integer testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
