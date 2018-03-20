@@ -854,7 +854,7 @@ class TestCaseService extends BaseService {
      * @param testCaseExternalId
      * @param user
      * @param buildName
-      @param platformId
+     * @param platformId
      * @throws TestLinkAPIException
      */
     protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
