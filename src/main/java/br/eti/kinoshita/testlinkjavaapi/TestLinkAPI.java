@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -66,7 +66,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * TestLink API class.
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -113,12 +113,12 @@ public class TestLinkAPI {
 
     /**
      * Constructor with parameters.
-     * 
+     * <p>
      * <p>
      * Instantiates TestLink services. It also checks the devKey and throws a TestLinkAPIException if it is invalid.
      * </p>
-     * 
-     * @param url The URL to set.
+     *
+     * @param url    The URL to set.
      * @param devKey The Developer Key to set.
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
@@ -150,7 +150,7 @@ public class TestLinkAPI {
 
     /**
      * Creates application composite configuration.
-     * 
+     *
      * @return Application composite configuration.
      */
     private CompositeConfiguration createApplicationConfiguration() {
@@ -162,8 +162,8 @@ public class TestLinkAPI {
         propertiesConfiguration.setListDelimiterHandler(new DefaultListDelimiterHandler(';'));
         propertiesConfiguration.setIncludesAllowed(false);
         FileLocator locator = FileLocatorUtils.fileLocator()
-                     .fileName("testlinkjavaapi.propertiesxml")
-                     .create();
+                .fileName("testlinkjavaapi.propertiesxml")
+                .create();
         propertiesConfiguration.initFileLocator(locator);
 
         cc.addConfiguration(systemConfiguration);
@@ -174,10 +174,10 @@ public class TestLinkAPI {
 
     /**
      * Creates XML-RPC client configuration.
-     * 
+     * <p>
      * By default enabled for extensions is always true.
-     * 
-     * @param url Application URL.
+     *
+     * @param url       Application URL.
      * @param appConfig Application composite configuration.
      * @return XML-RPC client configuration.
      */
@@ -249,7 +249,7 @@ public class TestLinkAPI {
     /**
      * Logs a throwable object in debug level. Before outputting the message it checks if debug is enabled or not. If it
      * is not enabled the message is not displayed and the String object is not created/concatenated, etc.
-     * 
+     *
      * @param throwable Throwable object.
      */
     private void debug(Throwable throwable) {
@@ -283,7 +283,7 @@ public class TestLinkAPI {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
@@ -297,7 +297,7 @@ public class TestLinkAPI {
 
     /**
      * Checks developer key.
-     * 
+     *
      * @param devKey Developer Key.
      * @return <code>true</code> if devKey is valid, <code>false</code> otherwise.
      * @throws TestLinkAPIException if the service returns an error
@@ -309,7 +309,7 @@ public class TestLinkAPI {
 
     /**
      * Checks if the given user exists.
-     * 
+     *
      * @param user user user name
      * @return <code>true</code> if the user exists, <code>false</code> otherwise.
      * @throws TestLinkAPIException if the service returns an error
@@ -331,7 +331,7 @@ public class TestLinkAPI {
 
     /**
      * ping method is an alias for sayHello.
-     * 
+     *
      * @return Hello message
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -341,7 +341,7 @@ public class TestLinkAPI {
 
     /**
      * Says hello to the user.
-     * 
+     *
      * @return Hello message
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -351,7 +351,7 @@ public class TestLinkAPI {
 
     /**
      * Displays information about TL.
-     * 
+     *
      * @return About text
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -361,7 +361,7 @@ public class TestLinkAPI {
 
     /**
      * Set the test mode.
-     * 
+     *
      * @param testMode test mode
      * @return Test mode
      * @throws TestLinkAPIException if the service returns an error
@@ -384,25 +384,25 @@ public class TestLinkAPI {
     /**
      * Upload an attachment linking it to a DB table.
      *
-     * @param fkId FK
-     * @param fkTable FK table name
-     * @param title title
+     * @param fkId        FK
+     * @param fkTable     FK table name
+     * @param title       title
      * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param fileName    file name
+     * @param fileType    file type
+     * @param content     content
      * @return Attachment
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadAttachment(Integer fkId, String fkTable, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+                                       String fileType, String content) throws TestLinkAPIException {
         return this.miscService.uploadAttachment(fkId, fkTable, title, description, fileName, fileType, content);
     }
 
     /**
      * Retrieves the full path of a node. Given a nodeId of, let's say, 10, that is a test case. The return array will
      * consist of Name Of Project, Name of Suite, Name of Test Case.
-     * 
+     *
      * @param nodeId node ID
      * @return Array of name of nodes
      * @throws TestLinkAPIException if the service returns an error
@@ -413,9 +413,9 @@ public class TestLinkAPI {
 
     /**
      * Retrieves last execution result of a Test Case.
-     * 
-     * @param testPlanId test plan ID
-     * @param testCaseId test case ID
+     *
+     * @param testPlanId         test plan ID
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
      * @return Last Execution
      * @throws TestLinkAPIException if the service returns an error
@@ -431,29 +431,29 @@ public class TestLinkAPI {
     /**
      * Creates a Test Project.
      *
-     * @param testProjectName test project name
-     * @param testProjectPrefix test project prefix
-     * @param notes notes
+     * @param testProjectName    test project name
+     * @param testProjectPrefix  test project prefix
+     * @param notes              notes
      * @param enableRequirements flag to enable requirements
      * @param enableTestPriority flag to enable test priority
-     * @param enableAutomation flag to enable automation
-     * @param enableInventory flag to enable inventory
-     * @param isActive whether the project is active or not
-     * @param isPublic whether the project is public or not
+     * @param enableAutomation   flag to enable automation
+     * @param enableInventory    flag to enable inventory
+     * @param isActive           whether the project is active or not
+     * @param isPublic           whether the project is public or not
      * @return Test Project object
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
      */
     public TestProject createTestProject(String testProjectName, String testProjectPrefix, String notes,
-            Boolean enableRequirements, Boolean enableTestPriority, Boolean enableAutomation, Boolean enableInventory,
-            Boolean isActive, Boolean isPublic) throws TestLinkAPIException {
+                                         Boolean enableRequirements, Boolean enableTestPriority, Boolean enableAutomation, Boolean enableInventory,
+                                         Boolean isActive, Boolean isPublic) throws TestLinkAPIException {
         return this.testProjectService.createTestProject(testProjectName, testProjectPrefix, notes, enableRequirements,
                 enableTestPriority, enableAutomation, enableInventory, isActive, isPublic);
     }
 
     /**
      * Retrieves a Test Project by its name.
-     * 
+     *
      * @param projectName Test Project name.
      * @return Test Project with given name or null if not found.
      * @throws TestLinkAPIException if the service returns an error
@@ -465,7 +465,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves the platforms of a test project.
-     * 
+     *
      * @param projectId test project ID
      * @return platforms array
      * @throws TestLinkAPIException if the service returns an error if an error occurs when retrieving the platforms
@@ -477,7 +477,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves all Test Projects from TestLink.
-     * 
+     *
      * @return an array of Test Projects.
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
@@ -488,7 +488,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves an array of Test Plans associated to a Test Project.
-     * 
+     *
      * @param projectId Test Project ID
      * @return Array of Test Plans.
      * @throws TestLinkAPIException if the service returns an error
@@ -499,18 +499,18 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Test Project.
-     * 
+     *
      * @param testProjectId test project ID test project ID
-     * @param title title
-     * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param title         title
+     * @param description   description
+     * @param fileName      file name
+     * @param fileType      file type
+     * @param content       content
      * @return Attachment
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadTestProjectAttachment(Integer testProjectId, String title, String description,
-            String fileName, String fileType, String content) throws TestLinkAPIException {
+                                                  String fileName, String fileType, String content) throws TestLinkAPIException {
         return this.testProjectService.uploadTestProjectAttachment(testProjectId, title, description, fileName,
                 fileType, content);
     }
@@ -519,25 +519,25 @@ public class TestLinkAPI {
 
     /**
      * Creates a Test Plan.
-     * 
-     * @param planName Test Plan name.
+     *
+     * @param planName    Test Plan name.
      * @param projectName Test Project name.
-     * @param notes Test Plan notes.
-     * @param isActive whether the project is active or not
-     * @param isPublic whether the project is public or not
+     * @param notes       Test Plan notes.
+     * @param isActive    whether the project is active or not
+     * @param isPublic    whether the project is public or not
+     * @return Test plan
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
-     * @return Test plan
      */
     public TestPlan createTestPlan(String planName, String projectName, String notes, Boolean isActive,
-            Boolean isPublic) throws TestLinkAPIException {
+                                   Boolean isPublic) throws TestLinkAPIException {
         return this.testPlanService.createTestPlan(planName, projectName, notes, isActive, isPublic);
     }
 
     /**
      * Retrieves a Test Plan by its name.
-     * 
-     * @param planName Test Plan name.
+     *
+     * @param planName    Test Plan name.
      * @param projectName Test Project name.
      * @return Test Plan.
      * @throws TestLinkAPIException if the service returns an error
@@ -549,7 +549,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Platforms of a Test Plan.
-     * 
+     *
      * @param planId Test Plan Id.
      * @return Platforms
      * @throws TestLinkAPIException if the service returns an error
@@ -560,7 +560,7 @@ public class TestLinkAPI {
 
     /**
      * Gets stats for test plan.
-     * 
+     *
      * @param testPlanId test plan ID
      * @return statistics on test plan
      * @throws TestLinkAPIException if the service returns an error
@@ -571,24 +571,24 @@ public class TestLinkAPI {
 
     /**
      * Removes a platform from a test plan.
-     * 
+     *
      * @param testProjectId test project ID test project ID
-     * @param testPlanId test plan ID
-     * @param platformName platform name
+     * @param testPlanId    test plan ID
+     * @param platformName  platform name
      * @return status message
      * @throws TestLinkAPIException if the service returns an error
      */
     public Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId,
-            String platformName) throws TestLinkAPIException {
+                                                          String platformName) throws TestLinkAPIException {
         return this.testPlanService.removePlatformFromTestPlan(testProjectId, testPlanId, platformName);
     }
 
     /**
      * Adds a platform to a test plan.
-     * 
+     *
      * @param testProjectId test project ID test project ID
-     * @param testPlanId test plan ID
-     * @param platformName platform name
+     * @param testPlanId    test plan ID
+     * @param platformName  platform name
      * @return status message
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -602,13 +602,13 @@ public class TestLinkAPI {
     /**
      * Update build custom fields.
      *
-     * @since 1.9.16-0
-     * @param buildId Build ID
+     * @param buildId       Build ID
      * @param testProjectId Test Project ID
-     * @param testPlanId test plan ID
-     * @param customFields Custom Fields name,value pairs
+     * @param testPlanId    test plan ID
+     * @param customFields  Custom Fields name,value pairs
      * @return Response XML-RPC Response
      * @throws TestLinkAPIException if the service returns as error
+     * @since 1.9.16-0
      */
     public Map<String, Object> updateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, Map<String, String> customFields) throws TestLinkAPIException {
         return this.buildService.updateBuildCustomFields(buildId, testProjectId, testPlanId, customFields);
@@ -618,7 +618,7 @@ public class TestLinkAPI {
      * Creates a Build.
      *
      * @param testPlanId test plan ID
-     * @param buildName build name
+     * @param buildName  build name
      * @param buildNotes build notes
      * @return Created Build
      * @throws TestLinkAPIException if the service returns an error
@@ -629,7 +629,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves an Array of Builds for a given Test Plan.
-     * 
+     *
      * @param testPlanId Test Plan ID.
      * @return Array of Builds.
      * @throws TestLinkAPIException if the service returns an error
@@ -640,7 +640,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves the latest Build for a given Test Plan.
-     * 
+     *
      * @param testPlanId Test Plan ID.
      * @return Build.
      * @throws TestLinkAPIException if the service returns an error
@@ -651,7 +651,7 @@ public class TestLinkAPI {
 
     /**
      * Gets the exec counters by build.
-     * 
+     *
      * @param testPlanId test plan ID
      * @return server response map
      */
@@ -664,18 +664,18 @@ public class TestLinkAPI {
     /**
      * Create a test suite.
      *
-     * @param testProjectId Test project ID
-     * @param name Test suite name
-     * @param details details
-     * @param parentId Parent ID
-     * @param order order
-     * @param checkDuplicatedName whether to check for duplicated names or not
+     * @param testProjectId          Test project ID
+     * @param name                   Test suite name
+     * @param details                details
+     * @param parentId               Parent ID
+     * @param order                  order
+     * @param checkDuplicatedName    whether to check for duplicated names or not
      * @param actionOnDuplicatedName action when there is a duplicated name
      * @return {@link TestSuite}
      * @throws TestLinkAPIException if it fails to create a test suite
      */
     public TestSuite createTestSuite(Integer testProjectId, String name, String details, Integer parentId,
-            Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
+                                     Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
             throws TestLinkAPIException {
         return this.testSuiteService.createTestSuite(testProjectId, name, details, parentId, order, checkDuplicatedName,
                 actionOnDuplicatedName);
@@ -683,7 +683,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Test Suites for given Ids.
-     * 
+     *
      * @param testSuiteIds List of Test Suite Ids.
      * @return Array of Test Suites.
      * @throws TestLinkAPIException if the service returns an error
@@ -694,24 +694,23 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Test Suite.
-     * 
+     *
      * @param testSuiteId test suite ID
-     * @param title title
+     * @param title       title
      * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param fileName    file name
+     * @param fileType    file type
+     * @param content     content
      * @return Attachment.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadTestSuiteAttachment(Integer testSuiteId, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+                                                String fileType, String content) throws TestLinkAPIException {
         return this.testSuiteService.uploadTestSuiteAttachment(testSuiteId, title, description, fileName, fileType,
                 content);
     }
 
     /**
-     * 
      * @param testPlanId test plan ID
      * @return Array of Test Suites of Test Plan.
      * @throws TestLinkAPIException if the service returns an error
@@ -722,10 +721,10 @@ public class TestLinkAPI {
 
     /**
      * Get list of TestSuites which are DIRECT children of a given TestSuite
-     * 
+     *
      * @param testSuiteId test suite ID
-     * @throws TestLinkAPIException if the service returns an error
      * @return an array of test suites
+     * @throws TestLinkAPIException if the service returns an error
      */
     public TestSuite[] getTestSuitesForTestSuite(Integer testSuiteId) throws TestLinkAPIException {
         return this.testSuiteService.getTestSuitesForTestSuite(testSuiteId);
@@ -733,10 +732,10 @@ public class TestLinkAPI {
 
     /**
      * Get set of test suites AT TOP LEVEL of tree on a Test Project
-     * 
+     *
      * @param testProjectId test project ID
-     * @throws TestLinkAPIException if the service returns an error
      * @return an array of test suites
+     * @throws TestLinkAPIException if the service returns an error
      */
     public TestSuite[] getFirstLevelTestSuitesForTestProject(Integer testProjectId) throws TestLinkAPIException {
         return this.testSuiteService.getFirstLevelTestSuitesForTestProject(testProjectId);
@@ -746,28 +745,28 @@ public class TestLinkAPI {
 
     /**
      * Creates a Test Case.
-     * 
-     * @param testCaseName test case name
-     * @param testSuiteId test suite ID
-     * @param testProjectId test project ID
-     * @param authorLogin author login
-     * @param summary summary
-     * @param steps steps
-     * @param preconditions preconditions
-     * @param status status
-     * @param importance importance
-     * @param execution execution
-     * @param order order
-     * @param internalId internal ID
-     * @param checkDuplicatedName flag to check for duplicated name
+     *
+     * @param testCaseName           test case name
+     * @param testSuiteId            test suite ID
+     * @param testProjectId          test project ID
+     * @param authorLogin            author login
+     * @param summary                summary
+     * @param steps                  steps
+     * @param preconditions          preconditions
+     * @param status                 status
+     * @param importance             importance
+     * @param execution              execution
+     * @param order                  order
+     * @param internalId             internal ID
+     * @param checkDuplicatedName    flag to check for duplicated name
      * @param actionOnDuplicatedName what to do when a duplicated name is found
      * @return TestCase.
      * @throws TestLinkAPIException if the service returns an error
      */
     public TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId, String authorLogin,
-            String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
-            TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
-            Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
+                                   String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
+                                   TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
+                                   Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
         return this.testCaseService.createTestCase(testCaseName, testSuiteId, testProjectId, authorLogin, summary,
                 steps, preconditions, status, importance, execution, order, internalId, checkDuplicatedName,
                 actionOnDuplicatedName);
@@ -775,7 +774,7 @@ public class TestLinkAPI {
 
     /**
      * Update an already existing test case with the data of the given test case as a new version.
-     * 
+     *
      * @param tc new version of the test case
      * @return response map
      * @throws TestLinkAPIException if the service returns an error if updating the test case fails
@@ -786,59 +785,59 @@ public class TestLinkAPI {
 
     /**
      * Create, Update or Push a list of TestCaseSteps in a Test Case.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param version version
-     * @param action action
-     * @param testCaseSteps test case steps
+     * @param version            version
+     * @param action             action
+     * @param testCaseSteps      test case steps
      * @return a Map with results.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Map<String, Object> createTestCaseSteps(Integer testCaseId, String testCaseExternalId, Integer version,
-            TestCaseStepAction action, List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
+                                                   TestCaseStepAction action, List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
         return this.testCaseService.createTestCaseSteps(testCaseId, testCaseExternalId, version, action, testCaseSteps);
     }
 
     /**
      * Delete a list if TestCaseSteps from a Test Case.
-     * 
+     *
      * @param testCaseExternalId test case external ID
-     * @param version version
-     * @param testCaseSteps test case steps
+     * @param version            version
+     * @param testCaseSteps      test case steps
      * @return a Map with results.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Map<String, Object> deleteTestCaseSteps(String testCaseExternalId, Integer version,
-            List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
+                                                   List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
         return this.testCaseService.deleteTestCaseSteps(testCaseExternalId, version, testCaseSteps);
     }
 
     /**
      * Adds a Test Case to a Test Plan.
-     * 
+     *
      * @param testProjectId test project ID
-     * @param testPlanId test plan ID
-     * @param testCaseId test case ID
-     * @param version version
-     * @param platformId platform ID
-     * @param order order
-     * @param urgency urgency
+     * @param testPlanId    test plan ID
+     * @param testCaseId    test case ID
+     * @param version       version
+     * @param platformId    platform ID
+     * @param order         order
+     * @param urgency       urgency
      * @return Feature ID.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Integer addTestCaseToTestPlan(Integer testProjectId, Integer testPlanId, Integer testCaseId, Integer version,
-            Integer platformId, Integer order, Integer urgency) throws TestLinkAPIException {
+                                         Integer platformId, Integer order, Integer urgency) throws TestLinkAPIException {
         return this.testCaseService.addTestCaseToTestPlan(testProjectId, testPlanId, testCaseId, version, platformId,
                 order, urgency);
     }
 
     /**
      * Retrieves Test Cases for a Test Suite.
-     * 
+     *
      * @param testSuiteId test suite ID
-     * @param deep flag for depth
-     * @param detail test case details requested
+     * @param deep        flag for depth
+     * @param detail      test case details requested
      * @return Array of Test Cases of the Test Suite.
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -849,10 +848,10 @@ public class TestLinkAPI {
 
     /**
      * Get a test case
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param version version
+     * @param version            version
      * @return Test Case.
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -863,9 +862,9 @@ public class TestLinkAPI {
 
     /**
      * Get a Test Case using the full external id, composed by the prefix and the external id: prefix-externalId
-     * 
+     *
      * @param fullTestCaseExternalId Full external id: prefix-externalId
-     * @param version version
+     * @param version                version
      * @return Test Case.
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -876,70 +875,70 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Test Cases for Test Plans.
-     * 
-     * @param testPlanId test plan ID
-     * @param testCasesIds test case ID's
-     * @param buildId build ID
-     * @param keywordsIds keyword ID's
-     * @param keywords keywords
-     * @param executed flag for executed or not
-     * @param assignedTo assignee
+     *
+     * @param testPlanId    test plan ID
+     * @param testCasesIds  test case ID's
+     * @param buildId       build ID
+     * @param keywordsIds   keyword ID's
+     * @param keywords      keywords
+     * @param executed      flag for executed or not
+     * @param assignedTo    assignee
      * @param executeStatus execution status
      * @param executionType execution type
-     * @param getStepInfo test case step info
-     * @param detail test case details
+     * @param getStepInfo   test case step info
+     * @param detail        test case details
      * @return Array of Test Cases of the Test Plan.
      * @throws TestLinkAPIException if the service returns an error
      */
     public TestCase[] getTestCasesForTestPlan(Integer testPlanId, List<Integer> testCasesIds, Integer buildId,
-            List<Integer> keywordsIds, String keywords, // , separated e.g.:
-                                                        // database,performance
-            Boolean executed, List<Integer> assignedTo, String[] executeStatus, // ,
-                                                                                // separated
-                                                                                // e.g.:
-                                                                                // p,n,f
-            ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail) throws TestLinkAPIException {
+                                              List<Integer> keywordsIds, String keywords, // , separated e.g.:
+                                              // database,performance
+                                              Boolean executed, List<Integer> assignedTo, String[] executeStatus, // ,
+                                              // separated
+                                              // e.g.:
+                                              // p,n,f
+                                              ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail) throws TestLinkAPIException {
         return this.testCaseService.getTestCasesForTestPlan(testPlanId, testCasesIds, buildId, keywordsIds, keywords,
                 executed, assignedTo, executeStatus, executionType, getStepInfo, detail);
     }
 
     /**
      * Get a test case ID by a test case Name
-     * 
-     * @param testCaseName test case name
-     * @param testSuiteName test suite name
-     * @param testProjectName test project name
+     *
+     * @param testCaseName     test case name
+     * @param testSuiteName    test suite name
+     * @param testProjectName  test project name
      * @param testCasePathName test case path name
      * @return Test Case ID.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Integer getTestCaseIDByName(String testCaseName, String testSuiteName, String testProjectName,
-            String testCasePathName) throws TestLinkAPIException {
+                                       String testCasePathName) throws TestLinkAPIException {
         return this.testCaseService.getTestCaseIDByName(testCaseName, testSuiteName, testProjectName, testCasePathName);
     }
 
     /**
      * Uploads an attachment to a Test Case.
-     * 
-     * @param testCaseId test case ID
-     * @param title title
+     *
+     * @param testCaseId  test case ID
+     * @param title       title
      * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param fileName    file name
+     * @param fileType    file type
+     * @param content     content
      * @return Attachment.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadTestCaseAttachment(Integer testCaseId, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+                                               String fileType, String content) throws TestLinkAPIException {
         return this.testCaseService.uploadTestCaseAttachment(testCaseId, title, description, fileName, fileType,
                 content);
     }
 
     /**
      * Return an array of attachments of a Test Case.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
      * @return Array of Attachments
      * @throws TestLinkAPIException if the service returns an error
@@ -953,23 +952,23 @@ public class TestLinkAPI {
      * Upload an execution attachment.
      *
      * @param executionId execution ID
-     * @param title title
+     * @param title       title
      * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param fileName    file name
+     * @param fileType    file type
+     * @param content     content
      * @return attachment
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadExecutionAttachment(Integer executionId, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+                                                String fileType, String content) throws TestLinkAPIException {
         return this.testCaseService.uploadExecutionAttachment(executionId, title, description, fileName, fileType,
                 content);
     }
 
     /**
      * Deletes an execution.
-     * 
+     *
      * @param executionId Execution Id.
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -979,26 +978,26 @@ public class TestLinkAPI {
 
     /**
      * Reports a Test Case result.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param testPlanId test plan ID
-     * @param status status
-     * @param buildId build ID
-     * @param buildName build name
-     * @param notes notes
-     * @param guess flag to guess other parameters or not
-     * @param bugId bug ID
-     * @param platformId platform ID
-     * @param platformName platform name
-     * @param customFields custom fields
-     * @param overwrite flag to overwrite or not
-     * @throws TestLinkAPIException if the service returns an error
+     * @param testPlanId         test plan ID
+     * @param status             status
+     * @param buildId            build ID
+     * @param buildName          build name
+     * @param notes              notes
+     * @param guess              flag to guess other parameters or not
+     * @param bugId              bug ID
+     * @param platformId         platform ID
+     * @param platformName       platform name
+     * @param customFields       custom fields
+     * @param overwrite          flag to overwrite or not
      * @return report test case result server response
+     * @throws TestLinkAPIException if the service returns an error
      */
     public ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+                                                 ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+                                                 Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
         return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
@@ -1006,26 +1005,26 @@ public class TestLinkAPI {
 
     /**
      * Reports a Test Case result.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param testPlanId test plan ID
-     * @param status status
-     * @param buildId build ID
-     * @param buildName build name
-     * @param notes notes
-     * @param guess flag to guess other parameters or not
-     * @param bugId bug ID
-     * @param platformId platform ID
-     * @param platformName platform name
-     * @param customFields custom fields
-     * @param overwrite flag to overwrite or not
+     * @param testPlanId         test plan ID
+     * @param status             status
+     * @param buildId            build ID
+     * @param buildName          build name
+     * @param notes              notes
+     * @param guess              flag to guess other parameters or not
+     * @param bugId              bug ID
+     * @param platformId         platform ID
+     * @param platformName       platform name
+     * @param customFields       custom fields
+     * @param overwrite          flag to overwrite or not
      * @return response
      * @throws TestLinkAPIException if the service returns an error
      */
     public ReportTCResultResponse setTestCaseExecutionResult(Integer testCaseId, Integer testCaseExternalId,
-            Integer testPlanId, ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess,
-            String bugId, Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+                                                             Integer testPlanId, ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess,
+                                                             String bugId, Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
         return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
@@ -1033,18 +1032,18 @@ public class TestLinkAPI {
 
     /**
      * Retrieves list of Custom Fields for a Test Case.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param versionNumber version number
-     * @param testProjectId test project ID
-     * @param customFieldName custom field name
-     * @param details details
+     * @param versionNumber      version number
+     * @param testProjectId      test project ID
+     * @param customFieldName    custom field name
+     * @param details            details
      * @return Custom Field.
      * @throws TestLinkAPIException if the service returns an error
      */
     public CustomField getTestCaseCustomFieldDesignValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
+                                                         Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
             throws TestLinkAPIException {
         return this.testCaseService.getTestCaseCustomFieldDesignValue(testCaseId, testCaseExternalId, versionNumber,
                 testProjectId, customFieldName, details);
@@ -1053,33 +1052,33 @@ public class TestLinkAPI {
     /**
      * Gets the test plan custom field value
      *
-     * @param testPlanId test plan ID
-     * @param testProjectId test project ID
+     * @param testPlanId      test plan ID
+     * @param testProjectId   test project ID
      * @param customFieldName custom field name
-     * @param details details
+     * @param details         details
      * @return custom field
      * @throws TestLinkAPIException if the service returns an error
      */
     public CustomField getTestPlanCustomFieldDesignValue(Integer testPlanId, Integer testProjectId,
-            String customFieldName, ResponseDetails details) throws TestLinkAPIException {
+                                                         String customFieldName, ResponseDetails details) throws TestLinkAPIException {
         return this.testPlanService.getTestPlanCustomFieldDesignValue(testPlanId, testProjectId, customFieldName,
                 details);
     }
 
     /**
      * Gets the test case custom field value on test plan design scope.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param versionNumber version number
-     * @param testProjectId test project ID
-     * @param customFieldName custom field name
-     * @param details details
+     * @param versionNumber      version number
+     * @param testProjectId      test project ID
+     * @param customFieldName    custom field name
+     * @param details            details
      * @return custom field
      * @throws TestLinkAPIException if the service returns an error
      */
     public CustomField getTestCaseCustomFieldTestPlanDesignValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
+                                                                 Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
             throws TestLinkAPIException {
         return this.testCaseService.getTestCaseCustomFieldTestPlanDesignValue(testCaseId, testCaseExternalId,
                 versionNumber, testProjectId, customFieldName, details);
@@ -1087,29 +1086,29 @@ public class TestLinkAPI {
 
     /**
      * Gets the test case custom field value on test execution scope.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param versionNumber version number
-     * @param executionId execution ID
-     * @param testProjectId test project ID
-     * @param customFieldName custom field name
-     * @param details details
+     * @param versionNumber      version number
+     * @param executionId        execution ID
+     * @param testProjectId      test project ID
+     * @param customFieldName    custom field name
+     * @param details            details
      * @return custom field
      * @throws TestLinkAPIException if the service returns an error
      */
     public CustomField getTestCaseCustomFieldExecutionValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
-            ResponseDetails details) throws TestLinkAPIException {
+                                                            Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
+                                                            ResponseDetails details) throws TestLinkAPIException {
         return this.testCaseService.getTestCaseCustomFieldExecutionValue(testCaseId, testCaseExternalId, versionNumber,
                 executionId, testProjectId, customFieldName, details);
     }
 
     /**
      * Gets list of keywords for a given Test case
-     * 
+     *
      * @param testProjectId test project ID
-     * @param testCaseId test case ID
+     * @param testCaseId    test case ID
      * @return test case keywords
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -1119,32 +1118,32 @@ public class TestLinkAPI {
 
     /**
      * Sets the test case execution type.
-     * 
-     * @param testProjectId test project ID
-     * @param testCaseId test case ID
+     *
+     * @param testProjectId      test project ID
+     * @param testCaseId         test case ID
      * @param testCaseExternalId test case external ID
-     * @param versionNumber version number
-     * @param executionType execution type
+     * @param versionNumber      version number
+     * @param executionType      execution type
      * @return server response map
      */
     public Map<String, Object> setTestCaseExecutionType(Integer testProjectId, Integer testCaseId,
-            Integer testCaseExternalId, Integer versionNumber, ExecutionType executionType) {
+                                                        Integer testCaseExternalId, Integer versionNumber, ExecutionType executionType) {
         return this.testCaseService.setTestCaseExecutionType(testProjectId, testCaseId, testCaseExternalId,
                 versionNumber, executionType);
     }
 
     /**
      * Update the value of an existing custom field for a Test Case
-     * 
-     * @param testCaseId test case ID
-     * @param versionNumber version number
-     * @param testProjectId test project ID
-     * @param customFieldName custom field name
+     *
+     * @param testCaseId       test case ID
+     * @param versionNumber    version number
+     * @param testProjectId    test project ID
+     * @param customFieldName  custom field name
      * @param customFieldValue custom field value
      * @return server response map
      */
     public Map<String, Object> updateTestCaseCustomFieldDesignValue(Integer testCaseId, Integer versionNumber,
-            Integer testProjectId, String customFieldName, String customFieldValue) {
+                                                                    Integer testProjectId, String customFieldName, String customFieldValue) {
         return this.testCaseService.updateTestCaseCustomFieldDesignValue(testCaseId, versionNumber, testProjectId,
                 customFieldName, customFieldValue);
     }
@@ -1152,33 +1151,34 @@ public class TestLinkAPI {
     /**
      * Assign user to execute Test Case in Test Plan
      *
-     * @param testPlanId test plan ID
+     * @param testPlanId         test plan ID
      * @param testCaseExternalId test case external ID
-     * @param user user
-     * @param buildName build name
+     * @param user               user
+     * @param buildName          build name
+     * @param platformId         platform ID
      * @throws TestLinkAPIException if the service returns an error
      */
     public void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
-            String buildName) throws TestLinkAPIException {
-        this.testCaseService.assignTestCaseExecutionTask(testPlanId, testCaseExternalId, user, buildName);
+                                            String buildName, Integer platformId) throws TestLinkAPIException {
+        this.testCaseService.assignTestCaseExecutionTask(testPlanId, testCaseExternalId, user, buildName, platformId);
     }
 
     /* XX Requirements Specification operations XX */
 
     /**
      * Uploads an attachment to a Requirement Specification.
-     * 
-     * @param reqSpecId requirement specification ID
-     * @param title title
+     *
+     * @param reqSpecId   requirement specification ID
+     * @param title       title
      * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param fileName    file name
+     * @param fileType    file type
+     * @param content     content
      * @return Attachment.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadRequirementSpecificationAttachment(Integer reqSpecId, String title, String description,
-            String fileName, String fileType, String content) throws TestLinkAPIException {
+                                                               String fileName, String fileType, String content) throws TestLinkAPIException {
         return this.reqSpecService.uploadRequirementSpecificationAttachment(reqSpecId, title, description, fileName,
                 fileType, content);
     }
@@ -1187,28 +1187,28 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Requirement.
-     * 
+     *
      * @param requirementId requirement ID
-     * @param title title
-     * @param description description
-     * @param fileName file name
-     * @param fileType file type
-     * @param content content
+     * @param title         title
+     * @param description   description
+     * @param fileName      file name
+     * @param fileType      file type
+     * @param content       content
      * @return Attachment.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadRequirementAttachment(Integer requirementId, String title, String description,
-            String fileName, String fileType, String content) throws TestLinkAPIException {
+                                                  String fileName, String fileType, String content) throws TestLinkAPIException {
         return this.requirementService.uploadRequirementAttachment(requirementId, title, description, fileName,
                 fileType, content);
     }
 
     /**
      * Assign a requirements to a Test Case.
-     * 
-     * @param testCaseId test case ID
+     *
+     * @param testCaseId    test case ID
      * @param testProjectId test project ID
-     * @param requirements list of requirements
+     * @param requirements  list of requirements
      * @throws TestLinkAPIException if the service returns an error
      */
     public void assignRequirements(Integer testCaseId, Integer testProjectId, List<Requirement> requirements)
@@ -1218,11 +1218,11 @@ public class TestLinkAPI {
 
     /**
      * Executes a XML-RPC call. Use this method to talk with TestLink in a lower level.
-     * 
-     * @param methodName Name of the method.
+     *
+     * @param methodName    Name of the method.
      * @param executionData Execution data map.
      * @return Object returned from the server.
-     * @throws XmlRpcException if the XML-RPC call is invalid
+     * @throws XmlRpcException      if the XML-RPC call is invalid
      * @throws TestLinkAPIException if the service returns an error
      */
     public Object executeXmlRpcCall(String methodName, Map<String, Object> executionData)

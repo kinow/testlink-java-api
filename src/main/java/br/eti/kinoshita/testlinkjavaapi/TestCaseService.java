@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -65,7 +65,7 @@ class TestCaseService extends BaseService {
 
     /**
      * @param xmlRpcClient XML RPC Client.
-     * @param devKey TestLink User DevKey.
+     * @param devKey       TestLink User DevKey.
      */
     public TestCaseService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
@@ -92,9 +92,9 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId,
-            String authorLogin, String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
-            TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
-            Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
+                                      String authorLogin, String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
+                                      TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
+                                      Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
         TestCase testCase = null;
 
         Integer id = null;
@@ -141,7 +141,7 @@ class TestCaseService extends BaseService {
     }
 
     public Map<String, Object> createTestCaseSteps(Integer testCaseId, String testCaseExternalId, Integer version,
-            TestCaseStepAction action, List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
+                                                   TestCaseStepAction action, List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
         Map<String, Object> responseMap = null;
 
         try {
@@ -172,7 +172,7 @@ class TestCaseService extends BaseService {
     }
 
     public Map<String, Object> deleteTestCaseSteps(String testCaseExternalId, Integer version,
-            List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
+                                                   List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
         Map<String, Object> responseMap = null;
 
         try {
@@ -194,7 +194,7 @@ class TestCaseService extends BaseService {
     }
 
     protected Integer addTestCaseToTestPlan(Integer testProjectId, Integer testPlanId, Integer testCaseId,
-            Integer version, Integer platformId, Integer order, Integer urgency) throws TestLinkAPIException {
+                                            Integer version, Integer platformId, Integer order, Integer urgency) throws TestLinkAPIException {
         Integer featureId = 0;
 
         try {
@@ -268,8 +268,8 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestCase[] getTestCasesForTestPlan(Integer testPlanId, List<Integer> testCasesIds, Integer buildId,
-            List<Integer> keywordsIds, String keywords, Boolean executed, List<Integer> assignedTo,
-            String[] executeStatus, ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail)
+                                                 List<Integer> keywordsIds, String keywords, Boolean executed, List<Integer> assignedTo,
+                                                 String[] executeStatus, ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail)
             throws TestLinkAPIException {
         TestCase[] testCases = null;
 
@@ -344,7 +344,6 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     *
      * @param testCaseId
      * @param testCaseExternalId
      * @param version
@@ -376,7 +375,6 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     *
      * @param fullTestCaseExternalId Full external id: prefix-externalId
      * @param version
      * @return
@@ -414,7 +412,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected Integer getTestCaseIDByName(String testCaseName, String testSuiteName, String testProjectName,
-            String testCasePathName) throws TestLinkAPIException {
+                                          String testCasePathName) throws TestLinkAPIException {
         Integer testCaseID = null;
 
         try {
@@ -454,7 +452,7 @@ class TestCaseService extends BaseService {
      * @return
      */
     protected Attachment uploadTestCaseAttachment(Integer testCaseId, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+                                                  String fileType, String content) throws TestLinkAPIException {
         Attachment attachment = null;
 
         Integer id = 0;
@@ -520,7 +518,7 @@ class TestCaseService extends BaseService {
     }
 
     protected Attachment uploadExecutionAttachment(Integer executionId, String title, String description,
-            String fileName, String fileType, String content) throws TestLinkAPIException {
+                                                   String fileName, String fileType, String content) throws TestLinkAPIException {
         Attachment attachment = null;
 
         Integer id = 0;
@@ -579,8 +577,8 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+                                                    ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+                                                    Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
         // TODO: Map<String, String> customFields =>
         // change for a list of custom fields. After implementing method
@@ -631,7 +629,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected CustomField getTestCaseCustomFieldDesignValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
+                                                            Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
             throws TestLinkAPIException {
         CustomField customField = null;
 
@@ -674,7 +672,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected CustomField getTestCaseCustomFieldTestPlanDesignValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
+                                                                    Integer versionNumber, Integer testProjectId, String customFieldName, ResponseDetails details)
             throws TestLinkAPIException {
         CustomField customField = null;
 
@@ -717,8 +715,8 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected CustomField getTestCaseCustomFieldExecutionValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
-            ResponseDetails details) throws TestLinkAPIException {
+                                                               Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
+                                                               ResponseDetails details) throws TestLinkAPIException {
         CustomField customField = null;
 
         try {
@@ -752,6 +750,7 @@ class TestCaseService extends BaseService {
 
     /**
      * Gets list of keywords for a given Test case
+     *
      * @param testProjectId
      * @param testCaseId
      * @return
@@ -785,7 +784,7 @@ class TestCaseService extends BaseService {
      * @return
      */
     protected Map<String, Object> setTestCaseExecutionType(Integer testProjectId, Integer testCaseId,
-            Integer testCaseExternalId, Integer versionNumber, ExecutionType executionType) {
+                                                           Integer testCaseExternalId, Integer versionNumber, ExecutionType executionType) {
         Map<String, Object> responseMap = null;
 
         try {
@@ -813,7 +812,6 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     *
      * @param testCaseId
      * @param versionNumber
      * @param testProjectId
@@ -821,7 +819,7 @@ class TestCaseService extends BaseService {
      * @param customFieldValue
      */
     protected Map<String, Object> updateTestCaseCustomFieldDesignValue(Integer testCaseId, Integer versionNumber,
-            Integer testProjectId, String customFieldName, String customFieldValue) {
+                                                                       Integer testProjectId, String customFieldName, String customFieldValue) {
 
         Map<String, Object> responseMap = null;
 
@@ -852,21 +850,22 @@ class TestCaseService extends BaseService {
     }
 
     /**
-     *
      * @param testPlanId
      * @param testCaseExternalId
      * @param user
      * @param buildName
+      @param platformId
      * @throws TestLinkAPIException
      */
     protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
-            String buildName) throws TestLinkAPIException {
+                                               String buildName, Integer platformId) throws TestLinkAPIException {
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.USER.toString(), user);
             executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
+            executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformId);
             this.executeXmlRpcCall(TestLinkMethods.ASSIGN_TEST_CASE_EXECUTION_TASK.toString(), executionData);
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error deleting execution: " + xmlrpcex.getMessage(), xmlrpcex);
