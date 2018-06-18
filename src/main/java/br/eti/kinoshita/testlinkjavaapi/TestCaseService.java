@@ -91,7 +91,7 @@ class TestCaseService extends BaseService {
      * @return Test Case.
      * @throws TestLinkAPIException
      */
-    protected TestCase createTestCase(TestCase testCase) throws TestLinkAPIException {
+    protected TestCase createTestCase(Integer id, TestCase testCase) throws TestLinkAPIException {
         
         try {
             Map<String, Object> executionData = Util.getTestCaseMap(testCase);
