@@ -91,18 +91,8 @@ class TestCaseService extends BaseService {
      * @return Test Case.
      * @throws TestLinkAPIException
      */
-    protected TestCase createTestCase(String testCaseName, Integer testSuiteId, Integer testProjectId,
-            String authorLogin, String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
-            TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
-            Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
-        TestCase testCase = null;
-
-        Integer id = null;
-
-        testCase = new TestCase(id, testCaseName, testSuiteId, testProjectId, authorLogin, summary, steps,
-                preconditions, status, importance, execution, null, order, internalId, null, checkDuplicatedName,
-                actionOnDuplicatedName, null, null, null, null, null, null, null);
-
+    protected TestCase createTestCase(Integer id, TestCase testCase) throws TestLinkAPIException {
+        
         try {
             Map<String, Object> executionData = Util.getTestCaseMap(testCase);
             Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_CASE.toString(), executionData);
