@@ -268,25 +268,27 @@ public final class Util {
      */
     public static Map<String, Object> getTestCaseMap(TestCase testCase) {
         Map<String, Object> executionData = new HashMap<String, Object>();
-        executionData.put(TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
-        executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
-        executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testCase.getTestProjectId());
-        executionData.put(TestLinkParams.AUTHOR_LOGIN.toString(), testCase.getAuthorLogin());
-        executionData.put(TestLinkParams.SUMMARY.toString(), testCase.getSummary());
+        putIfNotNull(executionData,TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
+        putIfNotNull(executionData,TestLinkParams.TEST_CASE_ID.toString(), testCase.getId());
+        putIfNotNull(executionData,TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
+        putIfNotNull(executionData,TestLinkParams.TEST_PROJECT_ID.toString(), testCase.getTestProjectId());
+        putIfNotNull(executionData,TestLinkParams.AUTHOR_LOGIN.toString(), testCase.getAuthorLogin());
+        putIfNotNull(executionData,TestLinkParams.SUMMARY.toString(), testCase.getSummary());
 
-        List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
-        executionData.put(TestLinkParams.STEPS.toString(), steps);
-
-        executionData.put(TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
-        executionData.put(TestLinkParams.STATUS.toString(), Util.getStringValueOrNull(testCase.getTestCaseStatus()));
-        executionData.put(TestLinkParams.IMPORTANCE.toString(),
+        if (testCase.getSteps() != null) {
+            List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
+            executionData.put(TestLinkParams.STEPS.toString(), steps);
+        }
+        putIfNotNull(executionData,TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
+        putIfNotNull(executionData,TestLinkParams.STATUS.toString(), Util.getStringValueOrNull(testCase.getTestCaseStatus()));
+        putIfNotNull(executionData,TestLinkParams.IMPORTANCE.toString(),
                 Util.getStringValueOrNull(testCase.getTestImportance()));
-        executionData.put(TestLinkParams.EXECUTION_TYPE.toString(),
+        putIfNotNull(executionData,TestLinkParams.EXECUTION_TYPE.toString(),
                 Util.getStringValueOrNull(testCase.getExecutionType()));
-        executionData.put(TestLinkParams.ORDER.toString(), testCase.getOrder());
-        executionData.put(TestLinkParams.INTERNAL_ID.toString(), testCase.getInternalId());
-        executionData.put(TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testCase.getCheckDuplicatedName());
-        executionData.put(TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
+        putIfNotNull(executionData,TestLinkParams.ORDER.toString(), testCase.getOrder());
+        putIfNotNull(executionData,TestLinkParams.INTERNAL_ID.toString(), testCase.getInternalId());
+        putIfNotNull(executionData,TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testCase.getCheckDuplicatedName());
+        putIfNotNull(executionData,TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
                 testCase.getActionOnDuplicatedName() != null ? testCase.getActionOnDuplicatedName().toString() : null);
 
         return executionData;
@@ -950,6 +952,19 @@ public final class Util {
     public static void putIfNotNullAndTrue(Map<String, Object> map, String key, Boolean boolValue) {
         if (Boolean.TRUE.equals(boolValue)) {
             map.put(key, 0);
+        }
+    }
+
+    /**
+     * Puts a value into a map if the value is not null.
+     *
+     * @param map Map.
+     * @param key Key.
+     * @param value value.
+     */
+    public static void putIfNotNull(Map<String, Object> map, String key, Object value) {
+        if (value != null) {
+            map.put(key, value);
         }
     }
 
