@@ -23,6 +23,7 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepResult;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
@@ -984,6 +986,7 @@ public class TestLinkAPI {
      * @param testCaseExternalId test case external ID
      * @param testPlanId test plan ID
      * @param status status
+     * @param steps test steps results
      * @param buildId build ID
      * @param buildName build name
      * @param notes notes
@@ -997,10 +1000,10 @@ public class TestLinkAPI {
      * @return report test case result server response
      */
     public ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+            ExecutionStatus status, List<TestCaseStepResult> steps,Integer buildId, String buildName, String notes, Boolean guess, String bugId,
             Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, buildId,
+        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status,steps, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
     }
 
@@ -1011,6 +1014,7 @@ public class TestLinkAPI {
      * @param testCaseExternalId test case external ID
      * @param testPlanId test plan ID
      * @param status status
+     * * @param steps test steps results
      * @param buildId build ID
      * @param buildName build name
      * @param notes notes
@@ -1024,10 +1028,10 @@ public class TestLinkAPI {
      * @throws TestLinkAPIException if the service returns an error
      */
     public ReportTCResultResponse setTestCaseExecutionResult(Integer testCaseId, Integer testCaseExternalId,
-            Integer testPlanId, ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess,
+            Integer testPlanId, ExecutionStatus status, List<TestCaseStepResult> steps,Integer buildId, String buildName, String notes, Boolean guess,
             String bugId, Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, buildId,
+        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status,steps, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
     }
 
