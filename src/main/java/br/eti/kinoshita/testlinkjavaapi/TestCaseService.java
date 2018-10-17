@@ -23,6 +23,7 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -51,6 +52,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.CustomField;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepResult;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 import br.eti.kinoshita.testlinkjavaapi.util.Util;
 
@@ -566,6 +568,7 @@ class TestCaseService extends BaseService {
      * @param testCaseExternalId
      * @param testPlanId
      * @param status
+     * @param steps
      * @param buildId
      * @param buildName
      * @param notes
@@ -579,7 +582,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+            ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
             Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
         // TODO: Map<String, String> customFields =>
@@ -594,6 +597,7 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.STATUS.toString(), status.toString());
+            executionData.put(TestLinkParams.STEPS.toString(), steps);
             executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
             executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
             executionData.put(TestLinkParams.NOTES.toString(), notes);

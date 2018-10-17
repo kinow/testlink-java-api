@@ -23,6 +23,9 @@
  */
 package br.eti.kinoshita.testlinkjavaapi.testcase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -30,55 +33,46 @@ import org.testng.annotations.Test;
 import br.eti.kinoshita.testlinkjavaapi.BaseTest;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import br.eti.kinoshita.testlinkjavaapi.model.ReportTCResultResponse;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepResult;
 import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * <ul>
- * <li>20101130 - BUGID: 3123764 - kinow - reportTCresult not returning execution data</li>
+ * <li>20181017 - Issue #100: reportTCresult missing Parameter for setting test steps result</li>
  * </ul>
  *
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @author Kai Adelmann - kai.adelmann@gmail.com
  */
-public class TestReportTCResult extends BaseTest {
+public class TestReportTCStepResults extends BaseTest {
 
     @DataProvider(name = "buildData")
     public Object[][] createData() {
-        return new Object[][] { { 4, 10, 1, "Sample build", "Build notes.", 2, "Post" } };
+        List<TestCaseStepResult> steps=new ArrayList<TestCaseStepResult>();
+        TestCaseStepResult step1= new TestCaseStepResult();
+        step1.setNumber(1);
+        step1.setResult(ExecutionStatus.PASSED);
+        step1.setNotes("Keine besonderen Vorkommnisse");
+        TestCaseStepResult step2= new TestCaseStepResult();
+        step2.setNumber(2);
+        step2.setResult(ExecutionStatus.FAILED);
+        step2.setNotes("Fehler!!!");
+        steps.add(step1);
+        steps.add(step2);
+        
+        return new Object[][] { { 4, 10, 1, "Sample build", "Build notes.", steps, 2, "Post" } };
     }
 
     @Test(dataProvider = "buildData")
     public void testReportTCResult(Integer testCaseId, Integer testPlanId, Integer buildId, String buildName,
-            String notes, Integer platformId, String platformName) {
+            String notes, List<TestCaseStepResult> steps, Integer platformId, String platformName) {
         this.loadXMLRPCMockData("tl.reportTCResult.xml");
 
         ReportTCResultResponse response = null;
         try {
-            response = this.api.reportTCResult(testCaseId, null, testPlanId, ExecutionStatus.FAILED, null, buildId, buildName,
+            response = this.api.reportTCResult(testCaseId, null, testPlanId, ExecutionStatus.FAILED, steps, buildId, buildName,
                     notes, true, null, platformId, platformName, null, // TODO:
                                                                        // Test
                                                                        // custom
-                    // fields!
-                    true);
-        } catch (TestLinkAPIException e) {
-            Assert.fail(e.getMessage(), e);
-        }
-
-        Assert.assertNotNull(response);
-
-        Assert.assertTrue(response.getExecutionId() > 0);
-    }
-
-    @Test(dataProvider = "buildData")
-    public void testSetTestCaseExecutionResult(Integer testCaseId, Integer testPlanId, Integer buildId,
-            String buildName, String notes, Integer platformId, String platformName) {
-        this.loadXMLRPCMockData("tl.reportTCResult.xml");
-
-        ReportTCResultResponse response = null;
-        try {
-            response = this.api.setTestCaseExecutionResult(testCaseId, null, testPlanId, ExecutionStatus.PASSED, null,
-                    buildId, buildName, notes, true, null, platformId, platformName, null, // TODO:
-                    // Test
-                    // custom
                     // fields!
                     true);
         } catch (TestLinkAPIException e) {
