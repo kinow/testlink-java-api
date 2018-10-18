@@ -23,7 +23,6 @@
  */
 package br.eti.kinoshita.testlinkjavaapi;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -1014,7 +1013,7 @@ public class TestLinkAPI {
      * @param testCaseExternalId test case external ID
      * @param testPlanId test plan ID
      * @param status status
-     * * @param steps test steps results
+     * @param steps test steps results
      * @param buildId build ID
      * @param buildName build name
      * @param notes notes
