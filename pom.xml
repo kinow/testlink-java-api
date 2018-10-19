@@ -1,11 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.eti.kinoshita</groupId>
     <artifactId>testlink-java-api</artifactId>
-    <version>1.9.16-2-SNAPSHOT</version>
+    <version>1.9.16-2</version>
 
     <name>TestLink Java API</name>
     <description>TestLink Java API to interface with TestLink PHP XML-RPC API.</description>
@@ -68,7 +66,7 @@
         <connection>scm:git:git@github.com:kinow/testlink-java-api.git</connection>
         <developerConnection>scm:git:git@github.com:kinow/testlink-java-api.git</developerConnection>
         <url>http://github.com/kinow/testlink-java-api</url>
-        <tag>HEAD</tag>
+        <tag>testlink-java-api-1.9.16-2</tag>
     </scm>
 
     <properties>
