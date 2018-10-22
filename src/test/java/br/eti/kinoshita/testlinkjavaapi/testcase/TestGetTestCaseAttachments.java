@@ -49,7 +49,7 @@ public class TestGetTestCaseAttachments extends BaseTest {
         Attachment[] attachments = null;
 
         try {
-            attachments = this.api.getTestCaseAttachments(testCaseId, null);
+            attachments = this.api.getTestCaseAttachments(testCaseId, null,null);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }
