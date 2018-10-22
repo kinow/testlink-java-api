@@ -942,12 +942,13 @@ public class TestLinkAPI {
      * 
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
+     * @param testCaseVersion test case version
      * @return Array of Attachments
      * @throws TestLinkAPIException if the service returns an error
      */
-    public Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseExternalId)
+    public Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseVersion,Integer testCaseExternalId)
             throws TestLinkAPIException {
-        return this.testCaseService.getTestCaseAttachments(testCaseId, testCaseExternalId);
+        return this.testCaseService.getTestCaseAttachments(testCaseId, testCaseVersion,testCaseExternalId);
     }
 
     /**
