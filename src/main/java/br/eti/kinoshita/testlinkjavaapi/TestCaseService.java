@@ -481,16 +481,18 @@ class TestCaseService extends BaseService {
     /**
      * @param testCaseId
      * @param testCaseExternalId
+     * @param testCaseVersion
      * @return
      * @throws TestLinkAPIException
      */
-    protected Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseExternalId)
+    protected Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseVersion, Integer testCaseExternalId)
             throws TestLinkAPIException {
         Attachment[] attachments = null;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
+            executionData.put(TestLinkParams.VERSION.toString(), testCaseVersion);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_CASE_ATTACHMENTS.toString(),
                     executionData);
