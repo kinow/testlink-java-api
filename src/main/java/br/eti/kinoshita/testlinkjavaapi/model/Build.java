@@ -44,6 +44,8 @@ public class Build implements Serializable {
     private static final long serialVersionUID = 139468407361322252L;
 
     private Integer id;
+    private Integer isActive;
+    private Integer isOpen;
     private Integer testPlanId;
     private String buildName;
     private String buildNotes;
@@ -125,6 +127,34 @@ public class Build implements Serializable {
         this.buildNotes = buildNotes;
     }
 
+    /**
+     * @return the isActive
+     */
+    public Integer getIsActive() {
+        return isActive;
+    }
+
+    /**
+     * @param isActive the isActive to set
+     */
+    public void setIsActive(Integer isActive) {
+        this.isActive = isActive;
+    }
+    
+    /**
+     * @return the isOpen
+     */
+    public Integer getIsOpen() {
+        return isOpen;
+    }
+
+    /**
+     * @param isOpen the isOpen to set
+     */
+    public void setIsOpen(Integer isOpen) {
+        this.isOpen = isOpen;
+    }
+    
     /*
      * (non-Javadoc)
      * 
@@ -132,7 +162,7 @@ public class Build implements Serializable {
      */
     @Override
     public String toString() {
-        return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name=" + buildName + ", notes=" + buildNotes + "]";
+        return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name=" + buildName + ", notes=" + buildNotes +", IsActive="+isActive+", IsOpen="+isOpen+"]";
     }
 
 }
