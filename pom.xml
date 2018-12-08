@@ -73,7 +73,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.5</java.version>
         <log4j2.version>2.8.2</log4j2.version>
-        <xmlrpc.version>3.1.3</xmlrpc.version>
+        <xmlrpc.version>3.1.2</xmlrpc.version>
         <checkstyle.rules>${project.basedir}/checkstyle.xml</checkstyle.rules>
     </properties>
 
