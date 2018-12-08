@@ -53,6 +53,7 @@ public enum TestLinkResponseParams {
     PREFIX("prefix"),
     NOTES("notes"),
     ACTIVE("active"),
+    IS_OPEN("is_open"),
     IS_PUBLIC("is_public"),
     OPT("opt"),
     REQUIREMENTS_ENABLED("requirementsEnabled"),
