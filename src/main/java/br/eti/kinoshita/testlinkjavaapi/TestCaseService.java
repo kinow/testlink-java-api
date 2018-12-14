@@ -715,6 +715,7 @@ class TestCaseService extends BaseService {
      * @param testCaseId
      * @param testCaseExternalId
      * @param versionNumber
+     * @param testPlanId
      * @param testProjectId
      * @param customFieldName
      * @param details
@@ -722,7 +723,7 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected CustomField getTestCaseCustomFieldExecutionValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
+            Integer versionNumber, Integer executionId, Integer testPlanId, Integer testProjectId, String customFieldName,
             ResponseDetails details) throws TestLinkAPIException {
         CustomField customField = null;
 
@@ -731,6 +732,7 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(),testPlanId);
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.CUSTOM_FIELD_NAME.toString(), customFieldName);
             executionData.put(TestLinkParams.DETAILS.toString(), Util.getStringValueOrNull(details));
@@ -758,9 +760,8 @@ class TestCaseService extends BaseService {
     /**
      * Gets list of keywords for a given Test case
      * 
+     * @param testProjectId
      * @param testCaseId
-     * @param testCaseExternalId
-     * @param version
      * @return
      * @throws TestLinkAPIException
      */

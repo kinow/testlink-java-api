@@ -6,6 +6,12 @@
     </properties>
     <body>
         <release version="" date="" description="">
+            <action dev="ranamansoor" type="fix" issue="113">
+                Issue #113: Added testplan parameter into getTestCaseCustomFieldExecutionValue
+            </action>
+            <action dev="ranamansoor" type="add" issue="91">
+                Issue #91: Added build is_active and is_open options.
+            </action>
             <action dev="kinow" type="fix" issue="90">
                 Issue #90: Replace httpclient
             </action>

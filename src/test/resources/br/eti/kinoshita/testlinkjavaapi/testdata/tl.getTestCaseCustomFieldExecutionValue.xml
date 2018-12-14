@@ -1,0 +1,9 @@
+<methodResponse>
+    <params>
+        <param>
+            <value>
+                <string>abc</string>
+            </value>
+        </param>
+    </params>
+</methodResponse>
