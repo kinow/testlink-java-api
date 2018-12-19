@@ -1096,6 +1096,7 @@ public class TestLinkAPI {
      * @param testCaseExternalId test case external ID
      * @param versionNumber version number
      * @param executionId execution ID
+     * @param testPlanID
      * @param testProjectId test project ID
      * @param customFieldName custom field name
      * @param details details
@@ -1103,10 +1104,10 @@ public class TestLinkAPI {
      * @throws TestLinkAPIException if the service returns an error
      */
     public CustomField getTestCaseCustomFieldExecutionValue(Integer testCaseId, Integer testCaseExternalId,
-            Integer versionNumber, Integer executionId, Integer testProjectId, String customFieldName,
+            Integer versionNumber, Integer executionId, Integer testPlanID, Integer testProjectId, String customFieldName,
             ResponseDetails details) throws TestLinkAPIException {
         return this.testCaseService.getTestCaseCustomFieldExecutionValue(testCaseId, testCaseExternalId, versionNumber,
-                executionId, testProjectId, customFieldName, details);
+                executionId, testPlanID, testProjectId, customFieldName, details);
     }
 
     /**
