@@ -6,10 +6,10 @@
     </properties>
     <body>
         <release version="" date="" description="">
-            <action dev="ranamansoor" type="fix" issue="113">
+            <action dev="kinow" due-to="ranamansoor" type="fix" issue="113">
                 Issue #113: Added testplan parameter into getTestCaseCustomFieldExecutionValue
             </action>
-            <action dev="ranamansoor" type="add" issue="91">
+            <action dev="kinow" due-to="ranamansoor" type="add" issue="91">
                 Issue #91: Added build is_active and is_open options.
             </action>
             <action dev="kinow" type="fix" issue="90">
@@ -17,7 +17,7 @@
             </action>
         </release>
         <release version="1.9.16-0" date="2017-03-19" description="1.9.16-0 release">
-            <action dev="mazimkhan" type="add">
+            <action dev="kinow" due-to="mazimkhan" type="add">
                 Pull request 71: Introduced API for updating Build custom fields values
             </action>
             <action dev="kinow" type="fix">
@@ -41,28 +41,28 @@
             </action>
         </release>
         <release version="1.9.14-0" date="2016-04-10" description="1.9.14-0 release">
-            <action dev="feixiang8418" type="fix">
+            <action dev="kinow" due-to="feixiang8418" type="fix">
                 Pull request 34: add casting fix
             </action>
-            <action dev="dida43" type="add">
+            <action dev="kinow" due-to="dida43" type="add">
                 Pull request 65: updated to set version on creating test case
             </action>
-            <action dev="maiksaray" type="add">
+            <action dev="kinow" due-to="maiksaray" type="add">
                 Pull request 60: implemented support for testplan custom fields values
                 obtaining
             </action>
-            <action dev="s2oBCN" type="add">
+            <action dev="kinow" due-to="s2oBCN" type="add">
                 Pull request 43: Added getTestCaseKeywords
             </action>
-            <action dev="eitzenbe" type="add">
+            <action dev="kinow" due-to="eitzenbe" type="add">
                 Pull request 67: adding updatetestcase method
             </action>
-            <action dev="davidrova" type="add">
+            <action dev="kinow" due-to="davidrova" type="add">
                 Pull request 39: Retrieve the full test plan - testcase-platform.
             </action>
         </release>
         <release version="1.9.13-0" date="2015-07-10" description="1.9.13-0 release">
-            <action dev="pozharko" type="add">
+            <action dev="kinow" due-to="pozharko" type="add">
                 Pull request: implemented method : assignTestCaseExecutionTask
             </action>
         </release>
@@ -72,21 +72,21 @@
             </action>
         </release>
         <release version="1.9.8-1" date="2013-11-30" description="1.9.8-1 release">
-            <action dev="tlasnier" type="add">
+            <action dev="kinow" due-to="tlasnier" type="add">
                 Pull request: implemented method : updateTestCaseCustomFieldDesignValue
             </action>
         </release>
         <release version="1.9.8-0" date="2013-11-22" description="1.9.8-0 release">
-            <action dev="rsporny" type="add">
+            <action dev="kinow" due-to="rsporny" type="add">
                 Pull request: add: getUserByLogin
             </action>
-            <action dev="rsporny" type="update">
+            <action dev="kinow" due-to="rsporny" type="update">
                 Pull request: fix: problem with running unit tests when path has special
                 characters
             </action>
         </release>
         <release version="1.9.7-0" date="2013-08-30" description="1.9.7-0 release">
-            <action dev="razalhague" type="update">
+            <action dev="kinow" due-to="razalhague" type="update">
                 Pull request: Handle test case names from different parameters
             </action>
             <action dev="kinow" type="update" issue="16">
