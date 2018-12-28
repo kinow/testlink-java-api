@@ -6,6 +6,11 @@
     </properties>
     <body>
         <release version="" date="" description="">
+            <action dev="kinow" type="update">
+                Updated dependencies, and ran through OWASP security plugin. CVE-2016-5002 does not affect
+                the API, as it requires a server running it in order to create a DoS attack. The server
+                in our case is PHP, and xmlrpc-common is used for client-side only.
+            </action>
             <action dev="kinow" due-to="ranamansoor" type="fix" issue="113">
                 Issue #113: Added testplan parameter into getTestCaseCustomFieldExecutionValue
             </action>
