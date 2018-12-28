@@ -5,7 +5,7 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
-        <release version="" date="" description="">
+        <release version="1.9.17-0" date="2018-12-29" description="1.9.17-0 release">
             <action dev="kinow" type="update">
                 Updated dependencies, and ran through OWASP security plugin. CVE-2016-5002 does not affect
                 the API, as it requires a server running it in order to create a DoS attack. The server
