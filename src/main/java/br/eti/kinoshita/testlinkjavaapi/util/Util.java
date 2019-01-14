@@ -868,7 +868,8 @@ public final class Util {
                     build.setTestPlanId(getInteger(map, TestLinkResponseParams.TEST_PLAN_ID.toString()));
                     build.setIsActive(getInteger(map, TestLinkResponseParams.ACTIVE.toString()));
                     build.setIsOpen(getInteger(map, TestLinkResponseParams.IS_OPEN.toString()));
-                    // TBD: add release date and closed on date to Build entity
+                    build.setReleaseDate(getString(map, TestLinkResponseParams.RELEASE_DATE.toString()));
+                    build.setClosedDate(getString(map, TestLinkResponseParams.CLOSED_DATE.toString()));
                 }
 
             }

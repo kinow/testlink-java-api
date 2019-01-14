@@ -115,7 +115,9 @@ public enum TestLinkResponseParams {
     PLATFORM_NAME("platform_name"),
     EXTERNAL_ID("external_id"),
     EXECUTION_TS("execution_ts"),
-    EST_EXECUTION_DURATION("estimated_exec_duration");
+    EST_EXECUTION_DURATION("estimated_exec_duration"),
+    RELEASE_DATE("release_date"),
+    CLOSED_DATE("closed_on_date");
 
     private String textValue;
 
