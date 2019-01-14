@@ -885,4 +885,27 @@ class TestCaseService extends BaseService {
         }
     }
 
+    /**
+     * @param testcaseKeywordsMap key - testcase externalId, value - list of keywords
+     *
+     * @return
+     * @throws TestLinkAPIException
+     */
+    protected Map<String, Object> addTestCaseKeyWords(Map<String, List<String>> testcaseKeywordsMap)
+            throws TestLinkAPIException {
+        Map<String, Object> responseMap = null;
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.KEYWORDS.toString(), testcaseKeywordsMap);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_TEST_CASE_KEY_WORDS.toString(), executionData);
+            if (response instanceof Map<?, ?>) {
+                responseMap = Util.castToMap(response);
+            } else if (!(response instanceof String)) {
+                responseMap = Util.castToMap(((Object[]) response)[0]);
+            }
+            return responseMap;
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error adding test case keywords: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
 }
