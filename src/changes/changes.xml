@@ -5,9 +5,11 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
-<action dev="ranamansoor" due-to="ranamansoor" type="add" issue="118">
+        <release version="1.9.17-1" date="2019-01-14" description="1.9.17-0 release">
+            <action dev="kinow" due-to="ranamansoor" type="add" issue="118">
                 Issue #91: Added build closed_on_date and release_date options into build.
             </action>
+        </release>
         <release version="1.9.17-0" date="2018-12-29" description="1.9.17-0 release">
             <action dev="kinow" type="update">
                 Updated dependencies, and ran through OWASP security plugin. CVE-2016-5002 does not affect
