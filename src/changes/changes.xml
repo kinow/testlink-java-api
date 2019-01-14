@@ -9,6 +9,9 @@
             <action dev="kinow" due-to="ranamansoor" type="add" issue="118">
                 Issue #91: Added build closed_on_date and release_date options into build.
             </action>
+            <action dev="kinow" due-to="Dennis van der Wals" type="add" issue="86">
+                Pull Request #86: added API function to retrieve a testsuite's attachments
+            </action>
         </release>
         <release version="1.9.17-0" date="2018-12-29" description="1.9.17-0 release">
             <action dev="kinow" type="update">

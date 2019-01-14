@@ -290,4 +290,46 @@ class TestSuiteService extends BaseService {
 
         return testSuites;
     }
+
+    /**
+     * Get attachments of a test suite.
+     *
+     * @param testSuiteId test suite ID
+     * @return Array of attachments for test suite
+     * @throws TestLinkAPIException if an error occurs
+     * @author dennis@etern-it.de
+     */
+    public Attachment[] getTestSuiteAttachments(Integer testSuiteId) {
+        Attachment[] attachments = null;
+
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_ATTACHMENTS.toString(),
+                    executionData);
+            if (response instanceof Map<?, ?>) {
+                Map<String, Object> responseMap = Util.castToMap(response);
+                Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+
+                attachments = new Attachment[entrySet.size()];
+
+                int index = 0;
+                for (Entry<String, Object> entry : entrySet) {
+                    String key = entry.getKey();
+                    Map<String, Object> attachmentMap = (Map<String, Object>) entry.getValue();
+                    attachmentMap.put(TestLinkResponseParams.ID.toString(), key);
+                    attachments[index] = Util.getAttachment(attachmentMap);
+                    index += 1;
+                }
+            } else {
+                attachments = new Attachment[0];
+            }
+
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error retrieving test suite's attachments: " + xmlrpcex.getMessage(),
+                    xmlrpcex);
+        }
+
+        return attachments;
+    }
 }

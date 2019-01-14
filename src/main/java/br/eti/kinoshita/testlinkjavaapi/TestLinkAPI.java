@@ -952,6 +952,19 @@ public class TestLinkAPI {
     }
 
     /**
+     * Return an array of attachments of a Test Suite.
+     *
+     * @param testSuiteId test suite ID
+     * @return Array of Attachments.
+     * @throws TestLinkAPIException if service return error
+     * @author dennis@etern-it.de
+     */
+    public Attachment[] getTestSuiteAttachments(Integer testSuiteId)
+            throws TestLinkAPIException {
+        return this.testSuiteService.getTestSuiteAttachments(testSuiteId);
+    }
+
+    /**
      * Upload an execution attachment.
      *
      * @param executionId execution ID
