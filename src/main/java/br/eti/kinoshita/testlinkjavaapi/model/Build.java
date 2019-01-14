@@ -158,28 +158,28 @@ public class Build implements Serializable {
     }
     
     /**
-     * @return releaseDate
+     * @return releaseDate the release date
      */
     public String getReleaseDate() {
         return releaseDate;
     }
 
     /**
-     * @param releaseDate
+     * @param releaseDate the release date
      */
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
     /**
-     * @return closedDate (String)
+     * @return the closed date
      */
     public String getClosedDate() {
         return closedDate;
     }
 
     /**
-     * @param closedDate
+     * @param closedDate the closed date
      */
     public void setClosedDate(String closedDate) {
         this.closedDate = closedDate;
