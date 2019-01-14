@@ -49,6 +49,8 @@ public class Build implements Serializable {
     private Integer testPlanId;
     private String buildName;
     private String buildNotes;
+    private String releaseDate;
+    private String closedDate;
 
     /**
      * 
@@ -155,6 +157,35 @@ public class Build implements Serializable {
         this.isOpen = isOpen;
     }
     
+    /**
+     * @return releaseDate
+     */
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    /**
+     * @param releaseDate
+     */
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    /**
+     * @return closedDate (String)
+     */
+    public String getClosedDate() {
+        return closedDate;
+    }
+
+    /**
+     * @param closedDate
+     */
+    public void setClosedDate(String closedDate) {
+        this.closedDate = closedDate;
+    }
+
+
     /*
      * (non-Javadoc)
      * 
@@ -162,7 +193,8 @@ public class Build implements Serializable {
      */
     @Override
     public String toString() {
-        return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name=" + buildName + ", notes=" + buildNotes +", IsActive="+isActive+", IsOpen="+isOpen+"]";
+        return "Build [id=" + id + ", testPlanId=" + testPlanId + ", name=" + buildName + ", notes=" + buildNotes + ", IsActive=" + isActive + ", IsOpen=" + isOpen
+                +", releaseDate="+releaseDate+", closedDate"+closedDate+ "]";
     }
 
 }

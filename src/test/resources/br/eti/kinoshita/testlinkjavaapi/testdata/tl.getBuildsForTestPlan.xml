@@ -11,8 +11,8 @@
   <member><name>notes</name><value><string>no notes</string></value></member>
   <member><name>active</name><value><string>1</string></value></member>
   <member><name>is_open</name><value><string>1</string></value></member>
-  <member><name>release_date</name><value><string></string></value></member>
-  <member><name>closed_on_date</name><value><string></string></value></member>
+  <member><name>release_date</name><value><string>2019-01-14</string></value></member>
+  <member><name>closed_on_date</name><value><string>2019-02-27</string></value></member>
 </struct></value>
 </data></array>
       </value>
