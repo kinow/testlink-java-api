@@ -6,6 +6,9 @@
     </properties>
     <body>
         <release version="1.9.17-1" date="2019-01-14" description="1.9.17-0 release">
+            <action dev="kinow" due-to="spravallika" type="add" issue="97">
+                Pull Request #97: Testlink method to add keywords to testcase
+            </action>
             <action dev="kinow" due-to="ranamansoor" type="add" issue="118">
                 Issue #91: Added build closed_on_date and release_date options into build.
             </action>
