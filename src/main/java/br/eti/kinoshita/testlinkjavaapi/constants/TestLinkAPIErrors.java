@@ -120,7 +120,7 @@ public enum TestLinkAPIErrors {
     private Integer code;
     private String message;
 
-    private TestLinkAPIErrors(int code, String message) {
+    TestLinkAPIErrors(int code, String message) {
         this.code = code;
         this.message = message;
     }

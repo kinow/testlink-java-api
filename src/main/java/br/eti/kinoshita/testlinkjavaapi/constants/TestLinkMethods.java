@@ -89,8 +89,7 @@ public enum TestLinkMethods {
     REMOVE_PLATFORM_FROM_TEST_PLAN("tl.removePlatformFromTestPlan"),
     ADD_PLATFORM_TO_TEST_PLAN("tl.addPlatformToTestPlan"),
     UPDATE_BUILD_CUSTOM_FIELDS("tl.updateBuildCustomFieldsValues"),
-    ADD_TEST_CASE_KEY_WORDS("tl.addTestCaseKeywords")
-    ;
+    ADD_TEST_CASE_KEY_WORDS("tl.addTestCaseKeywords");
 
     private String value;
 

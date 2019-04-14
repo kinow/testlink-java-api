@@ -56,7 +56,7 @@ abstract class BaseService {
      * @param xmlRpcClient XML-RPC Client.
      * @param devKey TestLink user DevKey.
      */
-    public BaseService(XmlRpcClient xmlRpcClient, String devKey) {
+    BaseService(XmlRpcClient xmlRpcClient, String devKey) {
         this.xmlRpcClient = xmlRpcClient;
         this.devKey = devKey;
     }

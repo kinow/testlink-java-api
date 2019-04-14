@@ -607,7 +607,7 @@ public class TestLinkAPI {
      * @param buildId Build ID
      * @param testProjectId Test Project ID
      * @param testPlanId test plan ID
-     * @param customFields Custom Fields name,value pairs
+     * @param customFields Custom Fields name, value pairs
      * @return Response XML-RPC Response
      * @throws TestLinkAPIException if the service returns as error
      */
@@ -946,9 +946,9 @@ public class TestLinkAPI {
      * @return Array of Attachments
      * @throws TestLinkAPIException if the service returns an error
      */
-    public Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseVersion,Integer testCaseExternalId)
+    public Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseVersion, Integer testCaseExternalId)
             throws TestLinkAPIException {
-        return this.testCaseService.getTestCaseAttachments(testCaseId, testCaseVersion,testCaseExternalId);
+        return this.testCaseService.getTestCaseAttachments(testCaseId, testCaseVersion, testCaseExternalId);
     }
 
     /**
@@ -1015,7 +1015,7 @@ public class TestLinkAPI {
             ExecutionStatus status, List<TestCaseStepResult> steps,Integer buildId, String buildName, String notes, Boolean guess, String bugId,
             Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status,steps, buildId,
+        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, steps, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
     }
 
@@ -1040,10 +1040,10 @@ public class TestLinkAPI {
      * @throws TestLinkAPIException if the service returns an error
      */
     public ReportTCResultResponse setTestCaseExecutionResult(Integer testCaseId, Integer testCaseExternalId,
-            Integer testPlanId, ExecutionStatus status, List<TestCaseStepResult> steps,Integer buildId, String buildName, String notes, Boolean guess,
+            Integer testPlanId, ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes, Boolean guess,
             String bugId, Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status,steps, buildId,
+        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, steps, buildId,
                 buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
     }
 

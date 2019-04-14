@@ -49,7 +49,7 @@ class RequirementService extends BaseService {
      * @param xmlRpcClient XML RPC Client.
      * @param devKey TestLink User DevKey.
      */
-    public RequirementService(XmlRpcClient xmlRpcClient, String devKey) {
+    RequirementService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
     }
 

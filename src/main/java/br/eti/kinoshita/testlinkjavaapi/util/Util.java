@@ -268,27 +268,27 @@ public final class Util {
      */
     public static Map<String, Object> getTestCaseMap(TestCase testCase) {
         Map<String, Object> executionData = new HashMap<String, Object>();
-        putIfNotNull(executionData,TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
-        putIfNotNull(executionData,TestLinkParams.TEST_CASE_ID.toString(), testCase.getId());
-        putIfNotNull(executionData,TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
-        putIfNotNull(executionData,TestLinkParams.TEST_PROJECT_ID.toString(), testCase.getTestProjectId());
-        putIfNotNull(executionData,TestLinkParams.AUTHOR_LOGIN.toString(), testCase.getAuthorLogin());
-        putIfNotNull(executionData,TestLinkParams.SUMMARY.toString(), testCase.getSummary());
+        putIfNotNull(executionData, TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
+        putIfNotNull(executionData, TestLinkParams.TEST_CASE_ID.toString(), testCase.getId());
+        putIfNotNull(executionData, TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
+        putIfNotNull(executionData, TestLinkParams.TEST_PROJECT_ID.toString(), testCase.getTestProjectId());
+        putIfNotNull(executionData, TestLinkParams.AUTHOR_LOGIN.toString(), testCase.getAuthorLogin());
+        putIfNotNull(executionData, TestLinkParams.SUMMARY.toString(), testCase.getSummary());
 
         if (testCase.getSteps() != null) {
             List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
             executionData.put(TestLinkParams.STEPS.toString(), steps);
         }
-        putIfNotNull(executionData,TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
-        putIfNotNull(executionData,TestLinkParams.STATUS.toString(), Util.getStringValueOrNull(testCase.getTestCaseStatus()));
-        putIfNotNull(executionData,TestLinkParams.IMPORTANCE.toString(),
+        putIfNotNull(executionData, TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
+        putIfNotNull(executionData, TestLinkParams.STATUS.toString(), Util.getStringValueOrNull(testCase.getTestCaseStatus()));
+        putIfNotNull(executionData, TestLinkParams.IMPORTANCE.toString(),
                 Util.getStringValueOrNull(testCase.getTestImportance()));
-        putIfNotNull(executionData,TestLinkParams.EXECUTION_TYPE.toString(),
+        putIfNotNull(executionData, TestLinkParams.EXECUTION_TYPE.toString(),
                 Util.getStringValueOrNull(testCase.getExecutionType()));
-        putIfNotNull(executionData,TestLinkParams.ORDER.toString(), testCase.getOrder());
-        putIfNotNull(executionData,TestLinkParams.INTERNAL_ID.toString(), testCase.getInternalId());
-        putIfNotNull(executionData,TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testCase.getCheckDuplicatedName());
-        putIfNotNull(executionData,TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
+        putIfNotNull(executionData, TestLinkParams.ORDER.toString(), testCase.getOrder());
+        putIfNotNull(executionData, TestLinkParams.INTERNAL_ID.toString(), testCase.getInternalId());
+        putIfNotNull(executionData, TestLinkParams.CHECK_DUPLICATED_NAME.toString(), testCase.getCheckDuplicatedName());
+        putIfNotNull(executionData, TestLinkParams.ACTION_ON_DUPLICATED_NAME.toString(),
                 testCase.getActionOnDuplicatedName() != null ? testCase.getActionOnDuplicatedName().toString() : null);
 
         return executionData;

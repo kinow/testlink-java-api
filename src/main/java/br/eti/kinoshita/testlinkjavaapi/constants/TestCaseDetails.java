@@ -33,7 +33,7 @@ public enum TestCaseDetails {
 
     private String value;
 
-    private TestCaseDetails(String value) {
+    TestCaseDetails(String value) {
         this.value = value;
     }
 

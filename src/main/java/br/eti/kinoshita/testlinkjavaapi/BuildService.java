@@ -1,4 +1,4 @@
-/* 
+/*
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
@@ -46,7 +46,7 @@ class BuildService extends BaseService {
      * @param xmlRpcClient XML RPC Client.
      * @param devKey TestLink User DevKey.
      */
-    public BuildService(XmlRpcClient xmlRpcClient, String devKey) {
+    BuildService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
     }
 

@@ -45,7 +45,7 @@ class ReqSpecService extends BaseService {
      * @param xmlRpcClient XML RPC Client.
      * @param devKey TestLink User DevKey.
      */
-    public ReqSpecService(XmlRpcClient xmlRpcClient, String devKey) {
+    ReqSpecService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
     }
 

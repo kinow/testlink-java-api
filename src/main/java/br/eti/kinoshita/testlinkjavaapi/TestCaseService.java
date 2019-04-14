@@ -68,7 +68,7 @@ class TestCaseService extends BaseService {
      * @param xmlRpcClient XML RPC Client.
      * @param devKey TestLink User DevKey.
      */
-    public TestCaseService(XmlRpcClient xmlRpcClient, String devKey) {
+    TestCaseService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
     }
 
@@ -732,7 +732,7 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
-            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(),testPlanId);
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.CUSTOM_FIELD_NAME.toString(), customFieldName);
             executionData.put(TestLinkParams.DETAILS.toString(), Util.getStringValueOrNull(details));

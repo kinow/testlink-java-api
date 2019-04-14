@@ -33,7 +33,7 @@ public enum TestCaseStatus {
 
     private Integer value;
 
-    private TestCaseStatus(Integer value) {
+    TestCaseStatus(Integer value) {
         this.value = value;
     }
 

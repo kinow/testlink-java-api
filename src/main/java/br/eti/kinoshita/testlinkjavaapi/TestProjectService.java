@@ -57,7 +57,7 @@ class TestProjectService extends BaseService {
      * @param xmlRpcClient XML RPC Client.
      * @param devKey TestLink User DevKey.
      */
-    public TestProjectService(XmlRpcClient xmlRpcClient, String devKey) {
+    TestProjectService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
     }
 

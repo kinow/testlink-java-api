@@ -92,8 +92,9 @@ public class BaseTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
-        if (this.server != null)
+        if (this.server != null) {
             this.server.stop();
+        }
     }
 
 }
