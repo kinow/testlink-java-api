@@ -1012,7 +1012,7 @@ public class TestLinkAPI {
      * @return report test case result server response
      */
     public ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, List<TestCaseStepResult> steps,Integer buildId, String buildName, String notes, Boolean guess, String bugId,
+            ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
             Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
             throws TestLinkAPIException {
         return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, steps, buildId,

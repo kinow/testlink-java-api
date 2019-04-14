@@ -54,7 +54,7 @@ class TestSuiteService extends BaseService {
      * @param xmlRpcClient XML RPC Client.
      * @param devKey TestLink User DevKey.
      */
-    public TestSuiteService(XmlRpcClient xmlRpcClient, String devKey) {
+    TestSuiteService(XmlRpcClient xmlRpcClient, String devKey) {
         super(xmlRpcClient, devKey);
     }
 
