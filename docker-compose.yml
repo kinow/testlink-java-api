@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    container_name: testlink-db
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: testlink
+      MYSQL_DATABASE: testlink
+      MYSQL_USER: testlink
+      MYSQL_PASSWORD: testlink
+    ports:
+      - "9906:3306"
+  web:
+    container_name: testlink
+    build: .
+    ports:
+      - 8000:80
+    depends_on:
+      - db
