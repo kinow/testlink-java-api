@@ -8,13 +8,21 @@ TestLink Java API
 
 Project homepage: http://kinow.github.io/testlink-java-api
 
-TestLink Java API is a Java API that interfaces TestLink XML-RPC API. This API lets you call TestLink internal methods such as createTestProject, uploadAttachment, getTestProjectByName among others.
+TestLink Java API is a Java API that interfaces TestLink XML-RPC API. This API lets you call TestLink internal
+methods such as createTestProject, uploadAttachment, getTestProjectByName among others.
 
-Our aim with this project is always release one version of this API after a new version of TestLink has been released. So if, for instance, TestLink releases version 2.0, we will release testlink-java-api-2.0.
+## Versioning
 
-One fact to keep in mind is that TestLink Java API can't assure you Backward Compabitility among its versions. It occurs because TestLink XML-RPC API is constantly changing. Even some methods are renamed. So trying to keep Backward Compatibility would be really cumbersome.
+The API version matches the version of TestLink it was developed for. So for TestLink 1.9.15, you should use
+testlink-java-api-1.9.15-x. Where x is an internal sequential number, used to distinguish between project releases.
 
-Another important thing is that behind the scenes we are using xml-rpc to communicate with TestLink. However you won't see any xml or even a Map/HashMap when using TestLink Java API (ok, maybe in only one method :-).
+If you use the API version 1.9.15-0 against TestLink 1.9.16, there is no guarantee it will work.
 
-If you call the method getTestPlanPlatforms it will return an array of Platform (an object in TestLink Java API). This way you won't need handle Maps :-) And in case of any error, the message will come to you in a nice TestLinkAPIException. This is the basic concepts to get the gist of the TestLink Java API.
+## Support
 
+This is an Open Source project. Pull requests are welcome! When reporting issues, please include as much
+information as possible.
+
+If you have an issue that you need for your organisation and you need it urgentely, please consider contacting the
+author about sponsored work, or work with companies that contribute to Open Source software. Remember, this is an
+Open Source project, maintained by volunteers on their spare time.
