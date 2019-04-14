@@ -11,7 +11,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * Tests the method removePlatformFromTestPlan.
- * 
+ *
  * @since 1.9.6-0
  */
 public class TestRemovePlatformFromTestPlan extends BaseTest {
