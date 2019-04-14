@@ -1,9 +1,12 @@
-FROM php:7.0-apache
+FROM php:7.3.4-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
     zlib1g-dev \
     libpng-dev \
+    libzip-dev \
+    wget \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mysqli \
@@ -26,6 +29,10 @@ RUN locale-gen
 
 RUN echo "session.gc_maxlifetime=60000" >> /usr/local/etc/php/php.ini \
     && echo "max_execution_time=3000" >> /usr/local/etc/php/php.ini
+
+RUN wget https://github.com/TestLinkOpenSourceTRMS/testlink-code/archive/1.9.19.zip -O /var/www/html/source.zip \
+    && unzip /var/www/html/source.zip -d /tmp/ \
+    && mv /tmp/testlink*/* /var/www/html/
 
 RUN mkdir -p /var/www/html/gui/templates_c \
     && mkdir -p /var/testlink/logs/ \
