@@ -957,7 +957,6 @@ public class TestLinkAPI {
      * @param testSuiteId test suite ID
      * @return Array of Attachments.
      * @throws TestLinkAPIException if service return error
-     * @author dennis@etern-it.de
      */
     public Attachment[] getTestSuiteAttachments(Integer testSuiteId)
             throws TestLinkAPIException {
@@ -1109,7 +1108,7 @@ public class TestLinkAPI {
      * @param testCaseExternalId test case external ID
      * @param versionNumber version number
      * @param executionId execution ID
-     * @param testPlanID
+     * @param testPlanID test plan ID
      * @param testProjectId test project ID
      * @param customFieldName custom field name
      * @param details details
@@ -1253,7 +1252,6 @@ public class TestLinkAPI {
      *
      * @param testCaseKeywordsMap - Map of testcase externalId to list of keywords
      * @return Object returned from the server.
-     * @throws XmlRpcException if the XML-RPC call is invalid
      * @throws TestLinkAPIException if the service returns an error
      */
     public Map<String, Object> addTestCaseKeywords(Map<String, List<String>> testCaseKeywordsMap) {

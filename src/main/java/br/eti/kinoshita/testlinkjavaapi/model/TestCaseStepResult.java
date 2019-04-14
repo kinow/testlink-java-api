@@ -51,6 +51,8 @@ public class TestCaseStepResult implements Serializable {
      * @param number number of the test step
      * @param result ExecutionStatus
      * @param notes execution notes for the test step
+     * @param active whether test case step is active or not
+     * @param executionType test case step execution type
      */
     public TestCaseStepResult(Integer number, ExecutionStatus result, String notes,
             Boolean active, ExecutionType executionType) {
