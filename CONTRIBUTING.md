@@ -17,4 +17,4 @@ style and formatting.
 ## Licensing
 
 Your should be able to license your code under the MIT License, or compatible
-permissive license.
+license.
