@@ -1,11 +1,11 @@
 language: java
 sudo: false
+dist: trusty
 
 jdk:
   - oraclejdk8
+  - oraclejdk9
+  - oraclejdk11
 
 script:
-  - mvn test -B
-
-after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+  - mvn
