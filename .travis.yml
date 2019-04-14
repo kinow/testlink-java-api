@@ -7,5 +7,9 @@ jdk:
   - oraclejdk9
   - oraclejdk11
 
+matrix:
+   allow_failures:
+      - jdk: oraclejdk11
+
 script:
   - mvn
