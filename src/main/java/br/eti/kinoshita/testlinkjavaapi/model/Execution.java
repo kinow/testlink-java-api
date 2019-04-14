@@ -76,7 +76,7 @@ public class Execution implements Serializable {
         this.id = id;
         this.buildId = buildId;
         this.testerId = testerId;
-        this.executionTimeStamp = executionTimeStamp;
+        this.executionTimeStamp = new Date(executionTimeStamp.getTime());
         this.status = status;
         this.testPlanId = testPlanId;
         this.testCaseVersionId = testCaseVersionId;
@@ -215,14 +215,14 @@ public class Execution implements Serializable {
      * @return the executionTimeStamp
      */
     public Date getExecutionTimeStamp() {
-        return executionTimeStamp;
+        return new Date(executionTimeStamp.getTime());
     }
 
     /**
      * @param executionTimeStamp the executionTimeStamp to set
      */
     public void setExecutionTimeStamp(Date executionTimeStamp) {
-        this.executionTimeStamp = executionTimeStamp;
+        this.executionTimeStamp = new Date(executionTimeStamp.getTime());
     }
 
     /*

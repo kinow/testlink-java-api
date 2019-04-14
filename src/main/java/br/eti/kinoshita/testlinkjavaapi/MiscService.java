@@ -278,7 +278,7 @@ class MiscService extends BaseService {
                     executionData);
             Object[] responseArray = Util.castToArray(response);
             Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
-            if (responseMap instanceof Map<?, ?> && responseMap.size() > 0) {
+            if (responseMap.size() > 0) {
                 execution = Util.getExecution(responseMap);
             }
 

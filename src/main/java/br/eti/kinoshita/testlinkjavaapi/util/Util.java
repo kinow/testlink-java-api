@@ -27,6 +27,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -70,9 +71,6 @@ import br.eti.kinoshita.testlinkjavaapi.model.User;
 public final class Util {
 
     private static final Logger LOG = Logger.getLogger(Util.class.getName());
-
-    public static Object[] EMPTY_ARRAY = new Object[0];
-    public static Map<String, Object> EMPTY_MAP = new HashMap<String, Object>();
 
     private Util() {
     }
@@ -588,7 +586,7 @@ public final class Util {
 
         if (object != null) {
             if (object instanceof String) {
-                array = EMPTY_ARRAY;
+                array = new Object[0];
             } else {
                 array = (Object[]) object;
             }
@@ -608,7 +606,7 @@ public final class Util {
 
         if (object != null) {
             if (object instanceof String) {
-                map = EMPTY_MAP;
+                map = Collections.emptyMap();;
             } else {
                 map = (Map<String, Object>) object;
             }

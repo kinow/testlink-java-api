@@ -61,7 +61,7 @@ public class Role implements Serializable {
         this.dbID = dbID;
         this.description = description;
         this.name = name;
-        this.rights = rights;
+        this.rights = rights != null ? Arrays.copyOf(rights, rights.length) : null;
     }
 
     /**
@@ -110,14 +110,14 @@ public class Role implements Serializable {
      * @return the rights
      */
     public Object[] getRights() {
-        return rights;
+        return rights != null ? Arrays.copyOf(rights, rights.length) : null;
     }
 
     /**
      * @param rights the rights to set
      */
     public void setRights(Object[] rights) {
-        this.rights = rights;
+        this.rights = rights != null ? Arrays.copyOf(rights, rights.length) : null;
     }
 
     /*
