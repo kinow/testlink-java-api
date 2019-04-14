@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -67,7 +67,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 
 /**
  * TestLink API class.
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -114,11 +114,11 @@ public class TestLinkAPI {
 
     /**
      * Constructor with parameters.
-     * 
+     *
      * <p>
      * Instantiates TestLink services. It also checks the devKey and throws a TestLinkAPIException if it is invalid.
      * </p>
-     * 
+     *
      * @param url The URL to set.
      * @param devKey The Developer Key to set.
      * @throws TestLinkAPIException if the service returns an error
@@ -151,7 +151,7 @@ public class TestLinkAPI {
 
     /**
      * Creates application composite configuration.
-     * 
+     *
      * @return Application composite configuration.
      */
     private CompositeConfiguration createApplicationConfiguration() {
@@ -175,9 +175,9 @@ public class TestLinkAPI {
 
     /**
      * Creates XML-RPC client configuration.
-     * 
+     *
      * By default enabled for extensions is always true.
-     * 
+     *
      * @param url Application URL.
      * @param appConfig Application composite configuration.
      * @return XML-RPC client configuration.
@@ -250,7 +250,7 @@ public class TestLinkAPI {
     /**
      * Logs a throwable object in debug level. Before outputting the message it checks if debug is enabled or not. If it
      * is not enabled the message is not displayed and the String object is not created/concatenated, etc.
-     * 
+     *
      * @param throwable Throwable object.
      */
     private void debug(Throwable throwable) {
@@ -284,7 +284,7 @@ public class TestLinkAPI {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
@@ -298,7 +298,7 @@ public class TestLinkAPI {
 
     /**
      * Checks developer key.
-     * 
+     *
      * @param devKey Developer Key.
      * @return <code>true</code> if devKey is valid, <code>false</code> otherwise.
      * @throws TestLinkAPIException if the service returns an error
@@ -310,7 +310,7 @@ public class TestLinkAPI {
 
     /**
      * Checks if the given user exists.
-     * 
+     *
      * @param user user user name
      * @return <code>true</code> if the user exists, <code>false</code> otherwise.
      * @throws TestLinkAPIException if the service returns an error
@@ -332,7 +332,7 @@ public class TestLinkAPI {
 
     /**
      * ping method is an alias for sayHello.
-     * 
+     *
      * @return Hello message
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -342,7 +342,7 @@ public class TestLinkAPI {
 
     /**
      * Says hello to the user.
-     * 
+     *
      * @return Hello message
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -352,7 +352,7 @@ public class TestLinkAPI {
 
     /**
      * Displays information about TL.
-     * 
+     *
      * @return About text
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -362,7 +362,7 @@ public class TestLinkAPI {
 
     /**
      * Set the test mode.
-     * 
+     *
      * @param testMode test mode
      * @return Test mode
      * @throws TestLinkAPIException if the service returns an error
@@ -403,7 +403,7 @@ public class TestLinkAPI {
     /**
      * Retrieves the full path of a node. Given a nodeId of, let's say, 10, that is a test case. The return array will
      * consist of Name Of Project, Name of Suite, Name of Test Case.
-     * 
+     *
      * @param nodeId node ID
      * @return Array of name of nodes
      * @throws TestLinkAPIException if the service returns an error
@@ -414,7 +414,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves last execution result of a Test Case.
-     * 
+     *
      * @param testPlanId test plan ID
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
@@ -454,7 +454,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves a Test Project by its name.
-     * 
+     *
      * @param projectName Test Project name.
      * @return Test Project with given name or null if not found.
      * @throws TestLinkAPIException if the service returns an error
@@ -466,7 +466,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves the platforms of a test project.
-     * 
+     *
      * @param projectId test project ID
      * @return platforms array
      * @throws TestLinkAPIException if the service returns an error if an error occurs when retrieving the platforms
@@ -478,7 +478,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves all Test Projects from TestLink.
-     * 
+     *
      * @return an array of Test Projects.
      * @throws TestLinkAPIException if the service returns an error
      * @since 1.0
@@ -489,7 +489,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves an array of Test Plans associated to a Test Project.
-     * 
+     *
      * @param projectId Test Project ID
      * @return Array of Test Plans.
      * @throws TestLinkAPIException if the service returns an error
@@ -500,7 +500,7 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Test Project.
-     * 
+     *
      * @param testProjectId test project ID test project ID
      * @param title title
      * @param description description
@@ -520,7 +520,7 @@ public class TestLinkAPI {
 
     /**
      * Creates a Test Plan.
-     * 
+     *
      * @param planName Test Plan name.
      * @param projectName Test Project name.
      * @param notes Test Plan notes.
@@ -537,7 +537,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves a Test Plan by its name.
-     * 
+     *
      * @param planName Test Plan name.
      * @param projectName Test Project name.
      * @return Test Plan.
@@ -550,7 +550,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Platforms of a Test Plan.
-     * 
+     *
      * @param planId Test Plan Id.
      * @return Platforms
      * @throws TestLinkAPIException if the service returns an error
@@ -561,7 +561,7 @@ public class TestLinkAPI {
 
     /**
      * Gets stats for test plan.
-     * 
+     *
      * @param testPlanId test plan ID
      * @return statistics on test plan
      * @throws TestLinkAPIException if the service returns an error
@@ -572,7 +572,7 @@ public class TestLinkAPI {
 
     /**
      * Removes a platform from a test plan.
-     * 
+     *
      * @param testProjectId test project ID test project ID
      * @param testPlanId test plan ID
      * @param platformName platform name
@@ -586,7 +586,7 @@ public class TestLinkAPI {
 
     /**
      * Adds a platform to a test plan.
-     * 
+     *
      * @param testProjectId test project ID test project ID
      * @param testPlanId test plan ID
      * @param platformName platform name
@@ -630,7 +630,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves an Array of Builds for a given Test Plan.
-     * 
+     *
      * @param testPlanId Test Plan ID.
      * @return Array of Builds.
      * @throws TestLinkAPIException if the service returns an error
@@ -641,7 +641,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves the latest Build for a given Test Plan.
-     * 
+     *
      * @param testPlanId Test Plan ID.
      * @return Build.
      * @throws TestLinkAPIException if the service returns an error
@@ -652,7 +652,7 @@ public class TestLinkAPI {
 
     /**
      * Gets the exec counters by build.
-     * 
+     *
      * @param testPlanId test plan ID
      * @return server response map
      */
@@ -684,7 +684,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Test Suites for given Ids.
-     * 
+     *
      * @param testSuiteIds List of Test Suite Ids.
      * @return Array of Test Suites.
      * @throws TestLinkAPIException if the service returns an error
@@ -695,7 +695,7 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Test Suite.
-     * 
+     *
      * @param testSuiteId test suite ID
      * @param title title
      * @param description description
@@ -712,7 +712,7 @@ public class TestLinkAPI {
     }
 
     /**
-     * 
+     *
      * @param testPlanId test plan ID
      * @return Array of Test Suites of Test Plan.
      * @throws TestLinkAPIException if the service returns an error
@@ -723,7 +723,7 @@ public class TestLinkAPI {
 
     /**
      * Get list of TestSuites which are DIRECT children of a given TestSuite
-     * 
+     *
      * @param testSuiteId test suite ID
      * @throws TestLinkAPIException if the service returns an error
      * @return an array of test suites
@@ -734,7 +734,7 @@ public class TestLinkAPI {
 
     /**
      * Get set of test suites AT TOP LEVEL of tree on a Test Project
-     * 
+     *
      * @param testProjectId test project ID
      * @throws TestLinkAPIException if the service returns an error
      * @return an array of test suites
@@ -747,7 +747,7 @@ public class TestLinkAPI {
 
     /**
      * Creates a Test Case.
-     * 
+     *
      * @param testCaseName test case name
      * @param testSuiteId test suite ID
      * @param testProjectId test project ID
@@ -776,7 +776,7 @@ public class TestLinkAPI {
 
     /**
      * Update an already existing test case with the data of the given test case as a new version.
-     * 
+     *
      * @param tc new version of the test case
      * @return response map
      * @throws TestLinkAPIException if the service returns an error if updating the test case fails
@@ -787,7 +787,7 @@ public class TestLinkAPI {
 
     /**
      * Create, Update or Push a list of TestCaseSteps in a Test Case.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param version version
@@ -803,7 +803,7 @@ public class TestLinkAPI {
 
     /**
      * Delete a list if TestCaseSteps from a Test Case.
-     * 
+     *
      * @param testCaseExternalId test case external ID
      * @param version version
      * @param testCaseSteps test case steps
@@ -817,7 +817,7 @@ public class TestLinkAPI {
 
     /**
      * Adds a Test Case to a Test Plan.
-     * 
+     *
      * @param testProjectId test project ID
      * @param testPlanId test plan ID
      * @param testCaseId test case ID
@@ -836,7 +836,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Test Cases for a Test Suite.
-     * 
+     *
      * @param testSuiteId test suite ID
      * @param deep flag for depth
      * @param detail test case details requested
@@ -850,7 +850,7 @@ public class TestLinkAPI {
 
     /**
      * Get a test case
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param version version
@@ -864,7 +864,7 @@ public class TestLinkAPI {
 
     /**
      * Get a Test Case using the full external id, composed by the prefix and the external id: prefix-externalId
-     * 
+     *
      * @param fullTestCaseExternalId Full external id: prefix-externalId
      * @param version version
      * @return Test Case.
@@ -877,7 +877,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves Test Cases for Test Plans.
-     * 
+     *
      * @param testPlanId test plan ID
      * @param testCasesIds test case ID's
      * @param buildId build ID
@@ -906,7 +906,7 @@ public class TestLinkAPI {
 
     /**
      * Get a test case ID by a test case Name
-     * 
+     *
      * @param testCaseName test case name
      * @param testSuiteName test suite name
      * @param testProjectName test project name
@@ -921,7 +921,7 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Test Case.
-     * 
+     *
      * @param testCaseId test case ID
      * @param title title
      * @param description description
@@ -939,7 +939,7 @@ public class TestLinkAPI {
 
     /**
      * Return an array of attachments of a Test Case.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param testCaseVersion test case version
@@ -983,7 +983,7 @@ public class TestLinkAPI {
 
     /**
      * Deletes an execution.
-     * 
+     *
      * @param executionId Execution Id.
      * @throws TestLinkAPIException if the service returns an error
      */
@@ -993,7 +993,7 @@ public class TestLinkAPI {
 
     /**
      * Reports a Test Case result.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param testPlanId test plan ID
@@ -1021,7 +1021,7 @@ public class TestLinkAPI {
 
     /**
      * Reports a Test Case result.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param testPlanId test plan ID
@@ -1049,7 +1049,7 @@ public class TestLinkAPI {
 
     /**
      * Retrieves list of Custom Fields for a Test Case.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param versionNumber version number
@@ -1084,7 +1084,7 @@ public class TestLinkAPI {
 
     /**
      * Gets the test case custom field value on test plan design scope.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param versionNumber version number
@@ -1103,7 +1103,7 @@ public class TestLinkAPI {
 
     /**
      * Gets the test case custom field value on test execution scope.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
      * @param versionNumber version number
@@ -1124,7 +1124,7 @@ public class TestLinkAPI {
 
     /**
      * Gets list of keywords for a given Test case
-     * 
+     *
      * @param testProjectId test project ID
      * @param testCaseId test case ID
      * @return test case keywords
@@ -1136,7 +1136,7 @@ public class TestLinkAPI {
 
     /**
      * Sets the test case execution type.
-     * 
+     *
      * @param testProjectId test project ID
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
@@ -1152,7 +1152,7 @@ public class TestLinkAPI {
 
     /**
      * Update the value of an existing custom field for a Test Case
-     * 
+     *
      * @param testCaseId test case ID
      * @param versionNumber version number
      * @param testProjectId test project ID
@@ -1184,7 +1184,7 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Requirement Specification.
-     * 
+     *
      * @param reqSpecId requirement specification ID
      * @param title title
      * @param description description
@@ -1204,7 +1204,7 @@ public class TestLinkAPI {
 
     /**
      * Uploads an attachment to a Requirement.
-     * 
+     *
      * @param requirementId requirement ID
      * @param title title
      * @param description description
@@ -1222,7 +1222,7 @@ public class TestLinkAPI {
 
     /**
      * Assign a requirements to a Test Case.
-     * 
+     *
      * @param testCaseId test case ID
      * @param testProjectId test project ID
      * @param requirements list of requirements
@@ -1235,7 +1235,7 @@ public class TestLinkAPI {
 
     /**
      * Executes a XML-RPC call. Use this method to talk with TestLink in a lower level.
-     * 
+     *
      * @param methodName Name of the method.
      * @param executionData Execution data map.
      * @return Object returned from the server.

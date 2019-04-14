@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -63,7 +63,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.User;
  * Utility class with methods to handle the response or prepare the request to
  * the PHP XML-RPC API. This class is able to convert from a Map to an Object
  * and vice-versa.
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -103,7 +103,7 @@ public final class Util {
 
     /**
      * Extracts a Test Project from a Map.
-     * 
+     *
      * @param map Map with properties of a Test Project.
      * @return Test Project.
      */
@@ -295,7 +295,7 @@ public final class Util {
     }
 
     /**
-     * 
+     *
      * @param testCaseSteps test case steps
      * @return A list whit one Map for each TestCaseStep
      * @since 1.9.4-1
@@ -321,7 +321,7 @@ public final class Util {
     }
 
     /**
-     * 
+     *
      * @param testCaseSteps test case steps
      * @return A list with the step's id
      * @since 1.9.4-1
@@ -579,7 +579,7 @@ public final class Util {
     }
 
     /**
-     * 
+     *
      * @param object an object
      * @return Array of objects
      */
@@ -598,7 +598,7 @@ public final class Util {
     }
 
     /**
-     * 
+     *
      * @param object an object
      * @return Map of objects
      */
@@ -945,7 +945,7 @@ public final class Util {
 
     /**
      * Puts a boolean value into a map if the value is not null.
-     * 
+     *
      * @param map Map.
      * @param key Key.
      * @param boolValue Boolean value.

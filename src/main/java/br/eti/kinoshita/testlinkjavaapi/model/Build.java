@@ -2,17 +2,17 @@
  * The MIT License
  *
  * Copyright (c) 2010 Bruno P. Kinoshita http://www.kinoshita.eti.br
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,12 +30,12 @@ import java.io.Serializable;
  * TestLink Build object. Represents a Build in TestLink system. A build is,
  * basically, an instance of a Test Plan.
  * </p>
- * 
+ *
  * <ul>
  * <li>20101129 - BUGID: 3122320 - kinow - Modify Build methods to follow
  * standard naming</li>
  * </ul>
- * 
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 1.9.0-1
  */
@@ -53,7 +53,7 @@ public class Build implements Serializable {
     private String closedDate;
 
     /**
-     * 
+     *
      */
     public Build() {
         super();
@@ -142,7 +142,7 @@ public class Build implements Serializable {
     public void setIsActive(Integer isActive) {
         this.isActive = isActive;
     }
-    
+
     /**
      * @return the isOpen
      */
@@ -156,7 +156,7 @@ public class Build implements Serializable {
     public void setIsOpen(Integer isOpen) {
         this.isOpen = isOpen;
     }
-    
+
     /**
      * @return releaseDate the release date
      */
@@ -188,7 +188,7 @@ public class Build implements Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
