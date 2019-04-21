@@ -5,6 +5,11 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="1.9.19-0" date="2019-04-22" description="1.9.19-0 release">
+            <action dev="kinow" due-to="kinow" type="fix" issue="81">
+                getLastExecutionResult function need some new parameters
+            </action>
+        </release>
         <release version="1.9.17-1" date="2019-01-14" description="1.9.17-0 release">
             <action dev="kinow" due-to="abouzy" type="fix" issue="85">
                 Update TestCase always return empty map

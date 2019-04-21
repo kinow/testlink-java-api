@@ -418,13 +418,19 @@ public class TestLinkAPI {
      * @param testPlanId test plan ID
      * @param testCaseId test case ID
      * @param testCaseExternalId test case external ID
-     * @return Last Execution
+     * @param platformId platform ID
+     * @param platformName platform name
+     * @param buildId build ID
+     * @param buildName build name
+     * @param options array of options
+     * @return last Execution
      * @throws TestLinkAPIException if the service returns an error
      */
-    public Execution getLastExecutionResult(Integer testPlanId, Integer testCaseId, Integer testCaseExternalId
-
+    public Execution getLastExecutionResult(Integer testPlanId, Integer testCaseId, String testCaseExternalId,
+            Integer platformId, String platformName, Integer buildId, String buildName, Integer options
     ) throws TestLinkAPIException {
-        return this.miscService.getLastExecutionResult(testPlanId, testCaseId, testCaseExternalId);
+        return this.miscService.getLastExecutionResult(testPlanId, testCaseId, testCaseExternalId,
+                platformId, platformName, buildId, buildName, options);
     }
 
     /* XX Test Project operations XX */

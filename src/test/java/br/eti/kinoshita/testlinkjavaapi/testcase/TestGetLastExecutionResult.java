@@ -48,7 +48,8 @@ public class TestGetLastExecutionResult extends BaseTest {
         Execution execution = null;
 
         try {
-            execution = this.api.getLastExecutionResult(testPlanId, testCaseId, null);
+            execution = this.api.getLastExecutionResult(testPlanId, testCaseId, null,
+                    null, null, null, null, null);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }
