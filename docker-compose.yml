@@ -11,6 +11,8 @@ services:
       MYSQL_PASSWORD: testlink
     ports:
       - "9906:3306"
+    volumes:
+       - ~/Development/docker/volumes/mysql-testlink:/var/lib/mysql
   web:
     container_name: testlink
     build: .
