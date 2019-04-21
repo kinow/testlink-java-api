@@ -59,7 +59,8 @@ public class TestIssue3224421 extends BaseTest {
                 Assert.assertNotNull(tc.getExecutionStatus());
                 if (tc.getExecutionStatus() != ExecutionStatus.NOT_RUN) {
                     this.loadXMLRPCMockData("tl.getLastExecutionResult.xml");
-                    Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null);
+                    Execution execution = this.api.getLastExecutionResult(plan.getId(), tc.getId(), null,
+                            null, null, null, null, null);
                     Assert.assertNotNull(execution);
                 }
             }

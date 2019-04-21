@@ -258,13 +258,19 @@ class MiscService extends BaseService {
     }
 
     /**
-     * @param testPlanId
-     * @param testCaseId
-     * @param testCaseExternalId
-     * @return
+     * @param testPlanId test plan ID
+     * @param testCaseId test case ID
+     * @param testCaseExternalId test case external ID
+     * @param platformId platform ID
+     * @param platformName platform name
+     * @param buildId build ID
+     * @param buildName build name
+     * @param options array of options
+     * @return Execution
      */
     @SuppressWarnings("unchecked")
-    protected Execution getLastExecutionResult(Integer testPlanId, Integer testCaseId, Integer testCaseExternalId)
+    protected Execution getLastExecutionResult(Integer testPlanId, Integer testCaseId, String testCaseExternalId,
+            Integer platformId, String platformName, Integer buildId, String buildName, Integer options)
             throws TestLinkAPIException {
 
         Execution execution = null;
@@ -274,6 +280,11 @@ class MiscService extends BaseService {
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
+            executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformId);
+            executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
+            executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
+            executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
+            executionData.put(TestLinkParams.OPTIONS.toString(), options);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_LAST_EXECUTION_RESULT.toString(),
                     executionData);
             Object[] responseArray = Util.castToArray(response);
