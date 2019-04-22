@@ -299,7 +299,7 @@ class TestSuiteService extends BaseService {
      * @throws TestLinkAPIException if an error occurs
      * @author dennis@etern-it.de
      */
-    public Attachment[] getTestSuiteAttachments(Integer testSuiteId) {
+    protected Attachment[] getTestSuiteAttachments(Integer testSuiteId) {
         Attachment[] attachments = null;
 
         try {

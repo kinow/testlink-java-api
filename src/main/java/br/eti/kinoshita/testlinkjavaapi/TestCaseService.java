@@ -122,7 +122,7 @@ class TestCaseService extends BaseService {
         return testCase;
     }
 
-    public Map<String, Object> updateTestCase(TestCase tc) throws TestLinkAPIException {
+    protected Map<String, Object> updateTestCase(TestCase tc) throws TestLinkAPIException {
         try {
             Map<String, Object> responseMap = null;
             Map<String, Object> executionData = Util.getTestCaseMap(tc);
@@ -141,7 +141,7 @@ class TestCaseService extends BaseService {
         }
     }
 
-    public Map<String, Object> createTestCaseSteps(Integer testCaseId, String testCaseExternalId, Integer version,
+    protected Map<String, Object> createTestCaseSteps(Integer testCaseId, String testCaseExternalId, Integer version,
             TestCaseStepAction action, List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
         Map<String, Object> responseMap = null;
 
@@ -172,7 +172,7 @@ class TestCaseService extends BaseService {
         return responseMap;
     }
 
-    public Map<String, Object> deleteTestCaseSteps(String testCaseExternalId, Integer version,
+    protected Map<String, Object> deleteTestCaseSteps(String testCaseExternalId, Integer version,
             List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
         Map<String, Object> responseMap = null;
 
