@@ -1008,21 +1008,26 @@ public class TestLinkAPI {
      * @param buildId build ID
      * @param buildName build name
      * @param notes notes
+     * @param executionDuration execution duration (minutes)
      * @param guess flag to guess other parameters or not
      * @param bugId bug ID
      * @param platformId platform ID
      * @param platformName platform name
      * @param customFields custom fields
      * @param overwrite flag to overwrite or not
+     * @param user if present checks if user is a valid login
+     * @param timestamp format YYYY-MM-DD HH:MM:SS (e.g. 2015-05-22 12:15:45)
      * @throws TestLinkAPIException if the service returns an error
      * @return report test case result server response
      */
     public ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+            ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes,
+            Integer executionDuration, Boolean guess, String bugId, Integer platformId, String platformName,
+            Map<String, String> customFields, Boolean overwrite, String user, String timestamp)
             throws TestLinkAPIException {
         return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, steps, buildId,
-                buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
+                buildName, notes, executionDuration, guess, bugId, platformId, platformName, customFields, overwrite,
+                user, timestamp);
     }
 
     /**
@@ -1036,21 +1041,26 @@ public class TestLinkAPI {
      * @param buildId build ID
      * @param buildName build name
      * @param notes notes
+     * @param executionDuration execution duration (minutes)
      * @param guess flag to guess other parameters or not
      * @param bugId bug ID
      * @param platformId platform ID
      * @param platformName platform name
      * @param customFields custom fields
      * @param overwrite flag to overwrite or not
+     * @param user if present checks if user is a valid login
+     * @param timestamp format YYYY-MM-DD HH:MM:SS (e.g. 2015-05-22 12:15:45)
      * @return response
      * @throws TestLinkAPIException if the service returns an error
      */
     public ReportTCResultResponse setTestCaseExecutionResult(Integer testCaseId, Integer testCaseExternalId,
-            Integer testPlanId, ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes, Boolean guess,
-            String bugId, Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+            Integer testPlanId, ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId,
+            String buildName, String notes, Integer executionDuration, Boolean guess, String bugId, Integer platformId,
+            String platformName, Map<String, String> customFields, Boolean overwrite, String user, String timestamp)
             throws TestLinkAPIException {
-        return this.testCaseService.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, steps, buildId,
-                buildName, notes, guess, bugId, platformId, platformName, customFields, overwrite);
+        return this.reportTCResult(testCaseId, testCaseExternalId, testPlanId, status, steps, buildId,
+                buildName, notes, executionDuration, guess, bugId, platformId, platformName, customFields, overwrite,
+                user, timestamp);
     }
 
     /**

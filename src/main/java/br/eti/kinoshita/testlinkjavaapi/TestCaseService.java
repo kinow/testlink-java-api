@@ -563,18 +563,23 @@ class TestCaseService extends BaseService {
      * @param buildId
      * @param buildName
      * @param notes
+     * @param executionDuration
      * @param guess
      * @param bugId
      * @param platformId
      * @param platformName
      * @param customFields
      * @param overwrite
+     * @param user if present checks if user is a valid login
+     * @param timestamp format YYYY-MM-DD HH:MM:SS (e.g. 2015-05-22 12:15:45)
      * @return Response object of reportTCResult method
      * @throws TestLinkAPIException
      */
     protected ReportTCResultResponse reportTCResult(Integer testCaseId, Integer testCaseExternalId, Integer testPlanId,
-            ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName, String notes, Boolean guess, String bugId,
-            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite)
+            ExecutionStatus status, List<TestCaseStepResult> steps, Integer buildId, String buildName,
+            String notes, Integer executionDuration, Boolean guess, String bugId,
+            Integer platformId, String platformName, Map<String, String> customFields, Boolean overwrite,
+            String user, String timestamp)
             throws TestLinkAPIException {
         // TODO: Map<String, String> customFields =>
         // change for a list of custom fields. After implementing method
@@ -592,12 +597,15 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
             executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
             executionData.put(TestLinkParams.NOTES.toString(), notes);
+            executionData.put(TestLinkParams.EXECUTION_DURATION.toString(), executionDuration);
             executionData.put(TestLinkParams.GUESS.toString(), guess);
             executionData.put(TestLinkParams.BUG_ID.toString(), bugId);
             executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformId);
             executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
             executionData.put(TestLinkParams.CUSTOM_FIELDS.toString(), customFields);
             executionData.put(TestLinkParams.OVERWRITE.toString(), overwrite);
+            executionData.put(TestLinkParams.USER.toString(), user);
+            executionData.put(TestLinkParams.TIMESTAMP.toString(), timestamp);
             Object response = this.executeXmlRpcCall(TestLinkMethods.REPORT_TC_RESULT.toString(), executionData);
             // the error verification routine is called inside
             // super.executeXml...
