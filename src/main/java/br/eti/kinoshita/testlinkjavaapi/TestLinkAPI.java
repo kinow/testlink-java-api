@@ -1273,4 +1273,22 @@ public class TestLinkAPI {
     public Map<String, Object> addTestCaseKeywords(Map<String, List<String>> testCaseKeywordsMap) {
         return this.testCaseService.addTestCaseKeyWords(testCaseKeywordsMap);
     }
+
+    /**
+     * Get bugs related to a test case.
+     *
+     * @param testPlanId test plan ID
+     * @param testCaseId test case ID
+     * @param testCaseExternalId test case external ID
+     * @param platformId platform ID
+     * @param platformName platform name
+     * @param buildId build ID
+     * @param buildName build name
+     * @return array with the ID's of bugs
+     */
+    public List<Integer> getTestCaseBugs(Integer testPlanId, Integer testCaseId, Integer testCaseExternalId,
+            Integer platformId, String platformName, Integer buildId, String buildName) {
+        return this.testCaseService.getTestCaseBugs(testPlanId, testCaseId, testCaseExternalId, platformId,
+                platformName, buildId, buildName);
+    }
 }

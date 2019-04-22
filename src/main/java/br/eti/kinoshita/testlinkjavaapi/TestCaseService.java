@@ -24,11 +24,14 @@
 package br.eti.kinoshita.testlinkjavaapi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.Set;
 
 import org.apache.xmlrpc.XmlRpcException;
@@ -904,6 +907,55 @@ class TestCaseService extends BaseService {
                 responseMap = Util.castToMap(((Object[]) response)[0]);
             }
             return responseMap;
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error adding test case keywords: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
+
+    /**
+     * @param testPlanId
+     * @param testCaseId
+     * @param testCaseExternalId
+     * @param platformId
+     * @param platformName
+     * @param buildId
+     * @param buildName
+     * @return
+     */
+    protected List<Integer> getTestCaseBugs(Integer testPlanId, Integer testCaseId, Integer testCaseExternalId,
+            Integer platformId, String platformName, Integer buildId, String buildName) {
+        Map<String, Object> responseMap = null;
+        try {
+            Map<String, Object> executionData = new HashMap<String, Object>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
+            executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
+            executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformId);
+            executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
+            executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
+            executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
+            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_CASE_BUGS.toString(), executionData);
+            if (response instanceof Map<?, ?>) {
+                responseMap = Util.castToMap(response);
+            } else if (!(response instanceof String)) {
+                responseMap = Util.castToMap(((Object[]) response)[0]);
+            }
+            if (responseMap != null && !responseMap.isEmpty() && responseMap.containsKey("bugs")) {
+                Object bugs = responseMap.get("bugs");
+                if (bugs != null) {
+                    Object[] o = Util.castToArray(bugs);
+                    return Arrays
+                            .stream(o)
+                            .map((Object object) -> {
+                                return ((Map<String, Object>) object).get("bug_id");
+                            })
+                            .map((Object string) -> {
+                                return Integer.parseInt((String) string);
+                                })
+                            .collect(Collectors.toList());
+                }
+            }
+            return Collections.emptyList();
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error adding test case keywords: " + xmlrpcex.getMessage(), xmlrpcex);
         }
