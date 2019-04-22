@@ -55,6 +55,7 @@ import br.eti.kinoshita.testlinkjavaapi.model.Requirement;
 import br.eti.kinoshita.testlinkjavaapi.model.Role;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCase;
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep;
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepResult;
 import br.eti.kinoshita.testlinkjavaapi.model.TestPlan;
 import br.eti.kinoshita.testlinkjavaapi.model.TestProject;
 import br.eti.kinoshita.testlinkjavaapi.model.TestSuite;
@@ -399,7 +400,28 @@ public final class Util {
         return executionData;
     }
 
-    /**
+   /**
+    * @param testCaseStepResults test case steps
+    * @return A list with one Map for each TestCaseStepResult
+    * @since 1.9.19-0
+    */
+   public static List<Map<String, Object>> getTestCaseStepResultMap(List<TestCaseStepResult> testCaseStepResults) {
+       List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
+
+       if (testCaseStepResults != null && testCaseStepResults.size() > 0) {
+           for (int i = 0; i < testCaseStepResults.size(); i++) {
+               TestCaseStepResult step = testCaseStepResults.get(i);
+               Map<String, Object> testCaseStepMap = new HashMap<String, Object>();
+               testCaseStepMap.put(TestLinkParams.NOTES.toString(), step.getNotes());
+               testCaseStepMap.put(TestLinkParams.STEP_NUMBER.toString(), step.getNumber());
+               testCaseStepMap.put(TestLinkParams.RESULT.toString(), step.getResult().toString());
+               steps.add(testCaseStepMap);
+           }
+       }
+       return steps;
+   }
+
+   /**
      * @param testSuite test suite
      * @return Map of Test Suite Map.
      */

@@ -93,6 +93,7 @@ public enum TestLinkParams {
     REQUIREMENT_SPECIFICATION_ID("reqspecid"),
     REQUIREMENT_ID("requirementid"),
     REQUIREMENTS("requirements"),
+    RESULT("result"),
     SUMMARY("summary"),
     // TBD: what is the difference between status and executestatus
     STATUS("status"),
