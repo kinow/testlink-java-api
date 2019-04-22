@@ -23,9 +23,9 @@ under the License.
     <link>http://sourceforge.net/projects/testlinkjavaapi</link>
     <description>TestLink Java API - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2010 - 2017</copyright>
+    <copyright>&#169;2010 - 2019</copyright>
     <item>
-      <title>File: 40,
+      <title>File: 41,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.ResponseDetails.java">br/eti/kinoshita/testlinkjavaapi/constants/ResponseDetails.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.TestLinkUser.java">br/eti/kinoshita/testlinkjavaapi/constants/TestLinkUser.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.TestLinkUser.java">br/eti/kinoshita/testlinkjavaapi/constants/TestLinkUser.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.ResponseDetails.java">br/eti/kinoshita/testlinkjavaapi/constants/ResponseDetails.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException.java">br/eti/kinoshita/testlinkjavaapi/util/TestLinkAPIException.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.model.Requirement.java">br/eti/kinoshita/testlinkjavaapi/model/Requirement.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.model.Requirement.java">br/eti/kinoshita/testlinkjavaapi/model/Requirement.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException.java">br/eti/kinoshita/testlinkjavaapi/util/TestLinkAPIException.java</a>
                 </td>
                 <td>
                   0
@@ -270,7 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.MiscService.java">br/eti/kinoshita/testlinkjavaapi/MiscService.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.TestImportance.java">br/eti/kinoshita/testlinkjavaapi/constants/TestImportance.java</a>
                 </td>
                 <td>
                   0
@@ -284,7 +284,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.TestImportance.java">br/eti/kinoshita/testlinkjavaapi/constants/TestImportance.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.MiscService.java">br/eti/kinoshita/testlinkjavaapi/MiscService.java</a>
                 </td>
                 <td>
                   0
@@ -312,20 +312,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.TestProjectService.java">br/eti/kinoshita/testlinkjavaapi/TestProjectService.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.ReqSpecService.java">br/eti/kinoshita/testlinkjavaapi/ReqSpecService.java</a>
                 </td>
                 <td>
@@ -340,7 +326,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.model.Role.java">br/eti/kinoshita/testlinkjavaapi/model/Role.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.TestProjectService.java">br/eti/kinoshita/testlinkjavaapi/TestProjectService.java</a>
                 </td>
                 <td>
                   0
@@ -368,7 +354,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.model.Role.java">br/eti/kinoshita/testlinkjavaapi/model/Role.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.constants.TestCaseStatus.java">br/eti/kinoshita/testlinkjavaapi/constants/TestCaseStatus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.model.TestCaseStepResult.java">br/eti/kinoshita/testlinkjavaapi/model/TestCaseStepResult.java</a>
                 </td>
                 <td>
                   0
@@ -466,7 +480,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.TestCaseService.java">br/eti/kinoshita/testlinkjavaapi/TestCaseService.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.TestPlanService.java">br/eti/kinoshita/testlinkjavaapi/TestPlanService.java</a>
                 </td>
                 <td>
                   0
@@ -480,7 +494,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.TestPlanService.java">br/eti/kinoshita/testlinkjavaapi/TestPlanService.java</a>
+                  <a href="http://sourceforge.net/projects/testlinkjavaapi/checkstyle.html#br.eti.kinoshita.testlinkjavaapi.TestCaseService.java">br/eti/kinoshita/testlinkjavaapi/TestCaseService.java</a>
                 </td>
                 <td>
                   0
