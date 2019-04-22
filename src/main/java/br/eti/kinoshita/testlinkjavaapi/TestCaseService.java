@@ -587,13 +587,15 @@ class TestCaseService extends BaseService {
         // entities properties will become much more clear
         ReportTCResultResponse reportTCResultResponse = null;
 
+        List<Map<String, Object>> stepsMap = Util.getTestCaseStepResultMap(steps);
+
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.STATUS.toString(), status.toString());
-            executionData.put(TestLinkParams.STEPS.toString(), steps);
+            executionData.put(TestLinkParams.STEPS.toString(), stepsMap);
             executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
             executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
             executionData.put(TestLinkParams.NOTES.toString(), notes);
