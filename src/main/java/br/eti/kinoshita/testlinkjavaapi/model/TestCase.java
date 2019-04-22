@@ -58,6 +58,7 @@ public class TestCase implements Serializable {
     private Integer executionOrder;
     private Integer order;
     private Integer internalId;
+    private Integer externalId;
     private String fullExternalId;
     private Boolean checkDuplicatedName;
     private ActionOnDuplicate actionOnDuplicatedName;
@@ -96,6 +97,7 @@ public class TestCase implements Serializable {
      * @param executionOrder execution order
      * @param order order
      * @param internalId internal ID
+     * @param externalId external ID
      * @param fullExternalId full external ID
      * @param checkDuplicatedName check for duplicated name
      * @param actionOnDuplicatedName action to take when a duplicated name is found
@@ -110,7 +112,7 @@ public class TestCase implements Serializable {
     public TestCase(Integer id, String name, Integer testSuiteId, Integer testProjectId, String authorLogin,
             String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus testcaseStatus,
             TestImportance testImportance, ExecutionType executionType, Integer executionOrder, Integer order,
-            Integer internalId, String fullExternalId, Boolean checkDuplicatedName,
+            Integer internalId, Integer externalId, String fullExternalId, Boolean checkDuplicatedName,
             ActionOnDuplicate actionOnDuplicatedName, Integer versionId, Integer version, Integer parentId,
             List<CustomField> customFields, ExecutionStatus executionStatus, Platform platform, Integer featureId) {
         super();
@@ -128,6 +130,7 @@ public class TestCase implements Serializable {
         this.executionOrder = executionOrder;
         this.order = order;
         this.internalId = internalId;
+        this.externalId = externalId;
         this.fullExternalId = fullExternalId;
         this.checkDuplicatedName = checkDuplicatedName;
         this.actionOnDuplicatedName = actionOnDuplicatedName;
@@ -379,6 +382,20 @@ public class TestCase implements Serializable {
     }
 
     /**
+     * @return the external Id
+     */
+    public Integer getExternalId() {
+        return externalId;
+    }
+
+    /**
+     * @param externalId the externalId to set
+     */
+    public void setExternalId(Integer externalId) {
+        this.externalId = externalId;
+    }
+
+    /**
      *
      * @return the full external Id, composed by the prefix + externalId
      */
@@ -494,22 +511,17 @@ public class TestCase implements Serializable {
         this.keywords = keywords;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return "TestCase [id=" + id + ", name=" + name + ", testSuiteId=" + testSuiteId + ", testProjectId="
                 + testProjectId + ", authorLogin=" + authorLogin + ", summary=" + summary + ", steps=" + steps
                 + ", preconditions=" + preconditions + ", testCaseStatus=" + testCaseStatus + ", testImportance="
                 + testImportance + ", executionType=" + executionType + ", executionOrder=" + executionOrder
-                + ", order=" + order + ", internalId=" + internalId + ", fullExternalId=" + fullExternalId
-                + ", checkDuplicatedName=" + checkDuplicatedName + ", actionOnDuplicatedName=" + actionOnDuplicatedName
-                + ", versionId=" + versionId + ", version=" + version + ", parentId=" + parentId + ", customFields="
-                + customFields + ", executionStatus=" + executionStatus + ", platform=" + platform + ", featureId="
-                + featureId + ", keywords= " + keywords + "]";
+                + ", order=" + order + ", internalId=" + internalId + ", externalId=" + externalId + ", fullExternalId="
+                + fullExternalId + ", checkDuplicatedName=" + checkDuplicatedName + ", actionOnDuplicatedName="
+                + actionOnDuplicatedName + ", versionId=" + versionId + ", version=" + version + ", parentId="
+                + parentId + ", customFields=" + customFields + ", executionStatus=" + executionStatus + ", platform="
+                + platform + ", featureId=" + featureId + ", keywords=" + keywords + "]";
     }
 
 }

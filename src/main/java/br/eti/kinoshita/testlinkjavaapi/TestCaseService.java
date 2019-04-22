@@ -101,7 +101,7 @@ class TestCaseService extends BaseService {
         Integer id = null;
 
         testCase = new TestCase(id, testCaseName, testSuiteId, testProjectId, authorLogin, summary, steps,
-                preconditions, status, importance, execution, null, order, internalId, null, checkDuplicatedName,
+                preconditions, status, importance, execution, null, order, internalId, null, null, checkDuplicatedName,
                 actionOnDuplicatedName, null, null, null, null, null, null, null);
 
         try {

@@ -12,6 +12,9 @@
             <action dev="kinow" due-to="kinow" type="fix" issue="55">
                 Report test case execution duration
             </action>
+            <action dev="kinow" due-to="kinow" type="fix" issue="92">
+                TestCase External ID
+            </action>
         </release>
         <release version="1.9.17-1" date="2019-01-14" description="1.9.17-0 release">
             <action dev="kinow" due-to="abouzy" type="fix" issue="85">

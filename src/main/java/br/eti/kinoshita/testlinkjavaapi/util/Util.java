@@ -498,6 +498,11 @@ public final class Util {
 
                     testCase.setFeatureId(getInteger(map, TestLinkResponseParams.FEATURE_ID.toString()));
 
+                    testCase.setExternalId(getInteger(map, TestLinkResponseParams.EXTERNAL_ID.toString()));
+                    if (testCase.getExternalId() == null) {
+                        testCase.setExternalId(getInteger(map, TestLinkResponseParams.EXTERNAL_ID2.toString()));
+                    }
+
                     // IMPORTANT: the full external id (composed by
                     // prefix-external_id) come on
                     // different parameters depending of what methods was used.
