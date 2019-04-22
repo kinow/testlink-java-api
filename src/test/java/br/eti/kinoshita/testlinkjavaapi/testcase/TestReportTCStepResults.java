@@ -70,11 +70,7 @@ public class TestReportTCStepResults extends BaseTest {
         ReportTCResultResponse response = null;
         try {
             response = this.api.reportTCResult(testCaseId, null, testPlanId, ExecutionStatus.FAILED, steps, buildId, buildName,
-                    notes, true, null, platformId, platformName, null, // TODO:
-                                                                       // Test
-                                                                       // custom
-                    // fields!
-                    true);
+                    notes, null, true, null, platformId, platformName, null, true, null, null);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }

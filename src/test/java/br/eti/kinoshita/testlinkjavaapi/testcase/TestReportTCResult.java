@@ -53,12 +53,8 @@ public class TestReportTCResult extends BaseTest {
 
         ReportTCResultResponse response = null;
         try {
-            response = this.api.reportTCResult(testCaseId, null, testPlanId, ExecutionStatus.FAILED, null, buildId, buildName,
-                    notes, true, null, platformId, platformName, null, // TODO:
-                                                                       // Test
-                                                                       // custom
-                    // fields!
-                    true);
+            response = this.api.reportTCResult(testCaseId, null, testPlanId, ExecutionStatus.FAILED, null, buildId,
+                    buildName, notes, null, true, null, platformId, platformName, null, true, null, null);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }
@@ -76,11 +72,7 @@ public class TestReportTCResult extends BaseTest {
         ReportTCResultResponse response = null;
         try {
             response = this.api.setTestCaseExecutionResult(testCaseId, null, testPlanId, ExecutionStatus.PASSED, null,
-                    buildId, buildName, notes, true, null, platformId, platformName, null, // TODO:
-                    // Test
-                    // custom
-                    // fields!
-                    true);
+                    buildId, buildName, notes, null, true, null, platformId, platformName, null, true, null, null);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }
