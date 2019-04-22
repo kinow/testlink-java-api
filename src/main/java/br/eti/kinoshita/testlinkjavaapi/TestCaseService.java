@@ -296,20 +296,16 @@ class TestCaseService extends BaseService {
              */
 
             Map<String, Object> responseMap = Util.castToMap(response);
-
             List<TestCase> testCasesList = new ArrayList<TestCase>();
 
             for (Entry<String, Object> entry : responseMap.entrySet()) {
                 String key = entry.getKey();
                 Map<String, Object> testCaseMap = null;
-
                 if (entry.getValue() instanceof Object[]) {
                     Object[] responseArray = (Object[]) entry.getValue();
                     testCaseMap = (Map<String, Object>) responseArray[0];
-
                     testCaseMap.put(TestLinkResponseParams.ID.toString(), key);
                     testCasesList.add(Util.getTestCase(testCaseMap));
-
                 } else if (entry.getValue() instanceof Map<?, ?>) {
                     testCaseMap = (Map<String, Object>) entry.getValue();
                     if (testCaseMap.size() > 0) {
@@ -317,31 +313,25 @@ class TestCaseService extends BaseService {
                         Iterator<String> it = keys.iterator();
                         while (it.hasNext()) {
                             Object o = testCaseMap.get(it.next());
-
                             if (o instanceof Map<?, ?>) {
                                 Map<String, Object> testCaseMapTmp = (Map<String, Object>) o;
                                 testCaseMapTmp.put(TestLinkResponseParams.ID.toString(), key);
                                 testCasesList.add(Util.getTestCase(testCaseMapTmp));
-
                             }
-
                         }
                     } else {
                         testCaseMap.put(TestLinkResponseParams.ID.toString(), key);
                         testCasesList.add(Util.getTestCase(testCaseMap));
-
                     }
                 }
             }
 
             testCases = testCasesList.toArray(new TestCase[0]);
-
+            return testCases;
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error retrieving test cases for test plan: " + xmlrpcex.getMessage(),
                     xmlrpcex);
         }
-
-        return testCases;
     }
 
     /**
