@@ -18,6 +18,9 @@
             <action dev="kinow" due-to="kinow" type="fix" issue="112">
                 reportTCResult - test case steps results are ignored / not updated
             </action>
+            <action dev="kinow" due-to="kinow" type="fix" issue="82">
+                Need a new function named getTestCaseBugs
+            </action>
         </release>
         <release version="1.9.17-1" date="2019-01-14" description="1.9.17-0 release">
             <action dev="kinow" due-to="abouzy" type="fix" issue="85">
