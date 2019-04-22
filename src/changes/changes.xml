@@ -5,7 +5,7 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
-        <release version="1.9.19-0" date="2019-04-22" description="1.9.19-0 release">
+        <release version="1.9.19-0" date="2019-04-23" description="1.9.19-0 release">
             <action dev="kinow" due-to="kinow" type="fix" issue="81">
                 getLastExecutionResult function need some new parameters
             </action>
