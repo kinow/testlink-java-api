@@ -114,6 +114,7 @@ public enum TestLinkResponseParams {
     PLATFORM_ID("platform_id"),
     PLATFORM_NAME("platform_name"),
     EXTERNAL_ID("external_id"),
+    EXTERNAL_ID2("tc_external_id"),
     EXECUTION_TS("execution_ts"),
     EST_EXECUTION_DURATION("estimated_exec_duration"),
     RELEASE_DATE("release_date"),
