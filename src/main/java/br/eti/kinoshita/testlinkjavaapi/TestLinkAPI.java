@@ -40,6 +40,7 @@ import org.apache.commons.configuration2.io.FileLocatorUtils;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import org.apache.xmlrpc.client.XmlRpcSun15HttpTransportFactory;
 
 import br.eti.kinoshita.testlinkjavaapi.constants.ActionOnDuplicate;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
@@ -129,6 +130,37 @@ public class TestLinkAPI {
         this.devKey = devKey;
 
         this.xmlRpcClient = new XmlRpcClient();
+
+        // application configuration
+        final CompositeConfiguration appConfig = this.createApplicationConfiguration();
+        // XML-RPC client specific configuration, using the application
+        // configuration
+        final XmlRpcClientConfigImpl config = this.createXmlRpcClientConfiguration(url, appConfig);
+        this.xmlRpcClient.setConfig(config);
+
+        this.testProjectService = new TestProjectService(xmlRpcClient, devKey);
+        this.testPlanService = new TestPlanService(xmlRpcClient, devKey);
+        this.miscService = new MiscService(xmlRpcClient, devKey);
+        this.testCaseService = new TestCaseService(xmlRpcClient, devKey);
+        this.testSuiteService = new TestSuiteService(xmlRpcClient, devKey);
+        this.buildService = new BuildService(xmlRpcClient, devKey);
+        this.requirementService = new RequirementService(xmlRpcClient, devKey);
+        this.reqSpecService = new ReqSpecService(xmlRpcClient, devKey);
+
+        this.miscService.checkDevKey(devKey);
+    }
+    
+    // add connection with a proxy
+    public TestLinkAPI(URL url, String devKey, String proxyHost, int proxyPort) throws TestLinkAPIException {
+        this.url = url;
+        this.devKey = devKey;
+
+        this.xmlRpcClient = new XmlRpcClient();
+        
+        //proxy configuration
+        XmlRpcSun15HttpTransportFactory fac = new XmlRpcSun15HttpTransportFactory(xmlRpcClient);
+        fac.setProxy(proxyHost, proxyPort);
+        xmlRpcClient.setTransportFactory(fac);
 
         // application configuration
         final CompositeConfiguration appConfig = this.createApplicationConfiguration();
