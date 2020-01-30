@@ -150,11 +150,19 @@ public class TestLinkAPI {
         this.miscService.checkDevKey(devKey);
     }
     
-    // add connection with a proxy
+    /**
+     * Constructor with parameters.
+     *
+     * @param url The URL to set.
+     * @param devKey The Developer Key to set.
+     * @param proxyHost The IP address of the proxy server
+     * @param proxyPort The proxy server port
+     * @throws TestLinkAPIException if the service returns an error
+     * @since 1.9.x
+     */
     public TestLinkAPI(URL url, String devKey, String proxyHost, int proxyPort) throws TestLinkAPIException {
         this.url = url;
         this.devKey = devKey;
-
         this.xmlRpcClient = new XmlRpcClient();
         
         //proxy configuration
@@ -164,11 +172,9 @@ public class TestLinkAPI {
 
         // application configuration
         final CompositeConfiguration appConfig = this.createApplicationConfiguration();
-        // XML-RPC client specific configuration, using the application
-        // configuration
+        // XML-RPC client specific configuration, using the application configuration
         final XmlRpcClientConfigImpl config = this.createXmlRpcClientConfiguration(url, appConfig);
         this.xmlRpcClient.setConfig(config);
-
         this.testProjectService = new TestProjectService(xmlRpcClient, devKey);
         this.testPlanService = new TestPlanService(xmlRpcClient, devKey);
         this.miscService = new MiscService(xmlRpcClient, devKey);
@@ -177,7 +183,6 @@ public class TestLinkAPI {
         this.buildService = new BuildService(xmlRpcClient, devKey);
         this.requirementService = new RequirementService(xmlRpcClient, devKey);
         this.reqSpecService = new ReqSpecService(xmlRpcClient, devKey);
-
         this.miscService.checkDevKey(devKey);
     }
 
