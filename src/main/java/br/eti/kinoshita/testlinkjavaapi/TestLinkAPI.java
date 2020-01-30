@@ -158,7 +158,7 @@ public class TestLinkAPI {
      * @param proxyHost The IP address of the proxy server
      * @param proxyPort The proxy server port
      * @throws TestLinkAPIException if the service returns an error
-     * @since 1.9.x
+     * @since 1.9.20
      */
     public TestLinkAPI(URL url, String devKey, String proxyHost, int proxyPort) throws TestLinkAPIException {
         this.url = url;
