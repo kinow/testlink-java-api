@@ -149,7 +149,7 @@ public class TestLinkAPI {
 
         this.miscService.checkDevKey(devKey);
     }
-    
+
     /**
      * Constructor with parameters.
      *
@@ -164,7 +164,7 @@ public class TestLinkAPI {
         this.url = url;
         this.devKey = devKey;
         this.xmlRpcClient = new XmlRpcClient();
-        
+
         //proxy configuration
         XmlRpcSun15HttpTransportFactory fac = new XmlRpcSun15HttpTransportFactory(xmlRpcClient);
         fac.setProxy(proxyHost, proxyPort);
