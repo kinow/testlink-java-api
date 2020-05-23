@@ -241,7 +241,7 @@ class MiscService extends BaseService {
                 Map<String, Object> responseMap = (Map<String, Object>) response;
                 if (responseMap.size() > 0) {
                     Object value = responseMap.get(nodeId.toString());
-                    Object values[] = (Object[]) value;
+                    Object[] values = (Object[]) value;
                     names = new String[values.length];
                     for (int i = 0; i < values.length; i++) {
                         names[i] = values[i].toString();
