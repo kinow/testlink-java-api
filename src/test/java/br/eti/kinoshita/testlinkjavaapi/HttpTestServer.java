@@ -26,7 +26,6 @@ package br.eti.kinoshita.testlinkjavaapi;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
