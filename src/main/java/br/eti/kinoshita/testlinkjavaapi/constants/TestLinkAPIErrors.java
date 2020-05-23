@@ -117,8 +117,8 @@ public enum TestLinkAPIErrors {
     REQUIMENT_REQUIREMENT_SPECIFICATION_KO(11002, ""),
     REQUIREMENT_KO(11003, "");
 
-    private Integer code;
-    private String message;
+    private final Integer code;
+    private final String message;
 
     TestLinkAPIErrors(int code, String message) {
         this.code = code;

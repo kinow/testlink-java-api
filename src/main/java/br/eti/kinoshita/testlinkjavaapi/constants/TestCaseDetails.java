@@ -31,7 +31,7 @@ public enum TestCaseDetails {
 
     SIMPLE("simple"), SUMMARY("summary"), FULL("full");
 
-    private String value;
+    private final String value;
 
     TestCaseDetails(String value) {
         this.value = value;

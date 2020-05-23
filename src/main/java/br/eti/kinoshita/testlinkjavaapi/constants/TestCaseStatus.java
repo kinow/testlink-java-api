@@ -31,7 +31,7 @@ public enum TestCaseStatus {
 
     FINAL(7), FUTURE(6), OBSOLETE(5), REWORK(4), REVIEW_IN_PROGRESS(3), READY_FOR_REVIEW(2), DRAFT(1);
 
-    private Integer value;
+    private final Integer value;
 
     TestCaseStatus(Integer value) {
         this.value = value;

@@ -31,7 +31,7 @@ public enum TestCaseStepAction {
 
     CREATE("create"), UPDATE("update"), PUSH("push");
 
-    private String value;
+    private final String value;
 
     TestCaseStepAction(String value) {
         this.value = value;

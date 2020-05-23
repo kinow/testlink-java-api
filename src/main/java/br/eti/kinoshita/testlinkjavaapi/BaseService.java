@@ -45,12 +45,12 @@ abstract class BaseService {
     /**
      * XML-RPC client.
      */
-    private XmlRpcClient xmlRpcClient;
+    private final XmlRpcClient xmlRpcClient;
 
     /**
      * TestLink User devkey.
      */
-    private String devKey;
+    private final String devKey;
 
     /**
      * @param xmlRpcClient XML-RPC Client.

@@ -119,7 +119,7 @@ public enum TestLinkParams {
     USER("user"),
     VERSION("version");
 
-    private String value;
+    private final String value;
 
     TestLinkParams(String value) {
         this.value = value;

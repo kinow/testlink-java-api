@@ -120,7 +120,7 @@ public enum TestLinkResponseParams {
     RELEASE_DATE("release_date"),
     CLOSED_DATE("closed_on_date");
 
-    private String textValue;
+    private final String textValue;
 
     TestLinkResponseParams(String textValue) {
         this.textValue = textValue;

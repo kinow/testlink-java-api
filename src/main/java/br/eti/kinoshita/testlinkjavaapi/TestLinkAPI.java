@@ -77,12 +77,12 @@ public class TestLinkAPI {
     /**
      * TestLink URL.
      */
-    private URL url;
+    private final URL url;
 
     /**
      * TestLink Developer Key.
      */
-    private String devKey;
+    private final String devKey;
 
     private final TestProjectService testProjectService;
     private final TestPlanService testPlanService;
@@ -98,7 +98,7 @@ public class TestLinkAPI {
     /**
      * XML-RPC client.
      */
-    private XmlRpcClient xmlRpcClient;
+    private final XmlRpcClient xmlRpcClient;
 
     // Constants for properties
     private static final String XMLRPC_BASIC_ENCODING = "xmlrpc.basicEncoding";

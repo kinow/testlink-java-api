@@ -32,7 +32,7 @@ public enum ActionOnDuplicate {
 
     BLOCK("block"), GENERATE_NEW("generate_new"), CREATE_NEW_VERSION("create_new_version");
 
-    private String value;
+    private final String value;
 
     ActionOnDuplicate(String value) {
         this.value = value;

@@ -31,7 +31,7 @@ public enum ExecutionStatus {
 
     NOT_RUN('n'), PASSED('p'), FAILED('f'), BLOCKED('b');
 
-    private char value;
+    private final char value;
 
     ExecutionStatus(char value) {
         this.value = value;

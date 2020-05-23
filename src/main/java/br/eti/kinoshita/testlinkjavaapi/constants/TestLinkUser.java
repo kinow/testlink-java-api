@@ -31,7 +31,7 @@ public enum TestLinkUser {
 
     NOBODY(-1), SOMEBODY(-2), NO_USER(-1), ANYBODY(0);
 
-    private Integer value;
+    private final Integer value;
 
     TestLinkUser(Integer value) {
         this.value = value;

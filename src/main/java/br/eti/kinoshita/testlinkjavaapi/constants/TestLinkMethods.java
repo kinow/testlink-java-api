@@ -92,7 +92,7 @@ public enum TestLinkMethods {
     ADD_TEST_CASE_KEY_WORDS("tl.addTestCaseKeywords"),
     GET_TEST_CASE_BUGS("tl.getTestCaseBugs");
 
-    private String value;
+    private final String value;
 
     TestLinkMethods(String value) {
         this.value = value;

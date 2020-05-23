@@ -32,7 +32,7 @@ public enum TestLinkTables {
     NODES_HIERARCHY("nodes_hierarchy"), REQUIREMENTS("requirements"), REQUIREMENT_SPECIFICATIONS(
             "req_specs"), EXECUTIONS("executions");
 
-    private String value;
+    private final String value;
 
     TestLinkTables(String value) {
         this.value = value;

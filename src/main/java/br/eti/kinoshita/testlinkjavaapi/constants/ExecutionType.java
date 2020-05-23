@@ -31,7 +31,7 @@ public enum ExecutionType {
 
     MANUAL(1), AUTOMATED(2);
 
-    private Integer value;
+    private final Integer value;
 
     ExecutionType(Integer value) {
         this.value = value;

@@ -45,7 +45,7 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
  */
 public class HttpTestServer {
 
-    private static int DEFAULT_SERVER_PORT = 31984;
+    private static final int DEFAULT_SERVER_PORT = 31984;
 
     protected int port;
     protected Server server;

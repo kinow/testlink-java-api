@@ -31,7 +31,7 @@ public enum TestImportance {
 
     LOW(1), MEDIUM(2), HIGH(3);
 
-    private Integer value;
+    private final Integer value;
 
     TestImportance(Integer value) {
         this.value = value;

@@ -31,7 +31,7 @@ public enum ResponseDetails {
 
     FULL("full"), SIMPLE("simple"), VALUE("value");
 
-    private String value;
+    private final String value;
 
     ResponseDetails(String value) {
         this.value = value;
