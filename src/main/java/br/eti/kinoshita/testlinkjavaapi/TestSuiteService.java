@@ -99,7 +99,7 @@ class TestSuiteService extends BaseService {
     }
 
     /**
-     * @param TEST_SUITE_ID
+     * @param testSuiteIds
      * @return
      */
     protected TestSuite[] getTestSuiteByID(List<Integer> testSuiteIds) throws TestLinkAPIException {

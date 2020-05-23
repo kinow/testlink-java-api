@@ -199,7 +199,7 @@ class MiscService extends BaseService {
      * @param description
      * @param fileName
      * @param fileType
-     * @param file
+     * @param content
      * @return Attachment
      * @throws TestLinkAPIException
      */
