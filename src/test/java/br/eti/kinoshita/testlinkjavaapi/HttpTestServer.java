@@ -76,9 +76,9 @@ public class HttpTestServer {
     }
 
     public Handler getMockHandler() {
-        Handler mockHandler = new AbstractHandler() {
+        return new AbstractHandler() {
             public void handle(String target, Request request, HttpServletRequest httpRequest,
-                    HttpServletResponse httpResponse) throws IOException, ServletException {
+                               HttpServletResponse httpResponse) throws IOException, ServletException {
                 Request baseRequest = HttpConnection.getCurrentConnection().getHttpChannel().getRequest();
                 setResponseBody(getMockResponseBody());
                 setRequestBody(IOUtils.toString(baseRequest.getInputStream(), Charset.defaultCharset()));
@@ -88,7 +88,6 @@ public class HttpTestServer {
                 baseRequest.setHandled(true);
             }
         };
-        return mockHandler;
     }
 
     protected void startServer() throws Exception {
