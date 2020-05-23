@@ -47,7 +47,7 @@ public class HttpTestServer {
 
     private static final int DEFAULT_SERVER_PORT = 31984;
 
-    protected int port;
+    protected final int port;
     protected Server server;
     protected String responseBody;
     protected String requestBody;
