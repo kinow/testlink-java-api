@@ -73,7 +73,7 @@ public class TestGetTestProjectByName extends BaseTest {
         try {
             api.getTestProjectByName(testProjectName);
             Assert.fail("Not supposed to get here");
-        } catch (TestLinkAPIException e) {
+        } catch (TestLinkAPIException ignored) {
         }
     }
 
