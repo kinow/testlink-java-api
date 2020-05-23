@@ -231,52 +231,40 @@ public class TestLinkAPI {
 
         try {
             xmlRpcClientConfig.setConnectionTimeout(appConfig.getInt(XMLRPC_CONNECTION_TIMEOUT));
-        } catch (ConversionException ce) {
+        } catch (ConversionException | NoSuchElementException ce) {
             this.debug(ce);
-        } catch (NoSuchElementException nsee) {
-            this.debug(nsee);
         }
 
         try {
             xmlRpcClientConfig.setContentLengthOptional(appConfig.getBoolean(XMLRPC_CONTENT_LENGTH_OPTIONAL));
-        } catch (ConversionException ce) {
+        } catch (ConversionException | NoSuchElementException ce) {
             this.debug(ce);
-        } catch (NoSuchElementException nsee) {
-            this.debug(nsee);
         }
 
         try {
             xmlRpcClientConfig.setEnabledForExceptions(appConfig.getBoolean(XMLRPC_ENABLED_FOR_EXCEPTIONS));
-        } catch (ConversionException ce) {
+        } catch (ConversionException | NoSuchElementException ce) {
             this.debug(ce);
-        } catch (NoSuchElementException nsee) {
-            this.debug(nsee);
         }
 
         xmlRpcClientConfig.setEncoding(appConfig.getString(XMLRPC_ENCODING));
 
         try {
             xmlRpcClientConfig.setGzipCompressing(appConfig.getBoolean(XMLRPC_GZIP_COMPRESSION));
-        } catch (ConversionException ce) {
+        } catch (ConversionException | NoSuchElementException ce) {
             this.debug(ce);
-        } catch (NoSuchElementException nsee) {
-            this.debug(nsee);
         }
 
         try {
             xmlRpcClientConfig.setGzipRequesting(appConfig.getBoolean(XMLRPC_GZIP_REQUESTING));
-        } catch (ConversionException ce) {
+        } catch (ConversionException | NoSuchElementException ce) {
             this.debug(ce);
-        } catch (NoSuchElementException nsee) {
-            this.debug(nsee);
         }
 
         try {
             xmlRpcClientConfig.setReplyTimeout(appConfig.getInt(XMLRPC_REPLY_TIMEOUT));
-        } catch (ConversionException ce) {
+        } catch (ConversionException | NoSuchElementException ce) {
             this.debug(ce);
-        } catch (NoSuchElementException nsee) {
-            this.debug(nsee);
         }
 
         xmlRpcClientConfig.setUserAgent(appConfig.getString(XMLRPC_USER_AGENT));
