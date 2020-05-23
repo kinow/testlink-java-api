@@ -74,7 +74,7 @@ class TestSuiteService extends BaseService {
     protected TestSuite createTestSuite(Integer testProjectId, String name, String details, Integer parentId,
             Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
             throws TestLinkAPIException {
-        TestSuite testSuite = null;
+        TestSuite testSuite;
 
         Integer id = 0;
 
@@ -124,7 +124,7 @@ class TestSuiteService extends BaseService {
                     int i = 0;
                     Set<Entry<String, Object>> entrySet = responseMap.entrySet();
                     for (Entry<String, Object> entry : entrySet) {
-                        Map<String, Object> testSuiteMap = null;
+                        Map<String, Object> testSuiteMap;
                         if (entry.getValue() instanceof Object[]) {
                             Object[] responseArray = (Object[]) entry.getValue();
                             testSuiteMap = (Map<String, Object>) responseArray[0];
@@ -157,7 +157,7 @@ class TestSuiteService extends BaseService {
      */
     protected Attachment uploadTestSuiteAttachment(Integer testSuiteId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment = null;
+        Attachment attachment;
 
         Integer id = 0;
 
@@ -186,7 +186,7 @@ class TestSuiteService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestSuite[] getTestSuitesForTestPlan(Integer testPlanId) throws TestLinkAPIException {
-        TestSuite[] testSuites = null;
+        TestSuite[] testSuites;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -218,7 +218,7 @@ class TestSuiteService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestSuite[] getTestSuitesForTestSuite(Integer testSuiteId) throws TestLinkAPIException {
-        TestSuite[] testSuites = null;
+        TestSuite[] testSuites;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -267,7 +267,7 @@ class TestSuiteService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestSuite[] getFirstLevelTestSuitesForTestProject(Integer testProjectId) throws TestLinkAPIException {
-        TestSuite[] testSuites = null;
+        TestSuite[] testSuites;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -300,7 +300,7 @@ class TestSuiteService extends BaseService {
      * @author dennis@etern-it.de
      */
     protected Attachment[] getTestSuiteAttachments(Integer testSuiteId) {
-        Attachment[] attachments = null;
+        Attachment[] attachments;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();

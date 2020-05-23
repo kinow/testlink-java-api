@@ -52,7 +52,7 @@ class BuildService extends BaseService {
 
     @SuppressWarnings("unchecked")
     protected Build createBuild(Integer testPlanId, String buildName, String buildNotes) throws TestLinkAPIException {
-        Build build = null;
+        Build build;
 
         Integer id = 0;
 

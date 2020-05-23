@@ -69,7 +69,7 @@ class TestProjectService extends BaseService {
     protected TestProject createTestProject(String testProjectName, String testProjectPrefix, String notes,
             Boolean enableRequirements, Boolean enableTestPriority, Boolean enableAutomation, Boolean enableInventory,
             Boolean isActive, Boolean isPublic) throws TestLinkAPIException {
-        TestProject testProject = null;
+        TestProject testProject;
 
         Integer id = 0;
 
@@ -92,7 +92,7 @@ class TestProjectService extends BaseService {
     }
 
     protected TestProject getTestProjectByName(String projectName) throws TestLinkAPIException {
-        TestProject testProject = null;
+        TestProject testProject;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -114,7 +114,7 @@ class TestProjectService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestProject[] getProjects() throws TestLinkAPIException {
-        TestProject[] projects = null;
+        TestProject[] projects;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -142,7 +142,7 @@ class TestProjectService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestPlan[] getProjectTestPlans(Integer projectId) throws TestLinkAPIException {
-        TestPlan[] testPlans = null;
+        TestPlan[] testPlans;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -175,7 +175,7 @@ class TestProjectService extends BaseService {
      */
     protected Attachment uploadTestProjectAttachment(Integer testProjectId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment = null;
+        Attachment attachment;
 
         Integer id = 0;
 
@@ -198,7 +198,7 @@ class TestProjectService extends BaseService {
     }
 
     protected Platform[] getProjectPlatforms(Integer testProjectId) throws TestLinkAPIException {
-        Platform[] platforms = null;
+        Platform[] platforms;
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);

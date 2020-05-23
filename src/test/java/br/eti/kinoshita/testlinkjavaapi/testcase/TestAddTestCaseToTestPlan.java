@@ -44,7 +44,7 @@ public class TestAddTestCaseToTestPlan extends BaseTest {
     public void testAddTestCaseToTestPlan(Integer testProjectId, Integer testPlanId, Integer testCaseId,
             Integer version, Integer platformId) {
         this.loadXMLRPCMockData("tl.addTestCaseToTestPlan.xml");
-        Integer featureId = 0;
+        Integer featureId;
 
         try {
             featureId = api.addTestCaseToTestPlan(testProjectId, testPlanId, testCaseId, version, platformId, null,

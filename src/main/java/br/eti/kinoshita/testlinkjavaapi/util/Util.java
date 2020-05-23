@@ -542,7 +542,7 @@ public final class Util {
                     }
                     testCase.setFullExternalId(fullExternalId);
 
-                    TestCaseStatus status = TestCaseStatus.DRAFT;
+                    TestCaseStatus status;
                     Integer testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
                     if (testCaseStatusId != null) {
                         status = TestCaseStatus.values()[TestCaseStatus.values().length - testCaseStatusId];

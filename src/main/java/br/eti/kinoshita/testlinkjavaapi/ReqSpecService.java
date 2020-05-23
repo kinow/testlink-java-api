@@ -61,7 +61,7 @@ class ReqSpecService extends BaseService {
     @SuppressWarnings("unchecked")
     protected Attachment uploadRequirementSpecificationAttachment(Integer reqSpecId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment = null;
+        Attachment attachment;
 
         Integer id = 0;
 

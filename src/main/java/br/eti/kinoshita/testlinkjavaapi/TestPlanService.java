@@ -59,7 +59,7 @@ class TestPlanService extends BaseService {
 
     protected TestPlan createTestPlan(String planName, String projectName, String notes, Boolean isActive,
             Boolean isPublic) throws TestLinkAPIException {
-        TestPlan testPlan = null;
+        TestPlan testPlan;
 
         Integer id = 0;
 
@@ -89,7 +89,7 @@ class TestPlanService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestPlan getTestPlanByName(String planName, String projectName) throws TestLinkAPIException {
-        TestPlan testPlan = null;
+        TestPlan testPlan;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -150,7 +150,7 @@ class TestPlanService extends BaseService {
      * @return
      */
     protected Platform[] getTestPlanPlatforms(Integer planId) throws TestLinkAPIException {
-        Platform[] platforms = null;
+        Platform[] platforms;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();

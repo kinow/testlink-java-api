@@ -53,7 +53,7 @@ class MiscService extends BaseService {
     }
 
     protected Boolean checkDevKey(String devKey) throws TestLinkAPIException {
-        Boolean statusOk = false;
+        Boolean statusOk;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -75,7 +75,7 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected Boolean doesUserExist(String user) throws TestLinkAPIException {
-        Boolean userExist = false;
+        Boolean userExist;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -98,7 +98,7 @@ class MiscService extends BaseService {
      */
     @SuppressWarnings("unchecked")
     protected User getUserByLogin(String login) throws TestLinkAPIException {
-        User user = null;
+        User user;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -121,7 +121,7 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected String sayHello() throws TestLinkAPIException {
-        String message = null;
+        String message;
 
         try {
             Object response = this.executeXmlRpcCall(TestLinkMethods.SAY_HELLO.toString(), null);
@@ -138,7 +138,7 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected String about() throws TestLinkAPIException {
-        String message = null;
+        String message;
 
         try {
             Object response = this.executeXmlRpcCall(TestLinkMethods.ABOUT.toString(), null);
@@ -158,7 +158,7 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected Boolean setTestMode(Boolean testMode) throws TestLinkAPIException {
-        Boolean result = null;
+        Boolean result;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -178,7 +178,7 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected String repeat(String str) throws TestLinkAPIException {
-        String repeatMessage = null;
+        String repeatMessage;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -206,7 +206,7 @@ class MiscService extends BaseService {
     @SuppressWarnings("unchecked")
     protected Attachment uploadAttachment(Integer fkId, String fkTable, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment = null;
+        Attachment attachment;
 
         Integer id = 0;
 

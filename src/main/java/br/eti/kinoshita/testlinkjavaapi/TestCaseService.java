@@ -99,7 +99,7 @@ class TestCaseService extends BaseService {
             String authorLogin, String summary, List<TestCaseStep> steps, String preconditions, TestCaseStatus status,
             TestImportance importance, ExecutionType execution, Integer order, Integer internalId,
             Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName) throws TestLinkAPIException {
-        TestCase testCase = null;
+        TestCase testCase;
 
         Integer id = null;
 
@@ -177,7 +177,7 @@ class TestCaseService extends BaseService {
 
     protected Map<String, Object> deleteTestCaseSteps(String testCaseExternalId, Integer version,
             List<TestCaseStep> testCaseSteps) throws TestLinkAPIException {
-        Map<String, Object> responseMap = null;
+        Map<String, Object> responseMap;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -199,7 +199,7 @@ class TestCaseService extends BaseService {
 
     protected Integer addTestCaseToTestPlan(Integer testProjectId, Integer testPlanId, Integer testCaseId,
             Integer version, Integer platformId, Integer order, Integer urgency) throws TestLinkAPIException {
-        Integer featureId = 0;
+        Integer featureId;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -232,7 +232,7 @@ class TestCaseService extends BaseService {
     protected TestCase[] getTestCasesForTestSuite(Integer testSuiteId, Boolean deep, TestCaseDetails detail)
             throws TestLinkAPIException {
 
-        TestCase[] testCases = null;
+        TestCase[] testCases;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -275,7 +275,7 @@ class TestCaseService extends BaseService {
             List<Integer> keywordsIds, String keywords, Boolean executed, List<Integer> assignedTo,
             String[] executeStatus, ExecutionType executionType, Boolean getStepInfo, TestCaseDetails detail)
             throws TestLinkAPIException {
-        TestCase[] testCases = null;
+        TestCase[] testCases;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -303,7 +303,7 @@ class TestCaseService extends BaseService {
 
             for (Entry<String, Object> entry : responseMap.entrySet()) {
                 String key = entry.getKey();
-                Map<String, Object> testCaseMap = null;
+                Map<String, Object> testCaseMap;
                 if (entry.getValue() instanceof Object[]) {
                     Object[] responseArray = (Object[]) entry.getValue();
                     testCaseMap = (Map<String, Object>) responseArray[0];
@@ -347,7 +347,7 @@ class TestCaseService extends BaseService {
      */
     protected TestCase getTestCase(Integer testCaseId, Integer testCaseExternalId, Integer version)
             throws TestLinkAPIException {
-        TestCase testCase = null;
+        TestCase testCase;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -378,7 +378,7 @@ class TestCaseService extends BaseService {
      */
     protected TestCase getTestCaseByExternalId(String fullTestCaseExternalId, Integer version)
             throws TestLinkAPIException {
-        TestCase testCase = null;
+        TestCase testCase;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -409,7 +409,7 @@ class TestCaseService extends BaseService {
      */
     protected Integer getTestCaseIDByName(String testCaseName, String testSuiteName, String testProjectName,
             String testCasePathName) throws TestLinkAPIException {
-        Integer testCaseID = null;
+        Integer testCaseID;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -449,7 +449,7 @@ class TestCaseService extends BaseService {
      */
     protected Attachment uploadTestCaseAttachment(Integer testCaseId, String title, String description, String fileName,
             String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment = null;
+        Attachment attachment;
 
         Integer id = 0;
 
@@ -480,7 +480,7 @@ class TestCaseService extends BaseService {
      */
     protected Attachment[] getTestCaseAttachments(Integer testCaseId, Integer testCaseVersion, Integer testCaseExternalId)
             throws TestLinkAPIException {
-        Attachment[] attachments = null;
+        Attachment[] attachments;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
@@ -517,7 +517,7 @@ class TestCaseService extends BaseService {
 
     protected Attachment uploadExecutionAttachment(Integer executionId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment = null;
+        Attachment attachment;
 
         Integer id = 0;
 
@@ -801,7 +801,7 @@ class TestCaseService extends BaseService {
      */
     protected Map<String, Object> setTestCaseExecutionType(Integer testProjectId, Integer testCaseId,
             Integer testCaseExternalId, Integer versionNumber, ExecutionType executionType) {
-        Map<String, Object> responseMap = null;
+        Map<String, Object> responseMap;
 
         try {
             Map<String, Object> executionData = new HashMap<String, Object>();
