@@ -786,11 +786,11 @@ public final class Util {
                     attachment.setTitle(getString(map, TestLinkResponseParams.TITLE.toString()));
                     // TBD: put the date too...
                     attachment.setContent(getString(map, TestLinkResponseParams.CONTENT.toString()));
-                    // TBD: description not beign returned
+                    // TBD: description not being returned
                     // attachment.setDescription( getString(map,
                     // TestLinkResponseParams.description.toString() ) );
                     // TBD: returning name instead of file_name
-                    // TBD: file size not beign returned
+                    // TBD: file size not being returned
 
                 }
 
