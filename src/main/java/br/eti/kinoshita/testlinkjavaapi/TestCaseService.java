@@ -946,12 +946,8 @@ class TestCaseService extends BaseService {
                     Object[] o = Util.castToArray(bugs);
                     return Arrays
                             .stream(o)
-                            .map((Object object) -> {
-                                return ((Map<String, Object>) object).get("bug_id");
-                            })
-                            .map((Object string) -> {
-                                return Integer.parseInt((String) string);
-                                })
+                            .map((Object object) -> ((Map<String, Object>) object).get("bug_id"))
+                            .map((Object string) -> Integer.parseInt((String) string))
                             .collect(Collectors.toList());
                 }
             }
