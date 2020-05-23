@@ -42,7 +42,7 @@ public class TestAssignRequirement extends BaseTest {
     public void testAssignRequirement() {
         this.loadXMLRPCMockData("tl.assignRequirements.xml");
 
-        List<Requirement> requirements = new ArrayList<Requirement>();
+        List<Requirement> requirements = new ArrayList<>();
 
         Requirement requirement = new Requirement();
         requirement.setId(12);

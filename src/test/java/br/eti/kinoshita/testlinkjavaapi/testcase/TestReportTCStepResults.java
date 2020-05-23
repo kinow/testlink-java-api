@@ -47,7 +47,7 @@ public class TestReportTCStepResults extends BaseTest {
 
     @DataProvider(name = "buildData")
     public Object[][] createData() {
-        List<TestCaseStepResult> steps=new ArrayList<TestCaseStepResult>();
+        List<TestCaseStepResult> steps= new ArrayList<>();
         TestCaseStepResult step1= new TestCaseStepResult();
         step1.setNumber(1);
         step1.setResult(ExecutionStatus.PASSED);

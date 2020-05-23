@@ -92,7 +92,7 @@ class TestPlanService extends BaseService {
         TestPlan testPlan;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), planName);
             executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), projectName);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_BY_NAME.toString(), executionData);
@@ -121,7 +121,7 @@ class TestPlanService extends BaseService {
             String customFieldName, ResponseDetails details) throws TestLinkAPIException {
         CustomField customField = null;
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.CUSTOM_FIELD_NAME.toString(), customFieldName);
@@ -153,7 +153,7 @@ class TestPlanService extends BaseService {
         Platform[] platforms;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), planId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PLAN_PLATFORMS.toString(), executionData);
             Object[] responseArray = (Object[]) response;
@@ -180,7 +180,7 @@ class TestPlanService extends BaseService {
         Map<String, Object> responseMap = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TOTALS_FOR_TEST_PLAN.toString(),
                     executionData);
@@ -201,7 +201,7 @@ class TestPlanService extends BaseService {
     protected Map<String, Object> removePlatformFromTestPlan(Integer testProjectId, Integer testPlanId,
             String platformName) {
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
@@ -216,7 +216,7 @@ class TestPlanService extends BaseService {
     protected Map<String, Object> addPlatformToTestPlan(Integer testProjectId, Integer testPlanId,
             String platformName) {
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);

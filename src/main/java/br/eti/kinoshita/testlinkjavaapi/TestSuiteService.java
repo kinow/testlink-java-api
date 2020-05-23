@@ -106,7 +106,7 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteIds);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_BY_ID.toString(), executionData);
             if (response instanceof Object[]) {
@@ -189,7 +189,7 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
 
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_PLAN.toString(),
@@ -221,7 +221,7 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_SUITE.toString(),
                     executionData);
@@ -270,7 +270,7 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             Object response = this.executeXmlRpcCall(
                     TestLinkMethods.GET_FIRST_LEVEL_TEST_SUITES_FOR_TEST_PROJECT.toString(), executionData);
@@ -303,7 +303,7 @@ class TestSuiteService extends BaseService {
         Attachment[] attachments;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_ATTACHMENTS.toString(),
                     executionData);

@@ -24,7 +24,7 @@ public class TestAddTestCaseKeyWords extends BaseTest {
     public void addTestCaseKeyWords(String testCaseExternalId, String keyword) {
         this.loadXMLRPCMockData("tl.addTestCaseKeyWords.xml");
 
-        Map<String, List<String>> testcaseKeywordsMap = new HashMap<String, List<String>>();
+        Map<String, List<String>> testcaseKeywordsMap = new HashMap<>();
         testcaseKeywordsMap.put(testCaseExternalId, Lists.newArrayList(keyword));
         Map<String, Object> response = null;
         try {

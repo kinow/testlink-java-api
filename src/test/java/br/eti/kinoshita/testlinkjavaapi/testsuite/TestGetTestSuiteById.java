@@ -51,7 +51,7 @@ public class TestGetTestSuiteById extends BaseTest {
 
         TestSuite[] testSuites = null;
 
-        List<Integer> testSuiteIds = new ArrayList<Integer>();
+        List<Integer> testSuiteIds = new ArrayList<>();
         testSuiteIds.add(suiteId);
 
         try {

@@ -49,7 +49,7 @@ public class TestUpdateBuildCustomFields extends BaseTest {
     public void testUpdateBuildCustomFields(Integer buildId, Integer testProjectId, Integer testPlanId, String cfname, String cfvalue) {
         this.loadXMLRPCMockData("tl.updateBuildCustomFields.xml");
 
-        java.util.Map<String, String> customFields = new HashMap<String, String>();
+        java.util.Map<String, String> customFields = new HashMap<>();
         customFields.put(cfname, cfvalue);
 
         java.util.Map<String, java.lang.Object> response = null;

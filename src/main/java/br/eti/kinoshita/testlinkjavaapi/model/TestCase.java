@@ -76,8 +76,8 @@ public class TestCase implements Serializable {
      */
     public TestCase() {
         super();
-        this.steps = new ArrayList<TestCaseStep>();
-        this.customFields = new ArrayList<CustomField>();
+        this.steps = new ArrayList<>();
+        this.customFields = new ArrayList<>();
     }
 
     /**

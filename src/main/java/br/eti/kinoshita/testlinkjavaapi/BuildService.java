@@ -82,7 +82,7 @@ class BuildService extends BaseService {
         Build[] builds = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_BUILDS_FOR_TEST_PLAN.toString(),
                     executionData);
@@ -112,7 +112,7 @@ class BuildService extends BaseService {
         Build build = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_LATEST_BUILD_FOR_TEST_PLAN.toString(),
                     executionData);
@@ -136,7 +136,7 @@ class BuildService extends BaseService {
     protected Map<String, Object> getExecCountersByBuild(Integer testPlanId) {
         Map<String, Object> responseMap = null;
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_EXEC_COUNTERS_BY_BUILD.toString(),
                     executionData);
@@ -164,7 +164,7 @@ class BuildService extends BaseService {
         Map<String, Object> responseMap =null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);

@@ -44,7 +44,7 @@ import br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException;
 public class TestDeleteTestCaseSteps extends BaseTest {
     @DataProvider(name = "testCaseStepData")
     public Object[][] createData() {
-        List<TestCaseStep> steps = new ArrayList<TestCaseStep>();
+        List<TestCaseStep> steps = new ArrayList<>();
         steps.add(new TestCaseStep(1, // ID
                 1, // Version
                 1, // Step number

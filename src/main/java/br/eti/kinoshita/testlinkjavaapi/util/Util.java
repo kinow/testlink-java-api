@@ -81,12 +81,12 @@ public final class Util {
      * @return Map of Test Project
      */
     public static Map<String, Object> getTestProjectMap(TestProject project) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), project.getName());
         executionData.put(TestLinkParams.TEST_CASE_PREFIX.toString(), project.getPrefix());
         executionData.put(TestLinkParams.NOTES.toString(), project.getNotes());
 
-        Map<String, Object> options = new HashMap<String, Object>();
+        Map<String, Object> options = new HashMap<>();
         options.put(TestLinkParams.ENABLE_REQUIREMENTS.toString(), project.isEnableRequirements());
         options.put(TestLinkParams.ENABLE_TEST_PRIORITY.toString(), project.isEnableTestPriority());
         options.put(TestLinkParams.ENABLE_AUTOMATION.toString(), project.isEnableAutomation());
@@ -200,7 +200,7 @@ public final class Util {
      * @return Map of Test Plan.
      */
     public static Map<String, Object> getTestPlanMap(TestPlan plan) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), plan.getName());
         executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), plan.getProjectName());
         executionData.put(TestLinkParams.NOTES.toString(), plan.getNotes());
@@ -266,7 +266,7 @@ public final class Util {
      * @return Map of Test Case.
      */
     public static Map<String, Object> getTestCaseMap(TestCase testCase) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         putIfNotNull(executionData, TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
         putIfNotNull(executionData, TestLinkParams.TEST_CASE_ID.toString(), testCase.getId());
         putIfNotNull(executionData, TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
@@ -300,7 +300,7 @@ public final class Util {
      * @since 1.9.4-1
      */
     public static List<Map<String, Object>> getTestCaseStepsMap(List<TestCaseStep> testCaseSteps) {
-        List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> steps = new ArrayList<>();
 
         if (testCaseSteps != null && testCaseSteps.size() > 0) {
             /*
@@ -326,7 +326,7 @@ public final class Util {
      * @since 1.9.4-1
      */
     public static List<Integer> getTestCaseStepsIdList(List<TestCaseStep> testCaseSteps) {
-        List<Integer> steps = new ArrayList<Integer>();
+        List<Integer> steps = new ArrayList<>();
 
         if (testCaseSteps != null && testCaseSteps.size() > 0) {
             /*
@@ -386,7 +386,7 @@ public final class Util {
      * @return Map of Test Case Step.
      */
     public static Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.STEP_NUMBER.toString(), testCaseStep.getNumber());
         executionData.put(TestLinkParams.ACTIONS.toString(), testCaseStep.getActions());
         executionData.put(TestLinkParams.EXPECTED_RESULTS.toString(), testCaseStep.getExpectedResults());
@@ -406,12 +406,12 @@ public final class Util {
     * @since 1.9.19-0
     */
    public static List<Map<String, Object>> getTestCaseStepResultMap(List<TestCaseStepResult> testCaseStepResults) {
-       List<Map<String, Object>> steps = new ArrayList<Map<String, Object>>();
+       List<Map<String, Object>> steps = new ArrayList<>();
 
        if (testCaseStepResults != null && testCaseStepResults.size() > 0) {
            for (int i = 0; i < testCaseStepResults.size(); i++) {
                TestCaseStepResult step = testCaseStepResults.get(i);
-               Map<String, Object> testCaseStepMap = new HashMap<String, Object>();
+               Map<String, Object> testCaseStepMap = new HashMap<>();
                testCaseStepMap.put(TestLinkParams.NOTES.toString(), step.getNotes());
                testCaseStepMap.put(TestLinkParams.STEP_NUMBER.toString(), step.getNumber());
                testCaseStepMap.put(TestLinkParams.RESULT.toString(), step.getResult().toString());
@@ -426,7 +426,7 @@ public final class Util {
      * @return Map of Test Suite Map.
      */
     public static Map<String, Object> getTestSuiteMap(TestSuite testSuite) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_SUITE_NAME.toString(), testSuite.getName());
         executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testSuite.getTestProjectId());
         executionData.put(TestLinkParams.PARENT_ID.toString(), testSuite.getParentId());
@@ -647,7 +647,7 @@ public final class Util {
      * @return Map of Build.
      */
     public static Map<String, Object> getBuildMap(Build build) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), build.getTestPlanId());
         executionData.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
         executionData.put(TestLinkParams.BUILD_NOTES.toString(), build.getNotes());
@@ -659,7 +659,7 @@ public final class Util {
      * @return Map of Attachment.
      */
     public static Map<String, Object> getAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -675,7 +675,7 @@ public final class Util {
      * @return Map of Test Case Attachment.
      */
     public static Map<String, Object> getTestCaseAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_CASE_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -691,7 +691,7 @@ public final class Util {
      * @return Map of Test Suite Attachment.
      */
     public static Map<String, Object> getTestSuiteAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -707,7 +707,7 @@ public final class Util {
      * @return Map of Test Project Attachment.
      */
     public static Map<String, Object> getTestProjectAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -723,7 +723,7 @@ public final class Util {
      * @return Map of Requirement Attachment.
      */
     public static Map<String, Object> getRequirementAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.REQUIREMENT_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -739,7 +739,7 @@ public final class Util {
      * @return Map of Requirement Specification Attachment.
      */
     public static Map<String, Object> getRequirementSpecificationAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -755,7 +755,7 @@ public final class Util {
      * @return Map of Execution Attachment
      */
     public static Map<String, Object> getExecutionAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<String, Object>();
+        Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.EXECUTION_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -804,14 +804,14 @@ public final class Util {
      * @return List with Maps of Requirements Grouped By ReSpec.
      */
     public static List<Map<String, Object>> getRequirementsGroupedByReqSpecMap(List<Requirement> requirements) {
-        List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<>();
 
-        Map<Integer, List<Integer>> tempMap = new HashMap<Integer, List<Integer>>();
+        Map<Integer, List<Integer>> tempMap = new HashMap<>();
         for (Iterator<Requirement> iterator = requirements.iterator(); iterator.hasNext();) {
             Requirement requirement = iterator.next();
             List<Integer> requirementsArray = tempMap.get(requirement.getReqSpecId());
             if (requirementsArray == null) {
-                requirementsArray = new ArrayList<Integer>();
+                requirementsArray = new ArrayList<>();
             }
             requirementsArray.add(requirement.getId());
             tempMap.put(requirement.getReqSpecId(), requirementsArray);
@@ -820,7 +820,7 @@ public final class Util {
         Set<Entry<Integer, List<Integer>>> entrySet = tempMap.entrySet();
 
         for (Entry<Integer, List<Integer>> entry : entrySet) {
-            Map<String, Object> finalMap = new HashMap<String, Object>();
+            Map<String, Object> finalMap = new HashMap<>();
             finalMap.put("req_spec", entry.getKey());
             finalMap.put("requirements", entry.getValue());
             requirementsGroupedByReqSpecMap.add(finalMap);

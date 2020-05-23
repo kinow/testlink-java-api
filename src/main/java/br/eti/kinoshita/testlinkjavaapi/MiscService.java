@@ -56,7 +56,7 @@ class MiscService extends BaseService {
         Boolean statusOk;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.DEV_KEY.toString(), devKey);
             Object response = this.executeXmlRpcCall(TestLinkMethods.CHECK_DEV_KEY.toString(), executionData);
             statusOk = Boolean.valueOf(response.toString());
@@ -78,7 +78,7 @@ class MiscService extends BaseService {
         Boolean userExist;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.USER.toString(), user);
             Object response = this.executeXmlRpcCall(TestLinkMethods.DOES_USER_EXIST.toString(), executionData);
             userExist = Boolean.valueOf(response.toString());
@@ -101,7 +101,7 @@ class MiscService extends BaseService {
         User user;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.USER.toString(), login);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_USER_BY_LOGIN.toString(), executionData);
             Object[] responseArray = Util.castToArray(response);
@@ -161,7 +161,7 @@ class MiscService extends BaseService {
         Boolean result;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_MODE.toString(), testMode);
             Object response = this.executeXmlRpcCall(TestLinkMethods.SET_TEST_MODE.toString(), executionData);
             result = (Boolean) response;
@@ -181,7 +181,7 @@ class MiscService extends BaseService {
         String repeatMessage;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.STR.toString(), str);
             Object response = this.executeXmlRpcCall(TestLinkMethods.REPEAT.toString(), executionData);
             repeatMessage = (String) response;
@@ -234,7 +234,7 @@ class MiscService extends BaseService {
         String[] names = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.NODE_ID.toString(), nodeId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_FULL_PATH.toString(), executionData);
             if (response instanceof Map<?, ?>) {
@@ -276,7 +276,7 @@ class MiscService extends BaseService {
         Execution execution = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);

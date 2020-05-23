@@ -48,7 +48,7 @@ public class TestPlan implements Serializable {
      */
     public TestPlan() {
         super();
-        this.customFields = new ArrayList<CustomField>();
+        this.customFields = new ArrayList<>();
     }
 
     /**
@@ -61,7 +61,7 @@ public class TestPlan implements Serializable {
      * @param isPublic is public flag
      */
     public TestPlan(Integer id, String name, String projectName, String notes, Boolean isActive, Boolean isPublic) {
-        this(id, name, projectName, notes, isActive, isPublic, new ArrayList<CustomField>());
+        this(id, name, projectName, notes, isActive, isPublic, new ArrayList<>());
     }
 
     /**

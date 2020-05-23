@@ -95,7 +95,7 @@ class TestProjectService extends BaseService {
         TestProject testProject;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), projectName);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_PROJECT_BY_NAME.toString(),
                     executionData);
@@ -117,7 +117,7 @@ class TestProjectService extends BaseService {
         TestProject[] projects;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_PROJECTS.toString(), executionData);
             Object[] responseArray = Util.castToArray(response);
             projects = new TestProject[responseArray.length];
@@ -145,7 +145,7 @@ class TestProjectService extends BaseService {
         TestPlan[] testPlans;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), projectId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_PROJECT_TEST_PLANS.toString(), executionData);
             Object[] responseArray = Util.castToArray(response);
@@ -200,7 +200,7 @@ class TestProjectService extends BaseService {
     protected Platform[] getProjectPlatforms(Integer testProjectId) throws TestLinkAPIException {
         Platform[] platforms;
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             Object response = this.executeXmlRpcCall(TestLinkMethods.GET_PROJECT_PLATFORMS.toString(), executionData);
             Map<String, Object> responseMap = Util.castToMap(response);

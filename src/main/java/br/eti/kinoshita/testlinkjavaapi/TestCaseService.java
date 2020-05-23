@@ -149,7 +149,7 @@ class TestCaseService extends BaseService {
         Map<String, Object> responseMap = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
@@ -180,7 +180,7 @@ class TestCaseService extends BaseService {
         Map<String, Object> responseMap;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), version);
@@ -202,7 +202,7 @@ class TestCaseService extends BaseService {
         Integer featureId;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
@@ -235,7 +235,7 @@ class TestCaseService extends BaseService {
         TestCase[] testCases;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
             executionData.put(TestLinkParams.DEEP.toString(), deep);
             executionData.put(TestLinkParams.DETAILS.toString(), Util.getStringValueOrNull(detail));
@@ -278,7 +278,7 @@ class TestCaseService extends BaseService {
         TestCase[] testCases;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCasesIds);
             executionData.put(TestLinkParams.BUILD_ID.toString(), buildId);
@@ -299,7 +299,7 @@ class TestCaseService extends BaseService {
              */
 
             Map<String, Object> responseMap = Util.castToMap(response);
-            List<TestCase> testCasesList = new ArrayList<TestCase>();
+            List<TestCase> testCasesList = new ArrayList<>();
 
             for (Entry<String, Object> entry : responseMap.entrySet()) {
                 String key = entry.getKey();
@@ -350,7 +350,7 @@ class TestCaseService extends BaseService {
         TestCase testCase;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
@@ -381,7 +381,7 @@ class TestCaseService extends BaseService {
         TestCase testCase;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), fullTestCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), version);
@@ -412,7 +412,7 @@ class TestCaseService extends BaseService {
         Integer testCaseID;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_CASE_NAME.toString(), testCaseName);
             executionData.put(TestLinkParams.TEST_SUITE_NAME.toString(), testSuiteName);
@@ -483,7 +483,7 @@ class TestCaseService extends BaseService {
         Attachment[] attachments;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.VERSION.toString(), testCaseVersion);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
@@ -547,7 +547,7 @@ class TestCaseService extends BaseService {
      */
     protected void deleteExecution(Integer executionId) throws TestLinkAPIException {
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.EXECUTION_ID.toString(), executionId);
             this.executeXmlRpcCall(TestLinkMethods.DELETE_EXECUTION.toString(), executionData);
             // the error verification routine is called inside
@@ -593,7 +593,7 @@ class TestCaseService extends BaseService {
         List<Map<String, Object>> stepsMap = Util.getTestCaseStepResultMap(steps);
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
@@ -644,7 +644,7 @@ class TestCaseService extends BaseService {
         CustomField customField = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
@@ -687,7 +687,7 @@ class TestCaseService extends BaseService {
         CustomField customField = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
@@ -731,7 +731,7 @@ class TestCaseService extends BaseService {
         CustomField customField = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
@@ -769,10 +769,10 @@ class TestCaseService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected List<String> getTestCaseKeywords(Integer testProjectId, Integer testCaseId) throws TestLinkAPIException {
-        List<String> keywords = new ArrayList<String>();
+        List<String> keywords = new ArrayList<>();
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
 
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
@@ -804,7 +804,7 @@ class TestCaseService extends BaseService {
         Map<String, Object> responseMap;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.VERSION.toString(), versionNumber);
@@ -841,8 +841,8 @@ class TestCaseService extends BaseService {
         Map<String, Object> responseMap = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
-            Map<String, String> cf = new HashMap<String, String>();
+            Map<String, Object> executionData = new HashMap<>();
+            Map<String, String> cf = new HashMap<>();
             cf.put(customFieldName, customFieldValue);
 
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
@@ -877,7 +877,7 @@ class TestCaseService extends BaseService {
     protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
             String buildName) throws TestLinkAPIException {
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
             executionData.put(TestLinkParams.USER.toString(), user);
@@ -898,7 +898,7 @@ class TestCaseService extends BaseService {
             throws TestLinkAPIException {
         Map<String, Object> responseMap = null;
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.KEYWORDS.toString(), testcaseKeywordsMap);
             Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_TEST_CASE_KEY_WORDS.toString(), executionData);
             if (response instanceof Map<?, ?>) {
@@ -926,7 +926,7 @@ class TestCaseService extends BaseService {
             Integer platformId, String platformName, Integer buildId, String buildName) {
         Map<String, Object> responseMap = null;
         try {
-            Map<String, Object> executionData = new HashMap<String, Object>();
+            Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
