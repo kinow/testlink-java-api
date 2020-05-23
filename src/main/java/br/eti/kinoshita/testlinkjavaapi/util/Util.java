@@ -309,8 +309,7 @@ public final class Util {
              */
 
             // Why uses an iterator over a foreach?
-            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext();) {
-                TestCaseStep testCaseStep = iterator.next();
+            for (TestCaseStep testCaseStep : testCaseSteps) {
                 Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep, true);
                 steps.add(testCaseStepMap);
             }
@@ -334,8 +333,7 @@ public final class Util {
              */
 
             // Why uses an iterator over a foreach?
-            for (Iterator<TestCaseStep> iterator = testCaseSteps.iterator(); iterator.hasNext();) {
-                TestCaseStep testCaseStep = iterator.next();
+            for (TestCaseStep testCaseStep : testCaseSteps) {
                 steps.add(testCaseStep.getNumber());
             }
         }
@@ -409,8 +407,7 @@ public final class Util {
        List<Map<String, Object>> steps = new ArrayList<>();
 
        if (testCaseStepResults != null && testCaseStepResults.size() > 0) {
-           for (int i = 0; i < testCaseStepResults.size(); i++) {
-               TestCaseStepResult step = testCaseStepResults.get(i);
+           for (TestCaseStepResult step : testCaseStepResults) {
                Map<String, Object> testCaseStepMap = new HashMap<>();
                testCaseStepMap.put(TestLinkParams.NOTES.toString(), step.getNotes());
                testCaseStepMap.put(TestLinkParams.STEP_NUMBER.toString(), step.getNumber());
@@ -807,8 +804,7 @@ public final class Util {
         List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<>();
 
         Map<Integer, List<Integer>> tempMap = new HashMap<>();
-        for (Iterator<Requirement> iterator = requirements.iterator(); iterator.hasNext();) {
-            Requirement requirement = iterator.next();
+        for (Requirement requirement : requirements) {
             List<Integer> requirementsArray = tempMap.get(requirement.getReqSpecId());
             if (requirementsArray == null) {
                 requirementsArray = new ArrayList<>();
