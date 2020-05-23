@@ -53,13 +53,13 @@ class MiscService extends BaseService {
     }
 
     protected Boolean checkDevKey(String devKey) throws TestLinkAPIException {
-        Boolean statusOk;
+        boolean statusOk;
 
         try {
             Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.DEV_KEY.toString(), devKey);
             Object response = this.executeXmlRpcCall(TestLinkMethods.CHECK_DEV_KEY.toString(), executionData);
-            statusOk = Boolean.valueOf(response.toString());
+            statusOk = Boolean.parseBoolean(response.toString());
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error verifying developer key: " + xmlrpcex.getMessage(), xmlrpcex);
         }
@@ -75,13 +75,13 @@ class MiscService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected Boolean doesUserExist(String user) throws TestLinkAPIException {
-        Boolean userExist;
+        boolean userExist;
 
         try {
             Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.USER.toString(), user);
             Object response = this.executeXmlRpcCall(TestLinkMethods.DOES_USER_EXIST.toString(), executionData);
-            userExist = Boolean.valueOf(response.toString());
+            userExist = Boolean.parseBoolean(response.toString());
         } catch (XmlRpcException xmlrpcex) {
             throw new TestLinkAPIException("Error verifying if user exists: " + xmlrpcex.getMessage(), xmlrpcex);
         }

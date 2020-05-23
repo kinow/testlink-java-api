@@ -112,7 +112,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testProject = new TestProject();
@@ -218,7 +218,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testPlan = new TestPlan();
@@ -246,7 +246,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     platform = new Platform();
@@ -350,7 +350,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     step = new TestCaseStep();
@@ -445,7 +445,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testSuite = new TestSuite();
@@ -479,7 +479,7 @@ public final class Util {
             }
 
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testCase = new TestCase();
@@ -772,7 +772,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     attachment = new Attachment();
@@ -834,7 +834,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     execution = new Execution();
@@ -880,7 +880,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     build = new Build();
@@ -909,7 +909,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                Integer id = Integer.parseInt(o.toString());
+                int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     reportTCResultResponse = new ReportTCResultResponse();
@@ -1014,7 +1014,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.DB_ID.toString());
             if (o != null) {
-                Integer dbID = Integer.parseInt(o.toString());
+                int dbID = Integer.parseInt(o.toString());
                 if (dbID > 0) {
                     user = new User(dbID);
                     user.setLogin(getString(map, TestLinkResponseParams.LOGIN.toString()));
@@ -1048,7 +1048,7 @@ public final class Util {
         if (map != null && map.size() > 0) {
             Object o = map.get(TestLinkResponseParams.DB_ID.toString());
             if (o != null) {
-                Integer dbID = Integer.parseInt(o.toString());
+                int dbID = Integer.parseInt(o.toString());
                 if (dbID > 0) {
                     role = new Role(dbID);
                     role.setDescription(getString(map, TestLinkResponseParams.DESCRIPTION.toString()));
