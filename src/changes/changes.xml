@@ -6,8 +6,8 @@
     </properties>
     <body>
         <release version="1.9.20-1" date="2020-05-23" description="1.9.20-1 release">
-            <action dev="kinow" due-to="DanProgs" issue="132">
-                add connection with a proxy
+            <action dev="kinow" type="update">
+                Update code styles (Java 8 style, javadocs, typos, remove redundant code, etc)
             </action>
         </release>
         <release version="1.9.20-0" date="2020-01-30" description="1.9.20-0 release">
