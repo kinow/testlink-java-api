@@ -633,7 +633,7 @@ public final class Util {
 
         if (object != null) {
             if (object instanceof String) {
-                map = Collections.emptyMap();;
+                map = Collections.emptyMap();
             } else {
                 map = (Map<String, Object>) object;
             }
