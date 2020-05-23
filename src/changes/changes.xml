@@ -9,6 +9,9 @@
             <action dev="kinow" type="update">
                 Update code styles (Java 8 style, javadocs, typos, remove redundant code, etc)
             </action>
+            <action dev="kinow" type="update" due-to="dependabot" issue="134">
+                Bump commons-configuration2 from 2.4 to 2.7
+            </action>
         </release>
         <release version="1.9.20-0" date="2020-01-30" description="1.9.20-0 release">
             <action dev="kinow" due-to="DanProgs" issue="132">
