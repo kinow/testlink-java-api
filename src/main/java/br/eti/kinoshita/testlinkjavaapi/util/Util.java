@@ -574,7 +574,7 @@ public final class Util {
                     // testCase.getCustomFields().add( customField );
                     // }
                     // }
-                    Object[] stepsArray = (Object[]) getArray(map, TestLinkResponseParams.STEPS.toString());
+                    Object[] stepsArray = getArray(map, TestLinkResponseParams.STEPS.toString());
                     if (stepsArray != null && stepsArray.length > 0) {
                         for (Object stepObject : stepsArray) {
                             Map<String, Object> stepMap = (Map<String, Object>) stepObject;

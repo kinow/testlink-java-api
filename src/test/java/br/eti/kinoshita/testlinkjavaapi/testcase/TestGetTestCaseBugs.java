@@ -26,6 +26,6 @@ public class TestGetTestCaseBugs extends BaseTest {
         List<Integer> o = api.getTestCaseBugs(testPlanId, testCaseId, testCaseExternalId, null, null, buildId, null);
 
         assertTrue(o.size() > 0);
-        assertEquals((int) 1, (int) o.get(0));
+        assertEquals(1, (int) o.get(0));
     }
 }
