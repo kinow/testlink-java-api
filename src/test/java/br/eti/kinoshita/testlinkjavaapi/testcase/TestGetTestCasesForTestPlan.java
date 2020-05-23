@@ -64,7 +64,7 @@ public class TestGetTestCasesForTestPlan extends BaseTest {
 
         Assert.assertNotNull(testCases);
 
-        Assert.assertTrue(testCases.length == 1);
+        Assert.assertEquals(testCases.length, 1);
     }
 
     @Test(dataProvider = "testPlanDataFilterByExecutionStatus")
@@ -82,7 +82,7 @@ public class TestGetTestCasesForTestPlan extends BaseTest {
 
         Assert.assertNotNull(testCases);
 
-        Assert.assertTrue(testCases.length == 1);
+        Assert.assertEquals(testCases.length, 1);
 
         Assert.assertEquals(testCases[0].getExecutionStatus(), ExecutionStatus.getExecutionStatus(status.charAt(0)));
     }

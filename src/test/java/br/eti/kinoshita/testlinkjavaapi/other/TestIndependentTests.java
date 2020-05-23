@@ -94,7 +94,7 @@ public class TestIndependentTests extends BaseTest {
 
         Assert.assertEquals(pingMessage, sayHelloMessage);
 
-        Assert.assertTrue(pingMessage.equals("Hello!"));
+        Assert.assertEquals(pingMessage, "Hello!");
     }
 
     @Test

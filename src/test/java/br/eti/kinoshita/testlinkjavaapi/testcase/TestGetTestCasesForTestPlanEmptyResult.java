@@ -58,6 +58,6 @@ public class TestGetTestCasesForTestPlanEmptyResult extends BaseTest {
 
         Assert.assertNotNull(testCases);
 
-        Assert.assertTrue(testCases.length == 0);
+        Assert.assertEquals(testCases.length, 0);
     }
 }

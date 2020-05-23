@@ -56,7 +56,7 @@ public class TestGetTestSuitesForTestSuiteEmptyResult extends BaseTest {
 
         Assert.assertNotNull(testSuites);
 
-        Assert.assertTrue(testSuites.length == 0);
+        Assert.assertEquals(testSuites.length, 0);
 
     }
 

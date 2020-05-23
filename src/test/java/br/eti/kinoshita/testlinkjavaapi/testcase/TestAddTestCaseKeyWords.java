@@ -33,7 +33,7 @@ public class TestAddTestCaseKeyWords extends BaseTest {
             Assert.fail(e.getMessage(), e);
         }
 
-        Assert.assertTrue(response.get("status_ok").toString().equals("true"));
+        Assert.assertEquals(response.get("status_ok").toString(), "true");
         Assert.assertNotNull(response);
     }
 }

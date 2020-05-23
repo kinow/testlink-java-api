@@ -62,7 +62,7 @@ public class TestGetTestSuiteById extends BaseTest {
 
         Assert.assertNotNull(testSuites);
 
-        Assert.assertTrue(testSuites.length == 1);
+        Assert.assertEquals(testSuites.length, 1);
     }
 
 }

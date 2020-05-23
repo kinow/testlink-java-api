@@ -56,6 +56,6 @@ public class TestGetFirstLevelTestSuiteForTestProjectEmptyResult extends BaseTes
 
         }
 
-        Assert.assertTrue(testSuites == null);
+        Assert.assertNull(testSuites);
     }
 }

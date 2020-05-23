@@ -34,7 +34,7 @@ public class TestRemovePlatformFromTestPlan extends BaseTest {
 
         Assert.assertNotNull(map);
 
-        Assert.assertTrue(map.get("msg") != null);
+        Assert.assertNotNull(map.get("msg"));
     }
 
 }

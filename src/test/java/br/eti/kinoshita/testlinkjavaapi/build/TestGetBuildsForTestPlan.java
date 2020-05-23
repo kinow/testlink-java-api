@@ -57,7 +57,7 @@ public class TestGetBuildsForTestPlan extends BaseTest {
 
         Assert.assertTrue(builds.length > 0);
 
-        Assert.assertTrue(builds.length == 1);
+        Assert.assertEquals(builds.length, 1);
 
     }
 }
