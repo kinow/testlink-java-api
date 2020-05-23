@@ -313,9 +313,8 @@ class TestCaseService extends BaseService {
                     testCaseMap = (Map<String, Object>) entry.getValue();
                     if (testCaseMap.size() > 0) {
                         Set<String> keys = testCaseMap.keySet();
-                        Iterator<String> it = keys.iterator();
-                        while (it.hasNext()) {
-                            Object o = testCaseMap.get(it.next());
+                        for (String s : keys) {
+                            Object o = testCaseMap.get(s);
                             if (o instanceof Map<?, ?>) {
                                 Map<String, Object> testCaseMapTmp = (Map<String, Object>) o;
                                 testCaseMapTmp.put(TestLinkResponseParams.ID.toString(), key);
