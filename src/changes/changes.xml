@@ -5,6 +5,11 @@
         <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
     </properties>
     <body>
+        <release version="1.9.?" date="2021-??-??" description="">
+            <action dev="kinow" type="update">
+                 Bump commons-io from 2.6 to 2.7 #137.
+            </action>
+        </release>
         <release version="1.9.20-1" date="2020-05-23" description="1.9.20-1 release">
             <action dev="kinow" type="update">
                 Update code styles (Java 8 style, javadocs, typos, remove redundant code, etc)
