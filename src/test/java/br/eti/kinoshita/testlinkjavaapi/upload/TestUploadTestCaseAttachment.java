@@ -40,18 +40,18 @@ public class TestUploadTestCaseAttachment extends BaseTest {
     @DataProvider(name = "testCaseAttachmentData")
     public Object[][] createData() {
         return new Object[][] { { 8, "Attachment title", "Attachment description", "attachmentFileName.txt",
-                "text/plain", "QnJ1bm8=" } };
+                "text/plain", "QnJ1bm8=", 1 } };
     }
 
     @Test(dataProvider = "testCaseAttachmentData")
     public void testUploadTestCaseAttachment(Integer testCaseId, String title, String description, String fileName,
-            String fileType, String content) {
+            String fileType, String content, int version) {
         this.loadXMLRPCMockData("tl.uploadTestCaseAttachment.xml");
 
         Attachment attachment = null;
 
         try {
-            attachment = this.api.uploadTestCaseAttachment(testCaseId, title, description, fileName, fileType, content);
+            attachment = this.api.uploadTestCaseAttachment(testCaseId, title, description, fileName, fileType, content, version);
         } catch (TestLinkAPIException e) {
             Assert.fail(e.getMessage(), e);
         }

@@ -441,10 +441,11 @@ class TestCaseService extends BaseService {
      * @param fileName
      * @param fileType
      * @param content
+     * @param version
      * @return
      */
     protected Attachment uploadTestCaseAttachment(Integer testCaseId, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+            String fileType, String content, int version) throws TestLinkAPIException {
         Attachment attachment;
 
         Integer id = 0;
@@ -454,6 +455,7 @@ class TestCaseService extends BaseService {
 
         try {
             Map<String, Object> executionData = Util.getTestCaseAttachmentMap(attachment);
+            executionData.put(TestLinkParams.VERSION.toString(), version);
             Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_TEST_CASE_ATTACHMENT.toString(),
                     executionData);
             Map<String, Object> responseMap = Util.castToMap(response);
