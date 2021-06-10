@@ -6,6 +6,9 @@
     </properties>
     <body>
         <release version="1.9.?" date="2021-??-??" description="">
+            <action dev="leightjohnson93" type="fix">
+                Add test case version for uploadTestCaseAttachment method
+            </action>
             <action dev="kinow" type="update">
                  Bump commons-io from 2.6 to 2.7 #137.
             </action>

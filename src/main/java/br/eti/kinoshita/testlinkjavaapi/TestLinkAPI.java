@@ -959,13 +959,14 @@ public class TestLinkAPI {
      * @param fileName file name
      * @param fileType file type
      * @param content content
+     * @param version test case version
      * @return Attachment.
      * @throws TestLinkAPIException if the service returns an error
      */
     public Attachment uploadTestCaseAttachment(Integer testCaseId, String title, String description, String fileName,
-            String fileType, String content) throws TestLinkAPIException {
+            String fileType, String content, int version) throws TestLinkAPIException {
         return this.testCaseService.uploadTestCaseAttachment(testCaseId, title, description, fileName, fileType,
-                content);
+                content, version);
     }
 
     /**
