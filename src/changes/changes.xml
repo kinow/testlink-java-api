@@ -6,7 +6,10 @@
     </properties>
     <body>
         <release version="1.9.?" date="2021-??-??" description="">
-            <action dev="leightjohnson93" type="fix">
+            <action dev="kinow" type="update" due-to="dependabot">
+                Bump jetty-server from 9.4.38.v20210224 to 9.4.41.v20210516 #141
+            </action>
+            <action dev="kinow" type="fix" due-to="leightjohnson93">
                 Add test case version for uploadTestCaseAttachment method
             </action>
             <action dev="kinow" type="update">
