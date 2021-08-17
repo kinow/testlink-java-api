@@ -8,8 +8,13 @@ jdk:
   - oraclejdk11
 
 matrix:
+  fast_finish: true
    allow_failures:
       - jdk: oraclejdk11
 
 script:
   - mvn
+
+cache:
+  directories:
+  - $HOME/.m2
