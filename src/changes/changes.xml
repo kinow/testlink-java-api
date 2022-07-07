@@ -18,6 +18,9 @@
             <action dev="kinow" type="update">
                  Bump commons-configuration2 from 2.7 to 2.8.0 #145.
             </action>
+            <action dev="kinow" type="update">
+                 Bump jetty-server from 9.4.41.v20210516 to 10.0.10 #146.
+            </action>
         </release>
         <release version="1.9.20-1" date="2020-05-23" description="1.9.20-1 release">
             <action dev="kinow" type="update">
