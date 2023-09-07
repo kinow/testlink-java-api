@@ -882,7 +882,7 @@ class TestCaseService extends BaseService {
             executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
             this.executeXmlRpcCall(TestLinkMethods.ASSIGN_TEST_CASE_EXECUTION_TASK.toString(), executionData);
         } catch (XmlRpcException xmlrpcex) {
-            throw new TestLinkAPIException("Error deleting execution: " + xmlrpcex.getMessage(), xmlrpcex);
+            throw new TestLinkAPIException("Error assigning test case execution task: " + xmlrpcex.getMessage(), xmlrpcex);
         }
     }
 
