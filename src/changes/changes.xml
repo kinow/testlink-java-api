@@ -7,6 +7,9 @@
     <body>
         <release version="1.9.?" date="2021-??-??" description="">
             <action dev="kinow" type="update" due-to="dependabot">
+                Bump org.apache.commons:commons-configuration2 from 2.8.0 to 2.10.1 #151
+            </action>
+            <action dev="kinow" type="update" due-to="dependabot">
                 Bump jetty-server from 9.4.38.v20210224 to 9.4.41.v20210516 #141
             </action>
             <action dev="kinow" type="fix" due-to="leightjohnson93">
