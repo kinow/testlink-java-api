@@ -205,7 +205,7 @@ class TestPlanService extends BaseService {
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
             executionData.put(TestLinkParams.PLATFORM_NAME.toString(), platformName);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.ADD_PLATFORM_TO_TEST_PLAN.toString(),
+            Object response = this.executeXmlRpcCall(TestLinkMethods.REMOVE_PLATFORM_FROM_TEST_PLAN.toString(),
                     executionData);
             return Util.castToMap(response);
         } catch (XmlRpcException xmlrpcex) {
