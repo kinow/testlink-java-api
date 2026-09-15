@@ -130,6 +130,7 @@ public enum TestLinkResponseParams {
      * Print response params value.
      * @return response params value
      */
+    @Override
     public String toString() {
         return this.textValue;
     }

@@ -41,6 +41,7 @@ public enum TestLinkUser {
      * Print user.
      * @return user
      */
+    @Override
     public String toString() {
         return Integer.toString(this.value);
     }

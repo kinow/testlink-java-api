@@ -41,6 +41,7 @@ public enum TestCaseStepAction {
      * Print value of test case step action.
      * @return value of test case step action
      */
+    @Override
     public String toString() {
         return this.value;
     }

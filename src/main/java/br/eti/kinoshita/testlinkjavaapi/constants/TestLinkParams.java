@@ -129,6 +129,7 @@ public enum TestLinkParams {
      * Print param value.
      * @return param value
      */
+    @Override
     public String toString() {
         return this.value;
     }

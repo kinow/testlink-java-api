@@ -74,7 +74,7 @@ class TestSuiteService extends BaseService {
     protected TestSuite createTestSuite(Integer testProjectId, String name, String details, Integer parentId,
             Integer order, Boolean checkDuplicatedName, ActionOnDuplicate actionOnDuplicatedName)
             throws TestLinkAPIException {
-        TestSuite testSuite;
+        final TestSuite testSuite;
 
         Integer id = 0;
 
@@ -82,10 +82,10 @@ class TestSuiteService extends BaseService {
                 actionOnDuplicatedName);
 
         try {
-            Map<String, Object> executionData = Util.getTestSuiteMap(testSuite);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_SUITE.toString(), executionData);
-            Object[] responseArray = Util.castToArray(response);
-            Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
+            final Map<String, Object> executionData = Util.getTestSuiteMap(testSuite);
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.CREATE_TEST_SUITE.toString(), executionData);
+            final Object[] responseArray = Util.castToArray(response);
+            final Map<String, Object> responseMap = (Map<String, Object>) responseArray[0];
 
             id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
             testSuite.setId(id);
@@ -106,27 +106,27 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites = null;
 
         try {
-            Map<String, Object> executionData = new HashMap<>();
+            final Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteIds);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_BY_ID.toString(), executionData);
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_BY_ID.toString(), executionData);
             if (response instanceof Object[]) {
-                Object[] responseArray = Util.castToArray(response);
+                final Object[] responseArray = Util.castToArray(response);
                 testSuites = new TestSuite[responseArray.length];
 
                 for (int i = 0; i < responseArray.length; i++) {
-                    Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                    final Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
                     testSuites[i] = Util.getTestSuite(responseMap);
                 }
             } else if (response instanceof Map<?, ?>) {
-                Map<String, Object> responseMap = (Map<String, Object>) response;
+                final Map<String, Object> responseMap = (Map<String, Object>) response;
                 if (StringUtils.isBlank(Util.getString(responseMap, TestLinkResponseParams.ID.toString()))) {
                     testSuites = new TestSuite[responseMap.size()];
                     int i = 0;
-                    Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+                    final Set<Entry<String, Object>> entrySet = responseMap.entrySet();
                     for (Entry<String, Object> entry : entrySet) {
-                        Map<String, Object> testSuiteMap;
+                        final Map<String, Object> testSuiteMap;
                         if (entry.getValue() instanceof Object[]) {
-                            Object[] responseArray = (Object[]) entry.getValue();
+                            final Object[] responseArray = (Object[]) entry.getValue();
                             testSuiteMap = (Map<String, Object>) responseArray[0];
                         } else {
                             testSuiteMap = (Map<String, Object>) entry.getValue();
@@ -157,7 +157,7 @@ class TestSuiteService extends BaseService {
      */
     protected Attachment uploadTestSuiteAttachment(Integer testSuiteId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment;
+        final Attachment attachment;
 
         Integer id = 0;
 
@@ -165,10 +165,10 @@ class TestSuiteService extends BaseService {
                 fileName, null, fileType, content);
 
         try {
-            Map<String, Object> executionData = Util.getTestSuiteAttachmentMap(attachment);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_TEST_SUITE_ATTACHMENT.toString(),
+            final Map<String, Object> executionData = Util.getTestSuiteAttachmentMap(attachment);
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_TEST_SUITE_ATTACHMENT.toString(),
                     executionData);
-            Map<String, Object> responseMap = (Map<String, Object>) response;
+            final Map<String, Object> responseMap = (Map<String, Object>) response;
             id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
             attachment.setId(id);
         } catch (XmlRpcException xmlrpcex) {
@@ -189,17 +189,17 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites;
 
         try {
-            Map<String, Object> executionData = new HashMap<>();
+            final Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
 
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_PLAN.toString(),
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_PLAN.toString(),
                     executionData);
 
-            Object[] responseArray = Util.castToArray(response);
+            final Object[] responseArray = Util.castToArray(response);
             testSuites = new TestSuite[responseArray.length];
 
             for (int i = 0; i < responseArray.length; i++) {
-                Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                final Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
                 testSuites[i] = Util.getTestSuite(responseMap);
             }
 
@@ -221,26 +221,26 @@ class TestSuiteService extends BaseService {
         TestSuite[] testSuites;
 
         try {
-            Map<String, Object> executionData = new HashMap<>();
+            final Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_SUITE.toString(),
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITES_FOR_TEST_SUITE.toString(),
                     executionData);
 
-            Map<String, Object> responseMap = Util.castToMap(response);
-            Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+            final Map<String, Object> responseMap = Util.castToMap(response);
+            final Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 
             testSuites = new TestSuite[entrySet.size()];
             boolean singleElement = false;
             int index = 0;
             for (Entry<String, Object> entry : entrySet) {
-                String key = entry.getKey();
-                Object o = entry.getValue();
+                final String key = entry.getKey();
+                final Object o = entry.getValue();
                 if (o instanceof String) {
                     // TBD: think something wiser
                     singleElement = true;
                     break;
                 }
-                Map<String, Object> testSuiteMap = (Map<String, Object>) entry.getValue();
+                final Map<String, Object> testSuiteMap = (Map<String, Object>) entry.getValue();
                 testSuiteMap.put(TestLinkResponseParams.ID.toString(), key);
                 testSuites[index] = Util.getTestSuite(testSuiteMap);
                 index += 1;
@@ -267,19 +267,19 @@ class TestSuiteService extends BaseService {
      * @throws TestLinkAPIException
      */
     protected TestSuite[] getFirstLevelTestSuitesForTestProject(Integer testProjectId) throws TestLinkAPIException {
-        TestSuite[] testSuites;
+        final TestSuite[] testSuites;
 
         try {
-            Map<String, Object> executionData = new HashMap<>();
+            final Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
-            Object response = this.executeXmlRpcCall(
+            final Object response = this.executeXmlRpcCall(
                     TestLinkMethods.GET_FIRST_LEVEL_TEST_SUITES_FOR_TEST_PROJECT.toString(), executionData);
 
-            Object[] responseArray = Util.castToArray(response);
+            final Object[] responseArray = Util.castToArray(response);
             testSuites = new TestSuite[responseArray.length];
 
             for (int i = 0; i < responseArray.length; i++) {
-                Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
+                final Map<String, Object> responseMap = (Map<String, Object>) responseArray[i];
                 testSuites[i] = Util.getTestSuite(responseMap);
             }
         } catch (XmlRpcException xmlrpcex) {
@@ -300,23 +300,23 @@ class TestSuiteService extends BaseService {
      * @author dennis@etern-it.de
      */
     protected Attachment[] getTestSuiteAttachments(Integer testSuiteId) {
-        Attachment[] attachments;
+        final Attachment[] attachments;
 
         try {
-            Map<String, Object> executionData = new HashMap<>();
+            final Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), testSuiteId);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_ATTACHMENTS.toString(),
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.GET_TEST_SUITE_ATTACHMENTS.toString(),
                     executionData);
             if (response instanceof Map<?, ?>) {
-                Map<String, Object> responseMap = Util.castToMap(response);
-                Set<Entry<String, Object>> entrySet = responseMap.entrySet();
+                final Map<String, Object> responseMap = Util.castToMap(response);
+                final Set<Entry<String, Object>> entrySet = responseMap.entrySet();
 
                 attachments = new Attachment[entrySet.size()];
 
                 int index = 0;
                 for (Entry<String, Object> entry : entrySet) {
-                    String key = entry.getKey();
-                    Map<String, Object> attachmentMap = (Map<String, Object>) entry.getValue();
+                    final String key = entry.getKey();
+                    final Map<String, Object> attachmentMap = (Map<String, Object>) entry.getValue();
                     attachmentMap.put(TestLinkResponseParams.ID.toString(), key);
                     attachments[index] = Util.getAttachment(attachmentMap);
                     index += 1;

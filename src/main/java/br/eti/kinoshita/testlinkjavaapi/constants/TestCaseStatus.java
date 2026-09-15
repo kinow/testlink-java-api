@@ -49,6 +49,7 @@ public enum TestCaseStatus {
      * Print value of test case status.
      * @return value of test case status
      */
+    @Override
     public String toString() {
         return this.value.toString();
     }

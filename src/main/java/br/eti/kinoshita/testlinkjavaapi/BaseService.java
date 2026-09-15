@@ -71,7 +71,7 @@ abstract class BaseService {
      */
     public Object executeXmlRpcCall(String methodName, Map<String, Object> executionData)
             throws XmlRpcException, TestLinkAPIException {
-        List<Object> params = new ArrayList<Object>();
+        final List<Object> params = new ArrayList<Object>();
 
         if (executionData != null) {
             if (executionData.get(TestLinkParams.DEV_KEY.toString()) == null) {
@@ -94,12 +94,12 @@ abstract class BaseService {
         if (response instanceof Object[]) {
             final Object[] responseArray = Util.castToArray(response);
             for (int i = 0; i < responseArray.length; i++) {
-                Object maybeAMap = responseArray[i];
+                final Object maybeAMap = responseArray[i];
                 // may be a map with error code and message
                 if (maybeAMap instanceof Map<?, ?>) {
-                    Map<String, Object> errorMap = (Map<String, Object>) maybeAMap;
-                    Integer code = Util.getInteger(errorMap, "code");
-                    String message = Util.getString(errorMap, "message");
+                    final Map<String, Object> errorMap = (Map<String, Object>) maybeAMap;
+                    final Integer code = Util.getInteger(errorMap, "code");
+                    final String message = Util.getString(errorMap, "message");
 
                     if (code != null) {
                         throw new TestLinkAPIException(code, message);

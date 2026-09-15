@@ -126,28 +126,7 @@ public class TestLinkAPI {
      * @since 1.0
      */
     public TestLinkAPI(URL url, String devKey) throws TestLinkAPIException {
-        this.url = url;
-        this.devKey = devKey;
-
-        this.xmlRpcClient = new XmlRpcClient();
-
-        // application configuration
-        final CompositeConfiguration appConfig = this.createApplicationConfiguration();
-        // XML-RPC client specific configuration, using the application
-        // configuration
-        final XmlRpcClientConfigImpl config = this.createXmlRpcClientConfiguration(url, appConfig);
-        this.xmlRpcClient.setConfig(config);
-
-        this.testProjectService = new TestProjectService(xmlRpcClient, devKey);
-        this.testPlanService = new TestPlanService(xmlRpcClient, devKey);
-        this.miscService = new MiscService(xmlRpcClient, devKey);
-        this.testCaseService = new TestCaseService(xmlRpcClient, devKey);
-        this.testSuiteService = new TestSuiteService(xmlRpcClient, devKey);
-        this.buildService = new BuildService(xmlRpcClient, devKey);
-        this.requirementService = new RequirementService(xmlRpcClient, devKey);
-        this.reqSpecService = new ReqSpecService(xmlRpcClient, devKey);
-
-        this.miscService.checkDevKey(devKey);
+        this(url, devKey, null, 0);
     }
 
     /**
@@ -165,10 +144,12 @@ public class TestLinkAPI {
         this.devKey = devKey;
         this.xmlRpcClient = new XmlRpcClient();
 
-        //proxy configuration
-        XmlRpcSun15HttpTransportFactory fac = new XmlRpcSun15HttpTransportFactory(xmlRpcClient);
-        fac.setProxy(proxyHost, proxyPort);
-        xmlRpcClient.setTransportFactory(fac);
+		// proxy configuration
+		if (proxyHost != null && !proxyHost.isEmpty()) {
+			final XmlRpcSun15HttpTransportFactory fac = new XmlRpcSun15HttpTransportFactory(this.xmlRpcClient);
+			fac.setProxy(proxyHost, proxyPort);
+			this.xmlRpcClient.setTransportFactory(fac);
+		}
 
         // application configuration
         final CompositeConfiguration appConfig = this.createApplicationConfiguration();
@@ -192,14 +173,14 @@ public class TestLinkAPI {
      * @return Application composite configuration.
      */
     private CompositeConfiguration createApplicationConfiguration() {
-        CompositeConfiguration cc = new CompositeConfiguration();
+        final CompositeConfiguration cc = new CompositeConfiguration();
 
-        SystemConfiguration systemConfiguration = new SystemConfiguration();
-        PropertiesConfiguration propertiesConfiguration = new PropertiesConfiguration();
+        final SystemConfiguration systemConfiguration = new SystemConfiguration();
+        final PropertiesConfiguration propertiesConfiguration = new PropertiesConfiguration();
         propertiesConfiguration.setThrowExceptionOnMissing(true);
         propertiesConfiguration.setListDelimiterHandler(new DefaultListDelimiterHandler(';'));
         propertiesConfiguration.setIncludesAllowed(false);
-        FileLocator locator = FileLocatorUtils.fileLocator()
+        final FileLocator locator = FileLocatorUtils.fileLocator()
                      .fileName("testlinkjavaapi.propertiesxml")
                      .create();
         propertiesConfiguration.initFileLocator(locator);

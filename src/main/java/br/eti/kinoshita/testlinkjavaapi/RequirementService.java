@@ -65,7 +65,7 @@ class RequirementService extends BaseService {
     @SuppressWarnings("unchecked")
     protected Attachment uploadRequirementAttachment(Integer requirementId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment;
+        final Attachment attachment;
 
         Integer id = 0;
 
@@ -73,10 +73,10 @@ class RequirementService extends BaseService {
                 fileName, null, fileType, content);
 
         try {
-            Map<String, Object> executionData = Util.getRequirementAttachmentMap(attachment);
-            Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_REQUIREMENT_ATTACHMENT.toString(),
+            final Map<String, Object> executionData = Util.getRequirementAttachmentMap(attachment);
+            final Object response = this.executeXmlRpcCall(TestLinkMethods.UPLOAD_REQUIREMENT_ATTACHMENT.toString(),
                     executionData);
-            Map<String, Object> responseMap = (Map<String, Object>) response;
+            final Map<String, Object> responseMap = (Map<String, Object>) response;
             id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
             attachment.setId(id);
         } catch (XmlRpcException xmlrpcex) {
@@ -95,7 +95,7 @@ class RequirementService extends BaseService {
     protected void assignRequirements(Integer testCaseId, Integer testProjectId, List<Requirement> requirements)
             throws TestLinkAPIException {
         try {
-            Map<String, Object> executionData = new HashMap<>();
+            final Map<String, Object> executionData = new HashMap<>();
             executionData.put(TestLinkParams.TEST_CASE_ID.toString(), testCaseId);
             executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testProjectId);
             executionData.put(TestLinkParams.REQUIREMENTS.toString(),

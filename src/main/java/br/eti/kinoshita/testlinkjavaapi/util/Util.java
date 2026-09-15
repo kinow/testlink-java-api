@@ -80,12 +80,12 @@ public final class Util {
      * @return Map of Test Project
      */
     public static Map<String, Object> getTestProjectMap(TestProject project) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), project.getName());
         executionData.put(TestLinkParams.TEST_CASE_PREFIX.toString(), project.getPrefix());
         executionData.put(TestLinkParams.NOTES.toString(), project.getNotes());
 
-        Map<String, Object> options = new HashMap<>();
+        final Map<String, Object> options = new HashMap<>();
         options.put(TestLinkParams.ENABLE_REQUIREMENTS.toString(), project.isEnableRequirements());
         options.put(TestLinkParams.ENABLE_TEST_PRIORITY.toString(), project.isEnableTestPriority());
         options.put(TestLinkParams.ENABLE_AUTOMATION.toString(), project.isEnableAutomation());
@@ -109,9 +109,9 @@ public final class Util {
     public static TestProject getTestProject(Map<String, Object> map) {
         TestProject testProject = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testProject = new TestProject();
@@ -121,7 +121,7 @@ public final class Util {
                     testProject.setPrefix(getString(map, TestLinkResponseParams.PREFIX.toString()));
                     testProject.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
 
-                    Map<String, Object> optMap = (Map<String, Object>) map.get(TestLinkResponseParams.OPT.toString());
+                    final Map<String, Object> optMap = (Map<String, Object>) map.get(TestLinkResponseParams.OPT.toString());
                     testProject.setEnableAutomation(
                             getBoolean(optMap, TestLinkResponseParams.AUTOMATION_ENABLED.toString()));
                     testProject.setEnableRequirements(
@@ -147,7 +147,7 @@ public final class Util {
      */
     public static Boolean getBoolean(Map<String, Object> map, String key) {
         Boolean booleanObj = null;
-        Integer integer = getInteger(map, key);
+        final Integer integer = getInteger(map, key);
         if (integer != null) {
             if (integer == 0) {
                 booleanObj = Boolean.FALSE;
@@ -166,7 +166,7 @@ public final class Util {
     public static String getString(Map<String, Object> map, String key) {
         String string = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(key);
+            final Object o = map.get(key);
             if (o != null) {
                 string = o.toString();
             }
@@ -182,7 +182,7 @@ public final class Util {
     public static Integer getInteger(Map<String, Object> map, String key) {
         Integer integer = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(key);
+            final Object o = map.get(key);
             if (o != null) {
                 try {
                     integer = Integer.parseInt(o.toString());
@@ -199,7 +199,7 @@ public final class Util {
      * @return Map of Test Plan.
      */
     public static Map<String, Object> getTestPlanMap(TestPlan plan) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PLAN_NAME.toString(), plan.getName());
         executionData.put(TestLinkParams.TEST_PROJECT_NAME.toString(), plan.getProjectName());
         executionData.put(TestLinkParams.NOTES.toString(), plan.getNotes());
@@ -215,9 +215,9 @@ public final class Util {
     public static TestPlan getTestPlan(Map<String, Object> map) {
         TestPlan testPlan = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testPlan = new TestPlan();
@@ -243,9 +243,9 @@ public final class Util {
     public static Platform getPlatform(Map<String, Object> map) {
         Platform platform = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     platform = new Platform();
@@ -265,7 +265,7 @@ public final class Util {
      * @return Map of Test Case.
      */
     public static Map<String, Object> getTestCaseMap(TestCase testCase) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         putIfNotNull(executionData, TestLinkParams.TEST_CASE_NAME.toString(), testCase.getName());
         putIfNotNull(executionData, TestLinkParams.TEST_CASE_ID.toString(), testCase.getId());
         putIfNotNull(executionData, TestLinkParams.TEST_SUITE_ID.toString(), testCase.getTestSuiteId());
@@ -274,7 +274,7 @@ public final class Util {
         putIfNotNull(executionData, TestLinkParams.SUMMARY.toString(), testCase.getSummary());
 
         if (testCase.getSteps() != null) {
-            List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
+            final List<Map<String, Object>> steps = getTestCaseStepsMap(testCase.getSteps());
             executionData.put(TestLinkParams.STEPS.toString(), steps);
         }
         putIfNotNull(executionData, TestLinkParams.PRECONDITIONS.toString(), testCase.getPreconditions());
@@ -299,7 +299,7 @@ public final class Util {
      * @since 1.9.4-1
      */
     public static List<Map<String, Object>> getTestCaseStepsMap(List<TestCaseStep> testCaseSteps) {
-        List<Map<String, Object>> steps = new ArrayList<>();
+        final List<Map<String, Object>> steps = new ArrayList<>();
 
         if (testCaseSteps != null && testCaseSteps.size() > 0) {
             /*
@@ -309,7 +309,7 @@ public final class Util {
 
             // Why uses an iterator over a foreach?
             for (TestCaseStep testCaseStep : testCaseSteps) {
-                Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep, true);
+                final Map<String, Object> testCaseStepMap = getTestCaseStepMap(testCaseStep, true);
                 steps.add(testCaseStepMap);
             }
         }
@@ -324,7 +324,7 @@ public final class Util {
      * @since 1.9.4-1
      */
     public static List<Integer> getTestCaseStepsIdList(List<TestCaseStep> testCaseSteps) {
-        List<Integer> steps = new ArrayList<>();
+        final List<Integer> steps = new ArrayList<>();
 
         if (testCaseSteps != null && testCaseSteps.size() > 0) {
             /*
@@ -347,17 +347,17 @@ public final class Util {
     public static TestCaseStep getTestCaseStep(Map<String, Object> map) {
         TestCaseStep step = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     step = new TestCaseStep();
                     step.setId(id);
                     step.setActions(getString(map, TestLinkResponseParams.ACTIONS.toString()));
                     step.setActive(getBoolean(map, TestLinkResponseParams.ACTIVE.toString()));
-                    Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
-                    ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
+                    final Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
+                    final ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
                     step.setExecutionType(execution);
                     step.setExpectedResults(getString(map, TestLinkResponseParams.EXPECTED_RESULTS.toString()));
                     step.setNumber(getInteger(map, TestLinkResponseParams.STEP_NUMBER.toString()));
@@ -383,7 +383,7 @@ public final class Util {
      * @return Map of Test Case Step.
      */
     public static Map<String, Object> getTestCaseStepMap(TestCaseStep testCaseStep, boolean internal) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.STEP_NUMBER.toString(), testCaseStep.getNumber());
         executionData.put(TestLinkParams.ACTIONS.toString(), testCaseStep.getActions());
         executionData.put(TestLinkParams.EXPECTED_RESULTS.toString(), testCaseStep.getExpectedResults());
@@ -403,11 +403,11 @@ public final class Util {
     * @since 1.9.19-0
     */
    public static List<Map<String, Object>> getTestCaseStepResultMap(List<TestCaseStepResult> testCaseStepResults) {
-       List<Map<String, Object>> steps = new ArrayList<>();
+       final List<Map<String, Object>> steps = new ArrayList<>();
 
        if (testCaseStepResults != null && testCaseStepResults.size() > 0) {
            for (TestCaseStepResult step : testCaseStepResults) {
-               Map<String, Object> testCaseStepMap = new HashMap<>();
+               final Map<String, Object> testCaseStepMap = new HashMap<>();
                testCaseStepMap.put(TestLinkParams.NOTES.toString(), step.getNotes());
                testCaseStepMap.put(TestLinkParams.STEP_NUMBER.toString(), step.getNumber());
                testCaseStepMap.put(TestLinkParams.RESULT.toString(), step.getResult().toString());
@@ -422,7 +422,7 @@ public final class Util {
      * @return Map of Test Suite Map.
      */
     public static Map<String, Object> getTestSuiteMap(TestSuite testSuite) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_SUITE_NAME.toString(), testSuite.getName());
         executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), testSuite.getTestProjectId());
         executionData.put(TestLinkParams.PARENT_ID.toString(), testSuite.getParentId());
@@ -442,9 +442,9 @@ public final class Util {
     public static TestSuite getTestSuite(Map<String, Object> map) {
         TestSuite testSuite = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testSuite = new TestSuite();
@@ -478,7 +478,7 @@ public final class Util {
             }
 
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     testCase = new TestCase();
@@ -499,8 +499,8 @@ public final class Util {
                     testCase.setName(testCaseName);
 
                     Platform platform = null;
-                    String platformName = getString(map, TestLinkResponseParams.PLATFORM_NAME.toString());
-                    Integer platformId = getInteger(map, TestLinkResponseParams.PLATFORM_ID.toString());
+                    final String platformName = getString(map, TestLinkResponseParams.PLATFORM_NAME.toString());
+                    final Integer platformId = getInteger(map, TestLinkResponseParams.PLATFORM_ID.toString());
                     if (platformName != null || platformId != null) { // sometimes
                                                                       // TL may
                                                                       // return
@@ -538,18 +538,18 @@ public final class Util {
                     }
                     testCase.setFullExternalId(fullExternalId);
 
-                    TestCaseStatus status;
-                    Integer testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
+                    final TestCaseStatus status;
+                    final Integer testCaseStatusId = getInteger(map, TestLinkResponseParams.STATUS.toString());
                     if (testCaseStatusId != null) {
                         status = TestCaseStatus.values()[TestCaseStatus.values().length - testCaseStatusId];
                         testCase.setTestCaseStatus(status);
                     }
 
-                    Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
-                    ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
+                    final Integer executionTypeValue = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
+                    final ExecutionType execution = ExecutionType.getExecutionType(executionTypeValue);
                     testCase.setExecutionType(execution);
                     ExecutionStatus executionStatus = ExecutionStatus.NOT_RUN;
-                    String executionStatusText = getString(map, TestLinkResponseParams.EXEC_STATUS.toString());
+                    final String executionStatusText = getString(map, TestLinkResponseParams.EXEC_STATUS.toString());
                     if (StringUtils.isNotBlank(executionStatusText)) {
                         executionStatus = ExecutionStatus.getExecutionStatus(executionStatusText.charAt(0));
                     }
@@ -570,11 +570,11 @@ public final class Util {
                     // testCase.getCustomFields().add( customField );
                     // }
                     // }
-                    Object[] stepsArray = getArray(map, TestLinkResponseParams.STEPS.toString());
+                    final Object[] stepsArray = getArray(map, TestLinkResponseParams.STEPS.toString());
                     if (stepsArray != null && stepsArray.length > 0) {
                         for (Object stepObject : stepsArray) {
-                            Map<String, Object> stepMap = (Map<String, Object>) stepObject;
-                            TestCaseStep step = Util.getTestCaseStep(stepMap);
+                            final Map<String, Object> stepMap = (Map<String, Object>) stepObject;
+                            final TestCaseStep step = Util.getTestCaseStep(stepMap);
                             testCase.getSteps().add(step);
                         }
                     }
@@ -593,7 +593,7 @@ public final class Util {
     public static Object[] getArray(Map<String, Object> map, String key) {
         Object[] array = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(key);
+            final Object o = map.get(key);
             array = castToArray(o);
         }
         return array;
@@ -643,7 +643,7 @@ public final class Util {
      * @return Map of Build.
      */
     public static Map<String, Object> getBuildMap(Build build) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), build.getTestPlanId());
         executionData.put(TestLinkParams.BUILD_NAME.toString(), build.getName());
         executionData.put(TestLinkParams.BUILD_NOTES.toString(), build.getNotes());
@@ -655,7 +655,7 @@ public final class Util {
      * @return Map of Attachment.
      */
     public static Map<String, Object> getAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.FK_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -671,7 +671,7 @@ public final class Util {
      * @return Map of Test Case Attachment.
      */
     public static Map<String, Object> getTestCaseAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_CASE_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -687,7 +687,7 @@ public final class Util {
      * @return Map of Test Suite Attachment.
      */
     public static Map<String, Object> getTestSuiteAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_SUITE_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -703,7 +703,7 @@ public final class Util {
      * @return Map of Test Project Attachment.
      */
     public static Map<String, Object> getTestProjectAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.TEST_PROJECT_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -719,7 +719,7 @@ public final class Util {
      * @return Map of Requirement Attachment.
      */
     public static Map<String, Object> getRequirementAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.REQUIREMENT_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -735,7 +735,7 @@ public final class Util {
      * @return Map of Requirement Specification Attachment.
      */
     public static Map<String, Object> getRequirementSpecificationAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.REQUIREMENT_SPECIFICATION_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -751,7 +751,7 @@ public final class Util {
      * @return Map of Execution Attachment
      */
     public static Map<String, Object> getExecutionAttachmentMap(Attachment attachment) {
-        Map<String, Object> executionData = new HashMap<>();
+        final Map<String, Object> executionData = new HashMap<>();
         executionData.put(TestLinkParams.EXECUTION_ID.toString(), attachment.getFkId());
         executionData.put(TestLinkParams.FK_TABLE.toString(), attachment.getFkTable());
         executionData.put(TestLinkParams.TITLE.toString(), attachment.getTitle());
@@ -769,9 +769,9 @@ public final class Util {
     public static Attachment getAttachment(Map<String, Object> map) {
         Attachment attachment = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     attachment = new Attachment();
@@ -800,9 +800,9 @@ public final class Util {
      * @return List with Maps of Requirements Grouped By ReSpec.
      */
     public static List<Map<String, Object>> getRequirementsGroupedByReqSpecMap(List<Requirement> requirements) {
-        List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<>();
+        final List<Map<String, Object>> requirementsGroupedByReqSpecMap = new ArrayList<>();
 
-        Map<Integer, List<Integer>> tempMap = new HashMap<>();
+        final Map<Integer, List<Integer>> tempMap = new HashMap<>();
         for (Requirement requirement : requirements) {
             List<Integer> requirementsArray = tempMap.get(requirement.getReqSpecId());
             if (requirementsArray == null) {
@@ -812,10 +812,10 @@ public final class Util {
             tempMap.put(requirement.getReqSpecId(), requirementsArray);
         }
 
-        Set<Entry<Integer, List<Integer>>> entrySet = tempMap.entrySet();
+        final Set<Entry<Integer, List<Integer>>> entrySet = tempMap.entrySet();
 
         for (Entry<Integer, List<Integer>> entry : entrySet) {
-            Map<String, Object> finalMap = new HashMap<>();
+            final Map<String, Object> finalMap = new HashMap<>();
             finalMap.put("req_spec", entry.getKey());
             finalMap.put("requirements", entry.getValue());
             requirementsGroupedByReqSpecMap.add(finalMap);
@@ -831,9 +831,9 @@ public final class Util {
     public static Execution getExecution(Map<String, Object> map) {
         Execution execution = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     execution = new Execution();
@@ -841,23 +841,23 @@ public final class Util {
 
                     execution.setBuildId(getInteger(map, TestLinkResponseParams.BUILD_ID.toString()));
                     execution.setTesterId(getInteger(map, TestLinkResponseParams.TESTER_ID.toString()));
-                    String statusText = getString(map, TestLinkResponseParams.STATUS.toString());
-                    ExecutionStatus status = ExecutionStatus.getExecutionStatus(statusText.charAt(0));
+                    final String statusText = getString(map, TestLinkResponseParams.STATUS.toString());
+                    final ExecutionStatus status = ExecutionStatus.getExecutionStatus(statusText.charAt(0));
                     execution.setStatus(status);
                     execution.setTestPlanId(getInteger(map, TestLinkResponseParams.TEST_PLAN_ID.toString()));
                     execution.setTestCaseVersionId(
                             getInteger(map, TestLinkResponseParams.TEST_CASE_VERSION_ID.toString()));
                     execution.setTestCaseVersionNumber(
                             getInteger(map, TestLinkResponseParams.TEST_CASE_VERSION_NUMBER.toString()));
-                    Integer executionTypeText = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
-                    ExecutionType executionType = ExecutionType.getExecutionType(executionTypeText);
+                    final Integer executionTypeText = getInteger(map, TestLinkResponseParams.EXECUTION_TYPE.toString());
+                    final ExecutionType executionType = ExecutionType.getExecutionType(executionTypeText);
                     execution.setExecutionType(executionType);
                     execution.setNotes(getString(map, TestLinkResponseParams.NOTES.toString()));
-                    String timestamp = getString(map, TestLinkResponseParams.EXECUTION_TS.toString());
+                    final String timestamp = getString(map, TestLinkResponseParams.EXECUTION_TS.toString());
                     if (StringUtils.isNotBlank(timestamp)) {
-                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         try {
-                            Date executionTimeStamp = df.parse(timestamp);
+                            final Date executionTimeStamp = df.parse(timestamp);
                             execution.setExecutionTimeStamp(executionTimeStamp);
                         } catch (ParseException e) {
                             LOG.log(Level.WARNING, "Failed to parse execution_ts: " + e.getMessage(), e);
@@ -877,9 +877,9 @@ public final class Util {
     public static Build getBuild(Map<String, Object> map) {
         Build build = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     build = new Build();
@@ -906,9 +906,9 @@ public final class Util {
     public static ReportTCResultResponse getReportTCResultResponse(Map<String, Object> map) {
         ReportTCResultResponse reportTCResultResponse = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.ID.toString());
+            final Object o = map.get(TestLinkResponseParams.ID.toString());
             if (o != null) {
-                int id = Integer.parseInt(o.toString());
+                final int id = Integer.parseInt(o.toString());
 
                 if (id > 0) {
                     reportTCResultResponse = new ReportTCResultResponse();
@@ -1011,9 +1011,9 @@ public final class Util {
     public static User getUser(Map<String, Object> map) {
         User user = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.DB_ID.toString());
+            final Object o = map.get(TestLinkResponseParams.DB_ID.toString());
             if (o != null) {
-                int dbID = Integer.parseInt(o.toString());
+                final int dbID = Integer.parseInt(o.toString());
                 if (dbID > 0) {
                     user = new User(dbID);
                     user.setLogin(getString(map, TestLinkResponseParams.LOGIN.toString()));
@@ -1045,9 +1045,9 @@ public final class Util {
     public static Role getRole(Map<String, Object> map) {
         Role role = null;
         if (map != null && map.size() > 0) {
-            Object o = map.get(TestLinkResponseParams.DB_ID.toString());
+            final Object o = map.get(TestLinkResponseParams.DB_ID.toString());
             if (o != null) {
-                int dbID = Integer.parseInt(o.toString());
+                final int dbID = Integer.parseInt(o.toString());
                 if (dbID > 0) {
                     role = new Role(dbID);
                     role.setDescription(getString(map, TestLinkResponseParams.DESCRIPTION.toString()));

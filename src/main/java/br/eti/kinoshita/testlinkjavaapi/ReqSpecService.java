@@ -61,7 +61,7 @@ class ReqSpecService extends BaseService {
     @SuppressWarnings("unchecked")
     protected Attachment uploadRequirementSpecificationAttachment(Integer reqSpecId, String title, String description,
             String fileName, String fileType, String content) throws TestLinkAPIException {
-        Attachment attachment;
+        final Attachment attachment;
 
         Integer id = 0;
 
@@ -69,10 +69,10 @@ class ReqSpecService extends BaseService {
                 description, fileName, null, fileType, content);
 
         try {
-            Map<String, Object> executionData = Util.getRequirementSpecificationAttachmentMap(attachment);
-            Object response = this.executeXmlRpcCall(
+            final Map<String, Object> executionData = Util.getRequirementSpecificationAttachmentMap(attachment);
+            final Object response = this.executeXmlRpcCall(
                     TestLinkMethods.UPLOAD_REQUIREMENT_SPECIFICATION_ATTACHMENT.toString(), executionData);
-            Map<String, Object> responseMap = (Map<String, Object>) response;
+            final Map<String, Object> responseMap = (Map<String, Object>) response;
             id = Util.getInteger(responseMap, TestLinkResponseParams.ID.toString());
             attachment.setId(id);
         } catch (XmlRpcException xmlrpcex) {
